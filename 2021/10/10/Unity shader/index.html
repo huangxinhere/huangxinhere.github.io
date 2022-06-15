@@ -1,0 +1,512 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UnityShader入门 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="learn sth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UnityShader入门">
+<meta property="og:url" content="http://example.com/2021/10/10/Unity%20shader/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="learn sth">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/ta.jpg">
+<meta property="article:published_time" content="2021-10-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-15T10:39:37.953Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/ta.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/10/10/Unity%20shader/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'UnityShader入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-15 18:39:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/ta.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">UnityShader入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-09T16:00:00.000Z" title="发表于 2021-10-10 00:00:00">2021-10-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-15T10:39:37.953Z" title="更新于 2022-06-15 18:39:37">2022-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/shader/">shader</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="UnityShader入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>学习shader：</p>
+<ul>
+<li>前提要了解整个渲染流程是如何进行的</li>
+<li>更多是面向GPU的工作方式</li>
+<li>基本知识了解<ul>
+<li>OpenGL ＆ DirectX：两种图像应用编程接口。直接操作硬件是很难受滴，所以为上层应用程序和底层GPU架起了沟通桥梁。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/9cbbce53043dfae55a4ae7adadff7c54.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<ul>
+<li>着色语言：专门用于编写着色器<ul>
+<li>OpenGL的GLSL：跨平台性，只要显卡驱动支持GLSL的编译就能运行（依赖硬件—取决于硬件供应商）</li>
+<li>DirectX的HLSL：微软平台</li>
+<li>NVIDIA的CG：真正意义上的跨平台；和HLSL非常相像；无法发挥出OpenGL的最新特性</li>
+</ul>
+</li>
+</ul>
+<h1 id="第2章-渲染流水线"><a href="#第2章-渲染流水线" class="headerlink" title="第2章 渲染流水线"></a>第2章 渲染流水线</h1><h2 id="2-1什么是渲染流水线"><a href="#2-1什么是渲染流水线" class="headerlink" title="2.1什么是渲染流水线"></a>2.1什么是渲染流水线</h2><ul>
+<li><p>shader：着色器，是渲染流水线中的一个环节</p>
+</li>
+<li><p>渲染流水线：</p>
+<ul>
+<li>最终目的，由一个三维场景出发，生成或者渲染一张二维纹理图像（通常由CPU和GPU共同完成）</li>
+<li>输入一个虚拟摄像机，光源，shader以及纹理等等</li>
+<li>渲染流程可以分为三个阶段：</li>
+</ul>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/721d712f2f7ee8657003926b18c91cd9.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<ul>
+<li><strong>应用阶段</strong>：（CPU）开发者主导；准备场景数据、粗粒度剔除工作（剔除不可见物体）、设置好每个模型的渲染状态……【最重要的输出时渲染所需的几何信息，即<u>渲染图元</u>】</li>
+<li>几何阶段：（GPU）用于处理所有 和我们要绘制的 几何相关的 东西。比如需要绘制的图元是什么，怎样绘制，在哪里绘制。【把顶点坐标（每个顶点对应的深度值，着色等相关信息）变换到屏幕空间中，再交给光栅器进行处理】</li>
+<li>光栅化阶段：（GPU）使用上个阶段传递的数据来产生屏幕上的像素，并渲染出最终的图像。</li>
+</ul>
+</li>
+<li><p>以上是概念流水线。</p>
+</li>
+<li><p>GPU流水线——硬件 真正用于实现上述概念的 流水线</p>
+</li>
+</ul>
+<h2 id="2-2-CPU和GPU之间的通信"><a href="#2-2-CPU和GPU之间的通信" class="headerlink" title="2.2 CPU和GPU之间的通信"></a>2.2 CPU和GPU之间的通信</h2><p>应用阶段：（渲染流水线的起点是CPU）</p>
+<h4 id="把数据加载到显存中"><a href="#把数据加载到显存中" class="headerlink" title="把数据加载到显存中"></a>把数据加载到显存中</h4><ul>
+<li>所有渲染的数据都要从🥰硬盘（HDD）中加载到🥰系统内存（RAM）</li>
+<li>然后，网格和纹理等数据又被加载到【🥰显卡（VRAM）上的存储空间——显存】中（显卡对显存的访问速度更快；大多数显卡对RAM没有直接访问的权利）</li>
+</ul>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/1f6f715e90046a41a9637631a191c978.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<p>​            两纹理＋三网格</p>
+<ul>
+<li><p>数据加载到显存后，RAM的数据就可以删除了</p>
+<ul>
+<li><p>但有些数据，CPU仍需要（通过RAM？）访问它们，比如访问网格数据进行碰撞检测）；如果重新加载，硬盘加载到RAM的过程是十分耗时的</p>
+</li>
+<li><p>开发者通过CPU来设置渲染状态（不知道和上面这点有何联系？？），“指导”GPU如何进行渲染工作</p>
+<p>🧐总结：硬盘-RAM-显存是数据流通，幕后操控是CPU和GPU，其中GPU只操控显存（大概先这样吧）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="设置渲染状态"><a href="#设置渲染状态" class="headerlink" title="设置渲染状态"></a>设置渲染状态</h4><p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/716ca7c6a58f624dd44812261c4dd5e7.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<p>​        （同一状态下渲染三个网格）</p>
+<ul>
+<li><p>这些状态定义了场景中的网格是怎样被渲染的（有不同的打扮方式嘛？！）</p>
+<ul>
+<li>做法：使用哪个顶点着色器（Vertex Shader）/片元着色器（Fragment Shader）、光源属性、材质等【应用阶段？？具体怎么做嘛】</li>
+</ul>
+</li>
+</ul>
+<h4 id="调用Draw-Call"><a href="#调用Draw-Call" class="headerlink" title="调用Draw Call"></a>调用Draw Call</h4><p>在我看来很像画画。大脑就是GPU，把看到的模型光线什么的放在脑海里（素描关系色彩什么的），然后除了传递这些数据给（会画画的大脑部分），还得告诉它要主观加工成什么样（一个渲染规范？目标？）。然后会画画的大脑部分就要开始画画啦（接到指令和资料！</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/4c18f630c7caa3211c8bc011cfc95d8a.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<ul>
+<li><p>附加说明：深入理解CPU和GPU与Draw Call之间的关系</p>
+<ul>
+<li><p>GPU和CPU如何实现并行工作？- 命令缓冲区</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/35344c10842212ea69c28174e89e49d7.jpg?x-oss-process=image/resize,w_1920,m_lfit" alt="img"></p>
+<blockquote>
+<p>添加命令和读取命令是独立分开的（小小知识点：改变渲染状态的命令比渲染模型更耗时）</p>
+</blockquote>
+</li>
+<li><p>为什么Draw Call多了会影响帧率？</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/e6aa7f1cbae85ff4ed99efdbb96f41e5.jpg?x-oss-process=image/resize,w_1920,m_lfit" alt="img"></p>
+<blockquote>
+<p>GPU渲染能力很强，速度往往快于CPU提交命令的速度；如果操作过多，额外的工作量会过于繁琐，很慢，比不上别人，效率很低。</p>
+</blockquote>
+</li>
+<li><p>如何减少Draw Call？</p>
+<p>这里选取<strong>批处理</strong>的方法。</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/084d5694f465bcd8f245d6234e16e82c.jpg?x-oss-process=image/resize,w_1920,m_lfit" alt="img"></p>
+<blockquote>
+<p>打包一次性发送（一个包同一种渲染状态）</p>
+<p>但是打包（在CPU的内存中合并网格）也是消耗时间的。所以批处理更适合静态的物体。动态的话每一帧都要合并，会对空间和时间造成一定影响</p>
+</blockquote>
+<p>so，避免使用大量很小的网格；避免使用过多的材质。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3GPU流水线"><a href="#2-3GPU流水线" class="headerlink" title="2.3GPU流水线"></a>2.3GPU流水线</h2><ul>
+<li><p>几何阶段和光栅化阶段，开发者无法拥有绝对的控制权，但是GPU向开发者开放了很多控制权👇</p>
+</li>
+<li><p>这两个阶段可以分为更小的流水线阶段；每个阶段GPU提供不同的可配置性（设置每一步的操作细节）或可编程性</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/b8e1a2f6d7a5e52cb3d0e9eeaf356b0e.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>绿色：完全可编程控制</p>
+<p>黄色：可配置不可编程</p>
+<p>蓝色：没有任何控制权</p>
+<p>？实线：该shader必须由开发者编程实现【为什么有蓝色的实线？没有控制权的必须编程实现？】</p>
+<p>？虚线：该shader可选</p>
+<p>各个介绍见4%</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a>顶点着色器</h4><ul>
+<li><p>接受的顶点数据：（GPU接受的数据）由应用阶段加载到显存中；再由DrawCall指定（再次顺一顺上面学到的）</p>
+</li>
+<li><p>干嘛的：坐标变换和逐顶点光照（就是加颜色？）</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/f11f63aa6d913ccf4465950387392444.jpg?x-oss-process=image/resize,w_1920,m_lfit" alt="img"></p>
+<ul>
+<li>坐标变换</li>
+</ul>
+<p>-改变顶点的位置，在顶点动画中非常有用，水面、布料等。</p>
+<p>最基本的工作：把顶点坐标从模型<strong>空间</strong>转换到齐次裁剪<strong>空间</strong>（区别？）——&gt;由硬件做透视除法——&gt;归一化的设备坐标（NDC）【待深究，首先理解坐标变换大概是什么个意思】</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/5829e63db9281058e493ef933d238602.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>对右边空间的思考：</p>
+<p><img src="https://img-blog.csdn.net/20171016201356967?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWQ4ODI4MjI4NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="&lt;image1&gt;"><img src="https://img-blog.csdn.net/20171016201416205?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWQ4ODI4MjI4NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="&lt;image2&gt;"></p>
+<p>搜了下资料，这是视锥体，分别是透视投影和正交投影。资料所说，裁剪空间的目标是能够方便地对渲染图元进行裁剪：完全位于这块空间内部的图元将会被保留，完全位于这块空间外部的图元将会被剔除，而与这块空间边界相交的图元就会被裁剪。那么相当于把自己的视角看作一个固定范围的空间，然后都投影在这个范围里面。</p>
+<p>这个空间大小似乎有规范大小，如图，坐标范围是OpenGL同时也是Unity使用的NDC，z在【-1，1】之间，而在DirectX中，NDC的z【0，1】</p>
+</blockquote>
+</li>
+<li><p>光照相互独立性：本身不可以创建或者销毁任何顶点+获得顶点之间的联系——GPU可以利用本身的特性并行优化处理每一个顶点，处理速度会很快</p>
+</li>
+</ul>
+<h4 id="曲面细分着色器"><a href="#曲面细分着色器" class="headerlink" title="曲面细分着色器"></a>曲面细分着色器</h4><ul>
+<li>可选</li>
+<li>用于细分图元（之前提到的渲染图元？到底有什么数据长什么样？）</li>
+</ul>
+<h4 id="几何着色器"><a href="#几何着色器" class="headerlink" title="几何着色器"></a>几何着色器</h4><ul>
+<li>可选</li>
+<li><u>逐图元</u>【是一个啥东西？】的着色操作，或者被用于产生更多的图元</li>
+</ul>
+<h4 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h4><ul>
+<li><p>可配置</p>
+</li>
+<li><p>目的：不在摄像机视野范围内的物体不需要被处理</p>
+</li>
+</ul>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/e9c4a625643a99425c64f1a195b59c94.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>立方体范围内，图元保留、舍弃、裁剪（生成新的点）；这里还是立方体哇！😎</p>
+</blockquote>
+<h4 id="屏幕映射Screen-Mapping（二维）"><a href="#屏幕映射Screen-Mapping（二维）" class="headerlink" title="屏幕映射Screen Mapping（二维）"></a>屏幕映射Screen Mapping（二维）</h4><ul>
+<li><p>三维坐标数据因为已经由NDC规定好了，但是屏幕的大小/分辨率又会有不同，那么怎么做适配呢？</p>
+</li>
+<li><p>每个图元的x和y坐标转换到屏幕坐标系👇</p>
+</li>
+</ul>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/541c691775294b2af9f32af727505ea2.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>🧐所以是有缩放的效果了……可能有点变形？还有z坐标直接被剔去了？前后关系怎么表示咧</p>
+</blockquote>
+<ul>
+<li><p>不会对输入的z坐标做任何处理。屏幕坐标系和z坐标【还在啊…？】一起构成了一个坐标系——&gt;<strong>窗口坐标系</strong>（Window Coordinates），这些值会一起被传递到光栅化阶段</p>
+</li>
+<li><p>然鹅屏幕坐标系对于OpenGL和DirectX仍有所区别，起始点不同（反正要考虑这种差异可能会导致效果倒转）</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/b4ff49d945948ea577003130621b6da9.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+</li>
+</ul>
+<hr>
+<p>顶点已经在二维屏幕集结好啦！还附带了一些信息（深度值z值（原来是它吖，法线方向（见了好多次到底是咋样，视角方向等）可以开始进一步打扮了。👇光栅化阶段：点与点之间覆盖的范围和颜色👇</p>
+<h4 id="三角形设置"><a href="#三角形设置" class="headerlink" title="三角形设置"></a>三角形设置</h4><ul>
+<li>干嘛：计算光栅化一个三角网格所需的信息</li>
+<li>三角网格怎么组成的？三角形的点知道了，那么用多少行多少列表示啊？得整个<strong>三角网格表示数据</strong>哇</li>
+</ul>
+<h4 id="三角形遍历（扫描变换）"><a href="#三角形遍历（扫描变换）" class="headerlink" title="三角形遍历（扫描变换）"></a>三角形遍历（扫描变换）</h4><ul>
+<li>🦁<strong>检查</strong>每个像素是否被一个三角网格覆盖——&gt;覆盖，生成一个片元。网格好了，边范围也知道了，开始填填乐呗</li>
+</ul>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/5990d470b57bfcdca705c250ed5b45df.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>生成像素，对应像素生成一个<strong>片元</strong>（并不是真正意义上的像素，是包含<u>很多状态的集合</u>，这些状态用于计算每个像素的最终颜色）。整个输出<strong>片元序列</strong>。</p>
+<p><strong>片元的状态</strong>是对三个顶点的信息进行<strong>插值</strong>【这又是什么哇？】得到。状态比如有屏幕坐标，深度信息，法线，纹理坐标等等</p>
+<p>总结：填填乐怎么得来？插值？填的计算方法嘛？而且不是颜色，是生成片元的状态。</p>
+</blockquote>
+<h4 id="片元着色器"><a href="#片元着色器" class="headerlink" title="片元着色器"></a>片元着色器</h4><ul>
+<li><u>以上阶段</u>实际上不影响像素的颜色值，而是产生一系列的数据信息（一个三角网络是怎样覆盖每个像素的）</li>
+<li><u>每个片元</u>负责存储这样一系列数据。</li>
+<li>片元着色器的输入输出（欧，就先想象是每个顶点带着自己的捆绑包经历千辛万苦坐火车做安检什么的，终于在片元着色器完成了资源的计算完成了修炼，完成华丽的蜕变/有了该片元的输出颜色…）</li>
+</ul>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/52837b327f33ad1730daba41dc3ad66c.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>输入：上一个阶段对顶点信息插值得到的结果（片元带）</p>
+<p>输出：一个或多个颜色值</p>
+</blockquote>
+<ul>
+<li><p>补充：纹！理！采！样！？（片元着色器中）</p>
+<ul>
+<li><p>纹理坐标：从顶点着色器阶段输出每个点对应的纹理坐标（怎么来好像没稀奇，所以到底是啥</p>
+<p>​                    ——插值——顶点们覆盖的片元的纹理坐标（就是顶点包裹里面的一个东西嘛，所以是啥？!</p>
+</li>
+</ul>
+</li>
+<li><p>局限：仅可以影响单个片元</p>
+</li>
+</ul>
+<h4 id="逐片元操作"><a href="#逐片元操作" class="headerlink" title="逐片元操作"></a>逐片元操作</h4><ul>
+<li><p>高度可配置性</p>
+</li>
+<li><p>任务：</p>
+<ol>
+<li><p>决定每个片元的可见性，涉及很多测试操作（测试？从种种角度来看能不能可见吧）</p>
+</li>
+<li><p>若一个片元通过了所有测试，其颜色值+已经存储在颜色缓冲区中的颜色（好的已经可见啦，就得有颜色来展示；相当于投了简历，即使到了最后一面被刷到也还是没有offer啊！！！）</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/a6ffc86900aa747f898d07a55c729193.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>颜色缓冲区？为啥会有这个。怎么混合啊</p>
+<ul>
+<li>像素的颜色信息被存储在名为颜色缓冲的地方</li>
+<li>往往有上次渲染之后的颜色结果</li>
+<li>so，是覆盖呢，还是进行其它处理?</li>
+</ul>
+</blockquote>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/0428aea75587eb49eaaafb64d6bf043f.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>这个是其中两个测试的具体过程，嗯，跳过！</p>
+<p>回来了。原理关键是矩形内容。深度这个，透明度或许有解答</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>混合！</p>
+<p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/1afda4956ed174150b5324174c29d126.jpg?x-oss-process=image/resize,w_1858,m_lfit" alt="img"></p>
+<blockquote>
+<p>不透明物体：<strong>开发者</strong>可以关闭混合条件。源颜色会覆盖掉颜色缓冲区的像素值</p>
+<p>半透明：混合操作。</p>
+</blockquote>
+</li>
+<li><p>测试顺序：对于大多数GPU来说，尽可能在片元着色器之前进行这些测试，为了节省力气（直接把简历筛下去的意思嘛？！</p>
+</li>
+<li><p>提前的话可能会有些冲突；性能下降（GPU判断提前测试是否有冲突，此时会有更多的片元需要被处理</p>
+</li>
+<li><p>显示到屏幕上之后，GPU会双重缓冲。后置缓冲：对场景的渲染是在幕后发生，前置缓冲：之前显示在屏幕中的图像。两者交换以保证图像连续。</p>
+</li>
+</ul>
+<hr>
+<p>（气喘吁吁🙃）</p>
+<p>大概了解了整个渲染流程，而shader所在阶段就是渲染流水线的一部分，所以shader就是：</p>
+<ul>
+<li>GPU流水线上一些可高度编程的阶段</li>
+</ul>
+<h1 id="第3章-Unity-Shader基础"><a href="#第3章-Unity-Shader基础" class="headerlink" title="第3章 Unity Shader基础"></a>第3章 Unity Shader基础</h1><p>对一些操作进行了封装，方便更好地编程和设置</p>
+<h2 id="Unity-Shader概述"><a href="#Unity-Shader概述" class="headerlink" title="Unity Shader概述"></a>Unity Shader概述</h2><h3 id="材质和Unity-Shader"><a href="#材质和Unity-Shader" class="headerlink" title="材质和Unity Shader"></a>材质和Unity Shader</h3><p>没有细读这本书之前，按照一贯的操作思路，就是先弄一个shader，然后根据它创建一个材质，这样效果就能赋给模型了。为什么shader和材质会产生这种割裂，还有联系?</p>
+<p>Unity Shader定义了渲染所需的各种代码（如顶点着色器和片元着色器）、属性（如使用哪些纹理等）和指令（渲染和标签设置等），而😏<strong>材质则允许我们调节这些属性</strong>，<strong>并将其最终赋给相应的模型</strong>。</p>
+<h3 id="Unity中的材质"><a href="#Unity中的材质" class="headerlink" title="Unity中的材质"></a>Unity中的材质</h3><p>有面板可更改数值</p>
+<h3 id="Unity中的Shader"><a href="#Unity中的Shader" class="headerlink" title="Unity中的Shader"></a>Unity中的Shader</h3><ul>
+<li>Standard Surface Shader：会产生一个包含了标准光照模型的<u>表面着色器</u>（啥玩意，没见过）模板</li>
+<li>Unlit Shader：不包含光照（但包含雾效）的基本的顶点/片元着色器</li>
+<li>Image Effect Shader：为屏幕后处理效果提供模板</li>
+<li>Compute Shader：（略</li>
+</ul>
+<blockquote>
+<p>这些基本的理解，或许在其它的shader插件或者什么中有共性</p>
+</blockquote>
+<ul>
+<li>可以在shader面板中查看各种东西，是否为Surface shader啊，Fixed function啊，等等，有需要我再细看吧</li>
+</ul>
+<h2 id="Unity-Shader的基础：ShaderLab"><a href="#Unity-Shader的基础：ShaderLab" class="headerlink" title="Unity Shader的基础：ShaderLab"></a>Unity Shader的基础：ShaderLab</h2><p><img src="https://staticcdn1-5.umiwi.com/epms_ebook/4b9a50ca2993153f23d86a7786580f3e.jpg?x-oss-process=image/resize,w_1920,m_lfit" alt="img"></p>
+<blockquote>
+<p>　Unity Shader为控制渲染过程提供了一层抽象。如果没有使用UnityShader（左图），开发者需要和很多文件和设置打交道，才能让画面呈现出想要的效果；而在Unity Shader的帮助下（右图），开发者只需要使用ShaderLab来编写Unity Shader文件就可以完成所有的工作</p>
+</blockquote>
+<ul>
+<li>ShaderLab: 是Unity提供的编写Unity Shader的一种说明性语言</li>
+<li>一个Unity Shader的基础结构如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;ShaderName&quot; &#123;    </span><br><span class="line">	Properties &#123;        </span><br><span class="line">		// 属性</span><br><span class="line">    &#125;    </span><br><span class="line">    SubShader &#123;        </span><br><span class="line">    	// 显卡A使用的子着色器</span><br><span class="line">    &#125;    </span><br><span class="line">    SubShader &#123;        </span><br><span class="line">    	// 显卡B使用的子着色器</span><br><span class="line">    &#125;        </span><br><span class="line">    Fallback &quot;VertexLit&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Unity-Shader的结构"><a href="#Unity-Shader的结构" class="headerlink" title="Unity Shader的结构"></a>Unity Shader的结构</h2><p>上节见到了一些ShaderLab的语义，如Properties、SubShader、Fallback等。这些语义定义了Unity Shader的结构，从而帮助Unity分析该Unity Shader文件，以便进行正确的编译。</p>
+<h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><h3 id="材质和Unity-Shader-的桥梁：Properties（属性）"><a href="#材质和Unity-Shader-的桥梁：Properties（属性）" class="headerlink" title="材质和Unity Shader 的桥梁：Properties（属性）"></a>材质和Unity Shader 的桥梁：Properties（属性）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Properties &#123;    </span><br><span class="line">    Name (&quot;display name&quot;, PropertyType) = DefaultValue    </span><br><span class="line">    Name (&quot;display name&quot;, PropertyType) = DefaultValue    // 更多属性</span><br><span class="line">&#125;</span><br><span class="line">//比如 _int (&quot;Int&quot;, Int) = 2;</span><br><span class="line">//在Shader中访问属性， 通过Name，通常由一个下划线开始</span><br><span class="line">//显示的名称display name则是出现在材质面板上的名字</span><br><span class="line">//指定类型 PropertyType</span><br><span class="line">//默认值</span><br><span class="line"></span><br><span class="line">//虽然不是C#但为了代码染色</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>数字类型的属性</p>
+</li>
+<li><p>Color， Vector（1，2，3，4）</p>
+</li>
+<li><p>2D，Cube，3D “”{}  </p>
+<blockquote>
+<p>具体怎么填详情看书，不知道现在还通用不</p>
+</blockquote>
+</li>
+<li><p>还能重载默认的材质面板</p>
+</li>
+</ul>
+<h3 id="SubShader"><a href="#SubShader" class="headerlink" title="SubShader"></a>SubShader</h3><ul>
+<li><p>数量要求：每个Unity Shader文件可以包含多个SubShader语义块，最少要一个</p>
+</li>
+<li><p>运行机制：当Unity需要加载这个Unity Shader时，Unity会扫描所有的SubShader语义块，然后选择第一个能够在目标平台上运行的SubShader。如果都不支持的话，Unity就会使用Fallback语义指定的UnityShader。</p>
+<blockquote>
+<p>原因：不同的显卡具有不同的能力。例如，一些旧的显卡仅能支持一定数目的操作指令，而一些更高级的显卡可以支持更多的指令数，那么我们希望在旧的显卡上使用计算复杂度较低的着色器，而在高级的显卡上使用计算复杂度较高的着色器，以便提供更出色的画面。【可选择，确实挺照顾玩家的，所以游戏会有最低配置最高配置？】</p>
+</blockquote>
+</li>
+<li><p>```c#<br>SubShader {    </p>
+<pre><code>// 可选的“标签”
+[Tags]    
+// 可选的“状态”
+[RenderSetup]    
+Pass &#123;    &#125;    // Other Passes
+</code></pre>
+<p>}<br>//每个pass定义了一次完整的渲染流程；但数目过多会造成渲染性能的下降</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 👉状态设置👈</span><br><span class="line"></span><br><span class="line">  ShaderLab提供了一系列渲染状态的设置指令，这些指令可以设置显卡的各种状态，例如是否开启混合/深度测试等（首先渲染状态是什么玩意儿？都看不懂，希望后面有实例说明）</span><br><span class="line"></span><br><span class="line">  - 当在SubShader块中设置了上述渲染状态时，将会应用到所有的Pass。如果我们不想这样可以在Pass语义块中单独进行上面的设置。</span><br><span class="line"></span><br><span class="line">* 👉标签👈</span><br><span class="line"></span><br><span class="line">  是一个键值对，键和值都是字符串类型；这些键值对是SubShader和渲染引擎之间的沟通桥梁。它们用来告诉Unity的渲染引擎：我希望&lt;u&gt;怎样以及何时渲染这个对象&lt;/u&gt;。</span><br><span class="line"></span><br><span class="line">  ```c#</span><br><span class="line">  Tags &#123; </span><br><span class="line">      &quot;TagName1&quot; =&quot;Value1&quot; </span><br><span class="line">      &quot;TagName2&quot; =&quot;Value2&quot; </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>巴拉巴拉详细举例和介绍等等，有用到就细看。</p>
+<p><img src="/2021/10/10/Unity%20shader/hexo_github_blog\source_posts\pic\image-20220426193126888.png" alt="image-20220426193126888"></p>
+<ul>
+<li>仅可以在SubShader中声明，不可以在Pass块声明</li>
+</ul>
+</li>
+<li><p>👉Pass语义块👈</p>
+<ul>
+<li>```c#<br>Pass{<pre><code>[Name]             //Name &quot;MyPassName&quot;
+[Tags]
+[RenderSetup]
+//other code
+</code></pre>
+}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; * 名称：通过名称，可以使用ShaderLab的UsePass命令来直接使用其它Unity Shader中的Pass。例如：</span><br><span class="line">&gt;</span><br><span class="line">&gt;   ```c#</span><br><span class="line">&gt;   UsePass &quot;MyShader/MYPASSNAME&quot;</span><br><span class="line">&gt;   //这样提高代码的复用性。Unity内部会把所有的Pass名称转换成大写字母</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><p>渲染状态：SubShader的状态设置同样适用于Pass；还能使用固定管线的着色器命令。</p>
+</li>
+<li><p>标签：不同于SubShader标签。用于告诉渲染引擎希望怎样来渲染物体</p>
+</li>
+</ul>
+<p>（例子见9%）</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Fallback</p>
+<p>下下策：最低级的Unity Shader</p>
+<p>还会影响阴影的投射</p>
+</li>
+</ul>
+<h2 id="Unity-Shader的形式"><a href="#Unity-Shader的形式" class="headerlink" title="Unity Shader的形式"></a>Unity Shader的形式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Properties &#123;        </span><br><span class="line">    // 所需的各种属性</span><br><span class="line">    &#125;    </span><br><span class="line">SubShader &#123;        </span><br><span class="line">    // 真正意义上的Shader代码会出现在这里</span><br><span class="line">    // 表面着色器（Surface Shader）或者</span><br><span class="line">    // 顶点/片元着色器（Vertex/Fragment Shader）或者</span><br><span class="line">    // 固定函数着色器（Fixed Function Shader）</span><br><span class="line">    &#125;    </span><br><span class="line">SubShader &#123;        </span><br><span class="line">    // 和上一个SubShader类似</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Unity的宠儿：表面着色器"><a href="#Unity的宠儿：表面着色器" class="headerlink" title="Unity的宠儿：表面着色器"></a>Unity的宠儿：表面着色器</h3><ul>
+<li>Unity自己创造的一种着色器代码类型</li>
+<li>所需代码量少，Unity在背后做了很多工作，但渲染的代价比较大</li>
+<li>本质和其它着色器一样/ 是它们的更高抽象</li>
+<li>unity为我们处理了很多光照细节</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;Custom/Simple Surface Shader&quot; &#123;</span><br><span class="line">    //在SubShader语句块里面（而非Pass语句块里面）</span><br><span class="line">    SubShader &#123;        </span><br><span class="line">        Tags &#123; &quot;RenderType&quot; =&quot;Opaque&quot; &#125;</span><br><span class="line">        CGPROGRAM/**/        </span><br><span class="line">        #pragma surface surf Lambert        </span><br><span class="line">        struct Input &#123;            </span><br><span class="line">            float4 color : COLOR;        </span><br><span class="line">        &#125;;        </span><br><span class="line">        void surf (Input IN, inout SurfaceOutput o) &#123;            </span><br><span class="line">            o.Albedo =1;        </span><br><span class="line">        &#125;        </span><br><span class="line">        ENDCG/**/    </span><br><span class="line">    &#125;    </span><br><span class="line">    Fallback &quot;Diffuse&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//不需要开发者关心使用多少个Pass、每个Pass如何渲染等问题，Unity会处理</span><br><span class="line">//CGPROGRAM和ENDCG之间的代码是使用Cg/HLSL编写的，也就是说，我们需要把Cg/HLSL语言嵌套在ShaderLab语言中。值得注意的是，这里的Cg/HLSL是Unity经封装后提供的，它的语法和标准的Cg/HLSL语法几乎一样，但还是有细微的不同，例如有些原生的函数和用法Unity并没有提供支持</span><br></pre></td></tr></table></figure>
+
+<h3 id="最聪明：顶点-片元着色器"><a href="#最聪明：顶点-片元着色器" class="headerlink" title="最聪明：顶点/片元着色器"></a>最聪明：顶点/片元着色器</h3><ul>
+<li><p>在Unity中我们可以使用Cg/HLSL语言来编写顶点/片元着色器（Vertex/FragmentShader）</p>
+</li>
+<li><p>更加复杂，灵活性也更高</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;Custom/Simple VertexFragment Shader&quot; &#123;</span><br><span class="line">    SubShader &#123;  </span><br><span class="line">        //Pass语义块里面</span><br><span class="line">        Pass &#123;            </span><br><span class="line">        	CGPROGRAM            </span><br><span class="line">        	#pragma vertex vert            </span><br><span class="line">        	#pragma fragment frag            </span><br><span class="line">         	float4 vert(float4 v : POSITION) :SV_POSITION &#123;                				return mul (UNITY_MATRIX_MVP, v);            </span><br><span class="line">            &#125;            </span><br><span class="line">            fixed4 frag() : SV_Target &#123;                </span><br><span class="line">                return fixed4(1.0, 0.0, 0.0, 1.0);            </span><br><span class="line">            &#125;            </span><br><span class="line">            ENDCG        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="被抛弃：固定函数着色器"><a href="#被抛弃：固定函数着色器" class="headerlink" title="被抛弃：固定函数着色器"></a>被抛弃：固定函数着色器</h3><ul>
+<li>上面两种unity shader都用了可编程管线。</li>
+<li>这个不可编程，效果简单，用在旧设备</li>
+</ul>
+<h3 id="Unity-Shader形式的选择"><a href="#Unity-Shader形式的选择" class="headerlink" title="Unity Shader形式的选择"></a>Unity Shader形式的选择</h3><ul>
+<li>和各种光源打交道：表面着色器；移动平台性能可能欠佳</li>
+<li>光照数目非常少，顶点/片元着色器</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/ta.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/10/10/deeply_touched_again/"><img class="prev-cover" src="/img/liu_pic.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Liu Cixin</div></div></a></div><div class="next-post pull-right"><a href="/2021/08/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><img class="next-cover" src="/img/dp_pic.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">动态规划</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">someone very lazy</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E6%B8%B2%E6%9F%93%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-number">1.</span> <span class="toc-text">第2章 渲染流水线</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E4%BB%80%E4%B9%88%E6%98%AF%E6%B8%B2%E6%9F%93%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-number">1.1.</span> <span class="toc-text">2.1什么是渲染流水线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-CPU%E5%92%8CGPU%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-number">1.2.</span> <span class="toc-text">2.2 CPU和GPU之间的通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%88%B0%E6%98%BE%E5%AD%98%E4%B8%AD"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">把数据加载到显存中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%B8%B2%E6%9F%93%E7%8A%B6%E6%80%81"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">设置渲染状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8Draw-Call"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">调用Draw Call</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3GPU%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-number">1.3.</span> <span class="toc-text">2.3GPU流水线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">顶点着色器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B2%E9%9D%A2%E7%BB%86%E5%88%86%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">曲面细分着色器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">几何着色器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A3%81%E5%89%AA"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">裁剪</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%8F%E5%B9%95%E6%98%A0%E5%B0%84Screen-Mapping%EF%BC%88%E4%BA%8C%E7%BB%B4%EF%BC%89"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">屏幕映射Screen Mapping（二维）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%BD%A2%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">三角形设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%BD%A2%E9%81%8D%E5%8E%86%EF%BC%88%E6%89%AB%E6%8F%8F%E5%8F%98%E6%8D%A2%EF%BC%89"><span class="toc-number">1.3.0.7.</span> <span class="toc-text">三角形遍历（扫描变换）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">1.3.0.8.</span> <span class="toc-text">片元着色器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%90%E7%89%87%E5%85%83%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.0.9.</span> <span class="toc-text">逐片元操作</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-Unity-Shader%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">第3章 Unity Shader基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity-Shader%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">Unity Shader概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%90%E8%B4%A8%E5%92%8CUnity-Shader"><span class="toc-number">2.1.1.</span> <span class="toc-text">材质和Unity Shader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity%E4%B8%AD%E7%9A%84%E6%9D%90%E8%B4%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">Unity中的材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity%E4%B8%AD%E7%9A%84Shader"><span class="toc-number">2.1.3.</span> <span class="toc-text">Unity中的Shader</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity-Shader%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%9AShaderLab"><span class="toc-number">2.2.</span> <span class="toc-text">Unity Shader的基础：ShaderLab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity-Shader%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">Unity Shader的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D"><span class="toc-number">2.3.1.</span> <span class="toc-text">命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%90%E8%B4%A8%E5%92%8CUnity-Shader-%E7%9A%84%E6%A1%A5%E6%A2%81%EF%BC%9AProperties%EF%BC%88%E5%B1%9E%E6%80%A7%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">材质和Unity Shader 的桥梁：Properties（属性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SubShader"><span class="toc-number">2.3.3.</span> <span class="toc-text">SubShader</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity-Shader%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">Unity Shader的形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity%E7%9A%84%E5%AE%A0%E5%84%BF%EF%BC%9A%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">2.4.1.</span> <span class="toc-text">Unity的宠儿：表面着色器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E8%81%AA%E6%98%8E%EF%BC%9A%E9%A1%B6%E7%82%B9-%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">2.4.2.</span> <span class="toc-text">最聪明：顶点&#x2F;片元着色器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A2%AB%E6%8A%9B%E5%BC%83%EF%BC%9A%E5%9B%BA%E5%AE%9A%E5%87%BD%E6%95%B0%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">2.4.3.</span> <span class="toc-text">被抛弃：固定函数着色器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity-Shader%E5%BD%A2%E5%BC%8F%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">2.4.4.</span> <span class="toc-text">Unity Shader形式的选择</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
