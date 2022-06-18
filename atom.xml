@@ -3,11 +3,11 @@
   <title>Hx&#39;s blog</title>
   <icon>https://www.gravatar.com/avatar/32690cfd58b9093251b720ee371b49ad</icon>
   <subtitle>aha</subtitle>
-  <link href="https://github.com/huangxinhere/atom.xml" rel="self"/>
+  <link href="https://github.com/huangxinhere/huangxinhere.github.io/atom.xml" rel="self"/>
   
-  <link href="https://github.com/huangxinhere/"/>
+  <link href="https://github.com/huangxinhere/huangxinhere.github.io/"/>
   <updated>2022-06-18T02:56:05.787Z</updated>
-  <id>https://github.com/huangxinhere/</id>
+  <id>https://github.com/huangxinhere/huangxinhere.github.io/</id>
   
   <author>
     <name>(●ˇ∀ˇ●)</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Unity入门(三)——MyGame2</title>
-    <link href="https://github.com/huangxinhere/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/"/>
-    <id>https://github.com/huangxinhere/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/</id>
     <published>2022-06-03T16:00:00.000Z</published>
     <updated>2022-06-18T02:56:05.787Z</updated>
     
@@ -30,15 +30,15 @@
     
     
     
-    <category term="Unity" scheme="https://github.com/huangxinhere/categories/Unity/"/>
+    <category term="Unity" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Unity/"/>
     
     
   </entry>
   
   <entry>
     <title>Unity入门(三)——MyGame</title>
-    <link href="https://github.com/huangxinhere/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/"/>
-    <id>https://github.com/huangxinhere/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/</id>
     <published>2022-05-08T16:00:00.000Z</published>
     <updated>2022-06-15T10:45:45.686Z</updated>
     
@@ -49,15 +49,15 @@
     
     
     
-    <category term="Unity" scheme="https://github.com/huangxinhere/categories/Unity/"/>
+    <category term="Unity" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Unity/"/>
     
     
   </entry>
   
   <entry>
     <title>Unity入门(二)</title>
-    <link href="https://github.com/huangxinhere/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/"/>
-    <id>https://github.com/huangxinhere/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/</id>
     <published>2022-04-10T16:00:00.000Z</published>
     <updated>2022-06-18T03:19:52.131Z</updated>
     
@@ -68,15 +68,15 @@
     
     
     
-    <category term="Unity" scheme="https://github.com/huangxinhere/categories/Unity/"/>
+    <category term="Unity" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Unity/"/>
     
     
   </entry>
   
   <entry>
     <title>作品集</title>
-    <link href="https://github.com/huangxinhere/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/"/>
-    <id>https://github.com/huangxinhere/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/</id>
     <published>2022-04-08T16:00:00.000Z</published>
     <updated>2022-06-15T12:37:34.903Z</updated>
     
@@ -87,15 +87,15 @@
     
     
     
-    <category term="作品集" scheme="https://github.com/huangxinhere/categories/%E4%BD%9C%E5%93%81%E9%9B%86/"/>
+    <category term="作品集" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/%E4%BD%9C%E5%93%81%E9%9B%86/"/>
     
     
   </entry>
   
   <entry>
     <title>shader forge 从入门到放弃</title>
-    <link href="https://github.com/huangxinhere/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
-    <id>https://github.com/huangxinhere/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</id>
     <published>2022-04-05T16:00:00.000Z</published>
     <updated>2022-06-15T10:39:49.684Z</updated>
     
@@ -106,15 +106,15 @@
     
     
     
-    <category term="shader" scheme="https://github.com/huangxinhere/categories/shader/"/>
+    <category term="shader" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/shader/"/>
     
     
   </entry>
   
   <entry>
     <title>Android Context</title>
-    <link href="https://github.com/huangxinhere/2022/04/05/Android%20Context/"/>
-    <id>https://github.com/huangxinhere/2022/04/05/Android%20Context/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2022/04/05/Android%20Context/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2022/04/05/Android%20Context/</id>
     <published>2022-04-04T16:00:00.000Z</published>
     <updated>2022-04-10T01:33:15.268Z</updated>
     
@@ -125,15 +125,15 @@
     
     
     
-    <category term="Android" scheme="https://github.com/huangxinhere/categories/Android/"/>
+    <category term="Android" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Android/"/>
     
     
   </entry>
   
   <entry>
     <title>Java继承</title>
-    <link href="https://github.com/huangxinhere/2021/12/04/Java%E7%BB%A7%E6%89%BF/"/>
-    <id>https://github.com/huangxinhere/2021/12/04/Java%E7%BB%A7%E6%89%BF/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/12/04/Java%E7%BB%A7%E6%89%BF/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/12/04/Java%E7%BB%A7%E6%89%BF/</id>
     <published>2021-12-03T16:00:00.000Z</published>
     <updated>2022-04-09T11:41:43.598Z</updated>
     
@@ -144,15 +144,15 @@
     
     
     
-    <category term="Android" scheme="https://github.com/huangxinhere/categories/Android/"/>
+    <category term="Android" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Android/"/>
     
     
   </entry>
   
   <entry>
     <title>Unity入门</title>
-    <link href="https://github.com/huangxinhere/2021/11/10/Unity%E5%85%A5%E9%97%A8/"/>
-    <id>https://github.com/huangxinhere/2021/11/10/Unity%E5%85%A5%E9%97%A8/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/11/10/Unity%E5%85%A5%E9%97%A8/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/11/10/Unity%E5%85%A5%E9%97%A8/</id>
     <published>2021-11-09T16:00:00.000Z</published>
     <updated>2022-06-04T14:07:02.374Z</updated>
     
@@ -163,15 +163,15 @@
     
     
     
-    <category term="Unity" scheme="https://github.com/huangxinhere/categories/Unity/"/>
+    <category term="Unity" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Unity/"/>
     
     
   </entry>
   
   <entry>
     <title>Android常用的消息传递机制</title>
-    <link href="https://github.com/huangxinhere/2021/10/19/Android%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6/"/>
-    <id>https://github.com/huangxinhere/2021/10/19/Android%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/10/19/Android%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/10/19/Android%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6/</id>
     <published>2021-10-18T16:00:00.000Z</published>
     <updated>2022-04-09T11:41:10.382Z</updated>
     
@@ -182,15 +182,15 @@
     
     
     
-    <category term="Android" scheme="https://github.com/huangxinhere/categories/Android/"/>
+    <category term="Android" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Android/"/>
     
     
   </entry>
   
   <entry>
     <title>Android 四大组件</title>
-    <link href="https://github.com/huangxinhere/2021/10/19/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/"/>
-    <id>https://github.com/huangxinhere/2021/10/19/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/10/19/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/10/19/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/</id>
     <published>2021-10-18T16:00:00.000Z</published>
     <updated>2022-04-09T11:42:55.798Z</updated>
     
@@ -201,15 +201,15 @@
     
     
     
-    <category term="Android" scheme="https://github.com/huangxinhere/categories/Android/"/>
+    <category term="Android" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Android/"/>
     
     
   </entry>
   
   <entry>
     <title>UnityShader入门</title>
-    <link href="https://github.com/huangxinhere/2021/10/10/Unity%20shader/"/>
-    <id>https://github.com/huangxinhere/2021/10/10/Unity%20shader/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/10/10/Unity%20shader/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/10/10/Unity%20shader/</id>
     <published>2021-10-09T16:00:00.000Z</published>
     <updated>2022-06-15T10:39:37.953Z</updated>
     
@@ -220,15 +220,15 @@
     
     
     
-    <category term="shader" scheme="https://github.com/huangxinhere/categories/shader/"/>
+    <category term="shader" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/shader/"/>
     
     
   </entry>
   
   <entry>
     <title>Liu Cixin</title>
-    <link href="https://github.com/huangxinhere/2021/10/10/deeply_touched_again/"/>
-    <id>https://github.com/huangxinhere/2021/10/10/deeply_touched_again/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/10/10/deeply_touched_again/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/10/10/deeply_touched_again/</id>
     <published>2021-10-09T16:00:00.000Z</published>
     <updated>2022-04-09T11:41:32.554Z</updated>
     
@@ -239,15 +239,15 @@
     
     
     
-    <category term="随便" scheme="https://github.com/huangxinhere/categories/%E9%9A%8F%E4%BE%BF/"/>
+    <category term="随便" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/%E9%9A%8F%E4%BE%BF/"/>
     
     
   </entry>
   
   <entry>
     <title>动态规划</title>
-    <link href="https://github.com/huangxinhere/2021/08/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    <id>https://github.com/huangxinhere/2021/08/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/08/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/08/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</id>
     <published>2021-08-29T16:00:00.000Z</published>
     <updated>2021-08-30T07:42:39.741Z</updated>
     
@@ -263,8 +263,8 @@
   
   <entry>
     <title>Android基本布局</title>
-    <link href="https://github.com/huangxinhere/2021/08/15/Android%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80/"/>
-    <id>https://github.com/huangxinhere/2021/08/15/Android%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/08/15/Android%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/08/15/Android%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80/</id>
     <published>2021-08-14T16:00:00.000Z</published>
     <updated>2021-10-23T08:07:02.164Z</updated>
     
@@ -280,8 +280,8 @@
   
   <entry>
     <title>Java线程初学（一）</title>
-    <link href="https://github.com/huangxinhere/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://github.com/huangxinhere/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <link href="https://github.com/huangxinhere/huangxinhere.github.io/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://github.com/huangxinhere/huangxinhere.github.io/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2021-07-23T16:00:00.000Z</published>
     <updated>2022-04-09T11:41:53.431Z</updated>
     
@@ -292,7 +292,7 @@
     
     
     
-    <category term="Android" scheme="https://github.com/huangxinhere/categories/Android/"/>
+    <category term="Android" scheme="https://github.com/huangxinhere/huangxinhere.github.io/categories/Android/"/>
     
     
   </entry>
