@@ -214,7 +214,7 @@
 <blockquote>
 <p>当一个线程被阻塞或等待时（或终止时)，另一个线程被调度为运行状态。当一个线程被重新激活（例如， 因为超时期满或成功地获得了一个锁)，调度器<u>检查它是否具有比当前运行线程更高的优先级</u>。如果是这样，调度器从当前运行线程中挑选一个， 剥夺其运行权，选择一个新的线程运行。</p>
 </blockquote>
-<p><img src="/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/hexo_github_blog\source_posts\pic\image-20210802152611261.png"></p>
+<p><img src="/huangxinhere/huangxinhere/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/hexo_github_blog\source_posts\pic\image-20210802152611261.png"></p>
 <h3 id="4-被终止的线程（Waiting）"><a href="#4-被终止的线程（Waiting）" class="headerlink" title="4.被终止的线程（Waiting）"></a>4.被终止的线程（Waiting）</h3><p>线程被终止的原因：</p>
 <ul>
 <li>因为run方法正常退出而自然死亡</li>
@@ -268,7 +268,7 @@
 <p>①：获取a=1——&gt;a+2=4——&gt;(stop)</p>
 <p>②：获取a=1——&gt;a+1=2——&gt;(stop)</p>
 <p>①：（继续）——&gt;结果写回数组，②执行无效</p>
-<p><img src="/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/hexo_github_blog\source_posts\pic\image-20210803175713458.png" alt="image-20210803175713458"></p>
+<p><img src="/huangxinhere/huangxinhere/2021/07/24/Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/hexo_github_blog\source_posts\pic\image-20210803175713458.png" alt="image-20210803175713458"></p>
 <ul>
 <li><p>出现讹误的可能性</p>
 <p>减少每个线程的工作量，则调度器在计算过程中剥夺线程的运行权可能性小，但风险并没有完全消失</p>

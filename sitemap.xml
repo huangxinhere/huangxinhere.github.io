@@ -146,7 +146,21 @@
 
   
   <url>
+    <loc>https://github.com/huangxinhere/categories/Unity/</loc>
+    <lastmod>2022-06-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://github.com/huangxinhere/categories/Android/</loc>
+    <lastmod>2022-06-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/huangxinhere/categories/shader/</loc>
     <lastmod>2022-06-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -161,20 +175,6 @@
   
   <url>
     <loc>https://github.com/huangxinhere/categories/%E4%BD%9C%E5%93%81%E9%9B%86/</loc>
-    <lastmod>2022-06-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/huangxinhere/categories/Unity/</loc>
-    <lastmod>2022-06-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/huangxinhere/categories/shader/</loc>
     <lastmod>2022-06-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

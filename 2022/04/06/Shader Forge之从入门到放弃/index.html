@@ -235,11 +235,11 @@
 <h1 id="后处理（Post-Processing之类）"><a href="#后处理（Post-Processing之类）" class="headerlink" title="后处理（Post Processing之类）"></a>后处理（Post Processing之类）</h1><p>教程是有个插件的，直接生成屏幕特效，找不到了，算了吧</p>
 <h1 id="旗飘动效果"><a href="#旗飘动效果" class="headerlink" title="旗飘动效果"></a>旗飘动效果</h1><h2 id="sinx＋time"><a href="#sinx＋time" class="headerlink" title="sinx＋time"></a>sinx＋time</h2><p>之前做屏幕特效的时候弄了这个，time作为函数的x而且是不断递增的，所以sin time 会在-1到1的范围内游动。</p>
 <p>想象这个sin图……（绝不是因为画图懒）假设旗飘动基本是sin波浪的效果，那么顶点就作为x轴上的变量。</p>
-<p><img src="/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/hexo_github_blog\source_posts\pic\image-20220415184513656.png" alt="image-20220415184513656"></p>
+<p><img src="/huangxinhere/huangxinhere/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/hexo_github_blog\source_posts\pic\image-20220415184513656.png" alt="image-20220415184513656"></p>
 <blockquote>
 <p>sin x＋ 物体顶点【World Pos.】。这时候就有个样子啦！怎么让它动呢？加上time就好啦，让顶点加上流动的值所以也进行了流动。</p>
 </blockquote>
-<p><img src="/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/hexo_github_blog\source_posts\pic\image-20220415185407650.png" alt="image-20220415185407650"></p>
+<p><img src="/huangxinhere/huangxinhere/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/hexo_github_blog\source_posts\pic\image-20220415185407650.png" alt="image-20220415185407650"></p>
 <blockquote>
 <p>World Pos.节点，物体的世界坐标。如果直接把xyz三维向量放进sin函数的话…反正没反应。所以用xyz分别的一维向量数据来add相加啦。反正先理解的是每个维度都分别与时间相加？虽然add出的是一维向量……有点难理解，算了……</p>
 </blockquote>
