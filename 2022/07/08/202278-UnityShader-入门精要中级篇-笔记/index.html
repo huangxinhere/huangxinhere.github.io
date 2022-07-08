@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UnityShader 入门精要/中级篇 笔记 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="learn sth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UnityShader 入门精要&#x2F;中级篇 笔记">
+<meta property="og:url" content="https://huangxinhere.github.io/2022/07/08/202278-UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="learn sth">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huangxinhere.github.io/img/ta.jpg">
+<meta property="article:published_time" content="2022-07-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-08T09:11:46.484Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/ta.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2022/07/08/202278-UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'UnityShader 入门精要/中级篇 笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-08 17:11:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/ta.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">UnityShader 入门精要/中级篇 笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-07T16:00:00.000Z" title="发表于 2022-07-08 00:00:00">2022-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-08T09:11:46.484Z" title="更新于 2022-07-08 17:11:46">2022-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/shader/">shader</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="UnityShader 入门精要/中级篇 笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="更复杂的光照"><a href="#更复杂的光照" class="headerlink" title="更复杂的光照"></a>更复杂的光照</h1><h2 id="Unity的渲染路径"><a href="#Unity的渲染路径" class="headerlink" title="Unity的渲染路径"></a>Unity的渲染路径</h2><p>🎃<strong>渲染路径</strong></p>
+<p><img src="https://s3.bmp.ovh/imgs/2022/07/08/900390e3ad846f99.png" alt="image-20220708155451967"></p>
+<p>👉<strong>类型以及设置</strong></p>
+<p>前向渲染路径 Forward Rendering Path、延迟渲染 Deferred Rendering Path、后两个待了解。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2022/07/08/039e6e1d51099a3d.png" alt="image-20220708153924773"></p>
+<blockquote>
+<p>大多数情况下一个项目只使用一种渲染路径，因此可以为整个项目设置渲染路径。☝️</p>
+</blockquote>
+<p><img src="https://s3.bmp.ovh/imgs/2022/07/08/1bc03255962a057d.png" alt="image-20220708154504563"></p>
+<blockquote>
+<p>也可以在每个摄像机的渲染路径设置中 设置该摄像机使用的渲染路径，以覆盖Project Setting中的设置。☝️</p>
+</blockquote>
+<p>📍如果当前显卡不支持所选择的渲染路径，Unity会自动使用更低一层的渲染路径。</p>
+<p>🦁不同类型的渲染路径可能包含多种标签，在Pass中用“<strong>LightMode</strong>”指定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Pass&#123;</span><br><span class="line">	Tags&#123;</span><br><span class="line">		&quot;LightMode&quot; = &quot;ForwardBase&quot;</span><br><span class="line">	&#125;</span><br><span class="line">	//该Pass使用前向渲染路径中的ForwardBase路径</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">标签名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Always</td>
+<td align="center">不管使用哪种路径，该Pass总是会被渲染，但不会计算光照</td>
+</tr>
+<tr>
+<td align="center">ForwardBase</td>
+<td align="center">用于前向渲染。该Pass会计算环境光、最重要的平行光、逐顶点/SH光源和Lightmaps</td>
+</tr>
+<tr>
+<td align="center">ForwardAdd</td>
+<td align="center">前向渲染。会计算额外的逐像素光源，每个Pass对应一个光源</td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center">(用到再进行补充)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>LightMode标签支持的渲染路径设置选项。☝️</p>
+</blockquote>
+<h3 id="前向渲染路径"><a href="#前向渲染路径" class="headerlink" title="前向渲染路径"></a>前向渲染路径</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>大致过程：(伪代码)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Pass&#123;</span><br><span class="line">	for (each primitive in this model)&#123;</span><br><span class="line">		//对于每个渲染图元</span><br><span class="line">		for (each fragment covered by this primitive)&#123;</span><br><span class="line">			//1.深度测试</span><br><span class="line">			if (failed in depth test)&#123;</span><br><span class="line">				discard;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">			//2.光照计算</span><br><span class="line">				float4 color = Shading(materialInfo, pos, normal, lightDir, viewDir);</span><br><span class="line">			//3.更新帧缓冲</span><br><span class="line">				writeFrameBuffer(fragment, color);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对于每个逐像素光源，都要进行上面一次完整的渲染流程。</p>
+<p>📍如果一个物体受到<strong>多个光源</strong>影响，该物体就要执行多个Pass，每个Pass计算一个逐像素光源的光照结果，然后在<strong>帧缓冲</strong>中把这些光照结果混合起来得到最终的颜色值。</p>
+</blockquote>
+<h4 id="Unity中的前向渲染"><a href="#Unity中的前向渲染" class="headerlink" title="Unity中的前向渲染"></a>Unity中的前向渲染</h4><p><img src="https://s3.bmp.ovh/imgs/2022/07/08/6a2acfa2da41391c.png" alt="image-20220708165228451"></p>
+<p><img src="https://s3.bmp.ovh/imgs/2022/07/08/db68f3b086f971a5.png" alt="image-20220708165419564"></p>
+<blockquote>
+<p>两者具体说明：….</p>
+</blockquote>
+<h4 id="内置的光照变量和函数"><a href="#内置的光照变量和函数" class="headerlink" title="内置的光照变量和函数"></a>内置的光照变量和函数</h4><p>根据使用的渲染路径（即Pass标签中LightMode的值），Unity会把不同的光照变量传递给Shader。</p>
+<blockquote>
+<p>前向渲染可以使用的内置光照变量👇</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">类型</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">_LightColor0</td>
+<td align="center">float4</td>
+<td align="center">该Pass处理的逐像素<strong>光源的颜色</strong></td>
+</tr>
+<tr>
+<td align="center">_WorldSpaceLightPos0</td>
+<td align="center">float4</td>
+<td align="center">_WorldSpaceLightPos0.xyz是该Pass处理的逐像素<strong>光源的位置</strong></td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>前向渲染可以使用的内置光照函数👇</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">输入</th>
+<th align="center">返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">WorldSpaceLightDir()*</td>
+<td align="center">float4 v：一个模型空间中的顶点位置</td>
+<td align="center">float3：世界空间中从该点到光源的光照方向</td>
+</tr>
+<tr>
+<td align="center">UnityWorldSpaceLightDir()*</td>
+<td align="center">float4 v：一个世界空间中的顶点位置</td>
+<td align="center">float3：世界空间中从该点到光源的光照方向</td>
+</tr>
+<tr>
+<td align="center">ObjSpaceLightDir()*</td>
+<td align="center">float4 v：一个模型空间中的顶点位置</td>
+<td align="center">float3：模型空间中从该点到光源的光照方向</td>
+</tr>
+</tbody></table>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/ta.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/06/28/Unity%20shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/"><img class="next-cover" src="/img/ta.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">UnityShader 入门精要/基础篇＋初级篇 笔记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">someone very lazy</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E5%A4%8D%E6%9D%82%E7%9A%84%E5%85%89%E7%85%A7"><span class="toc-number">1.</span> <span class="toc-text">更复杂的光照</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity%E7%9A%84%E6%B8%B2%E6%9F%93%E8%B7%AF%E5%BE%84"><span class="toc-number">1.1.</span> <span class="toc-text">Unity的渲染路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%90%91%E6%B8%B2%E6%9F%93%E8%B7%AF%E5%BE%84"><span class="toc-number">1.1.1.</span> <span class="toc-text">前向渲染路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Unity%E4%B8%AD%E7%9A%84%E5%89%8D%E5%90%91%E6%B8%B2%E6%9F%93"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Unity中的前向渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E7%9A%84%E5%85%89%E7%85%A7%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">内置的光照变量和函数</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
