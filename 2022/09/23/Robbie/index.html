@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robbie | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2D横板平台游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Robbie">
+<meta property="og:url" content="https://huangxinhere.github.io/2022/09/23/Robbie/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="2D横板平台游戏">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huangxinhere.github.io/img/myGame03.png">
+<meta property="article:published_time" content="2022-09-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-24T09:01:14.011Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/myGame03.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2022/09/23/Robbie/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Robbie',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-24 17:01:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/myGame03.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Robbie</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-22T16:00:00.000Z" title="发表于 2022-09-23 00:00:00">2022-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-24T09:01:14.011Z" title="更新于 2022-09-24 17:01:14">2022-09-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Unity%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/">Unity教程学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Robbie"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Tilemap（Rule-Tile）"><a href="#Tilemap（Rule-Tile）" class="headerlink" title="Tilemap（Rule Tile）"></a>Tilemap（Rule Tile）</h1><ul>
+<li><p>目标：利用资源制作背景/平台等</p>
+</li>
+<li><p>步骤：</p>
+<ul>
+<li><p>准备素材（切成正方形）</p>
+</li>
+<li><p>建立“调色盘”Tile Platte，将素材拖到画布上形成“颜料”Tiles</p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220923153145426.png" alt="image-20220923153145426"></p>
+<blockquote>
+<p>在edit状态下才能编辑颜料。要在工具栏先使用选择工具，再选择移动工具来移动。</p>
+</blockquote>
+</li>
+<li><p>建立画布Create new Objects - 2D - Tilemap，注意分类别建立画布，以便分别处理互不干扰；每个画布也可有专属的分层，在属性面板中的soft layer。</p>
+</li>
+<li><p>调色盘/颜料/画布都准备好后，就可以在画布上作画。一定要对应好调色盘和画布！！</p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220923153110962.png" alt="image-20220923153110962"></p>
+</li>
+</ul>
+</li>
+<li><p>技巧：</p>
+<ul>
+<li><p>使用插件Rule Tile。如图这种如果一个个tile点会很麻烦，想要自动生成这个样子。其实这些符合一定的规则排列。</p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220923153553628.png" alt="image-20220923153553628"></p>
+</li>
+<li><p>插件使用：在project中新建，菜单会出现 “Tile”以及对应的各种Tile。</p>
+</li>
+<li><p>面板是这个样子：</p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220923154040166.png" alt="image-20220923154040166"></p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220923153804618.png" alt="image-20220923153804618"></p>
+<blockquote>
+<p>最上面是默认的sprite。下面这些都是某种规则对应的sprite。例如中间那个，什么时候判定这个瓦片是属于中间那张图片，就是它四周都有瓦片的时候……对照图片仔细琢磨。红叉是没有瓦片的意思，绿色箭头则代表存在瓦片。还要注意内角。</p>
+</blockquote>
+</li>
+<li><p>把Rule Tile拖进调色板中，就能愉快地使用了。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="2D人物控制移动"><a href="#2D人物控制移动" class="headerlink" title="2D人物控制移动"></a>2D人物控制移动</h1><p>由于人物移动受影响的第一要素是基于物理（平台/阻碍等），所以非常有必要重新梳理一遍必需的物理要素。</p>
+<h2 id="刚体和碰撞体区别"><a href="#刚体和碰撞体区别" class="headerlink" title="刚体和碰撞体区别"></a>刚体和碰撞体区别</h2><ul>
+<li><p>刚体：可使游戏对象在<u>物理系统（力的运算：重力/作用力等）的控制</u>下来运动</p>
+</li>
+<li><p>碰撞体：物理组件的一类，它要与刚体一起添加到游戏对象上才能<u>触发碰撞</u>。如果两个刚体相互撞在一起，除非两个对象有碰撞体时物理引擎才会计算碰撞，在物理模拟中，没有碰撞体的刚体会彼此相互穿过。</p>
+</li>
+<li><p>理解一：想象如果只有刚体的话，很多物体能基于各种力的计算来运动；如果没有碰撞体，物体与物体之间互相穿过，按照自己的运动轨迹；反之，会相互碰撞，改变原来的运动轨迹。</p>
+</li>
+<li><p>理解二：人物会受重力影响等，所以必须添加刚体；要产生和环境的相互阻力，那两者必须有碰撞体。</p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220924092223060.png" alt="image-20220924092223060"></p>
+</li>
+</ul>
+<h3 id="物理系统运行与交互冲突"><a href="#物理系统运行与交互冲突" class="headerlink" title="物理系统运行与交互冲突"></a>物理系统运行与交互冲突</h3><p>由于物理计算与交互Update刷新不一致，很容易导致不同步以至于产生抖动等冲突问题。所以有刚体的时候最好操作刚体来移动，这就是为什么一般拿刚体来移动（而且要在FixedUpdate里面）的原因。</p>
+<h3 id="刚体详细属性"><a href="#刚体详细属性" class="headerlink" title="刚体详细属性"></a>刚体详细属性</h3><p><img src="https://images2015.cnblogs.com/blog/702782/201509/702782-20150929211327761-286673077.png" alt="img"></p>
+<ul>
+<li>Mass 质量：该项用于设置游戏对象的质量（建议在同一个游戏场景中，游戏对象之间的质量差值不要大于100倍）；</li>
+<li>Drag 阻力：0表示没有空气阻力，阻力极大时游戏对象会立即停止运动；</li>
+<li>Angular Drag 角阻力： 当游戏对象受扭矩力旋转时受到的空气阻力。0表示没有空气阻力，阻力极大时游戏对象会立即停止运动；</li>
+<li>Use Gravity 使用重力：开启此项，游戏对象受重力影响；</li>
+<li>Is Kinematic 是否开启动力学：开启此项，游戏对象将不再受物理引擎的影响从而只能通过Transform（几何变换组件）属性来对其操作，该方式适用于模拟平台移动或带有铰链关节链接刚体的动画。</li>
+<li>Interpolate插值：该项用于控制刚体运动的抖动情况（碰撞处有轻微凹陷？）。有三项可以选择：<ul>
+<li>None没有插值</li>
+<li>Interpolate内插值，基于前一帧的Transform来平滑此次的Transform。</li>
+<li>Extrapolate外插值，基于下一帧的Transform来平滑此次的Transform。</li>
+</ul>
+</li>
+<li>Collision Detection碰撞检测：该属性用于控制避免高速运动的游戏对象穿过其他对象而未发生碰撞，有三项可以选择：<ul>
+<li>Continuous 连续碰撞检测：该模式用于检测<u>与动态碰撞体</u><u>（带有Rigidbody）</u>的碰撞，使用连续碰撞检测模式来检测<u>与网格碰撞体</u><u>的（不带Rigidbody）</u>碰撞。其他的刚体采用离散碰撞模式。此模式适用于那些需要与采用连续动态碰撞检测的对象相碰撞的对象:这对物理性能会有很大的影晌 ,如果不需要对快速运动的对象进行碰撞检测,就使用离散碰撞检测模式。</li>
+<li>Continuous Dynamic 连续动态碰撞检测模式：该模式用于检测与采用连续碰撞模式或连续动态碰撞模式对象的碰撞 ,也可用于检 测 没 有Rigidbody的静态网格碰撞体 。 对于与之碰撞的其他对象可采用离散碰撞检测。 动态连续 碰撞检测模式也可用于检测快速运动的游戏对象。</li>
+</ul>
+</li>
+<li>Constraints约束：该项用于控制刚体运动的约束。<ul>
+<li>Freeze Position：冻结位置。刚体对象在世界坐标系中xyz轴方向上(勾选状态)的移动无效。</li>
+<li>Freeze Rotation：冻结旋转。刚体对象在世界坐标系中xyz轴方向上(勾选状态)的旋转无效。</li>
+</ul>
+</li>
+</ul>
+<h3 id="碰撞体详细属性"><a href="#碰撞体详细属性" class="headerlink" title="碰撞体详细属性"></a>碰撞体详细属性</h3><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2020.3/Manual/CollidersOverview.html">碰撞体 - Unity 手册</a></p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220924092456618.png" alt="image-20220924092456618"></p>
+<ul>
+<li>原始碰撞体类型：盒型、球型、胶囊碰撞体……</li>
+<li>复合碰撞体：任意数量的上述碰撞体 添加到单个对象 以创建复合碰撞体。</li>
+<li>静态碰撞体：可将碰撞体添加到没有刚体组件的对象，从而创建场景的地板、墙壁和其他静止元素。通常情况下，不应通过更改变换位置来重新定位静态碰撞体，因为这会极大地影响物理引擎的性能。</li>
+<li>动态碰撞体：具有刚体的对象上的碰撞体称为_动态_碰撞体。静态碰撞体可与动态碰撞体相互作用，但由于没有刚体，因此不会通过移动来响应碰撞。</li>
+<li>物理材质：当碰撞体相互作用时，它们的表面需要模拟所应代表的材质的属性。例如，一块冰将是光滑的，而橡胶球将提供大量摩擦力并且弹性很好。虽然碰撞时碰撞体的形状不会变形，但可以使用 Physics Materials（物理材质）配置碰撞体的摩擦力和弹力。可能需要进行多次试验和纠错后才能获得正确参数，比如冰材质将具有零（或非常低的）摩擦力，而橡胶材质则具有高摩擦力和近乎完美的弹性。有关可用参数的更多详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2018.4/Manual/class-PhysicMaterial.html">物理材质</a>和 <a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2018.4/Manual/class-PhysicsMaterial2D.html">2D 物理材质</a>的参考页面。请注意，由于历史原因，3D 资源实际上称为Physic Material（物理材质）（<em>不带</em> s），而等效的 2D 资源则称为 _Physics Material 2D（2D 物理材质）（_带s）</li>
+</ul>
+<h2 id="环境设置（Tilemap的碰撞器）"><a href="#环境设置（Tilemap的碰撞器）" class="headerlink" title="环境设置（Tilemap的碰撞器）"></a>环境设置（Tilemap的碰撞器）</h2><ul>
+<li>首先为瓦片地图添加collider</li>
+</ul>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220924094158340.png" alt="image-20220924094158340"></p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220924094242299.png" alt="image-20220924094242299"></p>
+<p>由于每个小碰撞体之间可能会产生缝隙，所以为了流畅性最好把它们整合在一起。所以勾选组件中的_Used By Composite_.但是这个属性要生效有一个条件：就是必须同时添加 <em>CompositeCollider2D</em> 组件。</p>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220924094554435.png" alt="image-20220924094554435"></p>
+<p>另外，添加 <em>Tilemap Collider 2D</em> 的同时也会自动添加 <em>Rigidbody2D</em> 组件，所以要将后者的Body Type改成Static，因为不需要他运动。（还把属性面板的Static勾选上了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41319239/article/details/94230437">(35条消息) Unity的inspector面板中static的作用_蹦蹦跳跳小米粒的博客-CSDN博客_unity中static的作用</a>）</p>
+<h2 id="人物设置"><a href="#人物设置" class="headerlink" title="人物设置"></a>人物设置</h2><h3 id="刚体和碰撞体设置"><a href="#刚体和碰撞体设置" class="headerlink" title="刚体和碰撞体设置"></a>刚体和碰撞体设置</h3><p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220924095116831.png" alt="image-20220924095116831"></p>
+<h3 id="移动逻辑"><a href="#移动逻辑" class="headerlink" title="移动逻辑"></a>移动逻辑</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Sea3752/article/details/124108814?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124108814-blog-103908957.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124108814-blog-103908957.pc_relevant_default&utm_relevant_index=4">(35条消息) Unity3D中玩家的移动方式，三大类型，八种方式_正在奋斗中的小志的博客-CSDN博客_unity 玩家移动</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2019.4/ScriptReference/Rigidbody-velocity.html">Rigidbody-velocity - Unity 脚本 API</a></p>
+<p>基本语法： public Vector3 <strong>velocity</strong>{get;set;}</p>
+<p>功能说明： 此属性用于设置或返回刚体的速度值，其使用说明如下。</p>
+<pre><code>1、在脚本中无论是给刚体赋予一个Vector3类型的速度向量v,还是获取当前刚体的速度v，v的方向都是相对世界坐标系而言的。
+
+2、velocity的单位是米每秒，而不是帧每秒，其中米是Unity默认的长度单位。
+</code></pre>
+<ul>
+<li>本教程用了Velocity。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xVelocity = Input.GetAxis(<span class="string">&quot;Horizontal&quot;</span>);</span><br><span class="line">rb.velocity = <span class="keyword">new</span> Vector2(xVelocity * speed, rb.velocity.y);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在2D项目中速度值是二维向量，其中用输入值来更改水平数值，而垂直数值则受原来的速度影响（自由下落等等）</p>
+</blockquote>
+<ul>
+<li>看到有人评论说：1.用刚体的对象不要使用transform改变位置，因为这会覆盖刚体进行的位移。2. Kinematic类型的刚体不接受力学。3.Dynamic类型的刚体不建议使用rigidbody.MovePosition()方法，这个方法就是为Kinematic类型刚体准备的。所以就是要根据使用的刚体类型，选择合适的位移方法。</li>
+</ul>
+<h1 id="2D人物行动状态的变换和控制"><a href="#2D人物行动状态的变换和控制" class="headerlink" title="2D人物行动状态的变换和控制"></a>2D人物行动状态的变换和控制</h1><p>行走，蹲下，跳跃……不同状态之间如何转换，其实是一个很麻烦的活。一不小心就弄乱了。</p>
+<h2 id="整体逻辑的梳理"><a href="#整体逻辑的梳理" class="headerlink" title="整体逻辑的梳理"></a>整体逻辑的梳理</h2><ul>
+<li>按照行为类型分（走路、跳跃等，以跳跃为例）<ul>
+<li>每种行为类型包括行为 <em>具体控制</em> 和 <em>状态</em><ul>
+<li>具体控制<ul>
+<li>如何产生这个行为（给刚体增加向上的力）</li>
+<li>动画状态机、音效……</li>
+</ul>
+</li>
+<li>状态<ul>
+<li>状态判断：<ul>
+<li>用户输入（水平按键输入）</li>
+<li>自身状态是否已经存在</li>
+<li>其它状态影响（蹲下来不能跳等）</li>
+<li>客观条件（站在地面上）</li>
+</ul>
+</li>
+<li>行为产生导致状态改变：<ul>
+<li>改变本身状态（isJump）</li>
+<li>客观条件（不站在地面上）</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>根据实际情况 来包装行为类型 或者是将状态和具体行为分别包装等等</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按照行为类型分</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    PhysicsCheck();</span><br><span class="line">    GroundMovement();</span><br><span class="line">    MidAirMovement();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GroundMovement</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//状态转换(行走又包括直立和蹲下两种子行为)</span></span><br><span class="line">    <span class="keyword">if</span>(crouchHeld)</span><br><span class="line">        Crouch();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!crouchHeld &amp;&amp; isCrouch)</span><br><span class="line">        StandUp();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//移动处理</span></span><br><span class="line">    xVelocity = Input.GetAxis(<span class="string">&quot;Horizontal&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(isCrouch)</span><br><span class="line">        xVelocity /= crouchSpeedDivisor;</span><br><span class="line"></span><br><span class="line">    rb.velocity = <span class="keyword">new</span> Vector2(xVelocity * speed, rb.velocity.y);</span><br><span class="line"></span><br><span class="line">    FlipDirection();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="跳跃的处理"><a href="#跳跃的处理" class="headerlink" title="跳跃的处理"></a>跳跃的处理</h2><h3 id="长按蓄力和下蹲蓄力"><a href="#长按蓄力和下蹲蓄力" class="headerlink" title="长按蓄力和下蹲蓄力"></a>长按蓄力和下蹲蓄力</h3><p>按照上面的思路分析就能写出基本代码，但是这里还增加了一个 <u>蓄力跳得更高</u> 的设置。</p>
+<p>🧐原理</p>
+<ul>
+<li>按下跳跃键（GetButtonDown 瞬间判断）起跳，完成第一部分；</li>
+<li>按的时间比较长的时候（GetButton 持续），将在跳的过程中再增添一股力，使其跳得更高。</li>
+</ul>
+<p>😎在这里没有用到嵌套if，而是将两个判断分开了。暂停捋一遍思路：部分1产生跳跃，并还标注了一个bool值isJump，说明正在跳跃；有了这个条件的判断，才能接着判断是否有长按空格，如果是，那么就增加力；过了一段极短的时间（jumpHoldDuration）后才停止增加力。</p>
+<ul>
+<li>经实验，如果去掉时间，那么长按效果没有体现。是增加的力不够吗？（因为有了时间加长的概念，而且这个是if-else if，必须等到下一次执行时才能增加）</li>
+<li>增加了力，效果还是不明显。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MidAirMovement</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//1.</span></span><br><span class="line">    <span class="keyword">if</span>(jumpPressed &amp;&amp; isOnGround &amp;&amp; !isJump)&#123;</span><br><span class="line">        isOnGround = <span class="literal">false</span>;</span><br><span class="line">        isJump = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        jumpTime = Time.time + jumpHoldDuration;</span><br><span class="line"></span><br><span class="line">        rb.AddForce(<span class="keyword">new</span> Vector2(<span class="number">0f</span>, jumpForce), ForceMode2D.Impulse);</span><br><span class="line"></span><br><span class="line">        jumpPressed = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(isJump)&#123;</span><br><span class="line">        <span class="keyword">if</span>(jumpHeld)</span><br><span class="line">            rb.AddForce(<span class="keyword">new</span> Vector2(<span class="number">0f</span>, jumpHoldForce), ForceMode2D.Impulse);</span><br><span class="line">        <span class="keyword">if</span>(jumpTime &lt; Time.time)</span><br><span class="line">            isJump = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        jumpPressed = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>下蹲蓄力相似，产生跳跃后，如果是下蹲状态，则单独加力。</li>
+</ul>
+<p>🧐还有个问题是：由于为了接收用户输入更加流畅，把其放在了Update中，但是行为的执行是在FixedUpdate中，导致在Update中短暂的按键效果到了FixedUpdate（几帧后）就失效了。</p>
+<h3 id="下蹲时不可站起-状态判断-客观条件影响（环境检测）"><a href="#下蹲时不可站起-状态判断-客观条件影响（环境检测）" class="headerlink" title="下蹲时不可站起  状态判断-客观条件影响（环境检测）"></a>下蹲时不可站起  状态判断-客观条件影响（环境检测）</h3><p>之前判断是否站在地面上用的是</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coll.IsTouchingLayers(groundLayer)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>只要碰到Layer就为true，那无法满足下蹲无法站起的需求。</p>
+</blockquote>
+<ul>
+<li>RaycastHit2D</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">RaycastHit2D <span class="title">Raycast</span>(<span class="params">Vector2 offset, Vector2 rayDirection, <span class="built_in">float</span> distance, LayerMask layer</span>)</span>&#123;</span><br><span class="line">    Vector2 pos = transform.position;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//射线起点、方向、距离、碰撞的层</span></span><br><span class="line">    RaycastHit2D hit = Physics2D.Raycast(pos + offset, rayDirection, distance, layer);</span><br><span class="line"></span><br><span class="line">    Color color = hit ? Color.red : Color.green;</span><br><span class="line"></span><br><span class="line">    Debug.DrawRay(pos + offset, rayDirection * distance, color, distance);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>直接重载RaycastHit2D的Raycast方法，来满足额外的需求（画出射线等）。然后对左脚右脚头顶分别作出碰撞射线。</p>
+</blockquote>
+<p><img src="/2022/09/23/Robbie/hexo_github_blog\source_posts\pic\image-20220924165947772.png" alt="image-20220924165947772"></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/myGame03.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/08/Unity%E7%9A%84%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%A8%A1%E6%8B%9F%EF%BC%89/"><img class="prev-cover" src="/img/myGame03.png%E3%80%80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Unity的物理系统</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/30/TowerDefense/"><img class="next-cover" src="/img/myGame03.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">TowerDefense</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">someone very lazy</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tilemap%EF%BC%88Rule-Tile%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Tilemap（Rule Tile）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2D%E4%BA%BA%E7%89%A9%E6%8E%A7%E5%88%B6%E7%A7%BB%E5%8A%A8"><span class="toc-number">2.</span> <span class="toc-text">2D人物控制移动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9A%E4%BD%93%E5%92%8C%E7%A2%B0%E6%92%9E%E4%BD%93%E5%8C%BA%E5%88%AB"><span class="toc-number">2.1.</span> <span class="toc-text">刚体和碰撞体区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E4%B8%8E%E4%BA%A4%E4%BA%92%E5%86%B2%E7%AA%81"><span class="toc-number">2.1.1.</span> <span class="toc-text">物理系统运行与交互冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9A%E4%BD%93%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.2.</span> <span class="toc-text">刚体详细属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E4%BD%93%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.3.</span> <span class="toc-text">碰撞体详细属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE%EF%BC%88Tilemap%E7%9A%84%E7%A2%B0%E6%92%9E%E5%99%A8%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">环境设置（Tilemap的碰撞器）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E7%89%A9%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">人物设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9A%E4%BD%93%E5%92%8C%E7%A2%B0%E6%92%9E%E4%BD%93%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.3.1.</span> <span class="toc-text">刚体和碰撞体设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E9%80%BB%E8%BE%91"><span class="toc-number">2.3.2.</span> <span class="toc-text">移动逻辑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2D%E4%BA%BA%E7%89%A9%E8%A1%8C%E5%8A%A8%E7%8A%B6%E6%80%81%E7%9A%84%E5%8F%98%E6%8D%A2%E5%92%8C%E6%8E%A7%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">2D人物行动状态的变换和控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E9%80%BB%E8%BE%91%E7%9A%84%E6%A2%B3%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">整体逻辑的梳理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">3.2.</span> <span class="toc-text">跳跃的处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E6%8C%89%E8%93%84%E5%8A%9B%E5%92%8C%E4%B8%8B%E8%B9%B2%E8%93%84%E5%8A%9B"><span class="toc-number">3.2.1.</span> <span class="toc-text">长按蓄力和下蹲蓄力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%B9%B2%E6%97%B6%E4%B8%8D%E5%8F%AF%E7%AB%99%E8%B5%B7-%E7%8A%B6%E6%80%81%E5%88%A4%E6%96%AD-%E5%AE%A2%E8%A7%82%E6%9D%A1%E4%BB%B6%E5%BD%B1%E5%93%8D%EF%BC%88%E7%8E%AF%E5%A2%83%E6%A3%80%E6%B5%8B%EF%BC%89"><span class="toc-number">3.2.2.</span> <span class="toc-text">下蹲时不可站起  状态判断-客观条件影响（环境检测）</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
