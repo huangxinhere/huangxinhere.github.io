@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hx's blog | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="TilemapTilemap - Unity 手册 (47条消息) Unity Tilemap动态生成2d地图_tilemap 动态地形_crushKB的博客-CSDN博客 unity2018使用tileMap生成地图 类似泰拉瑞亚创建和销毁地图块 - 三页菌 - 博客园 (cnblogs.com) 开始的想法是用Tilemap，因为可以方便地选择格子来填充或删除。 但是看了好多资料，却越来越">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hx&#39;s blog">
+<meta property="og:url" content="https://huangxinhere.github.io/2023/03/18/Unity%E5%BC%80%E5%8F%91-%E9%80%83%E5%87%BA%E5%9C%B0%E7%90%83/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="TilemapTilemap - Unity 手册 (47条消息) Unity Tilemap动态生成2d地图_tilemap 动态地形_crushKB的博客-CSDN博客 unity2018使用tileMap生成地图 类似泰拉瑞亚创建和销毁地图块 - 三页菌 - 博客园 (cnblogs.com) 开始的想法是用Tilemap，因为可以方便地选择格子来填充或删除。 但是看了好多资料，却越来越">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2023-03-18T02:50:15.984Z">
+<meta property="article:modified_time" content="2023-03-19T14:08:59.071Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/03/18/Unity%E5%BC%80%E5%8F%91-%E9%80%83%E5%87%BA%E5%9C%B0%E7%90%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hx\'s blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-19 22:08:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-18T02:50:15.984Z" title="发表于 2023-03-18 10:50:15">2023-03-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-19T14:08:59.071Z" title="更新于 2023-03-19 22:08:59">2023-03-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+<hr>
+<h1 id="Tilemap"><a href="#Tilemap" class="headerlink" title="Tilemap"></a>Tilemap</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2018.4/Manual/class-Tilemap.html">Tilemap - Unity 手册</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41054345/article/details/109329638">(47条消息) Unity Tilemap动态生成2d地图_tilemap 动态地形_crushKB的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sanyejun/p/9298592.html">unity2018使用tileMap生成地图 类似泰拉瑞亚创建和销毁地图块 - 三页菌 - 博客园 (cnblogs.com)</a></p>
+<p>开始的想法是用Tilemap，因为可以方便地选择格子来填充或删除。</p>
+<p>但是看了好多资料，却越来越清晰地意识到：Tilemap还是为了地图而存在的，也就是静态的，单元格集成的。所以，几乎不可能移动单个Tile？都是跟随Tilemap一起的刚体属性。</p>
+<h1 id="纯物理"><a href="#纯物理" class="headerlink" title="纯物理"></a>纯物理</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2021.3/Manual/Joints2D.html">2D 关节 - Unity 手册</a></p>
+<p>【例子不全面，好坑】[(47条消息) <a target="_blank" rel="noopener" href="https://blog.csdn.net/rickshaozhiheng/article/details/78509632">Unity] Unity2D 中的物理关节_Rickshao1993的博客-CSDN博客</a></p>
+<h1 id="网格系统"><a href="#网格系统" class="headerlink" title="网格系统"></a>网格系统</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AY411a7QV/?vd_source=bd424a1eb707161ee6ba2f47e4c49a08">Unity中的网格系统 Grid System in Unity (How to make it and where to use it)_哔哩哔哩_bilibili</a></p>
+<h1 id="用UI直接代替逻辑网格系统"><a href="#用UI直接代替逻辑网格系统" class="headerlink" title="用UI直接代替逻辑网格系统"></a>用UI直接代替逻辑网格系统</h1><p><a href="file:///D:/Unity/2021.3.8f1c1/Editor/Data/Documentation/en/Manual/class-Canvas.html">统一 - 手动：画布</a></p>
+<ul>
+<li><p>先排好Grid按钮，整理好画布</p>
+</li>
+<li><p>接着将点击的UI坐标转化成世界坐标。Button坐标-&gt;屏幕坐标-&gt;世界坐标【关于坐标转换的知识要学习一下】</p>
+<p>获得坐标后，生成砖块【资产获取的知识】；</p>
+<p>生成砖块的时候要检查是否已经存在方块【屏幕射线检查物体[Unity 射线检测（RayCast） - Mr.Cat~ - 博客园 (cnblogs.com)](<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Haha1999/p/13272109.html#:~:text=%E5%B8%B8%E7%94%A8%E5%B0%84%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95">https://www.cnblogs.com/Haha1999/p/13272109.html#:~:text=常用射线检测方法</a> 1 1. 普通射线检测（一般用于检测某一个物体） 1 Ray ray %3D,2 2. 直线射线检测多个物体 … 3 3. 球形射线检测（一般用于检测周边物体） )】</p>
+</li>
+<li><p>构建砖块搭建的逻辑算法：</p>
+<ul>
+<li><p>砖块start的时候，要执行搭建算法：左边有，扣住左边；右边有，扣住右边；否则自然向下。</p>
+<p>射线检测：方向-检测到的物体判断；RayCast也会检测到自己…【射线检测】<a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/ScriptReference/Physics2D.Raycast.html">Physics2D-Raycast - Unity 脚本 API</a></p>
+<p>生成固定关节组件：</p>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/16/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">知识整理-Unity相关知识点</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">someone very lazy</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tilemap"><span class="toc-number">1.</span> <span class="toc-text">Tilemap</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%AF%E7%89%A9%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">纯物理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">网格系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8UI%E7%9B%B4%E6%8E%A5%E4%BB%A3%E6%9B%BF%E9%80%BB%E8%BE%91%E7%BD%91%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.</span> <span class="toc-text">用UI直接代替逻辑网格系统</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
