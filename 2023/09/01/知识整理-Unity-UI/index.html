@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unity-UI | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="UI部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity-UI">
+<meta property="og:url" content="https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="UI部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huangxinhere.github.io/img/unity.jpg">
+<meta property="article:published_time" content="2023-08-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-03T03:31:13.712Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/unity.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Unity-UI',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-03 11:31:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/unity.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Unity-UI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-31T16:00:00.000Z" title="发表于 2023-09-01 00:00:00">2023-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-03T03:31:13.712Z" title="更新于 2023-09-03 11:31:13">2023-09-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Unity-UI"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/UICanvas.html">画布 - Unity 手册</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2021.3/Documentation/Manual/UICanvas.html">Unity - Manual: Canvas</a></p>
+<p>Unity内置的UI组件还有 UI Toolkit、即时模式IMGUI，现在主要用的是UnityUI。</p>
+<h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/SGamble/article/details/100658008">Unity Canvas 详解_TravelerTD的博客-CSDN博客</a>【组件更详细的说明】</p>
+<p><strong>画布 (Canvas)</strong> 是应该容纳所有 UI 元素的区域。画布是一种带有画布组件的游戏对象，所有 UI 元素都必须是此类画布的子项。</p>
+<h2 id="绘制元素顺序"><a href="#绘制元素顺序" class="headerlink" title="绘制元素顺序"></a>绘制元素顺序</h2><p>画布中的 UI 元素按照它们在 Hierarchy 中显示的顺序绘制。也可以通过在变换组件上使用以下方法从脚本控制顺序：SetAsFirstSibling、SetAsLastSibling 和 SetSiblingIndex。</p>
+<h2 id="渲染模式-Render-Modes"><a href="#渲染模式-Render-Modes" class="headerlink" title="渲染模式 Render Modes"></a>渲染模式 Render Modes</h2><ul>
+<li><p>Screen Space - Overlay</p>
+<p>此渲染模式将 UI 元素放置于在场景之上渲染的屏幕上。如果调整屏幕大小或更改分辨率，则画布将自动更改大小来适应此情况。</p>
+</li>
+<li><p>Screen Space - Camera</p>
+<p>画布放置在指定__摄像机__前面的给定距离处。UI 元素由此摄像机渲染，这意味着摄像机设置会影响 UI 的外观。如果调整屏幕大小、更改分辨率或摄像机视锥体发生改变，则画布也将自动更改大小来适应此情况。</p>
+</li>
+<li><p>World Space</p>
+<p>画布的行为与场景中的所有其他对象相同。画布大小可用矩形变换进行手动设置，而 UI 元素将基于 3D 位置在场景中的其他对象前面或后面渲染。此模式对于要成为世界一部分的 UI 非常有用。这种界面也称为“叙事界面”。</p>
+</li>
+</ul>
+<h1 id="UGUI和NGUI的区别"><a href="#UGUI和NGUI的区别" class="headerlink" title="UGUI和NGUI的区别"></a>UGUI和NGUI的区别</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5891e28aa766">什么是UI?unity中NGUI与UGUI的区别？ - 简书 (jianshu.com)</a></p>
+<p>UGUI是官方4.6以后推出的一套UI组件，相对于之前的GUI倒是改头换面了，可视化操作，便捷、省心。NGUI则是unity一直以来最强的UI插件（没有之一），甚至还是官方新UI的导师。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4035828-aa96cf226a850983.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="img"></p>
+<p>UGUI由于是Unity原生支持的，所以使用上会更加的人性化。并且伴随着版本升级功能会越来越强，逐渐将成为主流ui方案。NGUI是UGUI出现之前的产物，通过MeshRenderer来实现类似CanvasRenderer的功能，概念上有点蹩脚。作为一个插件虽然已最大努力让UI开发工作变得简单，但相比能够让UnityEditor做出相应修改的UGUI（如RectTransform的出现），其易用性是没法比的。综合来说，新的项目建议使用UGUI，学习成本不高，工具流更有助于提高开发效率。</p>
+<h1 id="UGUI原理"><a href="#UGUI原理" class="headerlink" title="UGUI原理"></a>UGUI原理</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17W4y1d7dY?p=7&vd_source=bd424a1eb707161ee6ba2f47e4c49a08">7.Graphic家族_哔哩哔哩_bilibili</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/340601785">UGUI源码解析（二十七）总结篇 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/343524911">UGUI深入理解–渲染系统 - 知乎 (zhihu.com)</a></p>
+<p>由自实现的例子可知，核心功能是UI显示（由mesh构建保存到meshFilter并由meshRender渲染：这一系列操作是必须每帧更新重新绘制？）和射线检测点击（input发射射线，并且在mesh添加碰撞器来接收）。</p>
+<h2 id="图形绘制"><a href="#图形绘制" class="headerlink" title="图形绘制"></a>图形绘制</h2><ul>
+<li>基础</li>
+</ul>
+<p>核心概念：Mesh、Vertex、Triangle、UV；</p>
+<p>Vertex：顶点，组成Mesh的元素；</p>
+<p>Triangle：三角形，决定顶点顺序；</p>
+<p>Mesh：网格，决定物体的形状；</p>
+<p>UV：纹理贴图坐标；定义模型中的位置与贴图之间的位置关系。</p>
+<p><img src="/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/hexo_github_blog\source_posts\知识整理-Unity-UI.assets\image-20230901111459137.png" alt="image-20230901111459137"></p>
+<ul>
+<li><p>相关类以及结构</p>
+<p><img src="https://pic1.zhimg.com/80/v2-57d6b7f491b04ebbc6189a3dfbec6c20_720w.webp" alt="img"></p>
+</li>
+<li><p>大致流程：</p>
+</li>
+<li><p>UI组件的基类是<strong>Graphic</strong>，Graphic核心功能是组织mesh和material然后传给底层，也就是CanvasRenderer类。</p>
+</li>
+<li><p><strong>CanvasRenderer</strong>连接画布和渲染组件，通过CanvasRenderer把<u>网格绘制到Canvas上</u>，CR并不是直接渲染，而是交给Canvas，Canvas还要做合批等操作；</p>
+<p>CanvasRenderer这个名字有点误导，并不是对应Canvas，而是对应Graphic。重要的接口有两个，SetMesh和SetMaterial。一次设置后，如果没有改变，不需要重复设置，底层有缓存，mesh和material可以分开设置。</p>
+<p>每个Graphic的CanvasRenderer保存了当前元素的mesh和material，但并不会每个Graphic一个drawcall，canvas会对节点下的Graphic进行合批，所以一个Graphic设置dirty，整个canvas都需要重新计算合批，这个消耗是比较大的，合理分配canvas，对性能影响较大，这是界面渲染性能要注意的地方。</p>
+</li>
+<li><p>CanvasUpdateRegistry负责<strong>驱动</strong>，也就是通知需要渲染的UI组件。</p>
+<p>那为什么用通知的方式而不是UI自己处理呢，</p>
+<p>UGUI的处理流程：UI自己记录是否需要重新渲染，注册事件给registry，registry在要渲染的时候触发事件，UI再去提交数据。</p>
+<p>这样的好处是，首先UI<strong>各种数据会在一帧内多次改变</strong>，肯定不能每次改变都发渲染事件，<strong>一帧处理一次效率比较高</strong>。再一个如果不发事件，那就必然要在update里写逻辑，比统一事件要麻烦些。</p>
+</li>
+</ul>
+<blockquote>
+<p>再回想以下自定义Image的例子来理解，自己实现Image渲染的时候，是在Update里面调用构建mesh和渲染的方法；而在UGUI里面，UI自己记录是否需要重新渲染，注册事件给registry，registry在要渲染的时候触发事件，UI再去更新。（往下的重绘过程有详细说明）</p>
+</blockquote>
+<p>一句话总结图形绘制：正常绘制和重新绘制，绘制核心是网格和渲染，网格及渲染信息由CanvasRenderer处理给Canvas做合批，重新绘制则和CanvasUpdateRegistry相关。【待打磨】</p>
+<h2 id="基础类详解"><a href="#基础类详解" class="headerlink" title="基础类详解"></a>基础类详解</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/VR_iShow/article/details/92850381">【Unity/笔记】UGUI基础原理__iShow_的博客-CSDN博客</a></p>
+<ul>
+<li><p><strong>Graphic[图形]</strong><br><code>[RequireComponent(typeof(CanvasRenderer))]</code><br><code>[RequireComponent(typeof(RectTransform))]</code></p>
+<blockquote>
+<p>由Unity UI系统的C#库提供的基类，所有的<u>向画布系统提供可绘制几何内容</u>的UI系统C#类都继承它。</p>
+<p>大多数内置的UI系统绘图类都是通过 <u>MaskableGraphic 子类</u>实现的，这个子类实现了 IMaskable 接口，<u>可以被遮罩</u>。</p>
+<p>Drawable类的主要子类是 Image 和 Text ，它们能提供与其名称相对应的内容。</p>
+</blockquote>
+<p>Graphic是UGUI的图形功能基类,它必须依赖CanvasRenderer与RectTransform 组件运行。</p>
+<p>内置UI系统通过MaskableGraphic实现，使用了IMaskabel接口，可被遮罩。<br>Text和Image都继承自MaskableGraphic, ILayoutElement(及其他)</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Layout[布局]</strong><br><code>[RequireComponent(typeof(RectTransform))]</code></p>
+<blockquote>
+<p>Layout组件(如ScrollRect)<u>控制RectTransform的尺寸和位置</u>，它通常用于创建具有复杂布局、并且内部组件需要相对尺寸、或者相对位置的UI。</p>
+<p>Layout组件只依赖RectTransform并且<u>只影响与其关联的RectTransform</u>的属性。他们不依赖Graphic类，并且可以独立于UI系统的Graphic类使用。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>Canvas[画布]</strong></p>
+<blockquote>
+<p>画布(Canvas) 是以原生代码编写的Unity组件，画布负责<u>将其内部的几何形状合并到批处理、生成合适的渲染指令并发送到Unity图形系统</u>。</p>
+<p>这些操作都<u>由原生C++代码</u>完成，这被称为 重新批处理(rebatch) 或 批处理构建(batch build) 。当一个画布被标记为含有需要重新批处理的几何形状时，称这个画布为 脏画布。</p>
+</blockquote>
+<ol>
+<li>几何形状是由 CanvasRenderer 组件向画布提供；</li>
+<li>批处理就是把<u>符合条件的UI元素</u>打包成一批让GPU<u>一次性</u>的把他们绘制出来；</li>
+<li>从API调用的角度来看，Batch和Draw call是等价的，但是在游戏引擎中他们的实际意义是不一样的：<u>Batch一般指代经过打包之后的Draw call</u>。</li>
+<li>批处理需要符合以下条件<ul>
+<li>在同一个canvas下；</li>
+<li>使用同一个材质；</li>
+<li>在同一时间渲染；</li>
+<li>RectTransform共面(深度相同)，不重叠；</li>
+<li>在同一个父mask下(不同mask下会造成drawcall增加)</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>Sub-Canvas</strong></p>
+<blockquote>
+<p>子画布(Sub-canvas) 是嵌套在其他画布组件内部的画布组件。</p>
+<p>子画布能够将其孩子节点与其父画布隔离开，一个被标记为脏的子节点不会迫使其父画布重新构建几何内容，反之亦然。</p>
+<p>有几种特殊情况会使上述情形失效，比如，改变父画布导致子画布改变尺寸。</p>
+</blockquote>
+<ol>
+<li>子画布也是Canvas</li>
+<li>子画布嵌套在主画布内</li>
+<li>一般情况子画布能<strong>隔离</strong>脏的子节点(使两个画布内节点相互不影响但仍然保持层级关系,优化减少重新批处理的操作)</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>渲染细节</strong></p>
+<blockquote>
+<p>使用UI构建界面时，所有的几何形状都会在透明队列(Transparent queue)中绘制。从多边形栅格化而得到的每个像素都会被采样，即使它们被其他不透明多边形完全遮盖</p>
+</blockquote>
+<ol>
+<li>由UI系统生成的几何形状都带有Alpha混合，从后向前地绘制</li>
+<li>不管是否被遮挡，几何形状都会被采样绘制。</li>
+</ol>
+</li>
+</ul>
+<h2 id="合批过程（Canvases）"><a href="#合批过程（Canvases）" class="headerlink" title="合批过程（Canvases）"></a>合批过程（Canvases）</h2><ul>
+<li>批处理构建batch building</li>
+</ul>
+<blockquote>
+<p>我们经常用引擎<u>每帧提交的批次数量</u>来作为衡量<u>渲染压力</u>的指标。</p>
+</blockquote>
+<blockquote>
+<p>在批处理构建过程中，画布<strong>合并用于表示UI元素的网格(mesh)，生成合适的渲染指令发送到Unity的绘图管线</strong>。</p>
+<p>这一过程的结果会<strong>被缓存并重用</strong>，<strong>直到画布被标记为脏画布</strong>。脏画布会在画布的任一网格构成成员发送改变时产生。</p>
+</blockquote>
+<blockquote>
+<p>画布所使用的网格是从附加到画布的CanvasRenderer组件集合中获取的，但其中不会包括子画布中的组件(隔离效果)。</p>
+</blockquote>
+<blockquote>
+<p>计算批处理需要根据深度(depth)对网格进行排序、检查网格的重叠、共享材质等情况。这个操作是多线程的，因此在不同的CPU架构上性能差异很大，尤其是在移动版Soc芯片（通常CPU核心数少）和现代桌面CPU（通常有4个或更多核心）之间。</p>
+</blockquote>
+<ol>
+<li><p>合并mesh(由CanvasRenderer采集,不包括子画布中组件) —&gt; 发送渲染指令给绘图管线(会缓存) —&gt;脏画布产生(网格成员改变) —&gt; 重建rebuild</p>
+<ul>
+<li>一个Canvas下的所有UI元素都是合在一个Mesh中的。</li>
+<li>而在Batch前，UGUI会根据这些UI元素的材质（通常就是Atlas）以及渲染顺序进行<strong>重排</strong>，在不改变渲染结果的前提下，尽可能<strong>将相同材质的UI元素合并在同一个SubMesh中</strong>。所以同一Canvas下不同的材质的UI可能会合并为多个SubMesh。</li>
+<li>字体相同的text会合并一个批处理?(验证结果不同，同类型字体有时不会合批)</li>
+</ul>
+</li>
+<li><p>计算批处理阶段:</p>
+<ul>
+<li><strong>从上往下</strong>检测,根据depth进行排序等一系列计算；</li>
+<li>检查 网格重叠 共享材质；</li>
+<li>Unity 5.2以后，合批是多线程处理(通常移动端性能较低)</li>
+</ul>
+</li>
+</ol>
+<h2 id="重绘过程（Graphics）"><a href="#重绘过程（Graphics）" class="headerlink" title="重绘过程（Graphics）"></a>重绘过程（Graphics）</h2><p>重绘过程是指Unity UI 的 图形组件的排版和网格被重新计算。这在 CanvasUpdateRegistry类中执行。当Canvas组件触发WillRenderCanvases事件时都会调用这个方法。这个事件每一帧都会执行一次。在CanvasUpdateRegistry内部，需要关注的方法是PerformUpdate。</p>
+<h3 id="大致理解"><a href="#大致理解" class="headerlink" title="大致理解"></a>大致理解</h3><p>也从一个简单的demo开始调试理解。demo内容是，点击button<strong>触发某个Image换颜色</strong>。</p>
+<ul>
+<li>更改颜色，触发SetVerticesDirty();</li>
+<li>SetVerticesDirty()——Register…Rebuild：加入某个队列；</li>
+<li>PerformUpdate(): 应用了队列，取element，调用它的Rebuild</li>
+<li>如果标记了dirty，就进行UpdateGeometry…OnPopulateMesh…Generate…最后更改颜色。</li>
+</ul>
+<p><img src="/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/hexo_github_blog\source_posts\知识整理-Unity-UI.assets\image-20230901120719354.png" alt="image-20230901120719354"></p>
+<blockquote>
+<p>③把更改放进队列里面去，并由PerformUpdate调用④，由于Rebuild接口被Graphic实现，Image又继承Graphic，经过一系列的调用回到⑥</p>
+<p>概括来说，被更改的元素存了下来，并在performUpdate又放出来调用自己的Rebuild</p>
+</blockquote>
+<p>那PerformUpdate在哪里调用了？这个方法被注册进Canvas.willRenderCanvases（在渲染之前调用）里面去了。</p>
+<p><img src="/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/hexo_github_blog\source_posts\知识整理-Unity-UI.assets\image-20230901121506723.png" alt="image-20230901121506723"></p>
+<h3 id="缓存和重建：CanvasUpdateRegistry"><a href="#缓存和重建：CanvasUpdateRegistry" class="headerlink" title="缓存和重建：CanvasUpdateRegistry"></a><strong>缓存和重建：CanvasUpdateRegistry</strong></h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenggg/p/11184784.html">关于UGUI底层的小知识—上 (转雨松momo) - 深秋大街道 - 博客园 (cnblogs.com)</a></p>
+<ul>
+<li><p>【缓存要更改的元素】通常UGUI界面操作卡大概率都是Canvas.SendWillRenderCanvases()方法耗时，需要检查<u>界面是否存在多余或者无用的重建情况</u>。由于界面很多我们无法定位到到底是哪个界面下的哪个元素引起了网格重建。通过观察CanvasUpdateRegistry.cs源代码，我们发现需要网格重建的元素都被缓存在这两个对象中。 </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 标记更改 Graphic.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> abstract <span class="class"><span class="keyword">class</span> <span class="title">Graphic</span>:</span> UIBehaviour,ICanvasElement</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//...略</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnBeforeTransformParentChanged</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        GraphicRegistry.<span class="built_in">UnregisterGraphicForCanvas</span>(canvas, <span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">//布局发生变化</span></span><br><span class="line">        LayoutRebuilder.<span class="built_in">MarkLayoutForRebuild</span>(rectTransform);</span><br><span class="line">        <span class="comment">//LayoutRebuilder.MarkLayoutForRebuild方法内部实现</span></span><br><span class="line">        <span class="comment">//private static void MarkLayoutRootForRebuild(RectTransform controller)</span></span><br><span class="line">        <span class="comment">//&#123;</span></span><br><span class="line">        <span class="comment">//    if (controller == null)</span></span><br><span class="line">        <span class="comment">//        return;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//    var rebuilder = s_Rebuilders.Get();</span></span><br><span class="line">        <span class="comment">//    rebuilder.Initialize(controller);</span></span><br><span class="line">        <span class="comment">//    局部发生变化，会通过TryRegisterCanvasElementForLayoutRebuild()将自己加入待布局重建队列</span></span><br><span class="line">        <span class="comment">//    if (!CanvasUpdateRegistry.TryRegisterCanvasElementForLayoutRebuild(rebuilder))</span></span><br><span class="line">        <span class="comment">//        s_Rebuilders.Release(rebuilder);</span></span><br><span class="line">        <span class="comment">//&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">SetMaterialDirty</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">IsActive</span>())</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        m_MaterialDirty = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//渲染发生变化，会通过RegisterCanvasElementForGraphicRebuild()将自己加入待渲染队列</span></span><br><span class="line">        CanvasUpdateRegistry.<span class="built_in">RegisterCanvasElementForGraphicRebuild</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (m_OnDirtyMaterialCallback != null)</span><br><span class="line">            <span class="built_in">m_OnDirtyMaterialCallback</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 将标记放入缓存队列</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CanvasUpdateRegistry</span></span></span><br><span class="line"><span class="class">  &#123;</span></span><br><span class="line">      <span class="comment">//...略</span></span><br><span class="line">      <span class="comment">//保存待重建布局元素（如：RectTransform变化）</span></span><br><span class="line">      <span class="keyword">private</span> readonly IndexedSet&lt;ICanvasElement&gt; m_LayoutRebuildQueue = <span class="keyword">new</span> IndexedSet&lt;ICanvasElement&gt;();</span><br><span class="line">      <span class="comment">//保存待重建渲染元素（如：Image变化）</span></span><br><span class="line">      <span class="keyword">private</span> readonly IndexedSet&lt;ICanvasElement&gt; m_GraphicRebuildQueue = <span class="keyword">new</span> IndexedSet&lt;ICanvasElement&gt;();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">* 【更改缓存队列里的元素（在PerformUpdate里面👇）】由此可见，&lt;u&gt;UI发生变化一般分两种情况&lt;/u&gt;，一种是修改了宽高这样会影响到顶点位置需要重建Mesh，还有一种仅仅只修改了显示元素，这样并不会影响顶点位置，此时unity会在代码中区别对待。</span><br><span class="line"></span><br><span class="line">  ```cpp</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CanvasUpdateRegistry</span></span></span><br><span class="line"><span class="class">  &#123;</span></span><br><span class="line">      <span class="comment">//...略</span></span><br><span class="line">      <span class="function"><span class="keyword">protected</span> <span class="title">CanvasUpdateRegistry</span><span class="params">()</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">          <span class="comment">//构造函数处委托函数到PerformUpdate()方法中</span></span><br><span class="line">          <span class="comment">//每次Canvas.willRenderCanvases就会执行PerformUpdate()方法</span></span><br><span class="line">          Canvas.willRenderCanvases += PerformUpdate;</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">      <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">PerformUpdate</span><span class="params">()</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">          <span class="comment">//开始BeginSample()</span></span><br><span class="line">          <span class="comment">//在Profiler中看到的标志性函数Canvas.willRenderCanvases耗时就在这里了</span></span><br><span class="line">          <span class="comment">//EndSample()</span></span><br><span class="line">          UISystemProfilerApi.<span class="built_in">BeginSample</span>(UISystemProfilerApi.SampleType.Layout);</span><br><span class="line">          <span class="built_in">CleanInvalidItems</span>();</span><br><span class="line">  </span><br><span class="line">          m_PerformingLayoutUpdate = <span class="literal">true</span>;</span><br><span class="line">          <span class="comment">//需要重建的布局元素(RectTransform发生变化)，首先需要根据子对象的数量对它进行排序。</span></span><br><span class="line">          m_LayoutRebuildQueue.<span class="built_in">Sort</span>(s_SortLayoutFunction);</span><br><span class="line">          <span class="comment">//遍历待重建布局元素队列，开始重建</span></span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= (<span class="keyword">int</span>)CanvasUpdate.PostLayout; i++)</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m_LayoutRebuildQueue.Count; j++)</span><br><span class="line">              &#123;</span><br><span class="line">                  var rebuild = instance.m_LayoutRebuildQueue[j];</span><br><span class="line">                  <span class="keyword">try</span></span><br><span class="line">                  &#123;</span><br><span class="line">                      <span class="keyword">if</span> (<span class="built_in">ObjectValidForUpdate</span>(rebuild))</span><br><span class="line">                          rebuild.<span class="built_in">Rebuild</span>((CanvasUpdate)i);<span class="comment">//重建布局元素</span></span><br><span class="line">                  &#125;</span><br><span class="line">                  <span class="built_in"><span class="keyword">catch</span></span> (Exception e)</span><br><span class="line">                  &#123;</span><br><span class="line">                      Debug.<span class="built_in">LogException</span>(e, rebuild.transform);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">  </span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m_LayoutRebuildQueue.Count; ++i)</span><br><span class="line">              m_LayoutRebuildQueue[i].<span class="built_in">LayoutComplete</span>();</span><br><span class="line">  </span><br><span class="line">          <span class="comment">//布局构建完成后清空队列</span></span><br><span class="line">          instance.m_LayoutRebuildQueue.<span class="built_in">Clear</span>();</span><br><span class="line">          m_PerformingLayoutUpdate = <span class="literal">false</span>;</span><br><span class="line">  </span><br><span class="line">          <span class="comment">// 布局构建结束，开始进行Mask2D裁切（详细内容下面会介绍）</span></span><br><span class="line">          ClipperRegistry.instance.<span class="built_in">Cull</span>();</span><br><span class="line">  </span><br><span class="line">          m_PerformingGraphicUpdate = <span class="literal">true</span>;</span><br><span class="line">  </span><br><span class="line">          <span class="comment">//需要重建的Graphics元素(Image Text RawImage 发生变化)</span></span><br><span class="line">          <span class="keyword">for</span> (var i = (<span class="keyword">int</span>)CanvasUpdate.PreRender; i &lt; (<span class="keyword">int</span>)CanvasUpdate.MaxUpdateValue; i++)</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">for</span> (var k = <span class="number">0</span>; k &lt; instance.m_GraphicRebuildQueue.Count; k++)</span><br><span class="line">              &#123;</span><br><span class="line">                  <span class="keyword">try</span></span><br><span class="line">                  &#123;</span><br><span class="line">                      var element = instance.m_GraphicRebuildQueue[k];</span><br><span class="line">                      <span class="keyword">if</span> (<span class="built_in">ObjectValidForUpdate</span>(element))</span><br><span class="line">                          element.<span class="built_in">Rebuild</span>((CanvasUpdate)i);<span class="comment">//重建UI元素</span></span><br><span class="line">                  &#125;</span><br><span class="line">                  <span class="built_in"><span class="keyword">catch</span></span> (Exception e)</span><br><span class="line">                  &#123;</span><br><span class="line">                      Debug.<span class="built_in">LogException</span>(e, instance.m_GraphicRebuildQueue[k].transform);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">  </span><br><span class="line">          <span class="comment">//这里需要思考的是，有可能一个Image对象，RectTransform和Graphics同时发生了修改，它们的更新含义不同需要区分对待</span></span><br><span class="line">          <span class="comment">//1.修改了Image的宽高，这样Mesh的顶点会发生变化，此时该对象会加入m_LayoutRebuildQueue队列</span></span><br><span class="line">          <span class="comment">//2.修改了Image的Sprite，它并不会影响顶点位置信息，此时该对象会加入m_GraphicRebuildQueue队列</span></span><br><span class="line">          <span class="comment">//所以上面代码在遍历的时候会分层</span></span><br><span class="line">          <span class="comment">//for (int i = 0; i &lt;= (int)CanvasUpdate.PostLayout; i++)</span></span><br><span class="line">          <span class="comment">//for (var i = (int)CanvasUpdate.PreRender; i &lt; (int)CanvasUpdate.MaxUpdateValue; i++)</span></span><br><span class="line">          <span class="comment">//Rebuild的时候会把层传进去，保证Image知道现在是要更新布局，还是只更新渲染。</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m_GraphicRebuildQueue.Count; ++i)</span><br><span class="line">              m_GraphicRebuildQueue[i].<span class="built_in">GraphicUpdateComplete</span>();</span><br><span class="line">  </span><br><span class="line">          instance.m_GraphicRebuildQueue.<span class="built_in">Clear</span>();</span><br><span class="line">          m_PerformingGraphicUpdate = <span class="literal">false</span>;</span><br><span class="line">          UISystemProfilerApi.<span class="built_in">EndSample</span>(UISystemProfilerApi.SampleType.Layout);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>标记为dirty的排版组件通过ICanvasElement.Rebuild方法<strong>重建布局</strong>，排版重建分成三个过程（PreLayout, Layout 和 PostLayout）。</li>
+<li>任何注册过的裁剪组件（如mask），需要去<strong>裁剪所有可剔除的组件</strong>。这是通过ClippingRegistry.Cull实现的。</li>
+<li>被标记为dirty的图形组件，通过ICanvasElement.Rebuild方法重建它们的图形元素，<strong>重建图形</strong>包含两个过程（PreRender 和 LatePreRender）。</li>
+</ul>
+<blockquote>
+<p>Layout和Graphic的重建过程会被拆分成多个部分。</p>
+<p>Layout重建分3步完成(PreLayout,Layout和PostLayout),</p>
+<p>Graphic重建分2步完成(PreRender和LatePreRender)</p>
+</blockquote>
+<h3 id="布局重建（详细）"><a href="#布局重建（详细）" class="headerlink" title="布局重建（详细）"></a>布局重建（详细）</h3><blockquote>
+<p>必须<strong>根据Layout层级顺序</strong>计算那些包含在Layout中的组件的位置和尺寸。在Game Object层级中，离根节点近的Layout有可能会改变嵌套在在它里面的Layout的位置和尺寸，所以它需要被先计算。</p>
+</blockquote>
+<blockquote>
+<p>为此，UI系统依据<strong>Layout在层级中的深度</strong>对脏Layout列表中的Layout进行排序，高层的（例如，父Transform更少）的项会被移动到列表的前面。</p>
+</blockquote>
+<blockquote>
+<p><strong>排序后的Layout组件列表</strong>接下来要重建布局。这时被Layout组件控制的UI元素的位置和尺寸会发生改变。有关<strong>Layout如何影响每个元素的位置</strong>的详细叙述，请查看Unity手册中的<a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/UIAutoLayout.html">UI Auto Layout</a></p>
+</blockquote>
+<p><strong>自动布局系统按以下顺序评估和执行布局：</strong></p>
+<ol>
+<li>通过调用ILayoutElement组件上的CalculateLayoutInputHorizontal来计算布局元素的最小值，首选值和灵活宽度。这是以<strong>自下而上的顺序</strong>进行的，<strong>孩子在父母面前计算</strong>，这样父母可以在他们自己的计算中考虑到孩子的信息。</li>
+<li>通过调用ILayoutController组件上的SetLayoutHorizontal，根据父对象的可用宽度，来计算和设置子对象布局元素的宽度。这是按照<strong>自上而下的顺序</strong>执行的，因为孩子的父母分配的子宽度需要根据父母的可用宽度进行分配。在这一步之后，布局元素的Rect变换具有新的宽度。</li>
+<li>通过调用ILayoutElement组件的CalculateLayoutInputVertical来计算布局元素的最小值，首选值和灵活高度。这是以<strong>自下而上的顺序</strong>进行的，孩子在父母面前计算，这样父母可以在他们自己的计算中考虑到孩子的信息。</li>
+<li>通过调用ILayoutController组件的SetLayoutVertical，根据父对象的可用高度，来计算和设置子对象布局元素的高度。这是按照自上而下的顺序执行的，因为子女的高度需要根据父母的可用高度计算，子女是在父母之后计算的。在这一步之后，布局元素的Rect变换有了新的高度。</li>
+</ol>
+<p><strong>何时触发布局重建：</strong></p>
+<ul>
+<li>更改LayoutElement布局元素的属性时，比如修改Min Width，Preferred Width等属性。</li>
+<li><strong>在OnEnable和OnDisable中</strong></li>
+<li>OnRectTransformDimensionsChange<strong>（RectTransform大小发生改变时）</strong></li>
+<li>OnValidate （只能编辑器中，非运行状态）</li>
+<li>OnDidApplyAnimationProperties（应用动画属性时）</li>
+</ul>
+<h3 id="图形重建（详细）"><a href="#图形重建（详细）" class="headerlink" title="图形重建（详细）"></a>图形重建（详细）</h3><p><strong>Rebuild方法</strong></p>
+<p>在Canvas渲染前被调用，在这个方法里会调用UpdateGeometry和UpdateMaterial更新顶点和材质。</p>
+<p><img src="https://img2018.cnblogs.com/blog/1296185/201907/1296185-20190714165439386-1677932551.png" alt="img"></p>
+<p><strong>UpdateGeometry方法</strong></p>
+<p>确定每一个UI元素Mesh的信息，包括顶点数据、三角形数据、UV数据、顶点色数据。如下代码所示，无论Image还是Text数据都会在OnPopulateMesh函数中进行收集，它是一个虚函数会在各自的类中实现。</p>
+<p><img src="https://img2018.cnblogs.com/blog/1296185/201907/1296185-20190714165509919-914957298.png" alt="img"></p>
+<ul>
+<li>调用<strong>DoMeshGeneration</strong>方法，</li>
+<li>如果rectTransform不为空，且宽高都大于0，调用<strong>OnPopulateMesh</strong>，实际上只是把顶点和三角形信息保存到了s_VertexHelper里。</li>
+<li>然后获取所有的<strong>IMeshModifier</strong>类型的组件，（IMeshModifier是一个接口，需要依据顶点信息的组件继承自它，例如Shadow就间接继承自它），调用IMeshModifier的ModifyMesh方法，修改Mesh信息。</li>
+<li>最后将s_VertexHelper里修改后的信息设置给canvasRenderer。<strong>概括的说就是，把顶点和三角形信息进行修改，并设置给CanvasRenderer。</strong></li>
+<li>顶点数据准备完毕后会调用canvasRenderer.SetMesh()方法来提交。很遗憾CanvasRenderer.cs并没有开源，我们只能继续反编译看它的实现了，如下代码所示，SetMesh()方法最终在C++中实现，毕竟由于UI的元素很多，同时参与合并顶点的信息也会很多，在C++中实现效率会更好。看到这里，我相信大家应该能明白UGUI为什么效率会被NGUI要高一些了，因为NGUI的网格Mesh合并都是在C#中完成的，而UGUI网格合并都是在C++中底层中完成的。 </li>
+</ul>
+<p><strong>UpdateMaterial方法</strong></p>
+<p><strong>更新canvasRenderer的材质和纹理。</strong>在给canvasRenderer设置材质时，会遍历所有IMaterialModifier类型的组件，调用IMaterialModifier.GetModifiedMaterial方法，用于重建图像时，获取修改后的Material，来实现遮罩效果。</p>
+<h3 id="重建总结"><a href="#重建总结" class="headerlink" title="重建总结"></a>重建总结</h3><ul>
+<li><p>在UGUI中，网格的更新或重建（为了尽可能合并UI部分的DrawCall）是以Canvas为单位的，且只在其中的UI元素发生变动（位置、颜色等）时才会进行。因此，将<strong>动态UI元素与静态UI元素分离</strong>后，可以将动态UI元素的变化所引起的网格更新或重建所涉及到的范围变小，从而降低一定的开销。</p>
+</li>
+<li><p>重建中更新指的是UI元素本身的某些属性发生变化，从而需要重新生成，或者更新顶点属性。比如颜色变了，在UGUI中颜色的变化是通过修改顶点色实现的，所以就需要更新UI元素对应的每个顶点的顶点色属性（可以认为就是修改下某个数组里的数值）。</p>
+<p> UI元素和别的网格不同点在于，UI的网格是需要进行<strong>合并</strong>的，并且在UGUI中是<strong>以Canvas为单位</strong>的，在提交GPU之前，同一Canvas下的所有UI元素都会被合入一个Mesh中（但包含多个SubMesh）。</p>
+<p>所以位置的移动，顶点属性的变化，都会<strong>导致这个Mesh要重新合并</strong>，也就是网格重建。这也是为什么说要“动静分离”的原因，完全静态的Canvas是不需要重建的，但只要里面有一个UI元素在动，就会引起Canvas的重建。</p>
+</li>
+<li><p>在UGUI里更改了Image的Color属性，其原理是修改顶点色，因此是会引起网格的Rebuild的。通过修改顶点色来实现UI元素变色的好处在于，<strong>修改顶点色可以保证其材质不变，因此不会产生额外的Draw Call</strong>。在UI的默认Shader中存在一个Tint Color的变量，正常情况下，该值为常数(1,1,1)，且并不会被修改。如果是用脚本访问Image的Material，并修改其上的Tint Color属性时，对UI元素产生的网格信息并没有影响，因此就不会引起网格的Rebuild。但这样做因为修改了材质，所以会增加一个Draw Call。（？</p>
+</li>
+</ul>
+<h2 id="层级"><a href="#层级" class="headerlink" title="层级"></a>层级</h2><p>UGUI的层叠顺序是按照Hierarchy中的顺序从上往下进行的，也就是越靠上的组件，就会被绘制在越底部。</p>
+<ul>
+<li>渲染顺序</li>
+</ul>
+<p>①不同Camera的Depth。（大在前，小在后）<br>②同Camera的SortingLayer。（下在前，上在后）<br>③同SortingLayer下的Order in Layer。（大在前，小在后）<br>④同Order in Layer下的Z轴。（小在前，大在后）</p>
+<p>如果是多个Canvas的渲染先后顺序<br>调Canvas下面有一个Sort Order值，默认为0，越大越在后面。</p>
+<hr>
+<p>创建任意UGUI元素时自动生成一个Canvas物体，Canvas下的所有物体从上往下渲染，即排在下面的会遮盖排上面的。同理，子元素会覆盖父元素。</p>
+<p>在游戏运行中如何修改UGUI的显示层级？<br>在代码中调整该元素的层级位：使用RectTransform类的函数。</p>
+<ul>
+<li>SetAsFirstSibling：移动到所有兄弟节点的第一个位置（Hierarchy同级最上面，先渲染，显示在最下面）</li>
+<li>SetAsLastSibling：移动到所有兄弟节点的最后一个位置（Hierarchy同级最下面，后渲染，显示在最上面）</li>
+<li>GetSiblingIndex：获得该元素在当前兄弟节点层级的位置</li>
+<li>SetSiblingIndex：设置该元素在当前兄弟节点层级的位置</li>
+</ul>
+<h2 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h2><p>两个方式，Rect2DMask和mask，只对子节点生效，理论上可以改源码，一般没啥必要改。</p>
+<p><strong>RectMask2D</strong></p>
+<p>只能遮挡矩形范围，类似NGUIpanel的裁剪方式。这种方式不增加drawcall，比mask性能高些，但是只能遮挡矩形区域。</p>
+<p>shader部分，定义UNITY_UI_CLIP_RECT，color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);实现裁剪。</p>
+<p>代码部分，调用CanvasRenderer的EnableRectClipping方法，传遮挡区域，底层设置给_ClipRect。</p>
+<p>RectMask2D节点下的maskable组件，注册到ClipperRegistry类，底层控制对应的shader打开宏定义。</p>
+<p><strong>Mask</strong></p>
+<p>原理设置模板缓冲值，通过测试的像素显示，从而只在指定范围内显示图像。透明度为0的区域不显示。</p>
+<p>实现方式</p>
+<p>将渲染分3个步骤，首先渲染mask，设置模板缓冲的值，然后渲染模板下的对象，判断模板缓冲值，相同才渲染，也就是在根节点定义的区域内渲染，最后将模板缓冲区设置为0。</p>
+<p>缺点</p>
+<ol>
+<li>打乱合批。</li>
+<li>圆形边缘锯齿明显，原因是并不支持边缘渐变，只有显示和不显示两个状态。</li>
+<li>遮挡效果只是显示，点击逻辑还是完整的区域，一般常用的，扩展一个图形更好，比如圆形</li>
+</ol>
+<h2 id="图集"><a href="#图集" class="headerlink" title="图集"></a>图集</h2><h2 id="输入系统"><a href="#输入系统" class="headerlink" title="输入系统"></a>输入系统</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/woodengm/article/details/123393108">Unity中的UGUI源码解析之事件系统(1)-概述_unity事件系统源码_拂面清风三点水的博客-CSDN博客</a></p>
+<p>广义的<strong>事件系统</strong>是指Unity中整个事件相关的一整个系统, 而狭义的<strong>事件系统</strong>指的是一个专门的组件: <strong>EventSystem</strong>.</p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong>事件系统</strong>主要负责:</p>
+<ul>
+<li>处理输入</li>
+<li>射线投射</li>
+<li>发送事件</li>
+</ul>
+<p><strong>事件系统</strong>主要由以下几个部分组成:（整个<strong>事件系统</strong>由很多角色组成, 互相协作来完成事件相关工作.）</p>
+<ul>
+<li><code>EventSystem</code>组件</li>
+<li>输入模块(InputModule): <code>BaseInputModule</code>和其子类</li>
+<li>射线投射器(Raycaster)</li>
+<li>消息系统</li>
+<li>各种支持的事件</li>
+<li>事件触发器(EventTrigger)</li>
+</ul>
+<h3 id="EventSystem"><a href="#EventSystem" class="headerlink" title="EventSystem"></a>EventSystem</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/woodengm/article/details/123416615">Unity中的UGUI源码解析之事件系统(2)-EventSystem组件_unity eventsystem raycastcomparer_拂面清风三点水的博客-CSDN博客</a></p>
+<p><strong>EventSystem</strong>相当于<strong>事件系统的管理器</strong>, 负责协调各个模块.</p>
+<p><strong>EventSystem</strong>主要负责:</p>
+<ul>
+<li><strong>事件系统</strong>对外的接口</li>
+<li>负责各个事件相关模块之间通讯的管理和协调</li>
+<li>管理选中的游戏对象</li>
+<li>管理正则使用的输入模块</li>
+<li>管理射线投射</li>
+<li>根据需要更新所有的输入模块</li>
+</ul>
+<p><strong>EventSystem</strong>需要与其它组件协同工作, 根据任务不同, 搭配的组件不同, Unity建议我们一个场景只有一个<strong>EventSystem</strong>, 当然, 这并不是强制要求.</p>
+<p>在一个场景中添加任意的UI控件, 会默认添加一个EventSystem对象, 身上挂载EventSystem组件和一个StandaloneInputModule(独立输入模块)组件. 各种事件要生效, 场景中至少需要一个EventSystem. 但是也可以存在多个, 但是只会生效一个.</p>
+<blockquote>
+<p>Unity默认会从挂载<strong>EventSystem</strong>组件的对象上查找输入模块并添加到其内部列表中进行管理和配合使用.</p>
+</blockquote>
+<h3 id="输入模块-InputModule"><a href="#输入模块-InputModule" class="headerlink" title="输入模块(InputModule)"></a>输入模块(InputModule)</h3><p>输入模块主要处理输入, 也是整个<strong>事件系统</strong>的主要部分, Unity提供了下面的几个类来抽象输入的处理:</p>
+<ul>
+<li><strong>BaseInputModule</strong>:整个输入模块的基类</li>
+<li><strong>PointerInputModule : BaseInputModule</strong>: 处理<u>指针设备输入</u>的基类</li>
+<li><strong>StandaloneInputModule: PointerInputModule</strong>: 独立输入模块, 目前是主要的输入处理模块</li>
+<li>TouchInputModule : PointerInputModule: 处理触摸事件输入, (已经废弃, 内容包含到StandaloneInputModule中)</li>
+</ul>
+<blockquote>
+<p>指针输入(PointerInput)：</p>
+<p><strong>指针输入设备</strong>指的是那些在2d表面追踪输入位置的设备, 事件系统支持的指针输入有: <strong>触摸, 鼠标和触控笔</strong>. <a target="_blank" rel="noopener" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/Pointers.html">详情在这里</a>. 虽然这里面讲的是新的输入系统, 但是概念是一样的, 不影响理解.</p>
+</blockquote>
+<h3 id="射线投射器（Raycaster）"><a href="#射线投射器（Raycaster）" class="headerlink" title="射线投射器（Raycaster）"></a>射线投射器（Raycaster）</h3><p>这就是经常听到的射线检测器, 原理是在点击或者触摸的位置发射一条射线, 然后收集所有被射线穿透的对象, 然后返回最可能(比如最接近屏幕的对象)的目标. 供<strong>事件系统</strong>使用.</p>
+<p>Unity提供了三种射线投射器:</p>
+<ul>
+<li><strong>图形射线投射器 (Graphic Raycaster)</strong>, 一般用于UI元素, 常挂载在Canvas上, 用于遍历该Canvas的各个元素. 就是说没有这个组件就无法触发各种UI事件.</li>
+<li><strong>2D 物理射线投射器 (Physics 2D Raycaster)</strong>, 用于<u>2D物理元素</u>的检测, 需要对象身上有碰撞盒子(Collider)</li>
+<li><strong>物理射线投射器 (Physics Raycaster)</strong> - 用于 3D 物理元素, 需要对象身上有碰撞盒子(Collider)</li>
+</ul>
+<p>只要场景中存在射线投射器, 然后从输入模块发出检测请求, 那么事件系统就会使用它, 这是通过射线管理器(<code>RaycasterManager</code>)来实现的.</p>
+<h3 id="消息系统"><a href="#消息系统" class="headerlink" title="消息系统"></a>消息系统</h3><p>UGUI使用了新的消息系统来处理<strong>消息分发</strong>, 这个实现很巧妙, 没有使用常规的显得比较繁重的消息系统, </p>
+<p>而是使用了一个静态的类ExecuteEvents和一个消息接口IEventSystemHandler, 通过每次分发时查询对象身上的<strong>实现了IEventSystemHandler接口</strong>的所有组件, 然后向这些组件分发消息, 消息系统本身不维护消息和其处理器.</p>
+<h3 id="各种支持的事件"><a href="#各种支持的事件" class="headerlink" title="各种支持的事件"></a>各种支持的事件</h3><p>事件系统所有的事件都实现<code>IEventSystemHandler</code>接口, 这是消息系统的基础, Unity提供了以下<strong>事件</strong>:</p>
+<blockquote>
+<p>接收对应事件并<strong>执行</strong>自己的自定义响应方法。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">IPointerEnterHandler - OnPointerEnter <span class="comment">// 当指针进入对象时调用</span></span><br><span class="line">IPointerExitHandler - OnPointerExit <span class="comment">// 当指针退出对象时调用</span></span><br><span class="line">IPointerDownHandler - OnPointerDown <span class="comment">// 在对象上按下指针时调用</span></span><br><span class="line">IPointerUpHandler - OnPointerUp - <span class="function">Called <span class="keyword">when</span> a pointer <span class="keyword">is</span> <span class="title">released</span> (<span class="params">called <span class="keyword">on</span> the original the pressed <span class="built_in">object</span></span>)</span></span><br><span class="line"><span class="function">IPointerClickHandler - OnPointerClick - 在同一对象上按下再松开指针时调用</span></span><br><span class="line"><span class="function">IInitializePotentialDragHandler - OnInitializePotentialDrag - 在找到拖动目标时调用，可用于初始化值</span></span><br><span class="line"><span class="function">IBeginDragHandler - OnBeginDrag - 即将开始拖动时在拖动对象上调用</span></span><br><span class="line"><span class="function">IDragHandler - OnDrag - 发生拖动时在拖动对象上调用</span></span><br><span class="line"><span class="function">IEndDragHandler - OnEndDrag - 拖动完成时在拖动对象上调用</span></span><br><span class="line"><span class="function">IDropHandler - OnDrop - 在拖动目标对象上调用</span></span><br><span class="line"><span class="function">IScrollHandler - OnScroll - 当鼠标滚轮滚动时调用</span></span><br><span class="line"><span class="function">IUpdateSelectedHandler - OnUpdateSelected - 每次勾选时在选定对象上调用</span></span><br><span class="line"><span class="function">ISelectHandler - OnSelect - 当对象成为选定对象时调用</span></span><br><span class="line"><span class="function">IDeselectHandler - OnDeselect - 取消选择选定对象时调用</span></span><br><span class="line"><span class="function">IMoveHandler - OnMove <span class="comment">// 发生移动事件（上、下、左、右等）时调用</span></span></span><br><span class="line"><span class="function">ISubmitHandler - OnSubmit - 按下 Submit 按钮时调用</span></span><br><span class="line"><span class="function">ICancelHandler - OnCancel - 按下 Cancel 按钮时调用</span></span><br></pre></td></tr></table></figure>
+
+<p>通过在Monobehavior脚本上实现这些接口就能接收事件. 也可以直接实现<code>IEventSystemHandler</code>接口, 自定义消息. 示例如下:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NavigationEventTest</span> : <span class="title">MonoBehaviour</span>, <span class="title">IMoveHandler</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnMove</span>(<span class="params">AxisEventData eventData</span>)</span> &#123;</span><br><span class="line">		Debug.LogError(<span class="string">&quot;onMove: &quot;</span> + eventData);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ----------------------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ICustomMessageTarget</span> : <span class="title">IEventSystemHandler</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 可通过消息系统调用的函数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Message1</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Message2</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CustomMessageTarget</span> : <span class="title">MonoBehaviour</span>, <span class="title">ICustomMessageTarget</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Message1</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log (<span class="string">&quot;Message 1 received&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Message2</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log (<span class="string">&quot;Message 2 received&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ExecuteEvents.Execute&lt;ICustomMessageTarget&gt;(target, <span class="literal">null</span>, (x,y)=&gt;x.Message1());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="事件触发器-EventTrigger"><a href="#事件触发器-EventTrigger" class="headerlink" title="事件触发器(EventTrigger)"></a>事件触发器(EventTrigger)</h3><p>上面添加事件的方式需要脚本实现事件接口, 我们也可以通过事件触发器来拦截所有事件, 处理我们想要处理的事件.</p>
+<p>有两种事件事件触发器的方式, 一个是通过继承, 然后重写指定的事件方法, 如下:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EventTriggerExample</span> : <span class="title">EventTrigger</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnBeginDrag</span>(<span class="params">PointerEventData data</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;OnBeginDrag called.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnCancel</span>(<span class="params">BaseEventData data</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;OnCancel called.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另一种是通过设置委托的方式, 如下:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EventTriggerDelegateExample</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        EventTrigger trigger = GetComponent&lt;EventTrigger&gt;();</span><br><span class="line">        EventTrigger.Entry entry = <span class="keyword">new</span> EventTrigger.Entry();</span><br><span class="line">        entry.eventID = EventTriggerType.PointerDown;</span><br><span class="line">        entry.callback.AddListener((data) =&gt; &#123; OnPointerDownDelegate((PointerEventData)data); &#125;);</span><br><span class="line">        trigger.triggers.Add(entry);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerDownDelegate</span>(<span class="params">PointerEventData data</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;OnPointerDownDelegate called.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过事件触发器的方式来注册和处理事件更加灵活, 但是会拦截所有事件, 导致事件无法传递到父对象, 在使用的时候需要注意.</p>
+<p>【更详细的等遇到再深入了解，还有更详细的博客在同一个专栏】</p>
+<h2 id="UGUI的事件传递"><a href="#UGUI的事件传递" class="headerlink" title="UGUI的事件传递"></a>UGUI的事件传递</h2><p><a target="_blank" rel="noopener" href="https://www.xuanyusong.com/archives/4241">Unity3D研究院之将UI的点击事件渗透下去（九十） | 雨松MOMO程序研究院 (xuanyusong.com)</a></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.EventSystems;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> : <span class="title">MonoBehaviour</span>,<span class="title">IPointerClickHandler</span> ,<span class="title">IPointerDownHandler</span>,<span class="title">IPointerUpHandler</span></span><br><span class="line">&#123; </span><br><span class="line"> </span><br><span class="line">    <span class="comment">//监听按下</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerDown</span>(<span class="params">PointerEventData eventData</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        PassEvent(eventData,ExecuteEvents.pointerDownHandler);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//监听抬起</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerUp</span>(<span class="params">PointerEventData eventData</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        PassEvent(eventData,ExecuteEvents.pointerUpHandler);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//监听点击</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerClick</span>(<span class="params">PointerEventData eventData</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        PassEvent(eventData,ExecuteEvents.submitHandler);</span><br><span class="line">        PassEvent(eventData,ExecuteEvents.pointerClickHandler);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    <span class="comment">//把事件透下去</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">PassEvent</span>&lt;<span class="title">T</span>&gt;(<span class="params">PointerEventData data,ExecuteEvents.EventFunction&lt;T&gt; function</span>)</span></span><br><span class="line"><span class="function">        <span class="keyword">where</span> T : IEventSystemHandler</span></span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;RaycastResult&gt; results = <span class="keyword">new</span> List&lt;RaycastResult&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 发射射线，获得被射线击中的物体</span></span><br><span class="line">        EventSystem.current.RaycastAll(data, results);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 自己？</span></span><br><span class="line">        GameObject current = data.pointerCurrentRaycast.gameObject ;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i =<span class="number">0</span>; i&lt; results.Count;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 除了自己其它被射中的物体都执行响应</span></span><br><span class="line">            <span class="keyword">if</span>(current!= results[i].gameObject)</span><br><span class="line">            &#123;</span><br><span class="line">                ExecuteEvents.Execute(results[i].gameObject, data,function);</span><br><span class="line">                <span class="comment">//RaycastAll后ugui会自己排序，如果你只想响应透下去的最近的一个响应，这里ExecuteEvents.Execute后直接break就行。</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>仍然遵循这样的流程：输入（各种类型的输入）-射线检测-被检测到的物体（根据输入类型）执行事件。</p>
+<p>由于Unity默认是最近的发生响应，如果想要都被响应就要手动处理（？</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/unity.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/07/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">设计模式-知识整理</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">someone very lazy</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Canvas"><span class="toc-number">1.</span> <span class="toc-text">Canvas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%85%83%E7%B4%A0%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.1.</span> <span class="toc-text">绘制元素顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F-Render-Modes"><span class="toc-number">1.2.</span> <span class="toc-text">渲染模式 Render Modes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UGUI%E5%92%8CNGUI%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">UGUI和NGUI的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UGUI%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">UGUI原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6"><span class="toc-number">3.1.</span> <span class="toc-text">图形绘制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B1%BB%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.2.</span> <span class="toc-text">基础类详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%89%B9%E8%BF%87%E7%A8%8B%EF%BC%88Canvases%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">合批过程（Canvases）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E7%BB%98%E8%BF%87%E7%A8%8B%EF%BC%88Graphics%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">重绘过程（Graphics）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E7%90%86%E8%A7%A3"><span class="toc-number">3.4.1.</span> <span class="toc-text">大致理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%92%8C%E9%87%8D%E5%BB%BA%EF%BC%9ACanvasUpdateRegistry"><span class="toc-number">3.4.2.</span> <span class="toc-text">缓存和重建：CanvasUpdateRegistry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E9%87%8D%E5%BB%BA%EF%BC%88%E8%AF%A6%E7%BB%86%EF%BC%89"><span class="toc-number">3.4.3.</span> <span class="toc-text">布局重建（详细）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E9%87%8D%E5%BB%BA%EF%BC%88%E8%AF%A6%E7%BB%86%EF%BC%89"><span class="toc-number">3.4.4.</span> <span class="toc-text">图形重建（详细）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%BB%BA%E6%80%BB%E7%BB%93"><span class="toc-number">3.4.5.</span> <span class="toc-text">重建总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%82%E7%BA%A7"><span class="toc-number">3.5.</span> <span class="toc-text">层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%81%E5%89%AA"><span class="toc-number">3.6.</span> <span class="toc-text">裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E9%9B%86"><span class="toc-number">3.7.</span> <span class="toc-text">图集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.8.</span> <span class="toc-text">输入系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">3.8.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EventSystem"><span class="toc-number">3.8.2.</span> <span class="toc-text">EventSystem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97-InputModule"><span class="toc-number">3.8.3.</span> <span class="toc-text">输入模块(InputModule)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%84%E7%BA%BF%E6%8A%95%E5%B0%84%E5%99%A8%EF%BC%88Raycaster%EF%BC%89"><span class="toc-number">3.8.4.</span> <span class="toc-text">射线投射器（Raycaster）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.8.5.</span> <span class="toc-text">消息系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%94%AF%E6%8C%81%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.8.6.</span> <span class="toc-text">各种支持的事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E5%99%A8-EventTrigger"><span class="toc-number">3.8.7.</span> <span class="toc-text">事件触发器(EventTrigger)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UGUI%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92"><span class="toc-number">3.9.</span> <span class="toc-text">UGUI的事件传递</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
