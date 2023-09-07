@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C#-数据结构和算法 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="字典原理浅析C# Dictionary实现原理 - InCerry - 博客园 (cnblogs.com)[更清晰] 【C#】浅析C# Dictionary实现原理 - 知乎 (zhihu.com) 主要是拉链法。 核心是buckets和entries数组。  将键转化成hashcode之后，取余数，得到哈希值，找到哈希桶数组对应的位置2 将信息存入到entries数组中，0位是空的，就放到0处，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#-数据结构和算法">
+<meta property="og:url" content="https://huangxinhere.github.io/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="字典原理浅析C# Dictionary实现原理 - InCerry - 博客园 (cnblogs.com)[更清晰] 【C#】浅析C# Dictionary实现原理 - 知乎 (zhihu.com) 主要是拉链法。 核心是buckets和entries数组。  将键转化成hashcode之后，取余数，得到哈希值，找到哈希桶数组对应的位置2 将信息存入到entries数组中，0位是空的，就放到0处，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huangxinhere.github.io/img/%7D7Y[5BZE_KJVDX6TI]$9CY1.png">
+<meta property="article:published_time" content="2023-09-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-05T08:54:58.825Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/%7D7Y[5BZE_KJVDX6TI]$9CY1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C#-数据结构和算法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-05 16:54:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/%7D7Y%5B5BZE_KJVDX6TI%5D$9CY1.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C#-数据结构和算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-03T16:00:00.000Z" title="发表于 2023-09-04 00:00:00">2023-09-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-05T08:54:58.825Z" title="更新于 2023-09-05 16:54:58">2023-09-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C#-数据结构和算法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/InCerry/p/10325290.html">浅析C# Dictionary实现原理 - InCerry - 博客园 (cnblogs.com)</a>[更清晰]</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96633352">【C#】浅析C# Dictionary实现原理 - 知乎 (zhihu.com)</a></p>
+<p>主要是拉链法。</p>
+<p>核心是buckets和entries数组。</p>
+<p><img src="https://img2018.cnblogs.com/blog/997046/201901/997046-20190126232145341-1401582594.png" alt="1548491185593"></p>
+<p>将键转化成hashcode之后，取余数，得到哈希值，找到哈希桶数组对应的位置2</p>
+<p>将信息存入到entries数组中，0位是空的，就放到0处，将<code>Entry</code>的下标<code>entryIndex</code>赋值给<code>buckets</code>中对应下标的<code>bucket</code>。步骤3中是存放在<code>entries[0]</code>的位置，所以<code>buckets[2]=0</code>。</p>
+<p><img src="https://img2018.cnblogs.com/blog/997046/201901/997046-20190126232144972-327613048.png" alt="1548492100757"></p>
+<ul>
+<li>哈希碰撞：将新加入的元素放进entries的下一个空位，更新next和哈希桶指向的索引。</li>
+</ul>
+<p><img src="https://img2018.cnblogs.com/blog/997046/201901/997046-20190126232144436-391161641.png" alt="1548494357566"></p>
+<ul>
+<li>删除的时候，如果元素在链表中间，就会让前一个指向后一个，空出来位置的用freelist记录，下一次可以接着用。不过这样就打乱了值插入的顺序。</li>
+</ul>
+<h2 id="Hash桶算法"><a href="#Hash桶算法" class="headerlink" title="Hash桶算法"></a>Hash桶算法</h2><p>说到Hash算法大家就会想到<strong>Hash表</strong>，一个Key通过Hash函数运算后可快速的得到hashCode，通过hashCode的映射可直接Get到Value，但是hashCode一般取值都是非常大的，经常是2^32以上，不可能对每个hashCode都指定一个映射。</p>
+<p>因为这样的一个问题，所以人们就将生成的HashCode以分段的形式来映射，把每一段称之为一个<strong>Bucket（桶）</strong>，一般常见的Hash桶就是直接对结果取余。</p>
+<blockquote>
+<p>假设将生成的hashCode可能取值有2^32个，然后将其切分成一段一段，使用<strong>8</strong>个桶来映射，那么就可以通过<code>bucketIndex = HashFunc(key1) % 8</code>这样一个算法来确定这个hashCode映射到具体的哪个桶中。</p>
+</blockquote>
+<p>大家可以看出来，通过hash桶这种形式来进行映射，所以会加剧hash的冲突。</p>
+<h2 id="扩容操作的触发条件"><a href="#扩容操作的触发条件" class="headerlink" title="扩容操作的触发条件"></a>扩容操作的触发条件</h2><ul>
+<li><strong>第一种情况自然就是数组已经满了，没有办法继续存放新的元素。</strong></li>
+<li><strong>第二种，Dictionary中发生的碰撞次数太多，会严重影响性能，</strong>也会触发扩容操作。</li>
+</ul>
+<h2 id="扩容操作如何进行"><a href="#扩容操作如何进行" class="headerlink" title="扩容操作如何进行"></a>扩容操作如何进行</h2><blockquote>
+<p><strong>1.申请两倍于现在大小的buckets、entries</strong><br><strong>2.将现有的元素拷贝到新的entries</strong></p>
+<p><strong>3、如果是Hash碰撞扩容，使用新HashCode函数重新计算Hash值</strong></p>
+</blockquote>
+<h2 id="C-中哈希表和字典的区别"><a href="#C-中哈希表和字典的区别" class="headerlink" title="C#中哈希表和字典的区别"></a>C#中哈希表和字典的区别</h2><p><a target="_blank" rel="noopener" href="https://geek-docs.com/csharp/csharp-ask-answer/the-difference-between-hash-tables-and-dictionaries-in-c.html">C#中哈希表和字典的区别|极客教程 (geek-docs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_23338865/article/details/83341220">c#哈希表和字典的区别_c# dictionary和hashmap_偏执灬的博客-CSDN博客</a>[更详细]</p>
+<ul>
+<li>字典</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C# program to illustrate Dictionary</span></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">GeekdocsDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Creating a dictionary</span></span><br><span class="line">        <span class="comment">// using Dictionary&lt;TKey, TValue&gt; class</span></span><br><span class="line">        Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; My_dict = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Adding key/value pairs in the Dictionary</span></span><br><span class="line">        <span class="comment">// Using Add() method</span></span><br><span class="line">        My_dict.Add(<span class="string">&quot;a.01&quot;</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">        My_dict.Add(<span class="string">&quot;a.02&quot;</span>, <span class="string">&quot;C++&quot;</span>);</span><br><span class="line">        My_dict.Add(<span class="string">&quot;a.03&quot;</span>, <span class="string">&quot;C#&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span>(KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; element <span class="keyword">in</span> My_dict)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Key:- &#123;0&#125; and Value:- &#123;1&#125;&quot;</span>, element.Key, element.Value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>哈希表</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C# program to illustrate a hashtable</span></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">GeekdocsDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Create a hashtable</span></span><br><span class="line">        <span class="comment">// Using Hashtable class</span></span><br><span class="line">        Hashtable my_hashtable = <span class="keyword">new</span> Hashtable();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Adding key/value pair in the hashtable</span></span><br><span class="line">        <span class="comment">// Using Add() method</span></span><br><span class="line">        my_hashtable.Add(<span class="string">&quot;A1&quot;</span>, <span class="string">&quot;Welcome&quot;</span>);</span><br><span class="line">        my_hashtable.Add(<span class="string">&quot;A2&quot;</span>, <span class="string">&quot;to&quot;</span>);</span><br><span class="line">        my_hashtable.Add(<span class="string">&quot;A3&quot;</span>, <span class="string">&quot;Geekdocsbai Geekdocsbai&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span>(DictionaryEntry element <span class="keyword">in</span> my_hashtable)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Key:- &#123;0&#125; and Value:- &#123;1&#125; &quot;</span>, element.Key, element.Value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>区别</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">哈希表</th>
+<th align="center">字典</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Hashtable 是一个非泛型集合。</td>
+<td align="center">字典是一个通用集合。</td>
+</tr>
+<tr>
+<td align="center">Hashtable 在 <code>System.Collections</code> 命名空间下定义。</td>
+<td align="center">字典在 <code>System.Collections.Generic</code> 命名空间下定义。</td>
+</tr>
+<tr>
+<td align="center">在 Hashtable 中，可以存储相同类型或不同类型的键/值对。</td>
+<td align="center">在 <code>Dictionary</code> 中，可以存储相同类型的键/值对。</td>
+</tr>
+<tr>
+<td align="center">在 Hashtable 中，不需要指定 key 和 value 的类型。</td>
+<td align="center">在 Dictionary 中，必须指定键和值的类型。</td>
+</tr>
+<tr>
+<td align="center">由于装箱/拆箱，数据检索比字典慢。</td>
+<td align="center">由于没有装箱/拆箱，数据检索比 <code>Hashtable</code> 快。</td>
+</tr>
+<tr>
+<td align="center">在 Hashtable 中，如果尝试访问给定 Hashtable 中不存在的键，那么它将给出 <code>null</code> 值。</td>
+<td align="center">在 <code>Dictionary</code> 中，如果尝试访问给定 <code>Dictionary</code> 中不存在的键，则会出错。</td>
+</tr>
+<tr>
+<td align="center">它是线程安全的。</td>
+<td align="center">它也是线程安全的，但仅适用于公共静态成员。</td>
+</tr>
+<tr>
+<td align="center">它不维护存储<strong>值</strong>的顺序。</td>
+<td align="center">它始终保持存储值的顺序。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Dictionary&lt;Tkey,Tvalue&gt;是Hastbale的泛型实现。 </p>
+<p>Dictionary和HashTable内部实现差不多，但前者无需装箱拆箱操作，效率略高一点。</p>
+</blockquote>
+<ul>
+<li>线程方面</li>
+</ul>
+<p>1）单线程程序中推荐使用 Dictionary, 有泛型优势, 且读取速度较快, 容量利用更充分.<br>2）<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%A4%9A%E7%BA%BF%E7%A8%8B&spm=1001.2101.3001.7020">多线程</a>程序中推荐使用 Hashtable, 默认的 Hashtable 允许单线程写入, 多线程读取, 对 Hashtable 进一步调用 Synchronized()方法可以获得完全线程安全的类型. 而Dictionary 非线程安全, 必须人为使用 lock 语句进行保护, 效率大减.</p>
+<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><p><a target="_blank" rel="noopener" href="http://www.luzexi.com/2018/07/06/Unity3D%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%BF%9B%E9%98%B6%E4%B8%BB%E7%A8%8B-CSharp%E8%A6%81%E7%82%B9%E6%8A%80%E6%9C%AF1">《Unity3D高级编程之进阶主程》第一章，C#要点技术(一) - List 底层源码剖析 - 技术人生 (luzexi.com)</a></p>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">List</span>&lt;<span class="title">T</span>&gt; : <span class="title">IList</span>&lt;<span class="title">T</span>&gt;, <span class="title">System.Collections.IList</span>, <span class="title">IReadOnlyList</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">int</span> _defaultCapacity = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> T[] _items;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> _size;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> _version;</span><br><span class="line">    <span class="keyword">private</span> Object _syncRoot;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">readonly</span> T[]  _emptyArray = <span class="keyword">new</span> T[<span class="number">0</span>];        </span><br><span class="line">        </span><br><span class="line">    <span class="comment">// Constructs a List. The list is initially empty and has a capacity</span></span><br><span class="line">    <span class="comment">// of zero. Upon adding the first element to the list the capacity is</span></span><br><span class="line">    <span class="comment">// increased to 16, and then increased in multiples of two as required.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">List</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        _items = _emptyArray;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Constructs a List with a given initial capacity. The list is</span></span><br><span class="line">    <span class="comment">// initially empty, but will have room for the given number of elements</span></span><br><span class="line">    <span class="comment">// before any reallocations are required.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">List</span>(<span class="params"><span class="built_in">int</span> capacity</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (capacity &lt; <span class="number">0</span>) ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity, ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);</span><br><span class="line">        Contract.EndContractBlock();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (capacity == <span class="number">0</span>)</span><br><span class="line">            _items = _emptyArray;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            _items = <span class="keyword">new</span> T[capacity];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="comment">//其他内容</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>List 继承于IList，IReadOnlyList，IList是提供了主要的接口，IReadOnlyList提供了迭代接口。</li>
+<li>List内部是用数组实现的，而不是链表，并且当没有给予指定容量时，初始的容量为0。</li>
+</ul>
+<h2 id="Add"><a href="#Add" class="headerlink" title="Add"></a>Add</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Adds the given object to the end of this list. The size of the list is</span></span><br><span class="line"><span class="comment">// increased by one. If required, the capacity of the list is doubled</span></span><br><span class="line"><span class="comment">// before adding the new element.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Add</span>(<span class="params">T item</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_size == _items.Length) EnsureCapacity(_size + <span class="number">1</span>);</span><br><span class="line">    _items[_size++] = item;</span><br><span class="line">    _version++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ensures that the capacity of this list is at least the given minimum</span></span><br><span class="line"><span class="comment">// value. If the currect capacity of the list is less than min, the</span></span><br><span class="line"><span class="comment">// capacity is increased to twice the current capacity or to min,</span></span><br><span class="line"><span class="comment">// whichever is larger.</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">EnsureCapacity</span>(<span class="params"><span class="built_in">int</span> min</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_items.Length &lt; min) &#123;</span><br><span class="line">        <span class="built_in">int</span> newCapacity = _items.Length == <span class="number">0</span>? _defaultCapacity : _items.Length * <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// Allow the list to grow to maximum possible capacity (~2G elements) before encountering overflow.</span></span><br><span class="line">        <span class="comment">// Note that this check works even when _items.Length overflowed thanks to the (uint) cast</span></span><br><span class="line">        <span class="keyword">if</span> ((<span class="built_in">uint</span>)newCapacity &gt; Array.MaxArrayLength) newCapacity = Array.MaxArrayLength;</span><br><span class="line">        <span class="keyword">if</span> (newCapacity &lt; min) newCapacity = min;</span><br><span class="line">        Capacity = newCapacity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>每次增加一个元素的数据，Add接口都会首先检查的是容量还够不够，如果不够则用 EnsureCapacity 来增加容量。</p>
+</li>
+<li><p>每次容量不够的时候，整个数组的容量都会<strong>扩充一倍</strong>，_defaultCapacity 是容量的默认值为4。因此整个扩充的路线为4，8，16，32，64，128，256，512，1024…依次类推。</p>
+<blockquote>
+<p>List使用数组形式作为底层数据结构，好处是使用索引方式提取元素很快，但在<u>扩容的时候就会很糟糕</u>，每次new数组都会造成内存垃圾，这给垃圾回收GC带来了很多负担。</p>
+<p>这里按2指数扩容的方式，可以为GC减轻负担，但是如果当数组连续被替换掉也还是会造成GC的不小负担，特别是代码中List频繁使用的Add时。</p>
+<p>另外，如果<u>数量不得当也会浪费大量内存空间</u>，比如当元素数量为 520（512刚好不够，却只能两倍扩充） 时，List 就会扩容到1024个元素，如果不使用剩余的504个空间单位，就造成了大部分的内存空间的浪费。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Remove"><a href="#Remove" class="headerlink" title="Remove"></a>Remove</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Removes the element at the given index. The size of the list is</span></span><br><span class="line"><span class="comment">// decreased by one.</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Remove</span>(<span class="params">T item</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">int</span> index = IndexOf(item);</span><br><span class="line">    <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        RemoveAt(index);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Returns the index of the first occurrence of a given value in a range of</span></span><br><span class="line"><span class="comment">// this list. The list is searched forwards from beginning to end.</span></span><br><span class="line"><span class="comment">// The elements of the list are compared to the given value using the</span></span><br><span class="line"><span class="comment">// Object.Equals method.</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="comment">// This method uses the Array.IndexOf method to perform the</span></span><br><span class="line"><span class="comment">// search.</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">IndexOf</span>(<span class="params">T item</span>)</span> &#123;</span><br><span class="line">    Contract.Ensures(Contract.Result&lt;<span class="built_in">int</span>&gt;() &gt;= <span class="number">-1</span>);</span><br><span class="line">    Contract.Ensures(Contract.Result&lt;<span class="built_in">int</span>&gt;() &lt; Count);</span><br><span class="line">    <span class="keyword">return</span> Array.IndexOf(_items, item, <span class="number">0</span>, _size);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Removes the element at the given index. The size of the list is</span></span><br><span class="line"><span class="comment">// decreased by one.</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RemoveAt</span>(<span class="params"><span class="built_in">int</span> index</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">uint</span>)index &gt;= (<span class="built_in">uint</span>)_size) &#123;</span><br><span class="line">        ThrowHelper.ThrowArgumentOutOfRangeException();</span><br><span class="line">    &#125;</span><br><span class="line">    Contract.EndContractBlock();</span><br><span class="line">    _size--;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; _size) &#123;</span><br><span class="line">        Array.Copy(_items, index + <span class="number">1</span>, _items, index, _size - index);</span><br><span class="line">    &#125;</span><br><span class="line">    _items[_size] = <span class="literal">default</span>(T);</span><br><span class="line">    _version++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>IndexOf 启用的是 Array.IndexOf 接口来查找元素的索引位置，这个接口本身内部实现是就是按索引顺序从0到n对每个位置的比较，复杂度为O(n)。</li>
+<li>元素删除的原理其实就是用 <strong>Array.Copy 对数组进行覆盖</strong>。</li>
+</ul>
+<ul>
+<li>Insert</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Inserts an element into this list at a given index. The size of the list</span></span><br><span class="line"><span class="comment">// is increased by one. If required, the capacity of the list is doubled</span></span><br><span class="line"><span class="comment">// before inserting the new element.</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Insert</span>(<span class="params"><span class="built_in">int</span> index, T item</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// Note that insertions at the end are legal.</span></span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">uint</span>) index &gt; (<span class="built_in">uint</span>)_size) &#123;</span><br><span class="line">        ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_ListInsert);</span><br><span class="line">    &#125;</span><br><span class="line">    Contract.EndContractBlock();</span><br><span class="line">    <span class="keyword">if</span> (_size == _items.Length) EnsureCapacity(_size + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (index &lt; _size) &#123;</span><br><span class="line">        Array.Copy(_items, index, _items, index + <span class="number">1</span>, _size - index);</span><br><span class="line">    &#125;</span><br><span class="line">    _items[index] = item;</span><br><span class="line">    _size++;            </span><br><span class="line">    _version++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>与Add接口一样，先检查容量是否足够，不足则扩容。</li>
+<li>从源码中获悉，Insert插入元素时，使用的用<strong>拷贝数组</strong>的形式，将数组里的指定元素后面的元素<u>向后移动一个位置</u>。</li>
+</ul>
+<blockquote>
+<p>List的Add，Insert，IndexOf，Remove接口都是没有做过任何形式的优化，都使用的是<u>顺序迭代</u>的方式，如果过于频繁使用的话，会导致效率降低，也会造成不少内存的冗余，使得垃圾回收(GC)时承担了更多的压力。</p>
+<p>其他相关接口比如 AddRange，RemoveRange的原理和Add与Remove一样，区别只是多了几个元素，<u>把单个元素变成了以容器为单位的形式</u>进行操作。都是先检查容量是否合适，不合适则扩容，或者当Remove时先得到索引位置再进行整体的覆盖掉后面的的元素，容器本身大小不会变化，只是做了重复覆盖的操作。</p>
+</blockquote>
+<h2 id="Clear"><a href="#Clear" class="headerlink" title="Clear"></a>Clear</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Clears the contents of List.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Clear</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (_size &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Array.Clear(_items, <span class="number">0</span>, _size); <span class="comment">// Don&#x27;t need to doc this but we clear the elements so that the gc can reclaim the references.</span></span><br><span class="line">        _size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    _version++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Clear接口在调用时并不会删除数组，而只是将数组中的元素清零，并设置 _size 为 0 而已，用于虚拟地表明当前容量为0。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li><p>其它</p>
+<p>Sort：快排；</p>
+</li>
+<li><p>【效率低】</p>
+<p>List 的效率并不高，只是通用性强而已，大部分的算法都使用的是<strong>线性复杂度</strong>的算法，这种线性算法当遇到规模比较大的计算量级时就会导致CPU的大量损耗。</p>
+<p>可以自己改进它，比如不再使用有线性算法的接口，自己重写一套，但凡要优化List 中的线性算法的地方都使用，我们自己制作的工具类。</p>
+</li>
+<li><p>【内存分配方式】</p>
+<p>List的内存分配方式也极为不合理，当List里的元素不断增加时，会<strong>多次重新new数组</strong>，导致原来的数组被抛弃，最后当GC被调用时造成回收的压力。</p>
+<p>我们可以<strong>提前告知 List 对象最多会有多少元素在里面</strong>，这样的话 List 就不会因为空间不够而抛弃原有的数组，去重新申请数组了。</p>
+</li>
+<li><p>【线程安全】</p>
+<p>代码是线程不安全的，它并没有对多线程下做任何锁或其他同步操作。并发情况下，无法判断 _size++ 的执行顺序，因此当我们在多线程间使用 List 时加上安全机制。</p>
+</li>
+</ul>
+<h2 id="如何在遍历的时候删除list中的元素"><a href="#如何在遍历的时候删除list中的元素" class="headerlink" title="如何在遍历的时候删除list中的元素"></a>如何在遍历的时候删除list中的元素</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qk2014/p/4764073.html">C#遍历List并删除某个或者几个元素的方法 - 一夜秋2014 - 博客园 (cnblogs.com)</a></p>
+<ul>
+<li><p>foreach方法：<code>foreach</code>循环在迭代过程中<strong>依赖集合中的迭代器</strong>，而在删除元素时，会导致<strong>迭代器失效</strong>，进而导致异常的发生。</p>
+<p>这是一个常见的陷阱，因为<code>foreach</code>循环是为<strong>只读访问集合</strong>而设计的，其内部使用的迭代器在遍历过程中会<u>对集合的状态进行检查</u>。当集合的结构在遍历期间发生变化（例如删除元素），会导致迭代器的状态不一致，从而抛出<code>InvalidOperationException</code>异常。</p>
+</li>
+<li><p>for正序遍历删除：由于删除之后后面元素往前补齐，而且i++，就会跳过；</p>
+</li>
+<li><p>for逆序遍历删除：可正确得到结果，但逆序添加元素又不同了。</p>
+</li>
+</ul>
+<h2 id="List的浅复制和深复制"><a href="#List的浅复制和深复制" class="headerlink" title="List的浅复制和深复制"></a>List的浅复制和深复制</h2><p><strong>【T是值类型的情况】</strong></p>
+<ul>
+<li>浅复制</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt; T &gt; oldList = <span class="keyword">new</span> List&lt; T &gt;();</span><br><span class="line">oldList.Add(…);</span><br><span class="line">List&lt; T &gt; newList = oldList;	<span class="comment">// 直接赋值</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>深复制</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt; T &gt; oldList = <span class="keyword">new</span> List&lt; T &gt;();</span><br><span class="line">oldList.Add(…);</span><br><span class="line">List&lt; T &gt; newList = <span class="keyword">new</span> List&lt; T &gt;(oldList);	<span class="comment">// 构造函数传参</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>【T不是值类型的情况】</strong></p>
+<p>T是引用类型或者是类的实例。</p>
+<ul>
+<li>浅复制</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.构造函数传参</span></span><br><span class="line"><span class="comment">// 【注意！！】如果oldList = new List&lt;string&gt;()&#123;&quot;a&quot;, &quot;b&quot;&#125;; 也就是这样构造的话，效果是深复制！！</span></span><br><span class="line">List&lt; T &gt; oldList = <span class="keyword">new</span> List&lt; T &gt;();</span><br><span class="line">oldList.Add(…);</span><br><span class="line">List&lt; T &gt; newList = <span class="keyword">new</span> List&lt; T &gt;(oldList);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.调用复制函数</span></span><br><span class="line">List&lt; T &gt; oldList = <span class="keyword">new</span> List&lt; T &gt;();</span><br><span class="line">oldList.Add(…);</span><br><span class="line">List&lt; T &gt; newList = oldList.CopyTo();	<span class="comment">// 错误</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>[CopyTo(T<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.generic.list-1.copyto?view=net-6.0#system-collections-generic-list-1-copyto(-0()-system-int32)">], Int32)</a></th>
+<th>从目标数组的指定索引处开始，将整个 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.generic.list-1?view=net-6.0">List</a> 复制到兼容的一维数组。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[CopyTo(Int32, T<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.generic.list-1.copyto?view=net-6.0#system-collections-generic-list-1-copyto(system-int32-0()-system-int32-system-int32)">], Int32, Int32)</a></td>
+<td>从目标数组的指定索引处开始，将元素的范围从 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.generic.list-1?view=net-6.0">List</a> 复制到兼容的一维数组。</td>
+</tr>
+<tr>
+<td>[CopyTo(T<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.generic.list-1.copyto?view=net-6.0#system-collections-generic-list-1-copyto(-0())">])</a></td>
+<td>从目标数组的开头开始，将整个 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.generic.list-1?view=net-6.0">List</a> 复制到兼容的一维数组。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>深复制</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title">Extensions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">IList</span>&lt;<span class="title">T</span>&gt; <span class="title">Clone</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> IList&lt;T&gt; listToClone</span>) <span class="keyword">where</span> T: ICloneable</span></span><br><span class="line">    &#123;</span><br><span class="line">   	 	<span class="keyword">return</span> listToClone.Select(item =&gt; (T)item.Clone()).ToList();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//当然前提是List中的对象要实现ICloneable接口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/307436697">【c# .net】双向链表（ LinkedList ） - 知乎 (zhihu.com)</a>【使用详解】</p>
+<p>双向链表。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-346c17d94f06f4d41381cf2b750a792d_720w.webp" alt="img"></p>
+<p>1）LinkedList<T> <strong>无法通过下标查找元素</strong>，在查找链表元素时，总是从头结点开始查找。</T></p>
+<p>2）LinkedList<T> 的容量是链表最大包含的元素数，会根据元素增减而<strong>动态调整容量</strong>。</T></p>
+<p>3）LinkedList<T> 中的每个节点 都属于 <strong>LinkedListNode<T> 类型</T></strong>。</T></p>
+<p>4）LinkedList<T> <strong>的值可以为 null，并允许重复值</strong>。</T></p>
+<p>5）LinkedList<T> <strong>不自带排序方法。</strong></T></p>
+<ol start="6">
+<li>查询复杂度为 O(n)，操作复杂度为 O(1)。</li>
+</ol>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/%7D7Y%5B5BZE_KJVDX6TI%5D$9CY1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/"><img class="prev-cover" src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Unity-算法</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5/"><img class="next-cover" src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Unity-术语/概念</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">someone very lazy</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E5%85%B8"><span class="toc-number">1.</span> <span class="toc-text">字典</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hash%E6%A1%B6%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">Hash桶算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E6%93%8D%E4%BD%9C%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">扩容操作的触发条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E6%93%8D%E4%BD%9C%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C"><span class="toc-number">1.4.</span> <span class="toc-text">扩容操作如何进行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E4%B8%AD%E5%93%88%E5%B8%8C%E8%A1%A8%E5%92%8C%E5%AD%97%E5%85%B8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.</span> <span class="toc-text">C#中哈希表和字典的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#List"><span class="toc-number">2.</span> <span class="toc-text">List</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0"><span class="toc-number">2.1.</span> <span class="toc-text">构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Add"><span class="toc-number">2.2.</span> <span class="toc-text">Add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove"><span class="toc-number">2.3.</span> <span class="toc-text">Remove</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clear"><span class="toc-number">2.4.</span> <span class="toc-text">Clear</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">2.5.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8%E9%81%8D%E5%8E%86%E7%9A%84%E6%97%B6%E5%80%99%E5%88%A0%E9%99%A4list%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">2.6.</span> <span class="toc-text">如何在遍历的时候删除list中的元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List%E7%9A%84%E6%B5%85%E5%A4%8D%E5%88%B6%E5%92%8C%E6%B7%B1%E5%A4%8D%E5%88%B6"><span class="toc-number">2.7.</span> <span class="toc-text">List的浅复制和深复制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LinkedList"><span class="toc-number">3.</span> <span class="toc-text">LinkedList</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
