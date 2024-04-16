@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unity-性能优化 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="创建物体new GameObject()1GameObject object&#x3D;new GameObject(“物体名”);  12345678&#x2F;&#x2F; 创建物体，物体名为New Game Object，位置为（0,0,0）public GameObject();&#x2F;&#x2F; 创建物体，物体名为设定的name，位置为（0,0,0）public GameObject(string name);&#x2F;&#x2F; 创建物体，物体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity-性能优化">
+<meta property="og:url" content="https://huangxinhere.github.io/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="创建物体new GameObject()1GameObject object&#x3D;new GameObject(“物体名”);  12345678&#x2F;&#x2F; 创建物体，物体名为New Game Object，位置为（0,0,0）public GameObject();&#x2F;&#x2F; 创建物体，物体名为设定的name，位置为（0,0,0）public GameObject(string name);&#x2F;&#x2F; 创建物体，物体">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huangxinhere.github.io/img/unity.jpg">
+<meta property="article:published_time" content="2023-09-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-13T01:05:38.288Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/unity.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Unity-性能优化',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-13 09:05:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/unity.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Unity-性能优化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-13T16:00:00.000Z" title="发表于 2023-09-14 00:00:00">2023-09-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-13T01:05:38.288Z" title="更新于 2023-10-13 09:05:38">2023-10-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Unity-性能优化"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="创建物体"><a href="#创建物体" class="headerlink" title="创建物体"></a>创建物体</h1><h2 id="new-GameObject"><a href="#new-GameObject" class="headerlink" title="new GameObject()"></a>new GameObject()</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GameObject <span class="built_in">object</span>=<span class="keyword">new</span> GameObject(“物体名”);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建物体，物体名为New Game Object，位置为（0,0,0）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">GameObject</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建物体，物体名为设定的name，位置为（0,0,0）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">GameObject</span>(<span class="params"><span class="built_in">string</span> name</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建物体，物体名为设定的name且添加指定组件，位置为（0,0,0）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">GameObject</span>(<span class="params"><span class="built_in">string</span> name, <span class="keyword">params</span> Type[] components</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Object-Instantiate-prefab"><a href="#Object-Instantiate-prefab" class="headerlink" title="Object.Instantiate(prefab);"></a>Object.Instantiate(prefab);</h2><p>利用prefab来创建。</p>
+<p>常用于创建指定物体，可将物体提前预设好，根据情景应用快速创建所需的物体。</p>
+<h2 id="CreatePrimitive"><a href="#CreatePrimitive" class="headerlink" title="CreatePrimitive"></a>CreatePrimitive</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GameObject.CreatePrimitive(PrimitiveType.Cube);</span><br></pre></td></tr></table></figure>
+
+<p>此方法可创建系统预设的几种常用简单三维模型；</p>
+<h1 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h1><p><a target="_blank" rel="noopener" href="https://blog.uwa4d.com/archives/allinone.html">Unity性能优化大合集，All In One !（更新至8.18） - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技 (uwa4d.com)</a></p>
+<ul>
+<li><strong>内存</strong>问题（GC、频繁申请与释放）；</li>
+<li><strong>IO</strong>（资源加载、频繁读写文件，网络包发送频率过大，频繁读取数据库）；</li>
+<li><strong>逻辑</strong>问题（大量遍历循环、无意义的Tick、过多的锁、高频率Log）；</li>
+<li><strong>AI</strong>（寻路耗时）；</li>
+<li><strong>物理</strong>问题（复杂模拟、碰撞检测）；</li>
+<li><strong>语言</strong>特性等；</li>
+<li>客户端还有各种复杂的<strong>渲染</strong>问题（Draw Call太多，半透明，动态阴影）</li>
+</ul>
+<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><p><a target="_blank" rel="noopener" href="https://blog.uwa4d.com/archives/optimzation_cpu.html">性能优化，永无止境—CPU篇 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技 (uwa4d.com)</a></p>
+<p>就目前的Unity移动游戏而言，CPU方面的性能开销主要可归结为两大类：<strong>引擎模块性能开销和自身代码性能开销</strong>。</p>
+<p>其中，引擎模块中又可细致划分为渲染模块、动画模块、物理模块、UI模块、粒子系统、加载模块和GC调用等等。</p>
+<p>通过大量的性能测评数据，我们发现<strong>渲染模块、UI模块和加载模块</strong>，往往占据了游戏CPU性能开销的Top3。</p>
+<p>游戏类型的不同、设计的不同，其他模块仍然会有较大的CPU占用。比如，ARPG游戏中的动画系统和物理系统，音乐休闲类游戏中的音频系统和粒子系统等。</p>
+<h2 id="渲染模块【引擎】"><a href="#渲染模块【引擎】" class="headerlink" title="渲染模块【引擎】"></a>渲染模块【引擎】</h2><p>渲染模块可以说是任何游戏中<strong>最为消耗CPU性能的引擎模块</strong>，因为几乎所有的游戏都离不开场景、物体和特效的渲染。对于渲染模块的优化，主要从以下两个方面入手：</p>
+<h3 id="降低DrawCall"><a href="#降低DrawCall" class="headerlink" title="降低DrawCall"></a>降低DrawCall</h3><p>Draw Call是渲染模块优化方面的重中之重，一般来说，Draw Call越高，则渲染模块的CPU开销越大。</p>
+<p>降低Draw Call的方法则主要是<strong>减少所渲染物体的材质种类，并通过Draw Call Batching来减少其数量</strong>。Unity文档对于Draw Call Batching的原理和注意事项有非常详细的讲解，感兴趣的朋友可以直接查看 <a target="_blank" rel="noopener" href="http://docs.unity3d.com/Manual/DrawCallBatching.html">Unity官方文档</a>。</p>
+<p>但是需要注意的是，游戏性能并非Draw Call越小越好。这是因为，**<u>决定渲染模块性能的除了Draw Call之外，还有用于传输渲染数据的总线带宽</u>**。当我们使用Draw Call Batching将同种材质的网格模型拼合在一起时，可能会造成同一时间需要传输的数据（Texture、VB/IB等）大大增加，以至于造成带宽“堵塞”，在资源无法及时传输过去的情况下，GPU只能等待，从而反倒降低了游戏的运行帧率。</p>
+<p>Draw Call和总线带宽是天平的两端，我们需要做的是尽可能维持天平的平衡，任何一边过高或过低，对性能来说都是无益的。</p>
+<h3 id="简化资源"><a href="#简化资源" class="headerlink" title="简化资源"></a>简化资源</h3><p>在大量的移动游戏中，其渲染资源其实是“过量”的，过量的网格资源、不合规的纹理资源等等。</p>
+<h2 id="UI模块【引擎】"><a href="#UI模块【引擎】" class="headerlink" title="UI模块【引擎】"></a>UI模块【引擎】</h2><p>一个性能优异的UI模块可以将游戏的用户体验再抬高一个档次。在目前国内的大量项目中，NGUI作为UI解决方案的占比仍然非常高。</p>
+<p>在NGUI的优化方面，UIPanel.LateUpdate为性能优化的重中之重，它是NGUI中CPU开销最大的函数，没有之一。</p>
+<p>UI模块制作的难点并不在于其表现上，因为UI界面的表现力是由设计师来决定的，但两套表现完全一致的UI系统，<u>其底层的性能开销</u>则可能千差万别。如何让UI系统使用尽可能小的CPU开销来达到设计师所设计的表现力，则足以考验每一位UI开发人员的制作功底。</p>
+<blockquote>
+<p>具体分析和优化详见Unity-UI。</p>
+</blockquote>
+<h2 id="加载模块【引擎】"><a href="#加载模块【引擎】" class="headerlink" title="加载模块【引擎】"></a>加载模块【引擎】</h2><p>加载模块同样也是任何游戏项目中所不可缺少的组成成分。与之前两个模块不同的是，加载模块的性能开销比较集中，<strong>主要出现于场景切换处</strong>，且CPU占用峰值均较高。</p>
+<p>这里，我们先来说说场景切换时，其性能开销的主要体现形式。对于目前的Unity版本而言，场景切换时的主要性能开销主要体现在两个方面，<u>前一场景的场景卸载和下一场景的场景加载</u>。下面，我们就具体来说说这两个方面的性能瓶颈：</p>
+<h3 id="场景卸载"><a href="#场景卸载" class="headerlink" title="场景卸载"></a>场景卸载</h3><p>对于Unity引擎而言，场景卸载一般是由引擎自动完成的，即当我们调用类似Application.LoadLevel的API时，引擎即会开始对上一场景进行处理，其性能开销主要被以下几个部分占据：</p>
+<blockquote>
+<p><strong>Destroy</strong></p>
+<p>引擎在切换场景时会收集未标识成“DontDestoryOnLoad”的GameObject及其Component，然后进行Destroy。</p>
+<p>同时，代码中的OnDestory被触发执行，这里的性能开销主要取决于OnDestroy回调函数中的代码逻辑。</p>
+</blockquote>
+<blockquote>
+<p><strong>Resources.UnloadUnusedAssets</strong></p>
+<p>一般情况下，场景切换过程中，该API会被调用两次，一次为引擎在切换场景时自动调用，另一次则为用户手动调用（一般出现在场景加载后，用户调用它来确保上一场景的资源被卸载干净）。</p>
+<p>在我们测评过的大量项目中，该API的CPU开销主要集中在500ms~3000ms之间。其耗时开销主要取决于场景中Asset和Object的数量，数量越多，则耗时越慢。</p>
+</blockquote>
+<h3 id="场景加载"><a href="#场景加载" class="headerlink" title="场景加载"></a>场景加载</h3><blockquote>
+<p><strong>资源加载</strong></p>
+<p>资源加载几乎占据了整个加载过程的90%时间以上，其加载效率主要取决于资源的<strong>加载方式</strong>（Resource.Load或AssetBundle加载）、<strong>加载量</strong>（纹理、网格、材质等资源数据的大小）和<strong>资源格式</strong>（纹理格式、音频格式等）等等。</p>
+<p>不同的加载方式、不同的资源格式，其加载效率可谓千差万别。</p>
+</blockquote>
+<blockquote>
+<p><strong>Instantiate实例化</strong></p>
+<p>在场景加载过程中，往往伴随着大量的Instantiate实例化操作，比如UI界面实例化、角色/怪物实例化、场景建筑实例化等等。</p>
+<p>在Instantiate实例化时，<u>引擎底层会查看其相关的资源是否已经被加载，如果没有，则会先加载其相关资源，再进行实例化</u>，这其实是大家遇到的大多数“Instantiate耗时问题”的根本原因，这也是为什么我们在之前的AssetBundle文章中所提倡的资源依赖关系打包并进行预加载，从而来缓解Instantiate实例化时的压力。</p>
+</blockquote>
+<h2 id="代码效率"><a href="#代码效率" class="headerlink" title="代码效率"></a>代码效率</h2><p>逻辑代码在一个较为复杂的游戏项目中往往占据较大的性能开销。这种情况在MOBA、ARPG、MMORPG等游戏类型中非常常见。</p>
+<p>在项目优化过程中，我们经常会想知道，到底是哪些函数占据了大量的CPU开销。同时，绝大多数的项目中其性能开销都遵循着“二八原则”，即80%的性能开销都集中在20%的函数上。</p>
+<h1 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h1><p>在渲染上，GPU、CPU两者的性能瓶颈往往是CPU；GPU的性能瓶颈往往是像素点填充率（Overdraw导致）。</p>
+<h2 id="OverDraw"><a href="#OverDraw" class="headerlink" title="OverDraw"></a>OverDraw</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33808037/article/details/129427267?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-129427267-blog-129636294.235%5Ev38%5Epc_relevant_sort_base1&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-129427267-blog-129636294.235%5Ev38%5Epc_relevant_sort_base1&utm_relevant_index=1">Unity性能优化 - Overdraw篇_unity 查看overdraw_后知后觉℘的博客-CSDN博客</a></p>
+<blockquote>
+<p>Overdraw是指屏幕上的某个像素在<strong>同一帧的时间</strong>内被<strong>绘制了多次</strong>。当多个UI元素重叠时，每个像素都需要被多次绘制。这种绘制超出了渲染所需的最小像素数，因此被称为Overdraw。</p>
+</blockquote>
+<h3 id="导致overdraw的原因-以及对应解决方法"><a href="#导致overdraw的原因-以及对应解决方法" class="headerlink" title="导致overdraw的原因 以及对应解决方法"></a>导致overdraw的原因 以及对应解决方法</h3><ul>
+<li><p>UI元素：UI元素叠加在一起。</p>
+</li>
+<li><p>半透明：</p>
+<blockquote>
+<p>控制透明度：规定透明度的使用和控制；</p>
+</blockquote>
+</li>
+<li><p>Shader：某些shader可能需要绘制多次。</p>
+<blockquote>
+<p>优化Shader：规定Shader的使用和优化，以避免过多的Overdraw。（？</p>
+</blockquote>
+</li>
+<li><p>模型：模型的面数很高。</p>
+<blockquote>
+<p>合并网格：规定是否需要合并多个网格为一个大网格</p>
+</blockquote>
+</li>
+<li><p>粒子系统：粒子的数量过多或者设置不当。</p>
+</li>
+<li><p>地形系统：地形细节设置过高。</p>
+</li>
+<li><p>镜头后处理：在镜头后处理中使用了过多的效果（例如bloom、全屏模糊等）。</p>
+</li>
+<li><p>其他高耗性能的特效：例如实时阴影、全局光照等特效。</p>
+<blockquote>
+<p>合理使用特效</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="可以制定哪些规范控制Overdraw"><a href="#可以制定哪些规范控制Overdraw" class="headerlink" title="可以制定哪些规范控制Overdraw"></a>可以制定哪些规范控制Overdraw</h3><ul>
+<li><p>批处理数量：规定每个批次的三角形数量的上限，以控制批处理的数量和渲染次数。（？</p>
+</li>
+<li><p>合并材质：规定是否需要将多个物体使用相同材质的合并为一个批次，以减少Overdraw。（？</p>
+</li>
+<li><p>剔除不可见面：规定是否需要使用背面剔除（Backface Culling）技术来剔除不可见的面，以减少Overdraw。</p>
+</li>
+</ul>
+<h3 id="针对不同元素的一些具体优化方法"><a href="#针对不同元素的一些具体优化方法" class="headerlink" title="针对不同元素的一些具体优化方法"></a>针对不同元素的一些具体优化方法</h3><h4 id="UI元素"><a href="#UI元素" class="headerlink" title="UI元素"></a>UI元素</h4><p>【合并】</p>
+<ol>
+<li><p>合并UI元素：将多个UI元素合并成一个较大的UI元素，可以减少绘制次数，从而减少overdraw。可以使用Unity的Canvas Group组件来将多个UI元素合并到同一个Canvas上。（具体是如何合并的？合并成什么效果？</p>
+<blockquote>
+<p><strong>Canvas Group</strong>：控制画布的显隐比setActive效率更好。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/264833204">Unity UGUI显隐效率对比 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+</li>
+<li><p>使用UI组件的优化选项：Unity的UI组件中提供了一些优化选项，如使用静态batching、动态batching、合并材质等，可以减少overdraw。</p>
+</li>
+</ol>
+<p>【减少】</p>
+<ol>
+<li>减少透明度：如果UI元素具有透明度，可以尝试减少透明度或使用不透明的材质来减少overdraw。</li>
+<li>减少UI元素数量：尽可能减少UI元素的数量，只使用必要的UI元素。</li>
+<li>调整UI元素的层级：将UI元素的层级设置得尽可能低。</li>
+</ol>
+<p>【避免】</p>
+<ol>
+<li>使用UI画布裁剪（？：UI画布裁剪可以避免不必要的绘制。</li>
+<li>使用遮罩：使用遮罩来隐藏不必要的部分，减少绘制次数。</li>
+</ol>
+<p>总之，优化UI元素overdraw的关键是<strong>尽可能减少绘制次数</strong>，<strong>合并绘制操作</strong>以及<strong>避免不必要的绘制</strong>。</p>
+<h4 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h4><p>Shader的overdraw指的是在屏幕上绘制过程中，同一区域内<strong>多次执行相同的着色器</strong>代码造成的性能浪费。</p>
+<p>【合并】</p>
+<ol>
+<li>合并Mesh：将多个Mesh合并成一个大的Mesh，可以减少绘制次数和Shader overdraw。</li>
+</ol>
+<p>【减少】</p>
+<ol>
+<li><p>减少透明度：如果物体具有透明度，可以尝试减少透明度或使用不透明的材质来减少overdraw。</p>
+</li>
+<li><p>调整渲染顺序：将最先绘制的物体放在最前面，可以减少overdraw。</p>
+<blockquote>
+<p>不透明的物体是从前往后，透明的物体是从后往前。</p>
+</blockquote>
+</li>
+<li><p>使用Substance材质：Substance材质可以动态生成纹理，可以减少overdraw。（？？</p>
+</li>
+<li><p>使用GPU instancing：GPU instancing可以复制和绘制一个Mesh的多个实例，可以减少绘制次数和Shader overdraw。（？？</p>
+</li>
+<li><p>调整渲染距离：在远距离处，可以使用简单的材质代替复杂的材质，减少Shader overdraw。（？？</p>
+</li>
+</ol>
+<p>【避免】</p>
+<ol>
+<li>使用级联遮挡剔除（Occlusion Culling）：使用级联遮挡剔除可以在绘制之前剔除不可见的物体，减少overdraw。</li>
+</ol>
+<p>总之，优化Shader overdraw的关键是尽可能<strong>减少着色器执行次数</strong>，减少绘制次数，<strong>合并绘制操作</strong>以及<strong>避免不必要的绘制</strong>。</p>
+<h4 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h4><h4 id="粒子系统"><a href="#粒子系统" class="headerlink" title="粒子系统"></a>粒子系统</h4><h4 id="地形系统"><a href="#地形系统" class="headerlink" title="地形系统"></a>地形系统</h4><h4 id="镜头后处理"><a href="#镜头后处理" class="headerlink" title="镜头后处理"></a>镜头后处理</h4><h1 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h1><h2 id="内存占用组成"><a href="#内存占用组成" class="headerlink" title="内存占用组成"></a>内存占用组成</h2><ol>
+<li>Unity（基本所有的Unity的使用的内存，Native）</li>
+<li>Mono（C#代码，可以被GC回收）</li>
+<li>GfxDriver（显卡驱动，渲染时的纹理，渲染目标，shader，Mesh（顶点、法线等）等）</li>
+<li>FMOD（声音资源）</li>
+<li>Profiler（自身，把采样的数据的缓存下来）</li>
+</ol>
+<p>就目前基于Unity引擎开发的移动游戏和移动VR游戏而言，内存的开销无外乎以下三大部分：<strong>1.资源内存占用；2.引擎模块自身内存占用；3.托管堆内存占用。</strong></p>
+<h2 id="资源占用"><a href="#资源占用" class="headerlink" title="资源占用"></a>资源占用</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21913770">Unity内存优化总结（上） - 知乎 (zhihu.com)</a></p>
+<p>在一个较为复杂的大中型项目中，资源的内存占用往往占据了总体内存的70%以上。因此，资源使用是否恰当直接决定了项目的内存占用情况。</p>
+<p>一般来说，一款游戏项目的资源主要可分为如下几种：</p>
+<ul>
+<li>纹理（Texture）</li>
+<li>网格（Mesh）</li>
+<li>动画片段（AnimationClip）</li>
+<li>音频片段（AudioClip）</li>
+<li>材质（Material）</li>
+<li>着色器（Shader）</li>
+<li>字体资源（Font）</li>
+<li>文本资源（Text Asset）等等。</li>
+</ul>
+<p>其中，<strong>纹理、网格、动画片段和音频片段</strong>则是最容易造成较大内存开销的资源。</p>
+<h3 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h3><p>纹理资源可以说是几乎所有游戏项目中占据最大内存开销的资源。</p>
+<p>一个6万面片的场景，网格资源最大才不过10MB，但一个2048x2048的纹理，可能直接就达到16MB。因此，项目中纹理资源的使用是否得当会极大地影响项目的内存占用。</p>
+<h4 id="纹理格式"><a href="#纹理格式" class="headerlink" title="纹理格式"></a>纹理格式</h4><p>纹理格式是研发团队<u>最需要关注的纹理属性</u>。因为它不仅影响着<strong>纹理的内存占用</strong>，同时还决定了<strong>纹理的加载效率</strong>。</p>
+<blockquote>
+<p>详情见unity-图形-纹理。</p>
+</blockquote>
+<h4 id="纹理尺寸"><a href="#纹理尺寸" class="headerlink" title="纹理尺寸"></a>纹理尺寸</h4><p>一般来说，纹理尺寸越大，则内存占用越大。所以，尽可能降低纹理尺寸，如果512x512的纹理对于显示效果已经够用，那么就不要使用1024x1024的纹理，因为后者的内存占用是前者的四倍。</p>
+<h4 id="Mipmap功能"><a href="#Mipmap功能" class="headerlink" title="Mipmap功能"></a>Mipmap功能</h4><p>Mipmap旨在<u>有效降低渲染带宽的压力</u>，提升游戏的渲染效率。但是，开启Mipmap会将纹理内存提升1.33倍。</p>
+<p>对于具有较大纵深感的3D游戏来说，3D场景模型和角色我们一般是建议开启Mipmap功能的，</p>
+<p>但经常会发现部分UI纹理也开启了Mipmap功能。这其实是没有必要的，绝大多数UI均是渲染在屏幕最上层，开启Mipmap并不会提升渲染效率，反倒会增加无谓的内存占用。</p>
+<h4 id="Read-amp-Write"><a href="#Read-amp-Write" class="headerlink" title="Read &amp; Write"></a>Read &amp; Write</h4><p><img src="https://pic3.zhimg.com/80/246edb7d264e11da994f92f245bed35e_720w.webp" alt="img"></p>
+<p> 开启该选项将会使纹理内存增大一倍。</p>
+<h3 id="网格"><a href="#网格" class="headerlink" title="网格"></a>网格</h3><p>网格资源在<u>较为复杂的游戏</u>中，往往占据较高的内存。对于网格资源来说，它在使用时应该注意哪些方面呢？</p>
+<h4 id="Normal、Color和Tangent"><a href="#Normal、Color和Tangent" class="headerlink" title="Normal、Color和Tangent"></a>Normal、Color和Tangent</h4><p>在深度优化过的大量项目中，Mesh资源的数据中经常会含有大量的Color数据、Normal数据和Tangent数据。这些数据的存在将大幅度增加Mesh资源的文件体积和内存占用。其中，Color数据和Normal数据主要为3DMax、Maya等建模软件导出时设置所生成，而Tangent一般为导入引擎时生成。</p>
+<p>更为麻烦的是，如果项目对Mesh进行Draw Call Batching操作的话，那么将很有可能进一步增大总体内存的占用。比如，100个Mesh进行拼合，其中99个Mesh均没有Color、Tangent等属性，剩下一个则包含有Color、Normal和Tangent属性，那么Mesh拼合后，CombinedMesh中将为每个Mesh来添加上此三个顶点属性，进而造成很大的内存开销.</p>
+<h2 id="引擎模块自身占用"><a href="#引擎模块自身占用" class="headerlink" title="引擎模块自身占用"></a><strong>引擎模块自身占用</strong></h2><p>引擎自身中存在内存开销的部分纷繁复杂，可以说是由巨量的“微小”内存所累积起来的，比如GameObject及其各种Component（最大量的Component应该算是Transform了）、ParticleSystem、MonoScript以及各种各样的模块Manager（SceneManager、CanvasManager、PersistentManager等)…</p>
+<p>一般情况下，上面所指出的引擎各组成部分的内存开销均比较小，真正占据较大内存开销的是这两处：<strong>WebStream</strong> 和 <strong>SerializedFile</strong>。其绝大部分的内存分配则是由AssetBundle加载资源所致。</p>
+<p>简单言之，当您使用new WWW或CreateFromMemory来加载AssetBundle时，Unity引擎会<strong>加载原始数据到内存中并对其进行解压</strong>，而WebStream的大小则是AssetBundle原始文件大小 + 解压后的数据大小 + DecompressionBuffer(0.5MB)。</p>
+<p>因此，当项目中存在通过new WWW加载多个AssetBundle文件，且AssetBundle又无法及时释放时，WebStream的内存可能会很大，这是研发团队需要时刻关注的。</p>
+<h2 id="托管堆内存占用"><a href="#托管堆内存占用" class="headerlink" title="托管堆内存占用"></a>托管堆内存占用</h2><p>对于目前绝大多数基于Unity引擎开发的项目而言，其托管堆内存是由Mono分配和管理的。“托管” 的本意是<strong>Mono</strong>可以<u>自动地改变堆的大小来适应你所需要的内存，并且适时地调用垃圾回收</u>（Garbage Collection）操作来释放已经不需要的内存，从而降低开发人员在代码内存管理方面的门槛。</p>
+<p>但是这并不意味着研发团队可以在代码中肆无忌惮地开辟托管堆内存，因为目前Unity所使用的Mono版本存在一个很严重的问题，即：<strong>Mono的堆内存一旦分配，就不会返还给系统。</strong>这意味着Mono的堆内存是只升不降的。</p>
+<p>举个例子，项目运行时，在场景A中开辟了60MB的托管堆内存，而到下一场景B时，只需要使用20MB的托管堆内存，那么Mono中将会存在40MB空闲的堆内存，且不会返还给系统。这是我们非常不愿意看到的现象，因为对于游戏（特别是移动游戏）来说，内存的占用可谓是寸土寸金的，让Mono毫无必要地锁住大量的内存，是一件非常浪费的事情。</p>
+<ul>
+<li>用户不必要的堆内存分配主要来自于以下几个方面：</li>
+</ul>
+<ol>
+<li>高频率地 New Class/Container/Array等。切记不要在Update、FixUpdate或较高调用频率的函数中开辟堆内存，这会对你的项目内存和性能均造成非常大的伤害。</li>
+<li>Log输出。仅保留关键Log，以避免不必要的堆内存分配。</li>
+<li>UIPanel.LateUpdate。这是NGUI中CPU和堆内存开销最大的函数。它本身只是一个函数，但NGUI的大量使用使它逐渐成为了一个不可忽视规则。该函数的堆内存分配和自身CPU开销，其根源上是一致的，即是由UI网格的重建造成。</li>
+<li><strong>字符串</strong>拼接，减少频繁扩容；尽量用结构体取代类（值类型不占用堆，不需要GC）。</li>
+</ol>
+<h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p><strong>内存泄漏</strong>：<u>向系统申请分配内存</u>进行使用（new/malloc），然后系统在堆内存中给这个对象申请一块内存空间，但当我们<u>使用完了却没有归系统</u>（delete），导致这个不使用的对象一直占据内存单元，造成系统将不能再把它分配给需要的程序。 </p>
+<p>一次内存泄漏的危害可以忽略不计，但是内存泄漏堆积则后果很严重，无论多少内存，迟早会被占完，造成内存泄漏。</p>
+<p>一般来说，<strong>推荐的判断内存是否泄漏的方法</strong>如下：</p>
+<ul>
+<li>检查<strong>资源的使用情况</strong>，特别是纹理、网格等资源的使用</li>
+</ul>
+<p><strong>资源泄漏</strong>是内存泄露的主要表现形式，其具体原因是用户对加载后的资源进行了储存（比如放到Container中），但在场景切换时并没有将其Remove或Clear，从而无论是引擎本身还是手动调用Resources.UnloadUnusedAssets等相关API均无法对其进行卸载，进而造成了资源泄露。</p>
+<blockquote>
+<p><u>同种场景或同一场景</u>的资源使用比较：</p>
+<p>比较<strong>不同时刻</strong>同一场景的资源信息，可以快速帮你找到其资源使用的差异情况；</p>
+<p><u>不同类型</u>场景进行比较：</p>
+<p>通过比较两种不同类型的场景，你可以直接查看比较结果中的“<strong>共同资源</strong>”，并判断其是否确实为预先设定好的常驻资源。</p>
+</blockquote>
+<ul>
+<li>通过Profiler来检测WebStream或SerializedFile的使用情况</li>
+</ul>
+<p><strong>AssetBundle的管理不当</strong>也会造成一定的内存泄露，即上一场景中使用的AssetBundle在场景切换时没有被卸载掉，而被带入到了下一场场景中。</p>
+<h2 id="无效的Mono堆内存开销"><a href="#无效的Mono堆内存开销" class="headerlink" title="无效的Mono堆内存开销"></a>无效的Mono堆内存开销</h2><p>目前，Unity所使用的Mono版本中存在一个较大的问题，即内存一旦分配，则不会再返回给系统。这就衍生出另外一个问题—— <strong>无效的Mono堆内存</strong>。它是Mono所分配的堆内存，但却没有被真正利用上，因此称之为“无效”。</p>
+<ul>
+<li><strong>避免一次性堆内存的过大分配</strong>。Mono的堆内存也是“按需”逐步进行分配的。但如果一次性开辟过大堆内存，比如New一个较大Container、加载一个过大配置文件等，则势必会造成Mono的堆内存直接冲高，所以研发团队对堆内存的分配需要时刻注意</li>
+<li><strong>避免不必要的堆内存开销</strong>。</li>
+</ul>
+<h2 id="资源冗余"><a href="#资源冗余" class="headerlink" title="资源冗余"></a>资源冗余</h2><p>所谓“资源冗余”，是指在某一时刻内存中存在两份甚至多份同样的资源。导致这种情况的出现主要有两种原因：</p>
+<ul>
+<li>AssetBundle打包机制出现问题</li>
+</ul>
+<p><strong>同一份资源被打入到多份AssetBundle文件中</strong>。</p>
+<p>举个例子，同一张纹理被不同的NPC所使用，同时每个NPC被制作成独立的AssetBundle文件，那么在没有针对纹理进行依赖打包的前提下，就会出现该张纹理出现在不同的NPC AssetBundle文件中。</p>
+<p>当这些AssetBundle先后被加载到内存后，内存中即会出现纹理资源冗余的情况。</p>
+<blockquote>
+<p>Unity-热更新-AB打包也有提到这个问题。</p>
+</blockquote>
+<ul>
+<li>资源的实例化所致</li>
+</ul>
+<p>在Unity引擎中，当我们修改了一些<strong>特定GameObject的资源属性</strong>时，引擎会为该GameObject自动实例化一份资源供其使用，比如Material、Mesh等。</p>
+<p>以Material为例，我们在研发时经常会有这样的做法：在角色被攻击时，改变其Material中的属性来得到特定的受击效果。这种做法则会导致引擎为特定的GameObject重新实例化一个Material，后缀会加上（instance）字样。</p>
+<p>其本身没有特别大的问题，但是当有改变Material属性需求的GameObject越来越多时（比如ARPG、MMORPG、MOBA等游戏类型），其内存中的冗余数量则会大量增长。虽然Material的内存占用不大，但是过多的冗余资源却为Resources.UnloadUnusedAssets API的调用效率增加了相当大的压力。</p>
+<h1 id="DrawCall【渲染】"><a href="#DrawCall【渲染】" class="headerlink" title="DrawCall【渲染】"></a>DrawCall【渲染】</h1><p>CPU准备好需要绘制的元素，对底层图形程序接口进行调用的过程。</p>
+<p>也可以理解为：CPU向GPU发布一条渲染指令，就是一次DrawCall的过程。简称DC；</p>
+<h2 id="降低DrawCall-1"><a href="#降低DrawCall-1" class="headerlink" title="降低DrawCall"></a>降低DrawCall</h2><ol>
+<li>动态合批</li>
+<li>静态合批</li>
+<li>降低shader的等级特性</li>
+<li>场景优化策略——遮挡技术。</li>
+<li>rectMask2D替代Mask</li>
+</ol>
+<h3 id="静态合批"><a href="#静态合批" class="headerlink" title="静态合批"></a>静态合批</h3><p>将static的静态物体（永远不会移动、旋转和缩放） ，如果相同材质球，面数在一定范围之内。unity会自动合并成一个batch送往GPU处理。</p>
+<ul>
+<li><p>把要进行静态批处理的GameObject在Inspector面板右上角的Static勾选(实际上只需要勾选Batching Static即可)</p>
+</li>
+<li><p>优点：因为只需要进行一次，所以性能会比动态批处理要好。</p>
+</li>
+<li><p>缺点：</p>
+<p><strong>使用静态合批需要额外的内存开销来存储合并后的几何数据。</strong></p>
+<p>因为需要额外维护多一份数据，所以包体会变大，占用的内存也会变多（不能有超级大量的相同模型（如：森林里的树））</p>
+<p><strong>无法移动</strong></p>
+<p>进行了静态批处理之后的GameObject不能在游戏运行时改变位置或者是跟渲染有关的属性；</p>
+<p>并且因为把所有要静态批处理的GameObject都合并成一个大网格保存起来，所以这实际上相当于即使是同一个GameObject，也需要复制一份网格数据一起保存在这个大网格的顶点数据里面去，这样就导致了占用的内存变多了。</p>
+<p>​    静态合批就是<u>多渲染一套合并后的网格</u> ，提前存在内存里，内存当然就大了。</p>
+</li>
+<li><p><strong>原理</strong></p>
+</li>
+</ul>
+<p>​    在开始阶段把需要静态批处理的GameObject进行一次网格合并操作，然后把这个合并之后的大网格保存起来，<u>后续都是用这个网格而不需要再进行合并</u>。</p>
+<p>​    在预处理阶段，把一些材质相同的模型的顶点统一变换到世界空间坐标下，并且新构建一个大的VB把数据保存下来，在绘制时，就会把这个大的VB提交上去，<strong>只需要设置一次渲染状态</strong>，<strong>再进行多次drawcall绘画出每个子模型</strong>。 <u>所以Static Batching是不会减少drawcall的，但由于只修改了一次渲染状态依然可以减少CPU的消耗。</u>而且在渲染前，也可以进行视锥体剔除，减少顶点着色器对不可见的顶点的处理次数，提交GPU的效率。</p>
+<h3 id="动态合批"><a href="#动态合批" class="headerlink" title="动态合批"></a>动态合批</h3><p>如果动态物体<u>共用着相同的材质</u>，那么Unity会自动对这些物体进行批处理。动态批处理操作是自动完成的，并不需要你进行额外的操作。</p>
+<ul>
+<li><p>优点：不用自己做任何事情，Unity会在游戏中自动进行动态批处理，只要满足下述条件。 （？）</p>
+<blockquote>
+<ol>
+<li>顶点属性要小于900。例如，如果shader中需要使用顶点位置、法线和纹理坐标这三个顶点属性，那么要想让模型能够被动态批处理，它的顶点数目不能超过300。因此，优化策略就是<u>shader的优化，少使用顶点属性，或者模型顶点数要尽可能少。</u>（这个是《UnityShader入门精要》这本书上说到的，同时书上也说了不一定是900，可能不同版本的Unity会有所区别，这个可以自己在Unity中去手动验证得出）</li>
+<li>多Pass的shader会中断批处理。</li>
+<li>使用LightingMap的物体需要小心处理。为了让这些物体可以被动态批处理，需要保证它们指向LightingMap中的同一位置。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>原理：</p>
+<p>​    Unity会检测哪些GameObject使用了同一个共享材质，然后去合并这些使用了同一个共享材质的网格顶点数据，形成一个新的大网格，然后传给显存，直接渲染这个大网格就相当于渲染了所有的被合并的小网格，而这<strong>只需要一次DrawCall</strong>。</p>
+<p>​    在每一帧运行时，计算相同材质的模型，把他合并批次进行渲染。动态合批<strong>只需要设置一次渲染状态，且能减少drawcall次数</strong>。</p>
+</li>
+</ul>
+<h3 id="UI合批"><a href="#UI合批" class="headerlink" title="UI合批"></a>UI合批</h3><p>详情见Unity-UI。</p>
+<h3 id="场景性能优化"><a href="#场景性能优化" class="headerlink" title="场景性能优化"></a>场景性能优化</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Z_hongli/article/details/124442236">Unity3D场景性能优化/渲染/卡顿/搭建优化 遮挡剔除/层消距离技术/LOD（多层次细节）_unity 场景太大模型移动有马赛克-CSDN博客</a></p>
+<h4 id="遮挡剔除"><a href="#遮挡剔除" class="headerlink" title="遮挡剔除"></a>遮挡剔除</h4><p>摄像机<strong>看不到的物体</strong>场景中不会渲染显示。</p>
+<ul>
+<li>将场景中的物体设置成遮挡静态（Occluder Static）；</li>
+<li>做场景烘焙（Window-Rendering-Occlusion Culling-Bake）</li>
+</ul>
+<h4 id="层消隐距离技术"><a href="#层消隐距离技术" class="headerlink" title="层消隐距离技术"></a>层消隐距离技术</h4><p>简单理解：因<strong>距离太远太小</strong>而看不见的物体将其<strong>隐藏</strong>。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LayerBlankingDistance</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> Distance = <span class="number">10</span>;  <span class="comment">//定义显示距离</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Layer = <span class="number">9</span>; <span class="comment">//定义被剔除的层级</span></span><br><span class="line">    <span class="comment">//定义大小为32的一维数组，用来储存所有层的剔除信息 </span></span><br><span class="line">    <span class="built_in">float</span>[] distance = <span class="keyword">new</span> <span class="built_in">float</span>[<span class="number">32</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//经过测试 只能够在Start函数中使用</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//Layer层显示的距离在Distance内 超过这个距离就不会显示</span></span><br><span class="line">        distance[Layer] = Distance;</span><br><span class="line">        <span class="comment">//将数组赋给摄像机的LayerCullDistance</span></span><br><span class="line">        Camera.main.layerCullDistances = distance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="LOD技术（多细节层次）"><a href="#LOD技术（多细节层次）" class="headerlink" title="LOD技术（多细节层次）"></a><strong>LOD技术（多细节层次）</strong></h4><p>LOD：Level Of Detail。</p>
+<p>根据摄像机与模型的距离来决定显示哪一个模型，一般距离近的时候显示高精度多细节模型，距离远的时候显示低精度低细节模型，以内存做消耗来优化GPU</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/unity.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/"><img class="prev-cover" src="/img/unity.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Unity-UI（2）</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/"><img class="next-cover" src="/img/unity.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Unity-图形</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%89%A9%E4%BD%93"><span class="toc-number">1.</span> <span class="toc-text">创建物体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#new-GameObject"><span class="toc-number">1.1.</span> <span class="toc-text">new GameObject()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-Instantiate-prefab"><span class="toc-number">1.2.</span> <span class="toc-text">Object.Instantiate(prefab);</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CreatePrimitive"><span class="toc-number">1.3.</span> <span class="toc-text">CreatePrimitive</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU"><span class="toc-number">3.</span> <span class="toc-text">CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%9D%97%E3%80%90%E5%BC%95%E6%93%8E%E3%80%91"><span class="toc-number">3.1.</span> <span class="toc-text">渲染模块【引擎】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%8D%E4%BD%8EDrawCall"><span class="toc-number">3.1.1.</span> <span class="toc-text">降低DrawCall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E8%B5%84%E6%BA%90"><span class="toc-number">3.1.2.</span> <span class="toc-text">简化资源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI%E6%A8%A1%E5%9D%97%E3%80%90%E5%BC%95%E6%93%8E%E3%80%91"><span class="toc-number">3.2.</span> <span class="toc-text">UI模块【引擎】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97%E3%80%90%E5%BC%95%E6%93%8E%E3%80%91"><span class="toc-number">3.3.</span> <span class="toc-text">加载模块【引擎】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%8D%B8%E8%BD%BD"><span class="toc-number">3.3.1.</span> <span class="toc-text">场景卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%8A%A0%E8%BD%BD"><span class="toc-number">3.3.2.</span> <span class="toc-text">场景加载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87"><span class="toc-number">3.4.</span> <span class="toc-text">代码效率</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPU"><span class="toc-number">4.</span> <span class="toc-text">GPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OverDraw"><span class="toc-number">4.1.</span> <span class="toc-text">OverDraw</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E8%87%B4overdraw%E7%9A%84%E5%8E%9F%E5%9B%A0-%E4%BB%A5%E5%8F%8A%E5%AF%B9%E5%BA%94%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">导致overdraw的原因 以及对应解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E5%88%B6%E5%AE%9A%E5%93%AA%E4%BA%9B%E8%A7%84%E8%8C%83%E6%8E%A7%E5%88%B6Overdraw"><span class="toc-number">4.1.2.</span> <span class="toc-text">可以制定哪些规范控制Overdraw</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E4%B8%8D%E5%90%8C%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%85%B7%E4%BD%93%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.3.</span> <span class="toc-text">针对不同元素的一些具体优化方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UI%E5%85%83%E7%B4%A0"><span class="toc-number">4.1.3.1.</span> <span class="toc-text">UI元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shader"><span class="toc-number">4.1.3.2.</span> <span class="toc-text">Shader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.3.3.</span> <span class="toc-text">模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.1.3.4.</span> <span class="toc-text">粒子系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%BD%A2%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.1.3.5.</span> <span class="toc-text">地形系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%95%9C%E5%A4%B4%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-number">4.1.3.6.</span> <span class="toc-text">镜头后处理</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98"><span class="toc-number">5.</span> <span class="toc-text">内存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E7%BB%84%E6%88%90"><span class="toc-number">5.1.</span> <span class="toc-text">内存占用组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8"><span class="toc-number">5.2.</span> <span class="toc-text">资源占用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B9%E7%90%86"><span class="toc-number">5.2.1.</span> <span class="toc-text">纹理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.2.1.1.</span> <span class="toc-text">纹理格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%B9%E7%90%86%E5%B0%BA%E5%AF%B8"><span class="toc-number">5.2.1.2.</span> <span class="toc-text">纹理尺寸</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mipmap%E5%8A%9F%E8%83%BD"><span class="toc-number">5.2.1.3.</span> <span class="toc-text">Mipmap功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-amp-Write"><span class="toc-number">5.2.1.4.</span> <span class="toc-text">Read &amp; Write</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E6%A0%BC"><span class="toc-number">5.2.2.</span> <span class="toc-text">网格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Normal%E3%80%81Color%E5%92%8CTangent"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">Normal、Color和Tangent</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E6%A8%A1%E5%9D%97%E8%87%AA%E8%BA%AB%E5%8D%A0%E7%94%A8"><span class="toc-number">5.3.</span> <span class="toc-text">引擎模块自身占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E5%A0%86%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8"><span class="toc-number">5.4.</span> <span class="toc-text">托管堆内存占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">5.5.</span> <span class="toc-text">内存泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%95%88%E7%9A%84Mono%E5%A0%86%E5%86%85%E5%AD%98%E5%BC%80%E9%94%80"><span class="toc-number">5.6.</span> <span class="toc-text">无效的Mono堆内存开销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%86%97%E4%BD%99"><span class="toc-number">5.7.</span> <span class="toc-text">资源冗余</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DrawCall%E3%80%90%E6%B8%B2%E6%9F%93%E3%80%91"><span class="toc-number">6.</span> <span class="toc-text">DrawCall【渲染】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%8D%E4%BD%8EDrawCall-1"><span class="toc-number">6.1.</span> <span class="toc-text">降低DrawCall</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%90%88%E6%89%B9"><span class="toc-number">6.1.1.</span> <span class="toc-text">静态合批</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%90%88%E6%89%B9"><span class="toc-number">6.1.2.</span> <span class="toc-text">动态合批</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UI%E5%90%88%E6%89%B9"><span class="toc-number">6.1.3.</span> <span class="toc-text">UI合批</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">6.1.4.</span> <span class="toc-text">场景性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%AE%E6%8C%A1%E5%89%94%E9%99%A4"><span class="toc-number">6.1.4.1.</span> <span class="toc-text">遮挡剔除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%82%E6%B6%88%E9%9A%90%E8%B7%9D%E7%A6%BB%E6%8A%80%E6%9C%AF"><span class="toc-number">6.1.4.2.</span> <span class="toc-text">层消隐距离技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LOD%E6%8A%80%E6%9C%AF%EF%BC%88%E5%A4%9A%E7%BB%86%E8%8A%82%E5%B1%82%E6%AC%A1%EF%BC%89"><span class="toc-number">6.1.4.3.</span> <span class="toc-text">LOD技术（多细节层次）</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
