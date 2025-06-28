@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unity-UI | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="UI部分">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Unity-UI | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="UI部分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity-UI">
 <meta property="og:url" content="https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/index.html">
@@ -7,19 +7,123 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://huangxinhere.github.io/img/unity.jpg">
 <meta property="article:published_time" content="2023-08-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-13T08:52:56.361Z">
+<meta property="article:modified_time" content="2025-06-23T07:38:22.497Z">
 <meta property="article:author" content="(●ˇ∀ˇ●)">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://huangxinhere.github.io/img/unity.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/unity.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Unity-UI",
+  "url": "https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/",
+  "image": "https://huangxinhere.github.io/img/unity.jpg",
+  "datePublished": "2023-08-31T16:00:00.000Z",
+  "dateModified": "2025-06-23T07:38:22.497Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "(●ˇ∀ˇ●)",
+      "url": "https://huangxinhere.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
   translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -27,7 +131,7 @@
     post: false
   },
   runtime: '',
-  date_suffix: {
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -35,119 +139,27 @@
     month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'Unity-UI',
-  isPost: true,
-  isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-10-13 16:52:56'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/unity.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Unity-UI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-31T16:00:00.000Z" title="发表于 2023-09-01 00:00:00">2023-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-13T08:52:56.361Z" title="更新于 2023-10-13 16:52:56">2023-10-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Unity-UI"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/UICanvas.html">画布 - Unity 手册</a></p>
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/unity.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hx's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Unity-UI</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Unity-UI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-31T16:00:00.000Z" title="发表于 2023-09-01 00:00:00">2023-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-23T07:38:22.497Z" title="更新于 2025-06-23 15:38:22">2025-06-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/UICanvas.html">画布 - Unity 手册</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2021.3/Documentation/Manual/UICanvas.html">Unity - Manual: Canvas</a></p>
 <p>Unity内置的UI组件还有 UI Toolkit、即时模式IMGUI，现在主要用的是UnityUI。</p>
 <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/SGamble/article/details/100658008">Unity Canvas 详解_TravelerTD的博客-CSDN博客</a>【组件更详细的说明】</p>
@@ -171,7 +183,7 @@
 <h1 id="UGUI原理"><a href="#UGUI原理" class="headerlink" title="UGUI原理"></a>UGUI原理</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17W4y1d7dY?p=7&vd_source=bd424a1eb707161ee6ba2f47e4c49a08">7.Graphic家族_哔哩哔哩_bilibili</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/340601785">UGUI源码解析（二十七）总结篇 - 知乎 (zhihu.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/343524911">UGUI深入理解–渲染系统 - 知乎 (zhihu.com)</a></p>
-<p>由自实现的例子可知，核心功能是UI显示（由mesh构建保存到meshFilter并由meshRender渲染：这一系列操作是必须每帧更新重新绘制？）和射线检测点击（input发射射线，并且在mesh添加碰撞器来接收）。</p>
+<p>由自实现的例子可知，核心功能是<strong>UI显示</strong>（由mesh构建保存到meshFilter并由meshRender渲染：这一系列操作是必须每帧更新重新绘制？）和<strong>射线检测点击</strong>（input发射射线，并且在mesh添加碰撞器来接收）。</p>
 <h2 id="图形绘制"><a href="#图形绘制" class="headerlink" title="图形绘制"></a>图形绘制</h2><ul>
 <li>基础</li>
 </ul>
@@ -203,7 +215,7 @@
 <p>再回想以下自定义Image的例子来理解，自己实现Image渲染的时候，是在Update里面调用构建mesh和渲染的方法；而在UGUI里面，UI自己记录是否需要重新渲染，注册事件给registry，registry在要渲染的时候触发事件，UI再去更新。（往下的重绘过程有详细说明）</p>
 </blockquote>
 <p>一句话总结图形绘制：正常绘制和重新绘制，绘制核心是网格和渲染，网格及渲染信息由CanvasRenderer处理给Canvas做合批，重新绘制则和CanvasUpdateRegistry相关。【待打磨】</p>
-<h2 id="基础类详解"><a href="#基础类详解" class="headerlink" title="基础类详解"></a>基础类详解</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/VR_iShow/article/details/92850381">【Unity/笔记】UGUI基础原理__iShow_的博客-CSDN博客</a></p>
+<h2 id="基础类详解"><a href="#基础类详解" class="headerlink" title="基础类详解"></a>基础类详解</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/VR_iShow/article/details/92850381">【Unity&#x2F;笔记】UGUI基础原理__iShow_的博客-CSDN博客</a></p>
 <ul>
 <li><p><strong>Graphic[图形]</strong><br><code>[RequireComponent(typeof(CanvasRenderer))]</code><br><code>[RequireComponent(typeof(RectTransform))]</code></p>
 <blockquote>
@@ -214,16 +226,12 @@
 <p>Graphic是UGUI的图形功能基类,它必须依赖CanvasRenderer与RectTransform 组件运行。</p>
 <p>内置UI系统通过MaskableGraphic实现，使用了IMaskabel接口，可被遮罩。<br>Text和Image都继承自MaskableGraphic, ILayoutElement(及其他)</p>
 </li>
-</ul>
-<ul>
 <li><p><strong>Layout[布局]</strong><br><code>[RequireComponent(typeof(RectTransform))]</code></p>
 <blockquote>
 <p>Layout组件(如ScrollRect)<u>控制RectTransform的尺寸和位置</u>，它通常用于创建具有复杂布局、并且内部组件需要相对尺寸、或者相对位置的UI。</p>
 <p>Layout组件只依赖RectTransform并且<u>只影响与其关联的RectTransform</u>的属性。他们不依赖Graphic类，并且可以独立于UI系统的Graphic类使用。</p>
 </blockquote>
 </li>
-</ul>
-<ul>
 <li><p><strong>Canvas[画布]</strong></p>
 <blockquote>
 <p>画布(Canvas) 是以原生代码编写的Unity组件，画布负责<u>将其内部的几何形状合并到批处理、生成合适的渲染指令并发送到Unity图形系统</u>。</p>
@@ -243,8 +251,6 @@
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><p><strong>Sub-Canvas</strong></p>
 <blockquote>
 <p>子画布(Sub-canvas) 是嵌套在其他画布组件内部的画布组件。</p>
@@ -257,8 +263,6 @@
 <li>一般情况子画布能<strong>隔离</strong>脏的子节点(使两个画布内节点相互不影响但仍然保持层级关系,优化减少重新批处理的操作)</li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><p><strong>渲染细节</strong></p>
 <blockquote>
 <p>使用UI构建界面时，所有的几何形状都会在透明队列(Transparent queue)中绘制。从多边形栅格化而得到的每个像素都会被采样，即使它们被其他不透明多边形完全遮盖</p>
@@ -291,8 +295,6 @@
 <p>—&gt;脏画布产生(网格成员改变)</p>
 <p> —&gt; 重建rebuild</p>
 </li>
-</ul>
-<ul>
 <li><p>详细流程：【参考博客有例子计算，会更明白些】</p>
 <ol>
 <li><p>既然合批是<strong>以Canvas为单位</strong>，第一步自然就是把所有Canvas给找出来，然后剔除掉不必渲染的Canvas(透明度为0，长宽为0，在RectMask2D控件下，且在RectMask2D的区域外)</p>
@@ -305,16 +307,16 @@
 <li><p>Depth的计算规则如下：</p>
 <p>按照Hierarchy中<strong>从上往下的顺序</strong>依次遍历Canvas下所有UI元素；</p>
 <p>对于当前的UI元素CurrentUI：</p>
-<p>i.如果CurrentUI不渲染，则Depth = -1<br>ii.如果CurrentUI要渲染，但当前层级往上并没有与其他UI元素相交，则Depth = 0<br>iii.如果CurrentUI要渲染，往上只有一个UI元素(LowerUI)与其相交，且CurrentUI与LowerUI可以合批(材质和贴图完全相同)，则CurrentUI.Depth = LowerUI.Depth；</p>
-<p>如果两者不能合批，CurrentUI.Depth= LowerUI.Depth + 1</p>
-<p>iv.如果CurrentUI要渲染，下面有n个元素与其相交，则按照步骤iii，分别计算出n个Depth(Depth_1、Depth_2、Depth_3…)，然后CurrentUI.Depth取其最大值，即CurrentUI.Depth = max(Depth_1, Depth_2, Depth_3，…)</p>
+<p>i.如果CurrentUI不渲染，则Depth &#x3D; -1<br>ii.如果CurrentUI要渲染，但当前层级往上并没有与其他UI元素相交，则Depth &#x3D; 0<br>iii.如果CurrentUI要渲染，往上只有一个UI元素(LowerUI)与其相交，且CurrentUI与LowerUI可以合批(材质和贴图完全相同)，则CurrentUI.Depth &#x3D; LowerUI.Depth；</p>
+<p>如果两者不能合批，CurrentUI.Depth&#x3D; LowerUI.Depth + 1</p>
+<p>iv.如果CurrentUI要渲染，下面有n个元素与其相交，则按照步骤iii，分别计算出n个Depth(Depth_1、Depth_2、Depth_3…)，然后CurrentUI.Depth取其最大值，即CurrentUI.Depth &#x3D; max(Depth_1, Depth_2, Depth_3，…)</p>
 <blockquote>
 <p>上面步骤中的“下面”和“相交”要明确下意思，这两个概念很重要。</p>
 <p>CurrentUI下面的UI，指Hierarchy面板中，在CurrentUI之上的元素。</p>
 <p>两个UI元素相交，是指这两个元素的网格有相交（有重叠部分），一定要注意不是两个元素的Rect区域相交。</p>
 </blockquote>
 </li>
-<li><p>各个UI的Depth计算完毕后，依次按照<strong>Depth、material ID、texture ID、RendererOrder</strong>（即UI层级队列顺序，即Hierarchy面板上的顺序）排序（条件的优先级依次递减，且均为从小到大排序）。然后剔除Depth = -1的UI元素，得到Batch前的UI 元素队列，这个队列被称之为VisiableList。</p>
+<li><p>各个UI的Depth计算完毕后，依次按照<strong>Depth、material ID、texture ID、RendererOrder</strong>（即UI层级队列顺序，即Hierarchy面板上的顺序）排序（条件的优先级依次递减，且均为从小到大排序）。然后剔除Depth &#x3D; -1的UI元素，得到Batch前的UI 元素队列，这个队列被称之为VisiableList。</p>
 </li>
 <li><p>得到VisiableList之后，判断VisiableList中相邻的元素<strong>是否能够合批</strong>（<u>相同的材质和贴图</u>）。需要注意这里不再考虑Depth是否相同，只要两个元素相邻然后材质和贴图相同，即使两个元素的Depth不相同，这两个元素也能合批。然后一个批次一个批次的合并网格，提交GPU进行渲染。</p>
 </li>
@@ -331,7 +333,7 @@
 </li>
 <li><p>Text如果可以用图片代替就用图片代替（Ul上的字体Texture使用的是字体的图集，往往和我们自己的UI图集不一样，因此无法合批）；</p>
 </li>
-<li><p>避免频繁删除/增加UI对象，UI层次结构变化会引起Canvas的更新(rebuild)；</p>
+<li><p>避免频繁删除&#x2F;增加UI对象，UI层次结构变化会引起Canvas的更新(rebuild)；</p>
 </li>
 <li><p>一般情况下，常常使用gameObject的active或者该UI组件的enable来进行<strong>显隐</strong>。</p>
 <p>但参照UGUI的源码，它会在<strong>Enable的时候设置成脏标记</strong></p>
@@ -430,7 +432,7 @@
 <ul>
 <li>更改LayoutElement布局元素的属性时，比如修改Min Width，Preferred Width等属性。</li>
 <li><strong>在OnEnable和OnDisable中</strong></li>
-<li>OnRectTransformDimensionsChange<strong>（RectTransform大小发生改变时）</strong></li>
+<li>OnRectTransformDimensionsChange**（RectTransform大小发生改变时）**</li>
 <li>OnValidate （只能编辑器中，非运行状态）</li>
 <li>OnDidApplyAnimationProperties（应用动画属性时）</li>
 </ul>
@@ -445,10 +447,10 @@
 <li>如果rectTransform不为空，且宽高都大于0，调用<strong>OnPopulateMesh</strong>，实际上只是把顶点和三角形信息保存到了s_VertexHelper里。</li>
 <li>然后获取所有的<strong>IMeshModifier</strong>类型的组件，（IMeshModifier是一个接口，需要依据顶点信息的组件继承自它，例如Shadow就间接继承自它），调用IMeshModifier的ModifyMesh方法，修改Mesh信息。</li>
 <li>最后将s_VertexHelper里修改后的信息设置给canvasRenderer。<strong>概括的说就是，把顶点和三角形信息进行修改，并设置给CanvasRenderer。</strong></li>
-<li>顶点数据准备完毕后会调用canvasRenderer.SetMesh()方法来提交。很遗憾CanvasRenderer.cs并没有开源，我们只能继续反编译看它的实现了，如下代码所示，SetMesh()方法最终在C++中实现，毕竟由于UI的元素很多，同时参与合并顶点的信息也会很多，在C++中实现效率会更好。看到这里，我相信大家应该能明白UGUI为什么效率会被NGUI要高一些了，因为NGUI的网格Mesh合并都是在C#中完成的，而<strong>UGUI网格合并都是在C++中底层中完成的</strong>。 </li>
+<li>顶点数据准备完毕后会调用canvasRenderer.SetMesh()方法来提交。很遗憾CanvasRenderer.cs并没有开源，我们只能继续反编译看它的实现了，如下代码所示，SetMesh()方法最终在C++中实现，毕竟由于UI的元素很多，同时参与合并顶点的信息也会很多，在C++中实现效率会更好。看到这里，我相信大家应该能明白UGUI为什么效率会被NGUI要高一些了，因为NGUI的网格Mesh合并都是在C#中完成的，而<strong>UGUI网格合并都是在C++中底层中完成的</strong>。</li>
 </ul>
 <p><strong>UpdateMaterial方法</strong></p>
-<p><strong>更新canvasRenderer的材质和纹理。</strong>在给canvasRenderer设置材质时，会遍历所有IMaterialModifier类型的组件，调用IMaterialModifier.GetModifiedMaterial方法，用于重建图像时，获取修改后的Material，来实现遮罩效果。</p>
+<p>**更新canvasRenderer的材质和纹理。**在给canvasRenderer设置材质时，会遍历所有IMaterialModifier类型的组件，调用IMaterialModifier.GetModifiedMaterial方法，用于重建图像时，获取修改后的Material，来实现遮罩效果。</p>
 <h3 id="重建总结"><a href="#重建总结" class="headerlink" title="重建总结"></a>重建总结</h3><ul>
 <li><p>在UGUI中，网格的更新或重建（为了尽可能合并UI部分的DrawCall）是以Canvas为单位的，且只在其中的UI元素发生变动（位置、颜色等）时才会进行。因此，将<strong>动态UI元素与静态UI元素分离</strong>后，可以将动态UI元素的变化所引起的网格更新或重建所涉及到的范围变小，从而降低一定的开销。</p>
 </li>
@@ -463,12 +465,12 @@
 <ul>
 <li><p>渲染顺序</p>
 </li>
-<li><p>Unity3d中的渲染顺序如下：<br> 不同的<strong>Camera</strong>的Depth<br> 相同Camera下的不同SortingLayer<br> 相同<strong>SortingLayer</strong>下的不同Z轴/Order in Layer</p>
+<li><p>Unity3d中的渲染顺序如下：<br> 不同的<strong>Camera</strong>的Depth<br> 相同Camera下的不同SortingLayer<br> 相同<strong>SortingLayer</strong>下的不同Z轴&#x2F;Order in Layer</p>
 </li>
 <li><p>改变控件之间的层级关系</p>
 <ol>
-<li>同一canvas下：<br>   改变控件transform的SiblingIndex,<br>   transform.GetSiblingIndex();<br>   transform.SetSiblingIndex(int index); //index值越大，越后渲染，层级越大，越显示在前面</li>
-<li>不同Canvas下：<br>  设置Canvas下的Sort Order //Sort Order值越大，越后渲染，层级越大，越显示在前面</li>
+<li>同一canvas下：<br>   改变控件transform的SiblingIndex,<br>   transform.GetSiblingIndex();<br>   transform.SetSiblingIndex(int index); &#x2F;&#x2F;index值越大，越后渲染，层级越大，越显示在前面</li>
+<li>不同Canvas下：<br>  设置Canvas下的Sort Order &#x2F;&#x2F;Sort Order值越大，越后渲染，层级越大，越显示在前面</li>
 </ol>
 </li>
 </ul>
@@ -488,7 +490,7 @@
 <p>两个方式，Rect2DMask和mask，只对子节点生效，理论上可以改源码，一般没啥必要改。</p>
 <p><strong>RectMask2D</strong></p>
 <p>只能遮挡矩形范围，类似NGUIpanel的裁剪方式。这种方式<strong>不增加drawcall</strong>，比mask性能高些，但是只能遮挡矩形区域。</p>
-<p>shader部分，定义UNITY_UI_CLIP_RECT，color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);实现裁剪。</p>
+<p>shader部分，定义UNITY_UI_CLIP_RECT，color.a *&#x3D; UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);实现裁剪。</p>
 <p>代码部分，调用CanvasRenderer的EnableRectClipping方法，传遮挡区域，底层设置给_ClipRect。</p>
 <p>RectMask2D节点下的maskable组件，注册到ClipperRegistry类，底层控制对应的shader打开宏定义。</p>
 <p><strong>Mask</strong></p>
@@ -605,4 +607,4 @@
 
 <p>仍然遵循这样的流程：输入（各种类型的输入）-射线检测-被检测到的物体（根据输入类型）执行事件。</p>
 <p>由于Unity默认是最近的发生响应，如果想要都被响应就要手动处理（？</p>
-</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/unity.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5/"><img class="prev-cover" src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Unity-术语/概念</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">设计模式-知识整理</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Canvas"><span class="toc-number">1.</span> <span class="toc-text">Canvas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%85%83%E7%B4%A0%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.1.</span> <span class="toc-text">绘制元素顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F-Render-Modes"><span class="toc-number">1.2.</span> <span class="toc-text">渲染模式 Render Modes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UGUI%E5%92%8CNGUI%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">UGUI和NGUI的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UGUI%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">UGUI原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6"><span class="toc-number">3.1.</span> <span class="toc-text">图形绘制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B1%BB%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.2.</span> <span class="toc-text">基础类详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%89%B9%E8%BF%87%E7%A8%8B%EF%BC%88Canvases%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">合批过程（Canvases）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%90%88%E6%89%B9"><span class="toc-number">3.3.1.</span> <span class="toc-text">什么是合批</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%89%B9%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">合批的意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%89%B9%E8%A7%84%E5%88%99"><span class="toc-number">3.3.3.</span> <span class="toc-text">合批规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">3.3.4.</span> <span class="toc-text">优化技巧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E7%BB%98%E8%BF%87%E7%A8%8B%EF%BC%88Graphics%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">重绘过程（Graphics）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E7%90%86%E8%A7%A3"><span class="toc-number">3.4.1.</span> <span class="toc-text">大致理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%92%8C%E9%87%8D%E5%BB%BA%EF%BC%9ACanvasUpdateRegistry"><span class="toc-number">3.4.2.</span> <span class="toc-text">缓存和重建：CanvasUpdateRegistry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%BB%98%E8%A7%A6%E5%8F%91%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-number">3.4.3.</span> <span class="toc-text">重绘触发的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E9%87%8D%E5%BB%BA%EF%BC%88%E8%AF%A6%E7%BB%86%EF%BC%89"><span class="toc-number">3.4.4.</span> <span class="toc-text">布局重建（详细）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E9%87%8D%E5%BB%BA%EF%BC%88%E8%AF%A6%E7%BB%86%EF%BC%89"><span class="toc-number">3.4.5.</span> <span class="toc-text">图形重建（详细）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%BB%BA%E6%80%BB%E7%BB%93"><span class="toc-number">3.4.6.</span> <span class="toc-text">重建总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%82%E7%BA%A7"><span class="toc-number">3.5.</span> <span class="toc-text">层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%81%E5%89%AA"><span class="toc-number">3.6.</span> <span class="toc-text">裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E9%9B%86"><span class="toc-number">3.7.</span> <span class="toc-text">图集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.8.</span> <span class="toc-text">输入系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">3.8.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EventSystem"><span class="toc-number">3.8.2.</span> <span class="toc-text">EventSystem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97-InputModule"><span class="toc-number">3.8.3.</span> <span class="toc-text">输入模块(InputModule)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%84%E7%BA%BF%E6%8A%95%E5%B0%84%E5%99%A8%EF%BC%88Raycaster%EF%BC%89"><span class="toc-number">3.8.4.</span> <span class="toc-text">射线投射器（Raycaster）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.8.5.</span> <span class="toc-text">消息系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%94%AF%E6%8C%81%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.8.6.</span> <span class="toc-text">各种支持的事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E5%99%A8-EventTrigger"><span class="toc-number">3.8.7.</span> <span class="toc-text">事件触发器(EventTrigger)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UGUI%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92"><span class="toc-number">3.9.</span> <span class="toc-text">UGUI的事件传递</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangxinhere.github.io">(●ˇ∀ˇ●)</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/">https://huangxinhere.github.io/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangxinhere.github.io" target="_blank">Hx's blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/unity.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="C#-数据结构和算法"><img class="cover" src="/img/%7D7Y%5B5BZE_KJVDX6TI%5D$9CY1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">C#-数据结构和算法</div></div><div class="info-2"><div class="info-item-1">字典原理浅析C# Dictionary实现原理 - InCerry - 博客园 (cnblogs.com)[更清晰] 【C#】浅析C# Dictionary实现原理 - 知乎 (zhihu.com) 主要是拉链法。 核心是buckets和entries数组。【如果有拉链法，能否逐一访问拉链？】  将键转化成hashcode之后，取余数，得到哈希值，找到哈希桶数组对应的位置2 将信息存入到entries数组中，0位是空的，就放到0处，将Entry的下标entryIndex赋值给buckets中对应下标的bucket。步骤3中是存放在entries[0]的位置，所以buckets[2]=0。   哈希碰撞：将新加入的元素放进entries的下一个空位，更新next和哈希桶指向的索引。    删除的时候，如果元素在链表中间，就会让前一个指向后一个，空出来位置的用freelist记录，下一次可以接着用。不过这样就打乱了值插入的顺序。  Hash桶算法说到Hash算法大家就会想到Hash表，一个Key通过Hash函数运算后可快速的得到hashCode，通过hashCode的映射可直接Get...</div></div></div></a><a class="pagination-related" href="/2023/07/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式-知识整理"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">设计模式-知识整理</div></div><div class="info-2"><div class="info-item-1">【更广泛的设计模式分类】设计模式总结之模式分类_迷死特兔的博客-CSDN博客 游戏中的设计模式 - 知乎 (zhihu.com)  创建型设计模式 结构型设计模式 行为型设计模式  单例模式【创建型】到底是用”静态类”还是单例 - 掘金 (juejin.cn) 什么是单例模式单例模式指的是在应用***整个生命周期内只能存在一个实例。***单例模式是一种被广泛使用的设计模式。 他有很多好处，能够避免实例对象的重复创建，减少创建实例的系统开销，节省内存。  1.一个类只能有一个实例；  2.自己创建这个实例； 3.整个系统都要使用这个实例。 实现方式 饿汉模式  所谓饿汉模式就是立即加载，一般情况下再调用getInstancef方法之前就已经产生了实例，也就是在类加载的时候已经产生了。 这种模式的缺点很明显，就是占用资源，当单例类很大的时候，其实我们是想使用的时候再产生实例。因此这种方式适合占用资源少，在初始化的时候就会被用到的类。 1234567891011class SingletonHungary &#123;    private static SingletonHungar...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">(●ˇ∀ˇ●)</div><div class="author-info-description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Canvas"><span class="toc-number">1.</span> <span class="toc-text">Canvas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E5%85%83%E7%B4%A0%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.1.</span> <span class="toc-text">绘制元素顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F-Render-Modes"><span class="toc-number">1.2.</span> <span class="toc-text">渲染模式 Render Modes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UGUI%E5%92%8CNGUI%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">UGUI和NGUI的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UGUI%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">UGUI原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6"><span class="toc-number">3.1.</span> <span class="toc-text">图形绘制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B1%BB%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.2.</span> <span class="toc-text">基础类详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%89%B9%E8%BF%87%E7%A8%8B%EF%BC%88Canvases%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">合批过程（Canvases）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%90%88%E6%89%B9"><span class="toc-number">3.3.1.</span> <span class="toc-text">什么是合批</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%89%B9%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">合批的意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%89%B9%E8%A7%84%E5%88%99"><span class="toc-number">3.3.3.</span> <span class="toc-text">合批规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">3.3.4.</span> <span class="toc-text">优化技巧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E7%BB%98%E8%BF%87%E7%A8%8B%EF%BC%88Graphics%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">重绘过程（Graphics）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E7%90%86%E8%A7%A3"><span class="toc-number">3.4.1.</span> <span class="toc-text">大致理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%92%8C%E9%87%8D%E5%BB%BA%EF%BC%9ACanvasUpdateRegistry"><span class="toc-number">3.4.2.</span> <span class="toc-text">缓存和重建：CanvasUpdateRegistry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%BB%98%E8%A7%A6%E5%8F%91%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-number">3.4.3.</span> <span class="toc-text">重绘触发的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E9%87%8D%E5%BB%BA%EF%BC%88%E8%AF%A6%E7%BB%86%EF%BC%89"><span class="toc-number">3.4.4.</span> <span class="toc-text">布局重建（详细）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E9%87%8D%E5%BB%BA%EF%BC%88%E8%AF%A6%E7%BB%86%EF%BC%89"><span class="toc-number">3.4.5.</span> <span class="toc-text">图形重建（详细）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%BB%BA%E6%80%BB%E7%BB%93"><span class="toc-number">3.4.6.</span> <span class="toc-text">重建总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%82%E7%BA%A7"><span class="toc-number">3.5.</span> <span class="toc-text">层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%81%E5%89%AA"><span class="toc-number">3.6.</span> <span class="toc-text">裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E9%9B%86"><span class="toc-number">3.7.</span> <span class="toc-text">图集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.8.</span> <span class="toc-text">输入系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">3.8.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EventSystem"><span class="toc-number">3.8.2.</span> <span class="toc-text">EventSystem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97-InputModule"><span class="toc-number">3.8.3.</span> <span class="toc-text">输入模块(InputModule)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%84%E7%BA%BF%E6%8A%95%E5%B0%84%E5%99%A8%EF%BC%88Raycaster%EF%BC%89"><span class="toc-number">3.8.4.</span> <span class="toc-text">射线投射器（Raycaster）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.8.5.</span> <span class="toc-text">消息系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%94%AF%E6%8C%81%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.8.6.</span> <span class="toc-text">各种支持的事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E5%99%A8-EventTrigger"><span class="toc-number">3.8.7.</span> <span class="toc-text">事件触发器(EventTrigger)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UGUI%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92"><span class="toc-number">3.9.</span> <span class="toc-text">UGUI的事件传递</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI（2）"/></a><div class="content"><a class="title" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）">Unity-UI（2）</a><time datetime="2024-03-12T16:00:00.000Z" title="发表于 2024-03-13 00:00:00">2024-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-性能优化"/></a><div class="content"><a class="title" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化">Unity-性能优化</a><time datetime="2023-09-13T16:00:00.000Z" title="发表于 2023-09-14 00:00:00">2023-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-图形"/></a><div class="content"><a class="title" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形">Unity-图形</a><time datetime="2023-09-12T16:00:00.000Z" title="发表于 2023-09-13 00:00:00">2023-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新"><img src="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/message_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-热更新"/></a><div class="content"><a class="title" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新">Unity-热更新</a><time datetime="2023-09-09T16:00:00.000Z" title="发表于 2023-09-10 00:00:00">2023-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法"><img src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-算法"/></a><div class="content"><a class="title" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法">Unity-算法</a><time datetime="2023-09-05T16:00:00.000Z" title="发表于 2023-09-06 00:00:00">2023-09-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/unity.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By (●ˇ∀ˇ●)</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.0-b3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C#知识整理 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于C#知识点整理">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C#知识整理 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于C#知识点整理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#知识整理">
 <meta property="og:url" content="https://huangxinhere.github.io/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/index.html">
@@ -7,19 +7,123 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://huangxinhere.github.io/img/Csharp.jpg">
 <meta property="article:published_time" content="2023-02-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-23T15:14:41.675Z">
+<meta property="article:modified_time" content="2024-11-28T01:26:10.169Z">
 <meta property="article:author" content="(●ˇ∀ˇ●)">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://huangxinhere.github.io/img/Csharp.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/Csharp.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "C#知识整理",
+  "url": "https://huangxinhere.github.io/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/",
+  "image": "https://huangxinhere.github.io/img/Csharp.jpg",
+  "datePublished": "2023-02-19T16:00:00.000Z",
+  "dateModified": "2024-11-28T01:26:10.169Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "(●ˇ∀ˇ●)",
+      "url": "https://huangxinhere.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
   translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -27,7 +131,7 @@
     post: false
   },
   runtime: '',
-  date_suffix: {
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -35,119 +139,27 @@
     month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'C#知识整理',
-  isPost: true,
-  isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-09-23 23:14:41'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Csharp.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C#知识整理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-19T16:00:00.000Z" title="发表于 2023-02-20 00:00:00">2023-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-23T15:14:41.675Z" title="更新于 2023-09-23 23:14:41">2023-09-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C#知识整理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="面向对象（OOP）的三大特征：继承、封装、多态"><a href="#面向对象（OOP）的三大特征：继承、封装、多态" class="headerlink" title="面向对象（OOP）的三大特征：继承、封装、多态"></a>面向对象（OOP）的三大特征：继承、封装、多态</h1><p>面向对象编程（Object-Oriented Programming）与面向过程（Procedure Oriented ）。</p>
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/Csharp.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hx's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">C#知识整理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">C#知识整理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-19T16:00:00.000Z" title="发表于 2023-02-20 00:00:00">2023-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-28T01:26:10.169Z" title="更新于 2024-11-28 09:26:10">2024-11-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="面向对象（OOP）的三大特征：继承、封装、多态"><a href="#面向对象（OOP）的三大特征：继承、封装、多态" class="headerlink" title="面向对象（OOP）的三大特征：继承、封装、多态"></a>面向对象（OOP）的三大特征：继承、封装、多态</h1><p>面向对象编程（Object-Oriented Programming）与面向过程（Procedure Oriented ）。</p>
 <ul>
 <li>面向过程：面向过程的思想是把一个项目、一件事情按照一定的顺序，从头到尾一步一步地做下去，先做什么，后做什么，一直到结束。这种思想比较好理解，其实这也是一个人做事的方法。</li>
 <li>面向对象：面向对象的思想是把一个项目、一件事情分成更小的项目，或者说分成一个个更小的部分，每一部分负责什么方面的功能，最后再由这些部分组合而成为一个整体。这种思想比较适合多人的分工合作，就像一个大的机关，分成各个部门，每个部门分别负责某样职能，各个部门可以充分发挥自己的特色，只要符合一定前提就行了。</li>
@@ -165,7 +177,7 @@
 <h3 id="派生类继承基类"><a href="#派生类继承基类" class="headerlink" title="派生类继承基类"></a>派生类继承基类</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> _name;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> _age;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">int</span> age</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>._name = name;</span><br><span class="line">        <span class="keyword">this</span>._age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Student</span> : <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> _id;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">int</span> age, <span class="built_in">int</span> id</span>) : <span class="title">base</span>(<span class="params">name, age</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>._id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><ul>
-<li><p>override：对基类中<u>同名方法</u>的<strong>新实现</strong>；同时基类中的同名方法必须声明为 virtual 或 abstract 类型</p>
+<li><p>override：<strong>函数覆盖（重写）</strong>。对基类中<u>同名方法</u>的<strong>新实现</strong>；同时基类中的同名方法必须声明为 virtual 或 abstract 类型</p>
 <ul>
 <li>默认的 C# 方法并非 virtual ，因此不能重写。</li>
 <li>基类方法的可访问级别并不因重写它的方法而改变，他们的访问修饰符相同。</li>
@@ -180,18 +192,18 @@
 </li>
 <li><p>而如果有virtual关键字，也就是一个虚函数，那么这个时候它就不会立刻执行该函数了，而是转去检查对象的【实例类】。</p>
 </li>
-<li><p>在这个实例类里，他会检查这个实例类的定义中是否有重新实现该虚函数（通过override关键字），如果有，则马上执行该实例类中的这个重新实现的函数。而如果没有，系统会不停地往上找实例类的父类，并对父类重复刚才在实例类里的检查，直到找到第一个重载了该虚函数的父类为止，然后执行该父类里重载后的函数。</p>
+<li><p>在这个实例类里，他会检查这个实例类的定义中是否有重新实现该虚函数（通过override关键字），如果有，则马上执行该实例类中的这个重新实现的函数。而如果没有，系统会不停地往上找实例类的父类，并对父类重复刚才在实例类里的检查，直到找到第一个重载了该虚函数的父类为止，然后执行该父类里重载后的函数。如果没有override关键字, 最后会执行申明类里的虚函数.</p>
 </li>
 </ul>
 </li>
 <li><p>virtual访问修饰符不能与static和override等访问修饰符一同使用；</p>
 </li>
-<li><p>实现原理：每个虚函数都会有一个与之对应的虚函数表，该虚函数表的实质是一个指针数组，存放的是每一个对象的虚函数入口地址。对于一个派生类来说，他会继承基类的虚函数表同时增加自己的虚函数入口地址，如果派生类重写了基类的虚函数的话，那么继承过来的虚函数入口地址将被派生类的重写虚函数入口地址替代。那么在程序运行时会发生动态绑定，将父类指针绑定到实例化的对象实现多态。 </p>
+<li><p>实现原理：每个虚函数都会有一个与之对应的虚函数表，该虚函数表的实质是一个指针数组，存放的是每一个对象的虚函数入口地址。对于一个派生类来说，他会继承基类的虚函数表同时增加自己的虚函数入口地址，如果派生类重写了基类的虚函数的话，那么继承过来的虚函数<strong>入口</strong>地址将被派生类的重写虚函数<strong>入口</strong>地址替代。那么在程序运行时会发生动态绑定，将父类指针绑定到实例化的对象实现多态。</p>
 </li>
 </ul>
 <blockquote>
+<p>————————————————<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lx2054807/article/details/102703775">https://blog.csdn.net/lx2054807/article/details/102703775</a></p>
 <ul>
-<li>如果是声明类 &amp; 实例类的话：先检查声明类这个函数是不是虚函数, 如果不是虚函数就直接执行函数. 如果是虚函数的话再去检查这个对象的实例类, 看看实例类中有没有重写这个虚函数, 如果有的话就直接执行该函数, 否则就去找这个实例类的父类, 看看他的父类中有没有重写这个虚函数,有的话就执行, 没有的话就继续找直到找遍所有父类, 如果没有override关键字, 最后会执行申明类里的虚函数.<br>————————————————<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lx2054807/article/details/102703775">https://blog.csdn.net/lx2054807/article/details/102703775</a></li>
 <li>如果是基类的引用访问派生类的话：那么直接访问最高（最年幼的）级别的派生类的方法。书p138</li>
 </ul>
 </blockquote>
@@ -200,7 +212,7 @@
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">A</span>(<span class="params"></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            PrintFields();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">PrintFields</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">class</span> <span class="title">B</span> : <span class="title">A</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">int</span> x = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">int</span> y;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">B</span>(<span class="params"></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            y = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">PrintFields</span>(<span class="params"></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;x=&#123;0&#125;,y=&#123;1&#125;&quot;</span>, x, y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">new</span> B();             </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>输出的是x=1，y=0。先隐式调用父类A的无参构造函数，执行PrintFields()方法，检查到是虚方法，转去检查实例类B，有重载方法，执行重载方法，输出x=1,y=0</p>
+<p>输出的是x&#x3D;1，y&#x3D;0。先隐式调用父类A的无参构造函数，执行PrintFields()方法，检查到是虚方法，转去检查实例类B，有重载方法，执行重载方法，输出x&#x3D;1,y&#x3D;0</p>
 </blockquote>
 <h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>封装是将<u>数据和行为相结合</u>，通过行为约束代码修改数据的程度，增强<u>数据的安全性</u>，属性是C#封装实现的最好体现。</p>
 <p>将一些复杂的逻辑包装起来，程序员不管内部是如何实现的，只负责使用里面的数据或者逻辑，目的是<u>保护或者防止代码被无意修改</u>。</p>
@@ -229,7 +241,7 @@
 </li>
 </ul>
 <h1 id="引用类型，值类型"><a href="#引用类型，值类型" class="headerlink" title="引用类型，值类型"></a>引用类型，值类型</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
-<li>值类型<code>继承自System.ValueType</code>：byte、short、int、long、float、 double、bool、char / struct、 enum…;</li>
+<li>值类型<code>继承自System.ValueType</code>：byte、short、int、long、float、 double、bool、char &#x2F; struct、 enum…;</li>
 <li>引用类型<code>继承自System.Object</code>：string、object、delegate、interface、class、array…</li>
 </ul>
 <h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
@@ -270,7 +282,10 @@
 </li>
 <li><p>浅复制：值类型成员不共用</p>
 <p>实现方式：让类实现ICloneable接口，重写Clone方法</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">object</span> <span class="title">Clone</span>(<span class="params"></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.MemberwiseClone();  <span class="comment">//利用系统实现的“浅度复制”方法来实现浅拷贝</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">object</span> <span class="title">Clone</span>(<span class="params"></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.MemberwiseClone();  <span class="comment">//利用系统实现的“浅度复制”方法来实现浅拷贝</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
 <li><p>深复制：引用类型成员也不共用</p>
 </li>
 </ul>
@@ -323,21 +338,25 @@
 <li><p>垃圾回收<u>主要是指<strong>堆上的</strong></u><u>内存分配和回收</u>，unity中会定时对堆内存进行GC操作。</p>
 </li>
 </ul>
-<h2 id="GC算法介绍"><a href="#GC算法介绍" class="headerlink" title="GC算法介绍"></a>GC算法介绍</h2><p>​    C#：分代算法，有内存整理，避免碎片化。有压缩。</p>
+<h2 id="GC算法介绍"><a href="#GC算法介绍" class="headerlink" title="GC算法介绍"></a>GC算法介绍</h2><p>​    <strong>C#</strong>：分代算法，有内存整理，避免碎片化。有压缩。</p>
 <p>​    0代，未被标记回收的新分配对象</p>
 <p>​    1代，上次垃圾回收中没有被回收的对象</p>
 <p>​    2代，在一次以上的垃圾回收之后仍然没有被回收的对象</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41719595/article/details/121016454">(42条消息) C#——垃圾回收(GC)_面向大象编程的博客-CSDN博客_c# gc</a></p>
 <h2 id="简易流程"><a href="#简易流程" class="headerlink" title="简易流程"></a>简易流程</h2><ul>
-<li><p>GC会检查堆内存上的每个存储变量;</p>
-</li>
-<li><p>对每个变量会检测其引用<u>是否处于激活状态</u>;</p>
-</li>
-<li><p>如果变量的引用不再处于激活状态，则会被标记为可<u>回收</u>;</p>
-</li>
-<li><p>被标记的变量会<u>被移除</u>，其所占有的内存会被回收到堆内存上。</p>
-</li>
+<li>GC会检查堆内存上的每个存储变量;</li>
+<li>对每个变量会检测其引用<u>是否处于激活状态</u>;</li>
+<li>如果变量的引用不再处于激活状态，则会被标记为可<u>回收</u>;</li>
+<li>被标记的变量会<u>被移除</u>，其所占有的内存会被回收到堆内存上。</li>
 </ul>
+<blockquote>
+<p>在C#中，垃圾回收器（GC）可以处理循环引用的情况，即使两个对象互相引用对方。这是因为C#的垃圾回收器是<strong>基于可达性</strong>分析的，而不是简单地依赖于引用计数。</p>
+<p>可达性分析的核心思想是从一组称为“根”（roots）的对象开始，<strong>根对象</strong>通常是<strong>在栈上的对象或静态字段</strong>。GC将遍历这些根对象，并访问它们所引用的所有对象，然后是这些对象引用的对象，依此类推。这样形成的对象图中，如果<strong>从根开始无法到达某个对象</strong>，那么这个对象就被认为是不可达的，GC将回收这样的对象。</p>
+<p>因此，即使两个类A和B的实例互相持有对方作为成员变量，形成了一个闭环，只要从任何根对象出发都无法到达这个闭环，那么这个闭环中的对象就会被GC认定为不可达，随后它们将被垃圾回收器回收。</p>
+<p>所以，总结来说，只要没有其他活动的引用指向这两个互相引用的对象，它们就会被GC清除。</p>
+</blockquote>
+<p><img src="/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/hexo_github_blog\source_posts\知识整理-C#知识整理.assets\389692419783AEF019AB52BC02FD2BC6-17327570165631.png" alt="389692419783AEF019AB52BC02FD2BC6"></p>
+<p>假设有相互引用的情况。令A&#x3D;null，B&#x3D;null，其成员变量还在相互引用堆内存。基于可达性分析，两个对象无法从根到达，因此可删除。</p>
 <h2 id="流程详细介绍"><a href="#流程详细介绍" class="headerlink" title="流程详细介绍"></a>流程详细介绍</h2><ul>
 <li><p>当新建立引用类型对象时，检查0代储存空间<u>是否有充足的空间</u>使得新的引用类型对象存储。若没有，将0代对象进行<u>遍历检查</u>，是否有被调用（激活），没有被调用的对象被标记“可回收”。</p>
 </li>
@@ -362,7 +381,7 @@
 <li><p>GC可以<u>被强制执行</u>。</p>
 </li>
 </ul>
-<h2 id="如何避免GC？（装箱拆箱介绍-对象池介绍-泛型介绍）"><a href="#如何避免GC？（装箱拆箱介绍-对象池介绍-泛型介绍）" class="headerlink" title="如何避免GC？（装箱拆箱介绍/对象池介绍/泛型介绍）"></a>如何避免GC？（装箱拆箱介绍/对象池介绍/泛型介绍）</h2><ul>
+<h2 id="如何避免GC？（装箱拆箱介绍-对象池介绍-泛型介绍）"><a href="#如何避免GC？（装箱拆箱介绍-对象池介绍-泛型介绍）" class="headerlink" title="如何避免GC？（装箱拆箱介绍&#x2F;对象池介绍&#x2F;泛型介绍）"></a>如何避免GC？（装箱拆箱介绍&#x2F;对象池介绍&#x2F;泛型介绍）</h2><ul>
 <li><u>减少临时变量的使用</u>，多使用公共对象，多利用缓存机制。（将容器定义到函数外，用到容器的时候进行修改即可）</li>
 <li>减少new对象的次数</li>
 <li>对于<u>大量字符串拼接</u>时，将StringBuilder代替String。（string不可修改性，修改即创建一个新的string对象，旧的直接抛弃等待GC，但少量字符串拼接用string，性能优于stringbuilder）</li>
@@ -435,19 +454,23 @@
 </li>
 </ul>
 <h1 id="接口和抽象类"><a href="#接口和抽象类" class="headerlink" title="接口和抽象类"></a>接口和抽象类</h1><h2 id="区别-2"><a href="#区别-2" class="headerlink" title="区别"></a>区别</h2><ul>
-<li>实例化：接口不是类（无构造函数和析构函数），<strong>不能被实例化</strong>，抽象类可以<strong>间接实例化</strong>（可以被继承，有构造函数，可以实例化子类的同时间接实例化抽象类这个父类）。</li>
-<li>方法申明和实现：接口只能做方法申明，抽象类中可以做方法申明，也可以做方法实现。</li>
-<li>抽象的范围：抽象类中可以有实现成员，接口只能包含抽象成员。因此接口是完全抽象，抽象类是部分抽象。</li>
-<li>继承和实现<ul>
+<li><p>实例化：接口不是类（无构造函数和析构函数），<strong>不能被实例化</strong>，抽象类可以<strong>间接实例化</strong>（可以被继承，有构造函数，可以实例化子类的同时间接实例化抽象类这个父类）。</p>
+</li>
+<li><p>方法申明和实现：接口只能做方法申明，抽象类中可以做方法申明，也可以做方法实现。</p>
+</li>
+<li><p>抽象的范围：抽象类中可以有实现成员，接口只能包含抽象成员。因此接口是完全抽象，抽象类是部分抽象。</p>
+</li>
+<li><p>继承和实现</p>
+<ul>
 <li>抽象类要被子类继承，接口要被类实现；</li>
 <li>接口可以实现多继承，抽象类只能实现单继承，一个类只能继承一个类但可以实现多个接口；</li>
 <li>抽象方法要被实现，所以不能是静态的，也不能是私有的。</li>
 </ul>
 </li>
-<li>成员修饰符：抽象类中所有的成员修饰符都能使用，接口中的成员都是对外的，所以不需要修饰符修饰。</li>
-</ul>
-<ul>
-<li>按照个人理解来说，接口更注重方法的设计，以供其他类扩展，而抽象类就是一个抽象的模板，让子类都按照这个来做。</li>
+<li><p>成员修饰符：抽象类中所有的成员修饰符都能使用，接口中的成员都是对外的，所以不需要修饰符修饰。</p>
+</li>
+<li><p>按照个人理解来说，接口更注重方法的设计，以供其他类扩展，而抽象类就是一个抽象的模板，让子类都按照这个来做。</p>
+</li>
 </ul>
 <h2 id="使用环境-1"><a href="#使用环境-1" class="headerlink" title="使用环境"></a>使用环境</h2><ul>
 <li><p>使用抽象类是为了<strong>代码的复用</strong>，而使用接口的动机是为了<strong>实现多态性</strong>。</p>
@@ -515,10 +538,10 @@
 <td align="center">N</td>
 </tr>
 <tr>
-<td align="center">调用/传参关键字是否可以省</td>
-<td align="center">Y/N</td>
-<td align="center">N/N</td>
-<td align="center">N/N</td>
+<td align="center">调用&#x2F;传参关键字是否可以省</td>
+<td align="center">Y&#x2F;N</td>
+<td align="center">N&#x2F;N</td>
+<td align="center">N&#x2F;N</td>
 </tr>
 </tbody></table>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shanfeng1000/p/15043795.html">C#中的值传递与引用传递（in、out、ref） - 没有星星的夏季 - 博客园 (cnblogs.com)</a>（具体可查看里面的例子）</p>
@@ -571,13 +594,13 @@
 <li>引用不需要分配内存空间，指针需要。</li>
 </ul>
 <h1 id="不安全代码和非托管代码"><a href="#不安全代码和非托管代码" class="headerlink" title="不安全代码和非托管代码"></a>不安全代码和非托管代码</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sibaison/article/details/72675257">(42条消息) C#的三大难点之二：托管与非托管_游子2022的博客-CSDN博客_c#托管</a></p>
-<h2 id="非托管代码"><a href="#非托管代码" class="headerlink" title="非托管代码"></a>非托管代码</h2><p>​    源代码首先经过预处理器，对头文件以及宏进行解析，然后经过编译器，生成汇编代码，接着，经过汇编，生成机器指令，最后将所有文件连接起来。</p>
-<p>​    这种编译方式的优点在于，最终<strong>直接生成了机器码</strong>，可以直接被计算机识别和运行，<strong>无需任何中间运行环境</strong>，但缺点也在于，由于不同平台能够识别的机器码不同，因此程序的跨平台能力较差。</p>
-<h2 id="托管代码"><a href="#托管代码" class="headerlink" title="托管代码"></a>托管代码</h2><p>​    而在Java语言中，源代码并没有被直接翻译成机器码，而是编译成了一种<strong>中间代码</strong>（字节码Bytecode）。因此，运行Java程序需要一个额外的JRE（Java Runtime Enviromental）运行环境，在JRE中存在着JVM（Java Virtual Mechinal，Java虚拟机），在程序运行的时候，会将中间代码进一步<strong>解释</strong>为机器码，并在机器上运行。</p>
-<p>​    使用中间代码的好处在于，程序的跨平台性比较好，一次编译，可以在不同的设备上运行。</p>
-<p>​    <strong>托管/非托管</strong>是微软的.net framework中特有的概念，其中，非托管代码也叫本地（native）代码。托管代码与Java中的机制类似，也是先将源代码编译成中间代码（MSIL，Microsoft Intermediate Language），然后再由.net中的<code>CLR</code>将中间代码<strong>编译</strong>成机器代码。</p>
-<p>​    而C#与Java的区别在于，Java是先编译后解释，C#是两次编译。<br>​    托管的方式除了拥有跨平台的优点之外，对程序的性能也产生一定的影响。</p>
-<h2 id="托管与非托管资源"><a href="#托管与非托管资源" class="headerlink" title="托管与非托管资源"></a>托管与非托管资源</h2><p>在C/C++中，资源都是需要手动释放的，比如，你new了一个指针，用过之后就需要delete掉，否则就会造成内存泄露。</p>
+<h2 id="非托管代码"><a href="#非托管代码" class="headerlink" title="非托管代码"></a>非托管代码</h2><p>​	源代码首先经过预处理器，对头文件以及宏进行解析，然后经过编译器，生成汇编代码，接着，经过汇编，生成机器指令，最后将所有文件连接起来。</p>
+<p>​	这种编译方式的优点在于，最终<strong>直接生成了机器码</strong>，可以直接被计算机识别和运行，<strong>无需任何中间运行环境</strong>，但缺点也在于，由于不同平台能够识别的机器码不同，因此程序的跨平台能力较差。</p>
+<h2 id="托管代码"><a href="#托管代码" class="headerlink" title="托管代码"></a>托管代码</h2><p>​	而在Java语言中，源代码并没有被直接翻译成机器码，而是编译成了一种<strong>中间代码</strong>（字节码Bytecode）。因此，运行Java程序需要一个额外的JRE（Java Runtime Enviromental）运行环境，在JRE中存在着JVM（Java Virtual Mechinal，Java虚拟机），在程序运行的时候，会将中间代码进一步<strong>解释</strong>为机器码，并在机器上运行。</p>
+<p>​	使用中间代码的好处在于，程序的跨平台性比较好，一次编译，可以在不同的设备上运行。</p>
+<p>​	<strong>托管&#x2F;非托管</strong>是微软的.net framework中特有的概念，其中，非托管代码也叫本地（native）代码。托管代码与Java中的机制类似，也是先将源代码编译成中间代码（MSIL，Microsoft Intermediate Language），然后再由.net中的<code>CLR</code>将中间代码<strong>编译</strong>成机器代码。</p>
+<p>​	而C#与Java的区别在于，Java是先编译后解释，C#是两次编译。<br>​	托管的方式除了拥有跨平台的优点之外，对程序的性能也产生一定的影响。</p>
+<h2 id="托管与非托管资源"><a href="#托管与非托管资源" class="headerlink" title="托管与非托管资源"></a>托管与非托管资源</h2><p>在C&#x2F;C++中，资源都是需要手动释放的，比如，你new了一个指针，用过之后就需要delete掉，否则就会造成内存泄露。</p>
 <p>而在Java中，不必考虑资源释放的问题，Java的垃圾回收机制（GC，Garbage Collection）会保证失效的资源被自动释放。</p>
 <p>而C#的机制与Java类似，运行于.net平台上的代码，分配的资源一般会<strong>自动由平台的垃圾回收器释放</strong>，这样的资源就是<strong>托管资源</strong>。</p>
 <p>但是一些例外的资源，如System.IO.StreamReader等各种流、各种连接所分配的资源，需要显式调用Close()或Dispose()释放，这种资源就叫做<strong>非托管资源</strong>。</p>
@@ -599,7 +622,7 @@
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyDel mydel = <span class="keyword">new</span> MyDel(<span class="comment">/*实例方法*/</span>myInsObj.MyM1);</span><br><span class="line">MyDel dVar = <span class="keyword">new</span> dVar(<span class="comment">/*静态方法*/</span>SClass.OtherM2);</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>=（存在隐式转换）</li>
+<li>&#x3D;（存在隐式转换）</li>
 </ul>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyDel mydel = myInsObj.MyM1;</span><br><span class="line">MyDel dVar = SClass.OtherM2;</span><br></pre></td></tr></table></figure>
 
@@ -611,13 +634,13 @@
 
 <p>运算最终会创建一个新的委托，其调用列表连接了两个委托的列表副本。委托对象被创建后就不能被改变。</p>
 <p><img src="https://img-blog.csdnimg.cn/ed1d971fa2964e71a31baaef50d8c0be.png" alt="img"></p>
-<h3 id="为委托添加-移除方法"><a href="#为委托添加-移除方法" class="headerlink" title="为委托添加/移除方法"></a>为委托添加/移除方法</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyDel delVar = inst.MyM1;</span><br><span class="line">delVar += SCl.m3;</span><br><span class="line">delVar += SCl.m4;</span><br></pre></td></tr></table></figure>
+<h3 id="为委托添加-移除方法"><a href="#为委托添加-移除方法" class="headerlink" title="为委托添加&#x2F;移除方法"></a>为委托添加&#x2F;移除方法</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyDel delVar = inst.MyM1;</span><br><span class="line">delVar += SCl.m3;</span><br><span class="line">delVar += SCl.m4;</span><br></pre></td></tr></table></figure>
 
 <p>委托其实是不变的，实际上是创建了新的委托，然后将新的委托赋值给delVar。</p>
 <p><img src="https://img-blog.csdnimg.cn/24f5b881a8a846a3ab4e29a54b36059f.png" alt="img"></p>
 <p>删除委托的一些注意事项：</p>
 <ul>
-<li>-=运算符从列表末尾开始搜索，并移除第一个匹配的实例；</li>
+<li>-&#x3D;运算符从列表末尾开始搜索，并移除第一个匹配的实例；</li>
 </ul>
 <h3 id="调用委托"><a href="#调用委托" class="headerlink" title="调用委托"></a>调用委托</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//像方法一样调用</span></span><br><span class="line"><span class="keyword">if</span>(delVar != <span class="literal">null</span>) delVar(<span class="number">55</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用委托的Invoke方法</span></span><br><span class="line">delVar?.Invoke();</span><br></pre></td></tr></table></figure>
 
@@ -628,7 +651,7 @@
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">delegate</span> (<span class="comment">/*参数列表*/</span>) &#123;<span class="comment">/*语句块*/</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p> 不会显式地声明返回值；</p>
+<li><p>不会显式地声明返回值；</p>
 </li>
 <li><p>匿名方法可以访问外围作用域的局部变量和环境（方法捕获）；</p>
 </li>
@@ -661,16 +684,16 @@
 <p>事件可以看做成委托中的一个变量。</p>
 <p>事件是基于委托的存在，事件是委托的安全包裹 让委托的使用更具有安全性。</p>
 <ol>
-<li>委托可以用“=”来赋值，事件不可以。</li>
-<li>委托是一个类型，事件是类或结构的成员。</li>
+<li>委托可以用“&#x3D;”来赋值，事件不可以。</li>
+<li>委托是一个类型，<strong>事件是类或结构的成员</strong>。</li>
 <li>委托可以在声明它的类外部进行调用，而事件只能在类的内部进行调用。</li>
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>委托是一个类，可以实例化，通过委托的构造函数把方法赋值给委托实例；</li>
 <li>触发委托有两种方式：委托实例.Invoke(参数列表)和委托实例（参数列表）；</li>
 <li>事件可看作是一个委托类型的变量；</li>
-<li>+=为事件注册多个委托实例或多个方法；</li>
-<li>-=为事件减少多个委托实例或多个方法；</li>
+<li>+&#x3D;为事件注册多个委托实例或多个方法；</li>
+<li>-&#x3D;为事件减少多个委托实例或多个方法；</li>
 </ul>
 <h2 id="委托原理"><a href="#委托原理" class="headerlink" title="委托原理"></a>委托原理</h2><h2 id="和Delegate的区别"><a href="#和Delegate的区别" class="headerlink" title="和Delegate的区别"></a>和Delegate的区别</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/delegate-class">System.Delegate 和“delegate”关键字 | Microsoft Learn</a></p>
 <p>[<a target="_blank" rel="noopener" href="https://blog.csdn.net/alexander_xfl/article/details/45695657">C#-2] delegate和Delegate的区别_石圣的博客-CSDN博客</a></p>
@@ -687,7 +710,7 @@
 <p><img src="/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/hexo_github_blog\source_posts\知识整理-C#知识整理.assets\image-20230831234244613.png" alt="image-20230831234244613"></p>
 <ul>
 <li>无法直接访问事件的委托；</li>
-<li>事件中可用的操作比委托要少，对于事件只能添加+=、删除-=或者触发；</li>
+<li>事件中可用的操作比委托要少，对于事件只能添加+&#x3D;、删除-&#x3D;或者触发；</li>
 <li>事件被触发时，调用委托来一次调用列表中的方法。</li>
 </ul>
 <h2 id="声明事件"><a href="#声明事件" class="headerlink" title="声明事件"></a>声明事件</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Incrementer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">event</span> EventHandler CountedADozen;</span><br><span class="line">    <span class="comment">// event: 关键字</span></span><br><span class="line">    <span class="comment">// EventHandler: 委托类型</span></span><br><span class="line">    <span class="comment">// 事件名</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -878,4 +901,4 @@
 </ul>
 <p>在后台，由编译器生成的枚举器类是包含4个状态的状态机。</p>
 <p><img src="/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/hexo_github_blog\source_posts\知识整理-C#知识整理.assets\image-20230623185456266.png" alt="image-20230623185456266"></p>
-</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/Csharp.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/22/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"><img class="prev-cover" src="/img/%7D7Y%5B5BZE_KJVDX6TI%5D$9CY1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据结构与算法</div></div></a></div><div class="next-post pull-right"><a href="/2023/01/06/Unity%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6/"><img class="next-cover" src="/img/frame.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Unity的游戏框架搭建</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88OOP%EF%BC%89%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81%EF%BC%9A%E7%BB%A7%E6%89%BF%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E5%A4%9A%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">面向对象（OOP）的三大特征：继承、封装、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.1.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%BB%A7%E6%89%BF%E5%9F%BA%E7%B1%BB"><span class="toc-number">1.1.1.</span> <span class="toc-text">派生类继承基类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="toc-number">1.1.2.</span> <span class="toc-text">方法重写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">多态性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">引用类型，值类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-number">2.2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82"><span class="toc-number">2.3.</span> <span class="toc-text">底层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E5%A4%8D%E5%88%B6"><span class="toc-number">2.4.</span> <span class="toc-text">赋值、浅赋值、深复制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">String引用类型的特殊性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-number">3.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-number">3.2.</span> <span class="toc-text">解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuilder%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.3.</span> <span class="toc-text">StringBuilder的底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-number">3.4.</span> <span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8StringBuilder%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B0%B1%E4%B8%80%E5%AE%9A%E6%AF%94string%E8%A6%81%E5%A5%BD%E5%90%97%EF%BC%9F"><span class="toc-number">3.5.</span> <span class="toc-text">用StringBuilder拼接字符串就一定比string要好吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B1%A0"><span class="toc-number">3.6.</span> <span class="toc-text">字符串池</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GC"><span class="toc-number">4.</span> <span class="toc-text">GC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">4.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.2.</span> <span class="toc-text">GC算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E6%B5%81%E7%A8%8B"><span class="toc-number">4.3.</span> <span class="toc-text">简易流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.4.</span> <span class="toc-text">流程详细介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.5.</span> <span class="toc-text">GC带来的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E8%A7%A6%E5%8F%91"><span class="toc-number">4.6.</span> <span class="toc-text">何时触发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8DGC%EF%BC%9F%EF%BC%88%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1%E4%BB%8B%E7%BB%8D-%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%BB%8B%E7%BB%8D-%E6%B3%9B%E5%9E%8B%E4%BB%8B%E7%BB%8D%EF%BC%89"><span class="toc-number">4.7.</span> <span class="toc-text">如何避免GC？（装箱拆箱介绍&#x2F;对象池介绍&#x2F;泛型介绍）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">5.</span> <span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%86%E5%B0%81%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">密封类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">结构体和类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB-1"><span class="toc-number">7.1.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83"><span class="toc-number">7.2.</span> <span class="toc-text">使用环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">接口和抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB-2"><span class="toc-number">8.1.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83-1"><span class="toc-number">8.2.</span> <span class="toc-text">使用环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">8.3.</span> <span class="toc-text">抽象类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">8.4.</span> <span class="toc-text">接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">静态构造函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">指针和引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-number">10.1.</span> <span class="toc-text">引用传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E5%BC%95%E7%94%A8"><span class="toc-number">10.2.</span> <span class="toc-text">ref引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-number">10.2.1.</span> <span class="toc-text">按引用传递参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">10.3.</span> <span class="toc-text">指针和引用的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E4%BB%A3%E7%A0%81%E5%92%8C%E9%9D%9E%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81"><span class="toc-number">11.</span> <span class="toc-text">不安全代码和非托管代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81"><span class="toc-number">11.1.</span> <span class="toc-text">非托管代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81"><span class="toc-number">11.2.</span> <span class="toc-text">托管代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E4%B8%8E%E9%9D%9E%E6%89%98%E7%AE%A1%E8%B5%84%E6%BA%90"><span class="toc-number">11.3.</span> <span class="toc-text">托管与非托管资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">11.4.</span> <span class="toc-text">不安全代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC14%E7%AB%A0-%E5%A7%94%E6%89%98"><span class="toc-number">12.</span> <span class="toc-text">第14章 委托</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">12.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%A7%94%E6%89%98%E7%B1%BB%E5%9E%8B"><span class="toc-number">12.1.1.</span> <span class="toc-text">声明委托类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%A7%94%E6%89%98%E5%AF%B9%E8%B1%A1"><span class="toc-number">12.1.2.</span> <span class="toc-text">创建委托对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E5%A7%94%E6%89%98%E8%B5%8B%E5%80%BC"><span class="toc-number">12.1.3.</span> <span class="toc-text">给委托赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%A7%94%E6%89%98"><span class="toc-number">12.1.4.</span> <span class="toc-text">组合委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%A7%94%E6%89%98%E6%B7%BB%E5%8A%A0-%E7%A7%BB%E9%99%A4%E6%96%B9%E6%B3%95"><span class="toc-number">12.1.5.</span> <span class="toc-text">为委托添加&#x2F;移除方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%A7%94%E6%89%98"><span class="toc-number">12.1.6.</span> <span class="toc-text">调用委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%B8%A6%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%A7%94%E6%89%98"><span class="toc-number">12.1.7.</span> <span class="toc-text">调用带有返回值的委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%B8%A6%E6%9C%89%E5%BC%95%E7%94%A8%E5%8F%82%E6%95%B0%E7%9A%84%E5%A7%94%E6%89%98"><span class="toc-number">12.1.8.</span> <span class="toc-text">调用带有引用参数的委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E6%96%B9%E6%B3%95"><span class="toc-number">12.1.9.</span> <span class="toc-text">匿名方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%A7%94%E6%89%98%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95"><span class="toc-number">12.2.</span> <span class="toc-text">通过委托执行方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%A6%E5%A4%96%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%A7%94%E6%89%98%E5%8F%98%E9%87%8F%EF%BC%88%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8%EF%BC%89"><span class="toc-number">12.3.</span> <span class="toc-text">委托执行方法的另外一种方式：委托变量（参数列表）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">12.4.</span> <span class="toc-text">委托和接口的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">12.5.</span> <span class="toc-text">委托和事件的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">12.6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%8E%9F%E7%90%86"><span class="toc-number">12.7.</span> <span class="toc-text">委托原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%92%8CDelegate%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">12.8.</span> <span class="toc-text">和Delegate的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC15%E7%AB%A0-%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.</span> <span class="toc-text">第15章  事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%80%85%E5%92%8C%E8%AE%A2%E9%98%85%E8%80%85"><span class="toc-number">13.1.</span> <span class="toc-text">发布者和订阅者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.2.</span> <span class="toc-text">声明事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A2%E9%98%85%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.3.</span> <span class="toc-text">订阅事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.4.</span> <span class="toc-text">触发事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">13.5.</span> <span class="toc-text">标准事件的用法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%8D%A0%E7%94%A8%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0"><span class="toc-number">14.</span> <span class="toc-text">C#中基本类型占用的字节数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%8F%E5%8F%98%E4%B8%8E%E9%80%86%E5%8F%98"><span class="toc-number">15.</span> <span class="toc-text">协变与逆变??</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E5%8F%98-out"><span class="toc-number">15.1.</span> <span class="toc-text">协变(out)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E5%8F%98-in"><span class="toc-number">15.2.</span> <span class="toc-text">逆变(in)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84-%E5%A4%A7%E6%A6%82%E9%9C%80%E8%A6%81%E4%BB%8E%E4%B9%A6%E6%9C%AC%E6%85%A2%E6%85%A2%E7%9C%8B%E8%B5%B7%EF%BC%8C%E5%85%88%E4%BA%86%E8%A7%A3%E5%89%8D%E9%9D%A2%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">16.</span> <span class="toc-text">反射(大概需要从书本慢慢看起，先了解前面的概念)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="toc-number">16.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">16.2.</span> <span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%80%94%EF%BC%88%EF%BC%9F"><span class="toc-number">16.3.</span> <span class="toc-text">用途（？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">16.4.</span> <span class="toc-text">查看元数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC19%E7%AB%A0-%E6%9E%9A%E4%B8%BE%E5%99%A8%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">17.</span> <span class="toc-text">第19章 枚举器和迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E5%99%A8%E5%92%8C%E5%8F%AF%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-number">17.1.</span> <span class="toc-text">枚举器和可枚举类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IEnumerator%E6%8E%A5%E5%8F%A3"><span class="toc-number">17.2.</span> <span class="toc-text">IEnumerator接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IEnumerable%E6%8E%A5%E5%8F%A3"><span class="toc-number">17.3.</span> <span class="toc-text">IEnumerable接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%9E%9A%E4%B8%BE%E6%8E%A5%E5%8F%A3"><span class="toc-number">17.4.</span> <span class="toc-text">泛型枚举接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">17.5.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">17.6.</span> <span class="toc-text">常见迭代器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%A4%9A%E4%B8%AA%E5%8F%AF%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-number">17.7.</span> <span class="toc-text">产生多个可枚举类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="toc-number">17.8.</span> <span class="toc-text">迭代器的实质</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangxinhere.github.io">(●ˇ∀ˇ●)</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangxinhere.github.io/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">https://huangxinhere.github.io/2023/02/20/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangxinhere.github.io" target="_blank">Hx's blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/Csharp.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/02/22/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据结构与算法"><img class="cover" src="/img/%7D7Y%5B5BZE_KJVDX6TI%5D$9CY1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">数据结构与算法</div></div><div class="info-2"><div class="info-item-1">数组栈和队列 求最大k值：小根堆优先队列；快排  链表 前驱和后继：前驱就是指逻辑上前一个结点，后继就是逻辑上后一个结点，如果用位号的观点看，前驱就是当前结点的位号-1，后继就是当前结点的位号+1。  树二叉树的概念和性质遍历先序遍历：左根右； 中序遍历：根左右； 后序遍历：左右根；  哪两种遍历方式可以确定一棵树？  先序遍历 + 中序遍历 后序遍历 + 中序遍历 先序遍历 + 后序遍历（不可行）  先序遍历和后序遍历对于我们组建一个二叉树所能提供的信息都只是根节点，我们依次拿着根节点去中序遍历分割左子树和右子树，在通过递归组成整颗树。  如果两两组合的序列相同 二叉树：前序与后序、前序与中序以及中序与后序相同、相反的特征_前序和中序_乐行僧丶的博客-CSDN博客   基本运算 创建 查找 寻找左右孩子 求高度 输出二叉树  二叉树的构造 序列还原二叉树  二叉树表达式  线索二叉树  哈夫曼树 数据结构——哈夫曼树（Huffman Tree） - 知乎 (zhihu.com)  最小带权路径长度的二叉树（路径×结点值），较大的结点离根较近；  结点的带权路径长度为：从根结点到...</div></div></div></a><a class="pagination-related" href="/2023/01/06/Unity%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6/" title="Unity的游戏框架搭建"><img class="cover" src="/img/frame.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Unity的游戏框架搭建</div></div><div class="info-2"><div class="info-item-1">要点 树结构  对象之间的交互（低耦合）和模块化（高内聚）是整个框架搭建系列的终极问题  对象交互三种方法 方法调用； 委托或者回调； 消息或事件。  模块化也有三种： 单例； IOC； 分层，如MVC，三层架构，领域驱动分层等。    表现和数据的分离  交互逻辑和表现逻辑   父子对象和跨模块初探  目前有UI和Game两个模块，通信都是用事件。 Panel的父子对象则用委托通信。  表现和数据分离Event的抽象上面的GameStartEvent和GamePassEvent都是单独写的，但重复性很高，可以通过 泛型＋继承 来提取，继承解决扩展问题，泛型解决实现代码一致、类不一致的问题，是一个重构技巧。 12345678910111213141516171819public class Event&lt;T&gt; where T : Event&lt;T&gt;&#123;    private static Action mOnEvent;    public static void Register(Action onEvent)    &#123;        mO...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">(●ˇ∀ˇ●)</div><div class="author-info-description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88OOP%EF%BC%89%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81%EF%BC%9A%E7%BB%A7%E6%89%BF%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E5%A4%9A%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">面向对象（OOP）的三大特征：继承、封装、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.1.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%BB%A7%E6%89%BF%E5%9F%BA%E7%B1%BB"><span class="toc-number">1.1.1.</span> <span class="toc-text">派生类继承基类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="toc-number">1.1.2.</span> <span class="toc-text">方法重写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">多态性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">引用类型，值类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-number">2.2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82"><span class="toc-number">2.3.</span> <span class="toc-text">底层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E5%A4%8D%E5%88%B6"><span class="toc-number">2.4.</span> <span class="toc-text">赋值、浅赋值、深复制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">String引用类型的特殊性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-number">3.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-number">3.2.</span> <span class="toc-text">解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuilder%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.3.</span> <span class="toc-text">StringBuilder的底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-number">3.4.</span> <span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8StringBuilder%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B0%B1%E4%B8%80%E5%AE%9A%E6%AF%94string%E8%A6%81%E5%A5%BD%E5%90%97%EF%BC%9F"><span class="toc-number">3.5.</span> <span class="toc-text">用StringBuilder拼接字符串就一定比string要好吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B1%A0"><span class="toc-number">3.6.</span> <span class="toc-text">字符串池</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GC"><span class="toc-number">4.</span> <span class="toc-text">GC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">4.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.2.</span> <span class="toc-text">GC算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E6%B5%81%E7%A8%8B"><span class="toc-number">4.3.</span> <span class="toc-text">简易流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.4.</span> <span class="toc-text">流程详细介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.5.</span> <span class="toc-text">GC带来的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E8%A7%A6%E5%8F%91"><span class="toc-number">4.6.</span> <span class="toc-text">何时触发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8DGC%EF%BC%9F%EF%BC%88%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1%E4%BB%8B%E7%BB%8D-%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%BB%8B%E7%BB%8D-%E6%B3%9B%E5%9E%8B%E4%BB%8B%E7%BB%8D%EF%BC%89"><span class="toc-number">4.7.</span> <span class="toc-text">如何避免GC？（装箱拆箱介绍&#x2F;对象池介绍&#x2F;泛型介绍）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">5.</span> <span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%86%E5%B0%81%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">密封类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">结构体和类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB-1"><span class="toc-number">7.1.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83"><span class="toc-number">7.2.</span> <span class="toc-text">使用环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">接口和抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB-2"><span class="toc-number">8.1.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83-1"><span class="toc-number">8.2.</span> <span class="toc-text">使用环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">8.3.</span> <span class="toc-text">抽象类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">8.4.</span> <span class="toc-text">接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">静态构造函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">指针和引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-number">10.1.</span> <span class="toc-text">引用传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E5%BC%95%E7%94%A8"><span class="toc-number">10.2.</span> <span class="toc-text">ref引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-number">10.2.1.</span> <span class="toc-text">按引用传递参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">10.3.</span> <span class="toc-text">指针和引用的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E4%BB%A3%E7%A0%81%E5%92%8C%E9%9D%9E%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81"><span class="toc-number">11.</span> <span class="toc-text">不安全代码和非托管代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81"><span class="toc-number">11.1.</span> <span class="toc-text">非托管代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81"><span class="toc-number">11.2.</span> <span class="toc-text">托管代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E4%B8%8E%E9%9D%9E%E6%89%98%E7%AE%A1%E8%B5%84%E6%BA%90"><span class="toc-number">11.3.</span> <span class="toc-text">托管与非托管资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">11.4.</span> <span class="toc-text">不安全代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC14%E7%AB%A0-%E5%A7%94%E6%89%98"><span class="toc-number">12.</span> <span class="toc-text">第14章 委托</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">12.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%A7%94%E6%89%98%E7%B1%BB%E5%9E%8B"><span class="toc-number">12.1.1.</span> <span class="toc-text">声明委托类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%A7%94%E6%89%98%E5%AF%B9%E8%B1%A1"><span class="toc-number">12.1.2.</span> <span class="toc-text">创建委托对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E5%A7%94%E6%89%98%E8%B5%8B%E5%80%BC"><span class="toc-number">12.1.3.</span> <span class="toc-text">给委托赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%A7%94%E6%89%98"><span class="toc-number">12.1.4.</span> <span class="toc-text">组合委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%A7%94%E6%89%98%E6%B7%BB%E5%8A%A0-%E7%A7%BB%E9%99%A4%E6%96%B9%E6%B3%95"><span class="toc-number">12.1.5.</span> <span class="toc-text">为委托添加&#x2F;移除方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%A7%94%E6%89%98"><span class="toc-number">12.1.6.</span> <span class="toc-text">调用委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%B8%A6%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%A7%94%E6%89%98"><span class="toc-number">12.1.7.</span> <span class="toc-text">调用带有返回值的委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%B8%A6%E6%9C%89%E5%BC%95%E7%94%A8%E5%8F%82%E6%95%B0%E7%9A%84%E5%A7%94%E6%89%98"><span class="toc-number">12.1.8.</span> <span class="toc-text">调用带有引用参数的委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E6%96%B9%E6%B3%95"><span class="toc-number">12.1.9.</span> <span class="toc-text">匿名方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%A7%94%E6%89%98%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95"><span class="toc-number">12.2.</span> <span class="toc-text">通过委托执行方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%A6%E5%A4%96%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%A7%94%E6%89%98%E5%8F%98%E9%87%8F%EF%BC%88%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8%EF%BC%89"><span class="toc-number">12.3.</span> <span class="toc-text">委托执行方法的另外一种方式：委托变量（参数列表）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">12.4.</span> <span class="toc-text">委托和接口的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">12.5.</span> <span class="toc-text">委托和事件的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">12.6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%8E%9F%E7%90%86"><span class="toc-number">12.7.</span> <span class="toc-text">委托原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%92%8CDelegate%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">12.8.</span> <span class="toc-text">和Delegate的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC15%E7%AB%A0-%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.</span> <span class="toc-text">第15章  事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%80%85%E5%92%8C%E8%AE%A2%E9%98%85%E8%80%85"><span class="toc-number">13.1.</span> <span class="toc-text">发布者和订阅者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.2.</span> <span class="toc-text">声明事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A2%E9%98%85%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.3.</span> <span class="toc-text">订阅事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6"><span class="toc-number">13.4.</span> <span class="toc-text">触发事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">13.5.</span> <span class="toc-text">标准事件的用法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%8D%A0%E7%94%A8%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0"><span class="toc-number">14.</span> <span class="toc-text">C#中基本类型占用的字节数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%8F%E5%8F%98%E4%B8%8E%E9%80%86%E5%8F%98"><span class="toc-number">15.</span> <span class="toc-text">协变与逆变??</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E5%8F%98-out"><span class="toc-number">15.1.</span> <span class="toc-text">协变(out)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E5%8F%98-in"><span class="toc-number">15.2.</span> <span class="toc-text">逆变(in)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84-%E5%A4%A7%E6%A6%82%E9%9C%80%E8%A6%81%E4%BB%8E%E4%B9%A6%E6%9C%AC%E6%85%A2%E6%85%A2%E7%9C%8B%E8%B5%B7%EF%BC%8C%E5%85%88%E4%BA%86%E8%A7%A3%E5%89%8D%E9%9D%A2%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">16.</span> <span class="toc-text">反射(大概需要从书本慢慢看起，先了解前面的概念)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="toc-number">16.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">16.2.</span> <span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%80%94%EF%BC%88%EF%BC%9F"><span class="toc-number">16.3.</span> <span class="toc-text">用途（？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">16.4.</span> <span class="toc-text">查看元数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC19%E7%AB%A0-%E6%9E%9A%E4%B8%BE%E5%99%A8%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">17.</span> <span class="toc-text">第19章 枚举器和迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E5%99%A8%E5%92%8C%E5%8F%AF%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-number">17.1.</span> <span class="toc-text">枚举器和可枚举类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IEnumerator%E6%8E%A5%E5%8F%A3"><span class="toc-number">17.2.</span> <span class="toc-text">IEnumerator接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IEnumerable%E6%8E%A5%E5%8F%A3"><span class="toc-number">17.3.</span> <span class="toc-text">IEnumerable接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%9E%9A%E4%B8%BE%E6%8E%A5%E5%8F%A3"><span class="toc-number">17.4.</span> <span class="toc-text">泛型枚举接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">17.5.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">17.6.</span> <span class="toc-text">常见迭代器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%A4%9A%E4%B8%AA%E5%8F%AF%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-number">17.7.</span> <span class="toc-text">产生多个可枚举类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="toc-number">17.8.</span> <span class="toc-text">迭代器的实质</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI（2）"/></a><div class="content"><a class="title" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）">Unity-UI（2）</a><time datetime="2024-03-12T16:00:00.000Z" title="发表于 2024-03-13 00:00:00">2024-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-性能优化"/></a><div class="content"><a class="title" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化">Unity-性能优化</a><time datetime="2023-09-13T16:00:00.000Z" title="发表于 2023-09-14 00:00:00">2023-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-图形"/></a><div class="content"><a class="title" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形">Unity-图形</a><time datetime="2023-09-12T16:00:00.000Z" title="发表于 2023-09-13 00:00:00">2023-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新"><img src="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/message_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-热更新"/></a><div class="content"><a class="title" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新">Unity-热更新</a><time datetime="2023-09-09T16:00:00.000Z" title="发表于 2023-09-10 00:00:00">2023-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法"><img src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-算法"/></a><div class="content"><a class="title" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法">Unity-算法</a><time datetime="2023-09-05T16:00:00.000Z" title="发表于 2023-09-06 00:00:00">2023-09-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/Csharp.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By (●ˇ∀ˇ●)</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.0-b3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

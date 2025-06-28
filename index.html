@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hx's blog - aha</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="该博客暂时停止维护，新博客传送门：https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;3598037753539256">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hx's blog - aha</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="该博客暂时停止维护，新博客传送门：https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;3598037753539256">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hx&#39;s blog">
 <meta property="og:url" content="https://huangxinhere.github.io/index.html">
@@ -8,16 +8,110 @@
 <meta property="og:image" content="https://huangxinhere.github.io/img/head_pic_3.png">
 <meta property="article:author" content="(●ˇ∀ˇ●)">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://huangxinhere.github.io/img/head_pic_3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/head_pic_3.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hx's blog",
+  "url": "https://huangxinhere.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
   translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -25,7 +119,7 @@
     post: false
   },
   runtime: '',
-  date_suffix: {
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -33,272 +127,116 @@
     month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'Hx\'s blog',
-  isPost: false,
-  isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-04-16 09:31:36'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://pic2.zhimg.com/v2-fc6b5bc5ed17621fa52acf7a19b2e379_r.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hx's blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）">     <img class="post_bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI（2）"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）">Unity-UI（2）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-12T16:00:00.000Z" title="发表于 2024-03-13 00:00:00">2024-03-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">
-图集的使用，降低dc的实践（尝试提高性能
-
-rectTransform的scale具体原理是什么，如何做到缩放但不改变节点。
-
-解决图片tile模式的警告问题
-
-把实习的笔记补充
-
-画布渲染次序解决：一个按照逻辑归类好的画布，对另一个画布产生了三明治影响：夹着另一个画布。解决办法是在前面的物体添加canvas组件作为了子canvas，能够改变渲染顺序。
-
-画布点击事件过滤
-
-协程频繁触发时及时销毁，第一个方法不可用，为啥？stop后coro不为空，为什么
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化">     <img class="post_bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-性能优化"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化">Unity-性能优化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-13T16:00:00.000Z" title="发表于 2023-09-14 00:00:00">2023-09-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">创建物体new GameObject()1GameObject object=new GameObject(“物体名”);
-
-12345678// 创建物体，物体名为New Game Object，位置为（0,0,0）public GameObject();// 创建物体，物体名为设定的name，位置为（0,0,0）public GameObject(string name);// 创建物体，物体名为设定的name且添加指定组件，位置为（0,0,0）public GameObject(string name, params Type[] components);
-
-
-
-Object.Instantiate(prefab);利用prefab来创建。
-常用于创建指定物体，可将物体提前预设好，根据情景应用快速创建所需的物体。
-CreatePrimitive1GameObject.CreatePrimitive(PrimitiveType.Cube);
-
-此方法可创建系统预设的几种常用简单三维模型；
-性能优化Unity性能优化大合集，All In One !（更新至8.18） - UWA问答  ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形">     <img class="post_bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-图形"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形">Unity-图形</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-12T16:00:00.000Z" title="发表于 2023-09-13 00:00:00">2023-09-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">光照光照贴图 - Unity 手册
-光照贴图光照贴图过程将预先计算场景中表面的亮度，并将结果存储在称为“光照贴图”的纹理中供以后使用。
-
-光照贴图可以包含直射光和间接光。该光照纹理可与颜色（反照率）和浮雕（法线）之类的对象表面信息材质相关联的着色器一起使用。
-纹理Texture formats - Unity 手册
-纹理格式可以在纹理资源导入设置中为其配置纹理压缩格式。当您向项目添加纹理资源时，Unity 编辑器会自动为每个构建目标选择合适的压缩格式；但是，大多数平台都支持多种纹理压缩格式。
-纹理压缩格式会影响加载时间、GPU 帧时间、内存使用、视觉质量、构建大小和压缩时间。
-概述
-每像素位数（bpp）
-每像素位数 (bpp) 表示单个纹理像素所需的存储量。
-Bpp 值越低的纹理在磁盘和内存中也越小。较低的 bpp 值也意味着 GPU 使用较少的内存带宽来读取纹理像素。GPU 内存带宽通常是帧率的瓶颈，因此纹理压缩有助于避免这一问题。
-纹理资源的视觉质量越高，每像素的位数就越高；因此，这会增大构建大小、加载时间和运行时内存使用。在某种程度上，所有纹理压缩格式都是有损的。未压缩的纹理提供 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新">     <img class="post_bg" src="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/message_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-热更新"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新">Unity-热更新</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-09T16:00:00.000Z" title="发表于 2023-09-10 00:00:00">2023-09-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">Unity热更新入门最全教程（一） - 知乎 (zhihu.com)
-Unity 热更新技术 | （一） 热更新的基本概念原理及主流热更新方案介绍-腾讯云开发者社区-腾讯云 (tencent.com)【最详细】
-什么是更新游戏更新 简单点说，分为两类，一种是冷更新（换包），一种是热更新（不换包，通过网络下载，动态更新资源等）。
-1、冷更新（Cold Update）是指在需要更新时，需要用户手动到应用商店或官方网站下载新版本安装包并重新安装的一种更新方式，以解决一些热更新无法覆盖的问题，如需要进行版本升级、打包、发布等工作，需要耗费一定的时间和人力物力成本。
-2、热更新（Hotfix）是指在不需要重新发布应用程序或游戏的情况下，通过远程更新服务器向客户端推送程序代码、资源文件等数据的一种技术手段，以修复程序漏洞、优化游戏性能、更新游戏内容等
-
-
-热更新相对于冷更新的优点在于：
-可以快速地修复程序漏洞、更新游戏内容和添加新功能；
-同时减少了用户下载和安装的操作流程，降低了用户对游戏的耐心和耐受度。
-因此，在一些紧急情况下，如修复重大漏洞、提供重要新内容等，热更新是比较合适的选择。
-
-冷更新 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法">     <img class="post_bg" src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-算法"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法">Unity-算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-05T16:00:00.000Z" title="发表于 2023-09-06 00:00:00">2023-09-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">敏感词匹配
-如果不考虑性能的话，建立一个“敏感词”语句库，利用constains和replace操作直接替换，不过时间复杂度比较高。
-
-AC自动机
-【全程干货】程序员必备算法！AC自动机算法敏感词匹配算法！动画演示讲解，看完轻松掌握，面试官都被你唬住！！_哔哩哔哩_bilibili
-
-构建Trie树（字典树，前缀树）
-
-从根节点出发，可以向后无限延伸，每个节点都有多个子节点，将敏感词的每一个字拆分开，作为一个节点，以特定的顺序排列，来构建成一个Tire树。
-当每个敏感词构建完成后，在最后的节点记录敏感词长度，这样就能知道整个敏感词是什么了（在被匹配的字符串上“回溯”？）。
-
-
-构建Fail指针（失配指针）
-
- 在检索Trie树的时候，在某个分支的节点上匹配失败，可以重新指向关联的其他分支上，避免了从头开始冗余检索。
-
-构建fail指针的遍历为层次遍历。
-root节点的fail指针指向自己本身。
-如果当前节点父节点、的fail指针、指向的节点下、存在与当前节点一样的子节点，则当前节点的fail指针指向该子节点。否则、指向root节点。
-
-
-
-
-
-遍历过程
-
-若遍历语句的时候，到达“结束节 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="C#-数据结构和算法">     <img class="post_bg" src="/img/%7D7Y%5B5BZE_KJVDX6TI%5D$9CY1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C#-数据结构和算法"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="C#-数据结构和算法">C#-数据结构和算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-03T16:00:00.000Z" title="发表于 2023-09-04 00:00:00">2023-09-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">字典原理浅析C# Dictionary实现原理 - InCerry - 博客园 (cnblogs.com)[更清晰]
-【C#】浅析C# Dictionary实现原理 - 知乎 (zhihu.com)
-主要是拉链法。
-核心是buckets和entries数组。
-
-将键转化成hashcode之后，取余数，得到哈希值，找到哈希桶数组对应的位置2
-将信息存入到entries数组中，0位是空的，就放到0处，将Entry的下标entryIndex赋值给buckets中对应下标的bucket。步骤3中是存放在entries[0]的位置，所以buckets[2]=0。
-
-
-哈希碰撞：将新加入的元素放进entries的下一个空位，更新next和哈希桶指向的索引。
-
-
-
-删除的时候，如果元素在链表中间，就会让前一个指向后一个，空出来位置的用freelist记录，下一次可以接着用。不过这样就打乱了值插入的顺序。
-
-Hash桶算法说到Hash算法大家就会想到Hash表，一个Key通过Hash函数运算后可快速的得到hashCode，通过hashCode的映射可直接Get到Value，但是hashCode一般取值 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5/" title="Unity-术语/概念">     <img class="post_bg" src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-术语/概念"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5/" title="Unity-术语/概念">Unity-术语/概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-03T16:00:00.000Z" title="发表于 2023-09-04 00:00:00">2023-09-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">图形欧拉角和四元数欧拉角和四元数的通俗理解 - 知乎 (zhihu.com)
-欧拉角（Euler Angle）欧拉角具有最简单直观的表示形式，即按顺序应用三个角度值。要将欧拉旋转应用于特定对象，则依次应用每个旋转值，作为围绕其对应轴的旋转。它的局限是可能导致万向节死锁问题。
-万向节死锁（Gimbal Lock)欧拉角万向节死锁 - 知乎 (zhihu.com)
-简单来说就是丢失了一个方向的自由度，第一个或第二个旋转可能导致第三个轴的方向与先前两个轴之一相同。
-欧拉角的万向节死锁是这样：我们依次绕物体坐标系的 X 轴、Y 轴、Z 轴旋转 90°，当 Y 轴旋转了 90° 之后，物体坐标系的 Z 轴就会指向原来的 X 轴。这样一来，我们事实上只绕了 X 轴和 Y 轴两个轴旋转，第三根轴的自由度就丢失了
-四元数Quaternion - Unity 脚本 API
-四元数——基本概念 - 知乎 (zhihu.com)
-(62 封私信) 如何通俗地解释欧拉角？之后为何要引入四元数？ - 知乎 (zhihu.com)
-四元数用于表示旋转。
-它们结构紧凑，不受万向锁影响，可以轻松插值。 Unity 内 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/" title="Unity-UI">     <img class="post_bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/" title="Unity-UI">Unity-UI</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-31T16:00:00.000Z" title="发表于 2023-09-01 00:00:00">2023-09-01</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">画布 - Unity 手册
-Unity - Manual: Canvas
-Unity内置的UI组件还有 UI Toolkit、即时模式IMGUI，现在主要用的是UnityUI。
-CanvasUnity Canvas 详解_TravelerTD的博客-CSDN博客【组件更详细的说明】
-画布 (Canvas) 是应该容纳所有 UI 元素的区域。画布是一种带有画布组件的游戏对象，所有 UI 元素都必须是此类画布的子项。
-绘制元素顺序画布中的 UI 元素按照它们在 Hierarchy 中显示的顺序绘制。也可以通过在变换组件上使用以下方法从脚本控制顺序：SetAsFirstSibling、SetAsLastSibling 和 SetSiblingIndex。
-渲染模式 Render Modes
-Screen Space - Overlay
-此渲染模式将 UI 元素放置于在场景之上渲染的屏幕上。如果调整屏幕大小或更改分辨率，则画布将自动更改大小来适应此情况。
-
-Screen Space - Camera
-画布放置在指定__摄像机__前面的给定距离处。UI 元素由此摄像机渲染，这意味着摄像机设置会影 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2023/07/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式-知识整理">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式-知识整理"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式-知识整理">设计模式-知识整理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-29T16:00:00.000Z" title="发表于 2023-07-30 00:00:00">2023-07-30</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">【更广泛的设计模式分类】设计模式总结之模式分类_迷死特兔的博客-CSDN博客
-游戏中的设计模式 - 知乎 (zhihu.com)
-
-创建型设计模式
-结构型设计模式
-行为型设计模式
-
-单例模式【创建型】到底是用”静态类”还是单例 - 掘金 (juejin.cn)
-什么是单例模式单例模式指的是在应用整个生命周期内只能存在一个实例。单例模式是一种被广泛使用的设计模式。
-他有很多好处，能够避免实例对象的重复创建，减少创建实例的系统开销，节省内存。
- 1.一个类只能有一个实例；
- 2.自己创建这个实例；
-3.整个系统都要使用这个实例。
-实现方式
-饿汉模式
-
-所谓饿汉模式就是立即加载，一般情况下再调用getInstancef方法之前就已经产生了实例，也就是在类加载的时候已经产生了。
-这种模式的缺点很明显，就是占用资源，当单例类很大的时候，其实我们是想使用的时候再产生实例。因此这种方式适合占用资源少，在初始化的时候就会被用到的类。
-1234567891011class SingletonHungary &#123;    private static SingletonHungary singlet ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2023/07/04/%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93-Unity%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BFishnet/" title="无题">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/04/%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93-Unity%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BFishnet/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-04T08:18:28.933Z" title="发表于 2023-07-04 16:18:28">2023-07-04</time></span></div><div class="content">
-
-概念Server和Client
-
-独立：目前理解是，server和clients分别拥有一个运行的“单机”游戏，逻辑都一样运行，但联机不同的是，每端都有ID，分为Client和Server两类，根据ID不同 判断并执行逻辑。
-
-共享 / 同步：联机的意义在于“异步中的同步”，比如玩家控制的一个角色，在ABC三个端都是同步的，理想状态是相同时刻执行的效果相同。
-
-通过服务器：服务器作为“总部”负责接收单个客户端的请求，并把更新的信息（客户端或服务器的更新）告诉给所有客户端。
-ServerRpc：直接请求服务器；
-变量同步：基于对象，在对象上修改 SyncType 时，更改会自动从服务器发送到客户端（以可调整的间隔发送）。客户端将在同一对象上本地接收更改。
-
-广播：不分服务器和客户端，只要有更新，监听的所有Observer都进行更新。（ObserverRpc、Observer组件）
-
-各端的沟通：RPCs。默认是单机执行逻辑，如果要通知其它端，就要用到Rpc
-
-
-
-
-在没有继承NetworkBehaviour的脚本中Spawn新的物体由于人物状态机用了ScriptableObject， ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://pic2.zhimg.com/v2-fc6b5bc5ed17621fa52acf7a19b2e379_r.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hx's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Hx's blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）"><img class="post-bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI（2）"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）">Unity-UI（2）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-12T16:00:00.000Z" title="发表于 2024-03-13 00:00:00">2024-03-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content"> 图集的使用，降低dc的实践（尝试提高性能  rectTransform的scale具体原理是什么，如何做到缩放但不改变节点。  解决图片tile模式的警告问题  把实习的笔记补充  画布渲染次序解决：一个按照逻辑归类好的画布，对另一个画布产生了三明治影响：夹着另一个画布。解决办法是在前面的物体添加canvas组件作为了子canvas，能够改变渲染顺序。  画布点击事件过滤  协程频繁触发时及时销毁，第一个方法不可用，为啥？stop后coro不为空，为什么   </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化"><img class="post-bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-性能优化"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化">Unity-性能优化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-13T16:00:00.000Z" title="发表于 2023-09-14 00:00:00">2023-09-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">创建物体new GameObject()1GameObject object=new GameObject(“物体名”);  12345678// 创建物体，物体名为New Game Object，位置为（0,0,0）public GameObject();// 创建物体，物体名为设定的name，位置为（0,0,0）public GameObject(string name);// 创建物体，物体名为设定的name且添加指定组件，位置为（0,0,0）public GameObject(string name, params Type[] components);    Object.Instantiate(prefab);利用prefab来创建。 常用于创建指定物体，可将物体提前预设好，根据情景应用快速创建所需的物体。 CreatePrimitive1GameObject.CreatePrimitive(PrimitiveType.Cube);  此方法可创建系统预设的几种常用简单三维模型； 性能优化Unity性能优化大合集，All In One !（更新至8.18） - UWA...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形"><img class="post-bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-图形"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形">Unity-图形</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-12T16:00:00.000Z" title="发表于 2023-09-13 00:00:00">2023-09-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">渲染管线渲染管线执行一系列操作来获取场景的内容，并将这些内容显示在屏幕上。概括来说，这些操作如下：  剔除 渲染 后期处理  不同的渲染管线具有不同的功能和性能特征，并且适用于不同的游戏、应用程序和平台。 将项目从一个渲染管线切换到另一个渲染管线可能很困难，因为不同的渲染管线使用不同的着色器输出，并且可能没有相同的特性。因此，必须要了解 Unity 提供的不同渲染管线，以便可以在开发早期为项目做出正确决定。 不同渲染管线的特点比较不同渲染管线的支持的平台、光照表现、颜色等等都有可能不一样。 Render pipeline feature comparison - Unity 手册 如何配置&#x2F;获取当前渲染管线选择和配置渲染管线和光照解决方案大致的光照渲染管线 内置渲染管线通用渲染管线 URP高清渲染管线 HDRP可编程渲染管线 SRP自定义渲染管线光照光照贴图 - Unity 手册 光照贴图光照贴图过程将预先计算场景中表面的亮度，并将结果存储在称为“光照贴图”的纹理中供以后使用。  光照贴图可以包含直射光和间接光。该光照纹理可与颜色（反照率）和浮雕（法线）之类的对象表面信...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新"><img class="post-bg" src="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/message_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-热更新"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新">Unity-热更新</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-09T16:00:00.000Z" title="发表于 2023-09-10 00:00:00">2023-09-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">Unity热更新入门最全教程（一） - 知乎 (zhihu.com) Unity 热更新技术 | （一） 热更新的基本概念原理及主流热更新方案介绍-腾讯云开发者社区-腾讯云 (tencent.com)【最详细】 什么是更新游戏更新 简单点说，分为两类，一种是冷更新（换包），一种是热更新（不换包，通过网络下载，动态更新资源等）。 1、冷更新（Cold Update）是指在需要更新时，需要用户手动到应用商店或官方网站下载新版本安装包并重新安装的一种更新方式，以解决一些热更新无法覆盖的问题，如需要进行版本升级、打包、发布等工作，需要耗费一定的时间和人力物力成本。 2、热更新（Hotfix）是指在不需要重新发布应用程序或游戏的情况下，通过远程更新服务器向客户端推送程序代码、资源文件等数据的一种技术手段，以修复程序漏洞、优化游戏性能、更新游戏内容等   热更新相对于冷更新的优点在于： 可以快速地修复程序漏洞、更新游戏内容和添加新功能； 同时减少了用户下载和安装的操作流程，降低了用户对游戏的耐心和耐受度。 因此，在一些紧急情况下，如修复重大漏洞、提供重要新内容等，热更新是比较合适的选择。  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法"><img class="post-bg" src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-算法"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法">Unity-算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-05T16:00:00.000Z" title="发表于 2023-09-06 00:00:00">2023-09-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">敏感词匹配 如果不考虑性能的话，建立一个“敏感词”语句库，利用constains和replace操作直接替换，不过时间复杂度比较高。  AC自动机 【全程干货】程序员必备算法！AC自动机算法敏感词匹配算法！动画演示讲解，看完轻松掌握，面试官都被你唬住！！_哔哩哔哩_bilibili  构建Trie树（字典树，前缀树）  从根节点出发，可以向后无限延伸，每个节点都有多个子节点，将敏感词的每一个字拆分开，作为一个节点，以特定的顺序排列，来构建成一个Tire树。 当每个敏感词构建完成后，在最后的节点记录敏感词长度，这样就能知道整个敏感词是什么了（在被匹配的字符串上“回溯”？）。   构建Fail指针（失配指针）   在检索Trie树的时候，在某个分支的节点上匹配失败，可以重新指向关联的其他分支上，避免了从头开始冗余检索。  构建fail指针的遍历为层次遍历。 root节点的fail指针指向自己本身。 如果当前节点父节点、的fail指针、指向的节点下、存在与当前节点一样的子节点，则当前节点的fail指针指向该子节点。否则、指向root节点。      遍历过程  若遍历语句的时候，到达“...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="C#-数据结构和算法"><img class="post-bg" src="/img/%7D7Y%5B5BZE_KJVDX6TI%5D$9CY1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C#-数据结构和算法"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="C#-数据结构和算法">C#-数据结构和算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-03T16:00:00.000Z" title="发表于 2023-09-04 00:00:00">2023-09-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">字典原理浅析C# Dictionary实现原理 - InCerry - 博客园 (cnblogs.com)[更清晰] 【C#】浅析C# Dictionary实现原理 - 知乎 (zhihu.com) 主要是拉链法。 核心是buckets和entries数组。【如果有拉链法，能否逐一访问拉链？】  将键转化成hashcode之后，取余数，得到哈希值，找到哈希桶数组对应的位置2 将信息存入到entries数组中，0位是空的，就放到0处，将Entry的下标entryIndex赋值给buckets中对应下标的bucket。步骤3中是存放在entries[0]的位置，所以buckets[2]=0。   哈希碰撞：将新加入的元素放进entries的下一个空位，更新next和哈希桶指向的索引。    删除的时候，如果元素在链表中间，就会让前一个指向后一个，空出来位置的用freelist记录，下一次可以接着用。不过这样就打乱了值插入的顺序。  Hash桶算法说到Hash算法大家就会想到Hash表，一个Key通过Hash函数运算后可快速的得到hashCode，通过hashCode的映射可直接Get...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5/" title="Unity-术语/概念"><img class="post-bg" src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-术语/概念"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/04/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5/" title="Unity-术语/概念">Unity-术语/概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-03T16:00:00.000Z" title="发表于 2023-09-04 00:00:00">2023-09-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">图形欧拉角和四元数欧拉角和四元数的通俗理解 - 知乎 (zhihu.com) 欧拉角（Euler Angle）欧拉角具有最简单直观的表示形式，即按顺序应用三个角度值。要将欧拉旋转应用于特定对象，则依次应用每个旋转值，作为围绕其对应轴的旋转。它的局限是可能导致万向节死锁问题。 万向节死锁（Gimbal Lock)欧拉角万向节死锁 - 知乎 (zhihu.com) 简单来说就是丢失了一个方向的自由度，第一个或第二个旋转可能导致第三个轴的方向与先前两个轴之一相同。 欧拉角的万向节死锁是这样：我们依次绕物体坐标系的 X 轴、Y 轴、Z 轴旋转 90°，当 Y 轴旋转了 90° 之后，物体坐标系的 Z 轴就会指向原来的 X 轴。这样一来，我们事实上只绕了 X 轴和 Y 轴两个轴旋转，第三根轴的自由度就丢失了 四元数Quaternion - Unity 脚本 API 四元数——基本概念 - 知乎 (zhihu.com) (62 封私信) 如何通俗地解释欧拉角？之后为何要引入四元数？ - 知乎 (zhihu.com) 四元数用于表示旋转。 它们结构紧凑，不受万向锁影响，可以轻松插值。 Unit...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/" title="Unity-UI"><img class="post-bg" src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/01/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI/" title="Unity-UI">Unity-UI</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-31T16:00:00.000Z" title="发表于 2023-09-01 00:00:00">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">画布 - Unity 手册 Unity - Manual: Canvas Unity内置的UI组件还有 UI Toolkit、即时模式IMGUI，现在主要用的是UnityUI。 CanvasUnity Canvas 详解_TravelerTD的博客-CSDN博客【组件更详细的说明】 画布 (Canvas) 是应该容纳所有 UI 元素的区域。画布是一种带有画布组件的游戏对象，所有 UI 元素都必须是此类画布的子项。 绘制元素顺序画布中的 UI 元素按照它们在 Hierarchy 中显示的顺序绘制。也可以通过在变换组件上使用以下方法从脚本控制顺序：SetAsFirstSibling、SetAsLastSibling 和 SetSiblingIndex。 渲染模式 Render Modes Screen Space - Overlay 此渲染模式将 UI 元素放置于在场景之上渲染的屏幕上。如果调整屏幕大小或更改分辨率，则画布将自动更改大小来适应此情况。  Screen Space - Camera 画布放置在指定__摄像机__前面的给定距离处。UI 元素由此摄像机渲染，这意味着摄像机设...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/07/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式-知识整理"><img class="post-bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式-知识整理"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式-知识整理">设计模式-知识整理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-29T16:00:00.000Z" title="发表于 2023-07-30 00:00:00">2023-07-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">知识点梳理</a></span></div><div class="content">【更广泛的设计模式分类】设计模式总结之模式分类_迷死特兔的博客-CSDN博客 游戏中的设计模式 - 知乎 (zhihu.com)  创建型设计模式 结构型设计模式 行为型设计模式  单例模式【创建型】到底是用”静态类”还是单例 - 掘金 (juejin.cn) 什么是单例模式单例模式指的是在应用***整个生命周期内只能存在一个实例。***单例模式是一种被广泛使用的设计模式。 他有很多好处，能够避免实例对象的重复创建，减少创建实例的系统开销，节省内存。  1.一个类只能有一个实例；  2.自己创建这个实例； 3.整个系统都要使用这个实例。 实现方式 饿汉模式  所谓饿汉模式就是立即加载，一般情况下再调用getInstancef方法之前就已经产生了实例，也就是在类加载的时候已经产生了。 这种模式的缺点很明显，就是占用资源，当单例类很大的时候，其实我们是想使用的时候再产生实例。因此这种方式适合占用资源少，在初始化的时候就会被用到的类。 1234567891011class SingletonHungary &#123;    private static SingletonHungar...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/07/04/%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93-Unity%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BFishnet/" title="无标题"><img class="post-bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无标题"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/04/%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93-Unity%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BFishnet/" title="无标题">无标题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-04T08:18:28.933Z" title="发表于 2023-07-04 16:18:28">2023-07-04</time></span></div><div class="content">  概念Server和Client  独立：目前理解是，server和clients分别拥有一个运行的“单机”游戏，逻辑都一样运行，但联机不同的是，每端都有ID，分为Client和Server两类，根据ID不同 判断并执行逻辑。  共享 &#x2F; 同步：联机的意义在于“异步中的同步”，比如玩家控制的一个角色，在ABC三个端都是同步的，理想状态是相同时刻执行的效果相同。  通过服务器：服务器作为“总部”负责接收单个客户端的请求，并把更新的信息（客户端或服务器的更新）告诉给所有客户端。 ServerRpc：直接请求服务器； 变量同步：基于对象，在对象上修改 SyncType 时，更改会自动从服务器发送到客户端（以可调整的间隔发送）。客户端将在同一对象上本地接收更改。  广播：不分服务器和客户端，只要有更新，监听的所有Observer都进行更新。（ObserverRpc、Observer组件）  各端的沟通：RPCs。默认是单机执行逻辑，如果要通知其它端，就要用到Rpc     在没有继承NetworkBehaviour的脚本中Spawn新的物体由于人物状态机用了Scriptabl...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">(●ˇ∀ˇ●)</div><div class="author-info-description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI（2）"/></a><div class="content"><a class="title" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）">Unity-UI（2）</a><time datetime="2024-03-12T16:00:00.000Z" title="发表于 2024-03-13 00:00:00">2024-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-性能优化"/></a><div class="content"><a class="title" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化">Unity-性能优化</a><time datetime="2023-09-13T16:00:00.000Z" title="发表于 2023-09-14 00:00:00">2023-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-图形"/></a><div class="content"><a class="title" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形">Unity-图形</a><time datetime="2023-09-12T16:00:00.000Z" title="发表于 2023-09-13 00:00:00">2023-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新"><img src="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/message_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-热更新"/></a><div class="content"><a class="title" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新">Unity-热更新</a><time datetime="2023-09-09T16:00:00.000Z" title="发表于 2023-09-10 00:00:00">2023-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法"><img src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-算法"/></a><div class="content"><a class="title" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法">Unity-算法</a><time datetime="2023-09-05T16:00:00.000Z" title="发表于 2023-09-06 00:00:00">2023-09-06</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Unity/"><span class="card-category-list-name">Unity</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Unity%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">Unity教程学习</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/shader/"><span class="card-category-list-name">shader</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BD%9C%E5%93%81%E9%9B%86/"><span class="card-category-list-name">作品集</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/"><span class="card-category-list-name">知识整理</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/"><span class="card-category-list-name">知识点梳理</span><span class="card-category-list-count">22</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E4%BE%BF/"><span class="card-category-list-name">随便</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">4</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">49</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-04-16T01:31:35.646Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/03/">
+            <span class="card-archive-list-date">
+              三月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/09/">
+            <span class="card-archive-list-date">
+              九月 2023
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/07/">
+            <span class="card-archive-list-date">
+              七月 2023
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/06/">
+            <span class="card-archive-list-date">
+              六月 2023
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/05/">
+            <span class="card-archive-list-date">
+              五月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/04/">
+            <span class="card-archive-list-date">
+              四月 2023
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/03/">
+            <span class="card-archive-list-date">
+              三月 2023
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/02/">
+            <span class="card-archive-list-date">
+              二月 2023
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">49</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-06-28T09:10:32.540Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://pic2.zhimg.com/v2-fc6b5bc5ed17621fa52acf7a19b2e379_r.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By (●ˇ∀ˇ●)</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.0-b3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

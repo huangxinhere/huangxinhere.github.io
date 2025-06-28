@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hx's blog - aha</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="该博客暂时停止维护，新博客传送门：https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;3598037753539256">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hx's blog - aha</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="该博客暂时停止维护，新博客传送门：https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;3598037753539256">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hx&#39;s blog">
 <meta property="og:url" content="https://huangxinhere.github.io/page/4/index.html">
@@ -8,16 +8,105 @@
 <meta property="og:image" content="https://huangxinhere.github.io/img/head_pic_3.png">
 <meta property="article:author" content="(●ˇ∀ˇ●)">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://huangxinhere.github.io/img/head_pic_3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/page/4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/head_pic_3.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
   translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -25,7 +114,7 @@
     post: false
   },
   runtime: '',
-  date_suffix: {
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -33,375 +122,116 @@
     month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'Hx\'s blog',
-  isPost: false,
-  isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-04-16 09:31:36'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head_pic_3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://pic2.zhimg.com/v2-fc6b5bc5ed17621fa52acf7a19b2e379_r.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hx's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Pic</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hx's blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/09/23/Robbie/" title="Robbie">     <img class="post_bg" src="/img/Robbie.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Robbie"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/23/Robbie/" title="Robbie">Robbie</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-22T16:00:00.000Z" title="发表于 2022-09-23 00:00:00">2022-09-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/">Unity教程学习</a></span></div><div class="content">Tilemap（Rule Tile）
-目标：利用资源制作背景/平台等
-
-步骤：
-
-准备素材（切成正方形）
-
-建立“调色盘”Tile Platte，将素材拖到画布上形成“颜料”Tiles
-
-
-在edit状态下才能编辑颜料。要在工具栏先使用选择工具，再选择移动工具来移动。
-
-
-建立画布Create new Objects - 2D - Tilemap，注意分类别建立画布，以便分别处理互不干扰；每个画布也可有专属的分层，在属性面板中的soft layer。
-
-调色盘/颜料/画布都准备好后，就可以在画布上作画。一定要对应好调色盘和画布！！
-
-
-
-
-技巧：
-
-使用插件Rule Tile。如图这种如果一个个tile点会很麻烦，想要自动生成这个样子。其实这些符合一定的规则排列。
-
-
-插件使用：在project中新建，菜单会出现 “Tile”以及对应的各种Tile。
-
-面板是这个样子：
-
-
-
-最上面是默认的sprite。下面这些都是某种规则对应的sprite。例如中间那个，什么时候判定这个瓦片是属于中间那张图片，就是它四周都有瓦片的时候……对照图片仔细琢磨。红叉是没有瓦片的意思，绿色箭头则代表存在瓦片 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/07/30/TowerDefense/" title="TowerDefense">     <img class="post_bg" src="/img/towerDefense.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TowerDefense"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/30/TowerDefense/" title="TowerDefense">TowerDefense</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/">Unity教程学习</a></span></div><div class="content">Unity导入模型贴图无法编辑请教下大佬，导入的模型材质球是灰色的无法编辑【unity3d吧】_百度贴吧 (baidu.com)
-
-
-Location：Use External Materials（使用外部材质）
-
-但是看到后面括号有个Legacy的提示，是被弃用的意思，我在想可编辑导入的材质不是很重要的操作吗，为什么要被弃用。看了看官方文档，
-
-选择 Use Embedded Materials 选项将材质保持在导入的资源中
-单击 Extract Materials 和 Extract Textures 按钮可提取导入的资源中嵌入的所有材质和纹理
-
-所以看起来是有额外提取内部资源的操作。
-
-
-因此当有材质可提取时，Materials对应的Extract Materials可点击，并可提取，texture同理。
-
-解除预制体关系Break Prefab Instance（Unpack Prefab）在Unity使用过程中出现了Children of a Prefab instance cannot be deleted or moved,and components cannot be ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/07/18/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E9%AB%98%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/高级篇 笔记">     <img class="post_bg" src="/img/319833.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UnityShader 入门精要/高级篇 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/18/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E9%AB%98%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/高级篇 笔记">UnityShader 入门精要/高级篇 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-17T16:00:00.000Z" title="发表于 2022-07-18 00:00:00">2022-07-18</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">屏幕后处理效果screen post-processing effects
-建立一个基本的屏幕后处理脚本系统🐥屏幕后处理：通常指的是在渲染完整个场景得到屏幕图像之后，再对这个图像进行一系列的操作，实现各种屏幕特效。
-
-🧐默认情况下，OnRenderImage函数会在所有不透明和透明的Pass执行完毕后被调用；但是有时候希望在不透明Pass调用后立即调用OnRenderImage函数，从而不对透明物体产生影响。可以在函数前添加ImageEffectOpaque属性来实现这样的目的。
-🎏实践
-【屏幕后处理的基类】检查条件是否满足等通用功能。
-【摄像机/编辑器可查看】所有屏幕后处理效果都要绑定在某个摄像机上
-1234[ExecuteInEditMode][RequireComponent (typeof(Camera))]public class PostEffectBase : MonoBehaviour&#123;
-
-【检查各种资源和条件是否满足】
-12345678910111213141516171819202122232425protected void CheckResour ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/07/08/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/中级篇 笔记">     <img class="post_bg" src="/img/dp_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UnityShader 入门精要/中级篇 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/08/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/中级篇 笔记">UnityShader 入门精要/中级篇 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-07T16:00:00.000Z" title="发表于 2022-07-08 00:00:00">2022-07-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">更复杂的光照Unity的渲染路径🎃渲染路径
-
-👉类型以及设置
-前向渲染路径 Forward Rendering Path、延迟渲染 Deferred Rendering Path、后两个待了解。
-
-
-大多数情况下一个项目只使用一种渲染路径，因此可以为整个项目设置渲染路径。☝️
-
-
-
-也可以在每个摄像机的渲染路径设置中 设置该摄像机使用的渲染路径，以覆盖Project Setting中的设置。☝️
-
-📍如果当前显卡不支持所选择的渲染路径，Unity会自动使用更低一层的渲染路径。
-🦁不同类型的渲染路径可能包含多种标签，在Pass中用“LightMode”指定
-123456Pass&#123;	Tags&#123;		&quot;LightMode&quot; = &quot;ForwardBase&quot;	&#125;	//该Pass使用前向渲染路径中的ForwardBase路径&#125;
-
-
-
-
-标签名
-描述
-
-
-
-Always
-不管使用哪种路径，该Pass总是会被渲染，但不会计算光照
-
-
-ForwardBase
-用于前向渲染。该Pass会计算环境光、最重要的平行光、逐顶点 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/06/28/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E5%88%9D%E7%BA%A7/" title="UnityShader 入门精要/基础篇＋初级篇 笔记">     <img class="post_bg" src="/img/ta.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UnityShader 入门精要/基础篇＋初级篇 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/28/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E5%88%9D%E7%BA%A7/" title="UnityShader 入门精要/基础篇＋初级篇 笔记">UnityShader 入门精要/基础篇＋初级篇 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-27T16:00:00.000Z" title="发表于 2022-06-28 00:00:00">2022-06-28</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">学习shader：
-
-前提要了解整个渲染流程是如何进行的
-更多是面向GPU的工作方式
-基本知识了解
-OpenGL ＆ DirectX：两种图像应用编程接口。直接操作硬件是很难受滴，所以为上层应用程序和底层GPU架起了沟通桥梁。
-
-
-
-
-
-着色语言：专门用于编写着色器
-OpenGL的GLSL：跨平台性，只要显卡驱动支持GLSL的编译就能运行（依赖硬件—取决于硬件供应商）
-DirectX的HLSL：微软平台
-NVIDIA的CG：真正意义上的跨平台；和HLSL非常相像；无法发挥出OpenGL的最新特性
-
-
-
-第2章 渲染流水线2.1什么是渲染流水线
-shader：着色器，是渲染流水线中的一个环节
-
-渲染流水线：
-
-最终目的，由一个三维场景出发，生成或者渲染一张二维纹理图像（通常由CPU和GPU共同完成）
-渲染流程可以分为三个阶段：
-
-
-
-应用阶段：（CPU）
-由我们的应用主导，通常由CPU负责实现。开发者有绝对控制权。
-开发者有3个主要任务：
-
-准备场景数据，如摄像机的位置、视锥体、场景模型、光源等；
-为了提高渲染性能，进行粗粒度剔除(culling)工作（剔除不可见物体）；
-设置好每个模型 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/" title="Unity入门(三)——MyGame2">     <img class="post_bg" src="/img/myGame03.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity入门(三)——MyGame2"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/" title="Unity入门(三)——MyGame2">Unity入门(三)——MyGame2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-03T16:00:00.000Z" title="发表于 2022-06-04 00:00:00">2022-06-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span></div><div class="content">人物移动与交互PlayerControllerPlayerMotorInteractable
-物品的收集Delegate委托在unity中如何使用delegate - 百度文库 (baidu.com)
-继承类之间的冲突先看例子：获取子类的animator组件
-
-（公用）CharacterCombat类
-
-
-
-
-
-GetChild()
-GetComponentInChild()
-
-
-
-player
-√
-√
-
-
-enemy
-√
-√
-
-
-
-（公用且继承）CharacterStats类
-
-
-
-
-
-GetChild()
-GetComponentInChild()
-
-
-
-player（PlayerStats）
-×
-×
-
-
-enemy（EnemyStats）
-√
-√
-
-
-这就说明层级没问题，获取也没问题，而问题出现在player有PlayerStats的脚本。仔细比较，那个脚本里面有Start方法……证明start方法覆盖掉了父类的start方法，以至于player的CharacterStats类一直没有运行获取animator组件的代码。写之前没有考虑到这个问题，算是困扰了很久的一个坑了。
-通知机 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/" title="Unity入门(三)——MyGame">     <img class="post_bg" src="/img/MyGame.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity入门(三)——MyGame"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/" title="Unity入门(三)——MyGame">Unity入门(三)——MyGame</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-05-08T16:00:00.000Z" title="发表于 2022-05-09 00:00:00">2022-05-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span></div><div class="content">角色移动水平垂直方向的平移123456789101112131415void Update()&#123;    float h = Input.GetAxisRaw(&quot;Horizontal&quot;);    float v = Input.GetAxisRaw(&quot;Vertical&quot;);    /*存储角色的移动*/    m_Movement.Set(h, 0f, v);    m_Movement.Normalize();     //确保对角线移动速度相同【矢量标准化为长度1】    bool hasHorizontalInput = !Mathf.Approximately(h, 0f);  //两者相似，则不在移动    bool hasVerticalInput = !Mathf.Approximately(v, 0f);    bool isWalking = hasHorizontalInput || hasVerticalInput;//判断是否在走路    animator.SetBool(&quot;isWalking&quot; ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/" title="Unity入门(二)">     <img class="post_bg" src="/img/fruit%20cut.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity入门(二)"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/" title="Unity入门(二)">Unity入门(二)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-10T16:00:00.000Z" title="发表于 2022-04-11 00:00:00">2022-04-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span></div><div class="content">3D动画终于弄懂是怎么回事了！！
-Avatar到底干啥用Avatar是得和模型部位一一对应的。
-
-
-avatar的对应的总的那个东西，点击进行修改
-
-
-外部导入的动画设置成Humanoid这是动画对应模型的关键部分！！比如跳拉丁舞的动画如何映射到僵尸身上——首先僵尸已经绑定了对应的Avatar，相当于绑定了每个主要关节、部位等等。然后unity通过Humanoid设置将动画也一一对应映射，所以模型和动画就能对应一起了！！
-
-
-进avatar查看，发现会有对应的绑定部分。
-
-所以是模型对应了avatar，才能重用各种动画。要把顺序和逻辑理清啊！
-
-
-搞了好久，僵尸终于如愿以偿开始舞蹈
-
-对动画片段的设置设置是否循环Loop要在Project面板上的资源那点击才会出现，在controller点击的话会见不到
-切水果简易版2D视图3D游戏将摄像机的background变成纯色，然后把y变成0，这样就创建的球体就能居中显示在画面中心。还有把透视改成正视Orthographic
-3D模型挂有Rigidbody2D＆Circle Collider 2D仍可下落
-鼠标移动＋切片鼠标按下/松开的状态1 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/" title="作品集">     <img class="post_bg" src="/img/pics.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="作品集"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/" title="作品集">作品集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-08T16:00:00.000Z" title="发表于 2022-04-09 00:00:00">2022-04-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%BD%9C%E5%93%81%E9%9B%86/">作品集</a></span></div><div class="content">参赛/GameJam作品《逃离地球》《原点》《觅食仓鼠》 
-
-
-
-2022吉比特高校挑战赛《太阳羊》 银奖（2022.11大三下） 
-
-2022网易游戏高校挑战赛《林散邮记》（2022.9-2022.10大三下） 
-
-
-
-课程作品集Unity（2021—2022大二下）
-计设负责的小游戏部分
-两周时间期末周赶出来的……（？
-之前学的一些shader
-
-
-
-
-
-三维动画（2021—2022大二下） 
-
-
-
-Maya建模（2021—2022 大二上）]
-          
-
-设计基础（2021-2022 大二上）
-          
-
-微电影创作（2021—2022大二下） 
-
-
-
-看中国（2021—2022大二下） 
-
-混剪（2021—2022大二下） 
-
-
-
-视觉信息传达设计（2022 大二下）写生作品（2020-2021 大一暑假）
-          
-
-课外作品集学习画
-          </div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="shader forge 从入门到放弃">     <img class="post_bg" src="/img/ori.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="shader forge 从入门到放弃"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="shader forge 从入门到放弃">shader forge 从入门到放弃</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-05T16:00:00.000Z" title="发表于 2022-04-06 00:00:00">2022-04-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">屏幕特效
-将uv延展到屏幕上
-
-顶点偏移
-
-Vertex Offset：输入sin函数变化的值，模型顶点同时增加（-1，1）的值，所以就二维平面而言，它是沿对角线方向移动的。？
-
-将uv展开到屏幕上把顶点铺展到屏幕上🐎？
-
-
-
-从数值来看，（先从一维来看）范围扩大了一倍，然后-1到0都是黑色的，可知黑色占了大半部分；总的来说变化是原来的被压缩，被填充更多其它值的颜色
-
-
-
-
-同时要更改属性值。第一个Face Culling换成Double Sided，就可以显示被展开的面了。
-🧐我原本理解的uv可能和模型法线有直接的联系，或者说相当于把模型uv部分拿出来进行操作吧。所以为什么就改了一下范围就使它展开了呢？？🧐
-😎经实验，改变范围只是表面亮度发生了相应的变化。真正做到展uv是Vertex Position这个输出通道。这个通道解释如下👇
-
-😎经实验，原uv连VP结果如下👇或许是没有z这个值，所以干脆就没有了？（不是说偏移量嘛？！）
-🧐尝试理解为什么会展开：假设模型最亮点值为1，对应uv值为1那，然后1+1=2…那模型的每个表面点都进行了二倍乘，同时z没了…这时候所见的展开 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">(●ˇ∀ˇ●)</div><div class="author-info__description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huangxinhere"><i class="fab fa-github"></i><span>Don't Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://pic2.zhimg.com/v2-fc6b5bc5ed17621fa52acf7a19b2e379_r.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hx's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Hx's blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/23/Robbie/" title="Robbie"><img class="post-bg" src="/img/Robbie.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Robbie"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/23/Robbie/" title="Robbie">Robbie</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-22T16:00:00.000Z" title="发表于 2022-09-23 00:00:00">2022-09-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/">Unity教程学习</a></span></div><div class="content">Tilemap（Rule Tile） 目标：利用资源制作背景&#x2F;平台等  步骤：  准备素材（切成正方形）  建立“调色盘”Tile Platte，将素材拖到画布上形成“颜料”Tiles   在edit状态下才能编辑颜料。要在工具栏先使用选择工具，再选择移动工具来移动。   建立画布Create new Objects - 2D - Tilemap，注意分类别建立画布，以便分别处理互不干扰；每个画布也可有专属的分层，在属性面板中的soft layer。  调色盘&#x2F;颜料&#x2F;画布都准备好后，就可以在画布上作画。一定要对应好调色盘和画布！！     技巧：  使用插件Rule Tile。如图这种如果一个个tile点会很麻烦，想要自动生成这个样子。其实这些符合一定的规则排列。   插件使用：在project中新建，菜单会出现 “Tile”以及对应的各种Tile。  面板是这个样子：    最上面是默认的sprite。下面这些都是某种规则对应的sprite。例如中间那个，什么时候判定这个瓦片是属于中间那张图片，就是它四周都有瓦片的时候……对照图片仔细琢磨。红叉是没...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/30/TowerDefense/" title="TowerDefense"><img class="post-bg" src="/img/towerDefense.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TowerDefense"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/30/TowerDefense/" title="TowerDefense">TowerDefense</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/">Unity教程学习</a></span></div><div class="content">Unity导入模型贴图无法编辑请教下大佬，导入的模型材质球是灰色的无法编辑【unity3d吧】_百度贴吧 (baidu.com)   Location：Use External Materials（使用外部材质）  但是看到后面括号有个Legacy的提示，是被弃用的意思，我在想可编辑导入的材质不是很重要的操作吗，为什么要被弃用。看了看官方文档，  选择 Use Embedded Materials 选项将材质保持在导入的资源中 单击 Extract Materials 和 Extract Textures 按钮可提取导入的资源中嵌入的所有材质和纹理  所以看起来是有额外提取内部资源的操作。   因此当有材质可提取时，Materials对应的Extract Materials可点击，并可提取，texture同理。  解除预制体关系Break Prefab Instance（Unpack Prefab）在Unity使用过程中出现了Children of a Prefab instance cannot be deleted or moved,and components cannot...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/18/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E9%AB%98%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/高级篇 笔记"><img class="post-bg" src="/img/319833.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UnityShader 入门精要/高级篇 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/18/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E9%AB%98%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/高级篇 笔记">UnityShader 入门精要/高级篇 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-17T16:00:00.000Z" title="发表于 2022-07-18 00:00:00">2022-07-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">屏幕后处理效果screen post-processing effects 建立一个基本的屏幕后处理脚本系统🐥屏幕后处理：通常指的是在渲染完整个场景得到屏幕图像之后，再对这个图像进行一系列的操作，实现各种屏幕特效。  🧐默认情况下，OnRenderImage函数会在所有不透明和透明的Pass执行完毕后被调用；但是有时候希望在不透明Pass调用后立即调用OnRenderImage函数，从而不对透明物体产生影响。可以在函数前添加ImageEffectOpaque属性来实现这样的目的。 🎏实践 【屏幕后处理的基类】检查条件是否满足等通用功能。 【摄像机&#x2F;编辑器可查看】所有屏幕后处理效果都要绑定在某个摄像机上 1234[ExecuteInEditMode][RequireComponent (typeof(Camera))]public class PostEffectBase : MonoBehaviour&#123;  【检查各种资源和条件是否满足】 12345678910111213141516171819202122232425protected void Che...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/08/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/中级篇 笔记"><img class="post-bg" src="/img/dp_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UnityShader 入门精要/中级篇 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/08/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0/" title="UnityShader 入门精要/中级篇 笔记">UnityShader 入门精要/中级篇 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-07T16:00:00.000Z" title="发表于 2022-07-08 00:00:00">2022-07-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">更复杂的光照Unity的渲染路径🎃渲染路径  👉类型以及设置 前向渲染路径 Forward Rendering Path、延迟渲染 Deferred Rendering Path、后两个待了解。   大多数情况下一个项目只使用一种渲染路径，因此可以为整个项目设置渲染路径。☝️    也可以在每个摄像机的渲染路径设置中 设置该摄像机使用的渲染路径，以覆盖Project Setting中的设置。☝️  📍如果当前显卡不支持所选择的渲染路径，Unity会自动使用更低一层的渲染路径。 🦁不同类型的渲染路径可能包含多种标签，在Pass中用“LightMode”指定 123456Pass&#123;	Tags&#123;		&quot;LightMode&quot; = &quot;ForwardBase&quot;	&#125;	//该Pass使用前向渲染路径中的ForwardBase路径&#125;     标签名 描述    Always 不管使用哪种路径，该Pass总是会被渲染，但不会计算光照   ForwardBase 用于前向渲染。该Pass会计算环境光、最重要的平行光、...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/06/28/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E5%88%9D%E7%BA%A7/" title="UnityShader 入门精要/基础篇＋初级篇 笔记"><img class="post-bg" src="/img/ta.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UnityShader 入门精要/基础篇＋初级篇 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/28/UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E5%88%9D%E7%BA%A7/" title="UnityShader 入门精要/基础篇＋初级篇 笔记">UnityShader 入门精要/基础篇＋初级篇 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-27T16:00:00.000Z" title="发表于 2022-06-28 00:00:00">2022-06-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">学习shader：  前提要了解整个渲染流程是如何进行的 更多是面向GPU的工作方式 基本知识了解 OpenGL ＆ DirectX：两种图像应用编程接口。直接操作硬件是很难受滴，所以为上层应用程序和底层GPU架起了沟通桥梁。      着色语言：专门用于编写着色器 OpenGL的GLSL：跨平台性，只要显卡驱动支持GLSL的编译就能运行（依赖硬件—取决于硬件供应商） DirectX的HLSL：微软平台 NVIDIA的CG：真正意义上的跨平台；和HLSL非常相像；无法发挥出OpenGL的最新特性    第2章 渲染流水线2.1什么是渲染流水线 shader：着色器，是渲染流水线中的一个环节  渲染流水线：  最终目的，由一个三维场景出发，生成或者渲染一张二维纹理图像（通常由CPU和GPU共同完成） 渲染流程可以分为三个阶段：    应用阶段：（CPU） 由我们的应用主导，通常由CPU负责实现。开发者有绝对控制权。 开发者有3个主要任务：  准备场景数据，如摄像机的位置、视锥体、场景模型、光源等； 为了提高渲染性能，进行粗粒度剔除(culling)工作（剔除不可见物体）； 设置好每...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/" title="Unity入门(三)——MyGame2"><img class="post-bg" src="/img/myGame03.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity入门(三)——MyGame2"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/04/202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2/" title="Unity入门(三)——MyGame2">Unity入门(三)——MyGame2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-03T16:00:00.000Z" title="发表于 2022-06-04 00:00:00">2022-06-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span></div><div class="content">人物移动与交互PlayerControllerPlayerMotorInteractable 物品的收集Delegate委托在unity中如何使用delegate - 百度文库 (baidu.com) 继承类之间的冲突先看例子：获取子类的animator组件  （公用）CharacterCombat类      GetChild() GetComponentInChild()    player √ √   enemy √ √    （公用且继承）CharacterStats类      GetChild() GetComponentInChild()    player（PlayerStats） × ×   enemy（EnemyStats） √ √   这就说明层级没问题，获取也没问题，而问题出现在player有PlayerStats的脚本。仔细比较，那个脚本里面有Start方法……证明start方法覆盖掉了父类的start方法，以至于player的CharacterStats类一直没有运行获取animator组件的代码。写之前没有考虑到这个问题，算是困扰了很久的一个坑了。 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/" title="Unity入门(三)——MyGame"><img class="post-bg" src="/img/MyGame.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity入门(三)——MyGame"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/09/202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame/" title="Unity入门(三)——MyGame">Unity入门(三)——MyGame</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-05-08T16:00:00.000Z" title="发表于 2022-05-09 00:00:00">2022-05-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span></div><div class="content">角色移动水平垂直方向的平移123456789101112131415void Update()&#123;    float h = Input.GetAxisRaw(&quot;Horizontal&quot;);    float v = Input.GetAxisRaw(&quot;Vertical&quot;);    /*存储角色的移动*/    m_Movement.Set(h, 0f, v);    m_Movement.Normalize();     //确保对角线移动速度相同【矢量标准化为长度1】    bool hasHorizontalInput = !Mathf.Approximately(h, 0f);  //两者相似，则不在移动    bool hasVerticalInput = !Mathf.Approximately(v, 0f);    bool isWalking = hasHorizontalInput || hasVerticalInput;//判断是否在走路    animator.SetBool(&quot;isWalking&qu...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/" title="Unity入门(二)"><img class="post-bg" src="/img/fruit%20cut.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity入门(二)"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/11/2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)/" title="Unity入门(二)">Unity入门(二)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-10T16:00:00.000Z" title="发表于 2022-04-11 00:00:00">2022-04-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span></div><div class="content">3D动画终于弄懂是怎么回事了！！ Avatar到底干啥用Avatar是得和模型部位一一对应的。   avatar的对应的总的那个东西，点击进行修改   外部导入的动画设置成Humanoid这是动画对应模型的关键部分！！比如跳拉丁舞的动画如何映射到僵尸身上——首先僵尸已经绑定了对应的Avatar，相当于绑定了每个主要关节、部位等等。然后unity通过Humanoid设置将动画也一一对应映射，所以模型和动画就能对应一起了！！   进avatar查看，发现会有对应的绑定部分。  所以是模型对应了avatar，才能重用各种动画。要把顺序和逻辑理清啊！   搞了好久，僵尸终于如愿以偿开始舞蹈  对动画片段的设置设置是否循环Loop要在Project面板上的资源那点击才会出现，在controller点击的话会见不到 切水果简易版2D视图3D游戏将摄像机的background变成纯色，然后把y变成0，这样就创建的球体就能居中显示在画面中心。还有把透视改成正视Orthographic 3D模型挂有Rigidbody2D＆Circle Collider 2D仍可下落 鼠标移动＋切片鼠标按下&#x2...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/" title="作品集"><img class="post-bg" src="/img/pics.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="作品集"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/09/%E4%BD%9C%E5%93%81%E9%9B%86/" title="作品集">作品集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-08T16:00:00.000Z" title="发表于 2022-04-09 00:00:00">2022-04-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%BD%9C%E5%93%81%E9%9B%86/">作品集</a></span></div><div class="content">毕业设计《都市病》  参赛&#x2F;GameJam作品《逃离地球》《原点》《觅食仓鼠》     2022吉比特高校挑战赛《太阳羊》 银奖（2022.11大三下）   2022网易游戏高校挑战赛《林散邮记》（2022.9-2022.10大三下）     课程作品集Unity（2021—2022大二下） 计设负责的小游戏部分 两周时间期末周赶出来的……（？ 之前学的一些shader      三维动画（2021—2022大二下）     Maya建模（2021—2022 大二上）]             设计基础（2021-2022 大二上）             微电影创作（2021—2022大二下）     看中国（2021—2022大二下）   混剪（2021—2022大二下）     视觉信息传达设计（2022 大二下）写生作品（2020-2021 大一暑假）             课外作品集学习画           </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="shader forge 从入门到放弃"><img class="post-bg" src="/img/ori.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="shader forge 从入门到放弃"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/06/Shader%20Forge%E4%B9%8B%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="shader forge 从入门到放弃">shader forge 从入门到放弃</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-05T16:00:00.000Z" title="发表于 2022-04-06 00:00:00">2022-04-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/shader/">shader</a></span></div><div class="content">屏幕特效 将uv延展到屏幕上  顶点偏移  Vertex Offset：输入sin函数变化的值，模型顶点同时增加（-1，1）的值，所以就二维平面而言，它是沿对角线方向移动的。？  将uv展开到屏幕上把顶点铺展到屏幕上🐎？    从数值来看，（先从一维来看）范围扩大了一倍，然后-1到0都是黑色的，可知黑色占了大半部分；总的来说变化是原来的被压缩，被填充更多其它值的颜色     同时要更改属性值。第一个Face Culling换成Double Sided，就可以显示被展开的面了。 🧐我原本理解的uv可能和模型法线有直接的联系，或者说相当于把模型uv部分拿出来进行操作吧。所以为什么就改了一下范围就使它展开了呢？？🧐 😎经实验，改变范围只是表面亮度发生了相应的变化。真正做到展uv是Vertex Position这个输出通道。这个通道解释如下👇  😎经实验，原uv连VP结果如下👇或许是没有z这个值，所以干脆就没有了？（不是说偏移量嘛？！） 🧐尝试理解为什么会展开：假设模型最亮点值为1，对应uv值为1那，然后1+1&#x3D;2…那模型的每个表面点都进行了二倍乘，同时z没了…...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">(●ˇ∀ˇ●)</div><div class="author-info-description">该博客暂时停止维护，新博客传送门：https://juejin.cn/user/3598037753539256</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-UI（2）"/></a><div class="content"><a class="title" href="/2024/03/13/2024313-Unity-UI%EF%BC%882%EF%BC%89/" title="Unity-UI（2）">Unity-UI（2）</a><time datetime="2024-03-12T16:00:00.000Z" title="发表于 2024-03-13 00:00:00">2024-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-性能优化"/></a><div class="content"><a class="title" href="/2023/09/14/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Unity-性能优化">Unity-性能优化</a><time datetime="2023-09-13T16:00:00.000Z" title="发表于 2023-09-14 00:00:00">2023-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形"><img src="/img/unity.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-图形"/></a><div class="content"><a class="title" href="/2023/09/13/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2/" title="Unity-图形">Unity-图形</a><time datetime="2023-09-12T16:00:00.000Z" title="发表于 2023-09-13 00:00:00">2023-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新"><img src="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/message_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-热更新"/></a><div class="content"><a class="title" href="/2023/09/10/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0/" title="Unity-热更新">Unity-热更新</a><time datetime="2023-09-09T16:00:00.000Z" title="发表于 2023-09-10 00:00:00">2023-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法"><img src="/img/006znhy3ly1hf53bmy7npj31hc0u0gty.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-算法"/></a><div class="content"><a class="title" href="/2023/09/06/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95/" title="Unity-算法">Unity-算法</a><time datetime="2023-09-05T16:00:00.000Z" title="发表于 2023-09-06 00:00:00">2023-09-06</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Unity/"><span class="card-category-list-name">Unity</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Unity%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">Unity教程学习</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/shader/"><span class="card-category-list-name">shader</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BD%9C%E5%93%81%E9%9B%86/"><span class="card-category-list-name">作品集</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/"><span class="card-category-list-name">知识整理</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/"><span class="card-category-list-name">知识点梳理</span><span class="card-category-list-count">22</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E4%BE%BF/"><span class="card-category-list-name">随便</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">4</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">49</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-04-16T01:31:35.646Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By (●ˇ∀ˇ●)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Thanks to watch my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/03/">
+            <span class="card-archive-list-date">
+              三月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/09/">
+            <span class="card-archive-list-date">
+              九月 2023
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/07/">
+            <span class="card-archive-list-date">
+              七月 2023
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/06/">
+            <span class="card-archive-list-date">
+              六月 2023
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/05/">
+            <span class="card-archive-list-date">
+              五月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/04/">
+            <span class="card-archive-list-date">
+              四月 2023
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/03/">
+            <span class="card-archive-list-date">
+              三月 2023
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/02/">
+            <span class="card-archive-list-date">
+              二月 2023
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">49</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-06-28T09:10:32.540Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://pic2.zhimg.com/v2-fc6b5bc5ed17621fa52acf7a19b2e379_r.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By (●ˇ∀ˇ●)</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.0-b3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
