@@ -799,20 +799,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  const toggleCardCategory = () => {
-    const cardCategory = document.querySelector('#aside-cat-list.expandBtn')
-    if (!cardCategory) return
-
-    const handleToggleBtn = e => {
-      const target = e.target
-      if (target.nodeName === 'I') {
-        e.preventDefault()
-        target.parentNode.classList.toggle('expand')
-      }
-    }
-    btf.addEventListenerPjax(cardCategory, 'click', handleToggleBtn, true)
-  }
-
   const addPostOutdateNotice = () => {
     const ele = document.getElementById('post-outdate-notice')
     if (!ele) return
@@ -904,7 +890,6 @@ document.addEventListener('DOMContentLoaded', () => {
       GLOBAL_CONFIG.relativeDate.homepage && relativeDate(document.querySelectorAll('#recent-posts time'))
       GLOBAL_CONFIG.runtime && addRuntime()
       addLastPushDate()
-      toggleCardCategory()
     }
 
     GLOBAL_CONFIG_SITE.pageType === 'home' && scrollDownInIndex()
