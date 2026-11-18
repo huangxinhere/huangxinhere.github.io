@@ -1,0 +1,568 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>《土豆兄弟》拆解 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近被安利了一个游戏叫《土豆兄弟》，我说怎么像《吸血鬼幸存者》，朋友说比它还早呢，是这类肉鸽的鼻祖。虽然我只听说过“类吸血鬼”游戏，没听说过“类土豆兄弟”。  Brotato 是一款俯视角竞技场射击类 Roguelite 游戏，你扮演一个土豆，同时持有最多 6 种武器，抵御成群的外星人。从多种特质和物品中选择，打造独特的构建，并坚持直到救援到来。  法国独立开发者Thomas Gervraud是游">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《土豆兄弟》拆解">
+<meta property="og:url" content="https://huangxinhere.github.io/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Hx&#39;s blog">
+<meta property="og:description" content="最近被安利了一个游戏叫《土豆兄弟》，我说怎么像《吸血鬼幸存者》，朋友说比它还早呢，是这类肉鸽的鼻祖。虽然我只听说过“类吸血鬼”游戏，没听说过“类土豆兄弟”。  Brotato 是一款俯视角竞技场射击类 Roguelite 游戏，你扮演一个土豆，同时持有最多 6 种武器，抵御成群的外星人。从多种特质和物品中选择，打造独特的构建，并坚持直到救援到来。  法国独立开发者Thomas Gervraud是游">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huangxinhere.github.io/img/head_pic_3.png">
+<meta property="article:published_time" content="2026-11-16T02:35:22.249Z">
+<meta property="article:modified_time" content="2026-11-18T10:03:47.480Z">
+<meta property="article:author" content="(●ˇ∀ˇ●)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huangxinhere.github.io/img/head_pic_3.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "《土豆兄弟》拆解",
+  "url": "https://huangxinhere.github.io/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/",
+  "image": "https://huangxinhere.github.io/img/head_pic_3.png",
+  "datePublished": "2026-11-16T02:35:22.249Z",
+  "dateModified": "2026-11-18T10:03:47.480Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "(●ˇ∀ˇ●)",
+      "url": "https://huangxinhere.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '《土豆兄弟》拆解',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">30</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hx's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">《土豆兄弟》拆解</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">《土豆兄弟》拆解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-16T02:35:22.249Z" title="发表于 2026-11-16 10:35:22">2026-11-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-18T10:03:47.480Z" title="更新于 2026-11-18 18:03:47">2026-11-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>最近被安利了一个游戏叫《土豆兄弟》，我说怎么像《吸血鬼幸存者》，朋友说比它还早呢，是这类肉鸽的鼻祖。虽然我只听说过“类吸血鬼”游戏，没听说过“类土豆兄弟”。</p>
+<blockquote>
+<p>Brotato 是一款俯视角竞技场射击类 Roguelite 游戏，你扮演一个土豆，同时持有最多 6 种武器，抵御成群的外星人。从多种特质和物品中选择，打造独特的构建，并坚持直到救援到来。</p>
+</blockquote>
+<p>法国独立开发者Thomas Gervraud是游戏《Brotato》的幕后主脑。这款独特的作品融合了竞技场射击和轻度 Rogue，凭借其原创的概念和吸引人的玩法赢得了玩家的喜爱。开发者在 2018 年计算机科学学业结束时开始以自由职业者身份开发游戏。他说“自从我发现魔兽争霸 3 的地图编辑器开始，到在学习期间开发各种小型项目，我一直对制作游戏充满兴趣。因此，当有机会全职投入项目时，将创业与电子游戏结合起来是自然而然的选择。”</p>
+<p>“土豆”的灵感来源于他之前开发的第一个游戏《太空角斗士》，是其中一个比较受欢迎的角色。</p>
+<p><a target="_blank" rel="noopener" href="https://news.xbox.com/fr-fr/2024/02/09/entretien-exclusif-avec-thomas-gervraud-brotato-le-jeu-qui-a-de-la-patate/">与托马斯·热弗罗的独家访谈——Brotato：这款非常出色的游戏</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.gamespress.com/Brotato-10-Release">“Brotato 1.0 Release “ - Games Press</a></p>
+<p>游戏特点就是，</p>
+<ul>
+<li>自动开火，六把武器，对抗【生存类敌潮】；</li>
+<li>通过角色和【自走棋式商店】【随机】提供的武器和道具主动构筑流派；</li>
+<li>多个游戏难度适应不同层次的玩家。</li>
+</ul>
+<p>而吸血鬼幸存者的门槛会更低、策略感会更少，因为没有玩家选择构筑的余地，一般就是哪个强拿哪个，配合特效割草感会更爽一些。</p>
+<p>我目前还在入门阶段，它没有新手教程，都是一遍遍玩才慢慢懂怎么构筑。成就感也来自于此，原本只会拿看起来很强的武器，后面解锁更多角色，学会搭配不同的武器和道具来发挥角色特性。</p>
+<div aria-hidden="true"><br><br><br><br><br><br></div>
+
+<p>根据Steam下的游戏包进行反编译。</p>
+<h1 id="总架构"><a href="#总架构" class="headerlink" title="总架构"></a>总架构</h1><p> <strong>Godot 场景</strong>负责当前阶段，<strong>Autoload</strong> 保存跨场景状态，<strong>Resource</strong> 定义关卡和装备。每一波都会重新加载战斗场景，玩家的构筑通过 <code>RunData</code> 延续。</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>代码和数据如何连接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动和场景切换</td>
+<td><code>pause.tscn</code> 是启动入口。进入对局后，<code>main.tscn</code> 管一波战斗。波末处理宝箱和升级，再切到商店。离店时保存局内快照、更新波次，然后重新加载战斗场景。</td>
+</tr>
+<tr>
+<td>跨场景状态</td>
+<td>Autoload <code>RunData</code> 保存波次、区域、模式和每位玩家的 <code>PlayerRunData</code>。玩家数据包含装备、材料和效果，玩家索引贯穿商店与战斗。RunData 提供快照与恢复入口，<code>ProgressData</code> 负责存储局内快照和长期进度。</td>
+</tr>
+<tr>
+<td>波次和刷怪</td>
+<td><code>ZoneService</code> 给出 <code>ZoneData</code> 和当前 <code>WaveData</code>。主场景设置时长并启动 <code>WaveTimer</code>，<code>WaveManager</code> 将通用、关卡、条件等敌群配置组合起来，达到时点便发出 <code>group_spawn_timing_reached</code>。接收信号的 <code>EntitySpawner</code> 生成请求并排队，在物理帧分批处理。配置决定生成什么，调度器决定何时进入队列，生成器负责落地。</td>
+</tr>
+<tr>
+<td>武器和效果</td>
+<td><code>WeaponData</code> 是 Resource，引用用于战斗的场景、基础数值、套装、效果和升级去向。玩家进入战斗时从 <code>RunData</code> 读装备，把对应场景实例化到 <code>WeaponsContainer</code>。<code>WeaponService</code> 计算本局的武器属性，<code>Weapon</code> 做瞄准、冷却和开火判断，近战和远程由不同的 <code>ShootingBehavior</code> 子节点执行。</td>
+</tr>
+<tr>
+<td>商店</td>
+<td>单人 <code>Shop</code> 和本地合作 <code>CoopShop</code> 都继承 <code>BaseShop</code>。商品容器发出购买信号，基础商店负责付款、锁定和重刷流程，<code>ItemService</code> 负责商品池、品阶、价格和武器合成规则，<code>RunData</code> 负责装备和经济状态。</td>
+</tr>
+<tr>
+<td>运行时表现和性能</td>
+<td><code>main.gd</code> 集中处理波末、掉落、战斗 UI 和场内对象池。刷怪预警、实体、投射物和爆炸都有复用入口。战斗场景里的 <code>StatsManager</code> 另有队列，在物理帧分批重新计算武器、设施、宠物的属性。局部模块通过 Godot 信号通信，也直接调用共享服务。</td>
+</tr>
+</tbody></table>
+<div aria-hidden="true"><br><br></div>
+
+<p><strong>灰色</strong>是场景，<strong>蓝色</strong>是配置或状态数据，<strong>橙色</strong>是执行逻辑，<strong>紫色</strong>是同时持有状态和处理规则的全局模块。</p>
+<div aria-hidden="true"><br><br></div>
+
+<p><img src="/images/brotato/mermaid-diagram-17948216023621.png" alt="mermaid-diagram"></p>
+<p>以购买一根木棍到下一波为例。</p>
+<p>购买时，<code>BaseShop</code> 扣除对应玩家的货币，<code>RunData.add_weapon()</code> 复制武器资源、加入装备列表、应用效果并重算套装。</p>
+<p>下一波 <code>Player</code> 根据该资源建立一个新的战斗节点。一级木棍场景装配近战行为，一级数值资源将攻击类型设为突刺。公共武器脚本通过统一的行为入口触发攻击。</p>
+<p>状态保留在 Autoload，战斗节点随场景重新创建。</p>
+<div aria-hidden="true"><br><br></div>
+
+<h1 id="局内战斗"><a href="#局内战斗" class="headerlink" title="局内战斗"></a>局内战斗</h1><p><img src="/images/brotato/mermaid-diagram-17948218946292.png" alt="mermaid-diagram"></p>
+<div aria-hidden="true"><br><br><br><br></div>
+
+<h2 id="敌人生成和行为"><a href="#敌人生成和行为" class="headerlink" title="敌人生成和行为"></a>敌人生成和行为</h2><blockquote>
+<p>玩法描述：</p>
+<p>每个回合有多个波次，每一波可能有多种敌人，每种敌人数量不一。每个难度下固定回合有特殊敌人。</p>
+<p>每个波次在地图上随机生成（也可能刷在玩家脸上）单个或批量的敌人。</p>
+<p>每种敌人有特殊的移动方式，或平移、或加速、或冲撞、或逃离玩家发射子弹等。</p>
+</blockquote>
+<p>刷怪链是： <code>WaveManager</code> 决定哪组敌人何时出现 → <code>EntitySpawner</code> 决定数量、位置并生成 → 敌人场景上的行为节点决定怎么移动和攻击。</p>
+<div aria-hidden="true"><br><br></div>
+
+<h3 id="什么时候刷、刷什么、刷多少"><a href="#什么时候刷、刷什么、刷多少" class="headerlink" title="什么时候刷、刷什么、刷多少"></a><strong>什么时候刷、刷什么、刷多少</strong></h3><ul>
+<li><p>关卡配置有四级。<code>ZoneData</code> 列出各波的 <code>WaveData</code>，<code>WaveData</code> 引用多个 <code>WaveGroupData</code>，每个组再引用一个或多个 <code>WaveUnitData</code>。</p>
+<p><code>WaveGroupData</code>: 每一波的敌人组。负责难度门槛、首次出现时间、重复间隔和位置规则。</p>
+<p><code>WaveUnitData</code>: 字段 <code>unit_scene</code> 直接指向要实例化的敌人 <code>.tscn</code>，同时配置数量上下限和生成概率。</p>
+<div aria-hidden="true"><br><br></div>
+</li>
+<li><p>wave_manager 波次处理逻辑</p>
+</li>
+</ul>
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// wave_manager.gd</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> _physics_process(_delta: <span class="built_in">float</span>) -&gt; <span class="keyword">void</span> :</span><br><span class="line">	<span class="keyword">if</span> wave_timer == <span class="literal">null</span> <span class="keyword">or</span> current_wave_data == <span class="literal">null</span>:</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	<span class="keyword">var</span> _is_horde_wave = RunData.is_elite_wave(EliteType.HORDE)</span><br><span class="line">	<span class="keyword">var</span> _is_elite_wave = RunData.is_elite_wave(EliteType.ELITE)</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 整数秒</span></span><br><span class="line">	<span class="keyword">if</span> wave_timer.time_left <span class="keyword">as</span> <span class="built_in">int</span> != _last_time_checked:</span><br><span class="line">		_last_time_checked = wave_timer.time_left <span class="keyword">as</span> <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 遍历 wave_data 里面的 groups_data</span></span><br><span class="line">		<span class="keyword">for</span> group_data <span class="keyword">in</span> current_wave_data.groups_data:</span><br><span class="line">			<span class="keyword">var</span> spawn_start_wave = group_data.is_boss <span class="keyword">or</span> (group_data.is_neutral <span class="keyword">and</span> RunData.sum_all_player_effects(Keys.trees_start_wave_hash) &gt; <span class="number">0</span> <span class="keyword">and</span> wave_timer.time_left &gt;= wave_timer.wait_time - <span class="number">5</span>)</span><br><span class="line">			<span class="keyword">var</span> wave_time_elapsed: = wave_timer.wait_time - wave_timer.time_left</span><br><span class="line">			<span class="keyword">if</span> group_data.prevent_if_horde <span class="keyword">and</span> _is_horde_wave:</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			<span class="keyword">if</span> group_data.prevent_if_elite <span class="keyword">and</span> _is_elite_wave:</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">				</span><br><span class="line">			<span class="comment">// 查难度等级、是否已到时间、是否为首次</span></span><br><span class="line">			<span class="keyword">if</span> RunData.current_difficulty &gt;= group_data.min_difficulty <span class="keyword">and</span> RunData.current_difficulty &lt;= group_data.max_difficulty <span class="keyword">and</span> (group_data.spawn_timing &lt;= wave_time_elapsed <span class="keyword">or</span> spawn_start_wave):</span><br><span class="line">			</span><br><span class="line">				<span class="comment">// 每个group算概率，成功的话直接尝试生成</span></span><br><span class="line">				<span class="keyword">if</span> Utils.get_chance_success(group_data.spawn_chance):</span><br><span class="line">					emit_signal(<span class="string">&quot;group_spawn_timing_reached&quot;</span>, group_data)</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 重复处理。一到时间就加入重复表，无论是否被抽中。</span></span><br><span class="line">				<span class="comment">// 以后到点时，管理器直接发出生成信号，跳过 Group 级掷骰</span></span><br><span class="line">				<span class="keyword">if</span> group_data.repeating &gt; <span class="number">0</span>:</span><br><span class="line">					add_group_to_repeat(group_data)</span><br><span class="line"></span><br><span class="line">				_groups_to_remove.push_back(group_data)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> _groups_to_repeat.size() &gt; <span class="number">0</span>:</span><br><span class="line">			<span class="keyword">for</span> group <span class="keyword">in</span> _groups_to_repeat:</span><br><span class="line">				<span class="keyword">if</span> wave_timer.time_left &lt;= group[NEXT_REPEAT]:</span><br><span class="line">					emit_and_update_repeat_group(group)</span><br><span class="line"></span><br><span class="line">		remove_groups()</span><br><span class="line">		remove_repeat_groups()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 随机判定</span></span><br><span class="line"><span class="comment">//抽一个 0～1 的随机数，低于或等于 spawn_chance 就触发，概率为 0 时直接失败。</span></span><br><span class="line"><span class="keyword">func</span> get_chance_success(chance: <span class="built_in">float</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> chance == <span class="number">0.0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> randf() &lt;= chance</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重复表</span></span><br><span class="line"><span class="keyword">func</span> add_group_to_repeat(group_data: WaveGroupData) -&gt; <span class="keyword">void</span> :</span><br><span class="line">	<span class="keyword">var</span> next_spawn_timing = wave_timer.wait_time - group_data.spawn_timing - group_data.repeating_interval</span><br><span class="line">	_groups_to_repeat.push_back(</span><br><span class="line">		[</span><br><span class="line">			group_data, </span><br><span class="line">			group_data.repeating, </span><br><span class="line">			group_data.repeating_interval, </span><br><span class="line">			group_data.reduce_repeating_interval, </span><br><span class="line">			group_data.min_repeating_interval, </span><br><span class="line">			next_spawn_timing</span><br><span class="line">		]</span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
+
+<p>重复表记着「还剩几次、当前间隔、下次触发时间」。例如坠落区第 3 波有一组从第 10 秒开始，首个间隔 7 秒，之后每次缩短 1 秒，最短 3 秒。时间表就是 <strong>10 → 17 → 23 → 28 秒</strong>，再下一次是第 32 秒，已经超出这一波。</p>
+<p>从设计效果看，重复表控制压力什么时候上升，数量区间控制每批有多大，候选组控制组合会怎么变。</p>
+<div aria-hidden="true"><br><br></div>
+
+<ul>
+<li>EntitySpawner的敌人数量计算</li>
+</ul>
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> on_group_spawn_timing_reached(group_data: WaveGroupData) -&gt; <span class="keyword">void</span> :</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">var</span> max_enemies = <span class="built_in">int</span>(_current_wave_data.max_enemies + ((RunData.get_player_count() - <span class="number">1</span>) * (_current_wave_data.max_enemies / <span class="number">8.0</span>)))</span><br><span class="line">	<span class="comment">// 控制最大敌人数量</span></span><br><span class="line">	<span class="keyword">if</span> enemies.size() &gt; max_enemies:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> enemies.size() - max_enemies:</span><br><span class="line">			<span class="keyword">var</span> array_from = enemies</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> enemies_to_remove_in_priority.size() &gt; <span class="number">0</span>:</span><br><span class="line">				array_from = enemies_to_remove_in_priority</span><br><span class="line"></span><br><span class="line">			<span class="keyword">var</span> en = Utils.get_rand_element(array_from)</span><br><span class="line"></span><br><span class="line">			en.can_drop_loot = <span class="literal">false</span></span><br><span class="line">			en.die()</span><br><span class="line">			enemies_removed_for_perf += <span class="number">1</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> group_pos: <span class="built_in">Vector2</span> = get_group_pos(group_data)</span><br><span class="line">	group_pos = get_group_pos_away_from_players(group_pos, group_data)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 从每个波次的Group中取敌人种类</span></span><br><span class="line">	<span class="keyword">var</span> units_data = group_data.wave_units_data</span><br><span class="line">	<span class="keyword">var</span> coop_factor = (RunData.get_player_count() - <span class="number">1</span>) * CoopService.additional_enemies_per_coop_player</span><br><span class="line">	<span class="keyword">var</span> enemy_modifier = (RunData.sum_all_player_effects(Keys.number_of_enemies_hash) / <span class="number">100.0</span>)</span><br><span class="line">	<span class="keyword">var</span> tree_modifier = RunData.sum_all_player_effects(Keys.trees_hash)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> unit_wave_data <span class="keyword">in</span> units_data:</span><br><span class="line">		<span class="comment">// 敌人生成数量由区间取样</span></span><br><span class="line">		<span class="keyword">var</span> number: <span class="built_in">float</span> = Utils.randi_range(unit_wave_data.min_number, unit_wave_data.max_number) <span class="keyword">as</span> <span class="built_in">float</span></span><br><span class="line">		number *= DebugService.nb_enemies_mult</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 根据合作人数、敌人数量效果修正</span></span><br><span class="line">		<span class="keyword">if</span> unit_wave_data.type == EntityType.ENEMY <span class="keyword">and</span> <span class="keyword">not</span> group_data.is_loot:</span><br><span class="line">			number += number * coop_factor</span><br><span class="line">			number = max(<span class="number">1.0</span>, number + number * enemy_modifier)</span><br><span class="line">		<span class="keyword">elif</span> unit_wave_data.type == EntityType.NEUTRAL:</span><br><span class="line">			number += tree_modifier</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 数量还要乘上对应概率</span></span><br><span class="line">		<span class="comment">// 这个算法可以让一个配置在低数量时表现为稀有事件，在高数量时又保持相对稳定的规模。</span></span><br><span class="line">		<span class="keyword">var</span> number_total: <span class="built_in">float</span> = number * unit_wave_data.spawn_chance</span><br><span class="line">		<span class="comment">// 整数部分保留</span></span><br><span class="line">		<span class="keyword">var</span> number_floored: = <span class="built_in">int</span>(number_total)</span><br><span class="line">		<span class="comment">// 小数部分用一次概率决定是否多刷一只</span></span><br><span class="line">		<span class="keyword">var</span> residual_chance: = number_total - number_floored</span><br><span class="line">		<span class="keyword">var</span> spawn_count: = (number_floored + <span class="number">1</span>) <span class="keyword">if</span> Utils.get_chance_success(residual_chance) <span class="keyword">else</span> number_floored</span><br></pre></td></tr></table></figure>
+
+<div aria-hidden="true"><br><br></div>
+
+<ul>
+<li>特殊波次</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>机制</th>
+<th>实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>固定波次的难度限定敌群</strong></td>
+<td>坠落区第 7 波引用了一个 <code>min_difficulty = 6</code> 的冲锋怪组。组在开波约第 8 秒触发，此后每 10 秒重复。每次配置的基础数量是 4 只，后续仍可受人数和效果修正。</td>
+</tr>
+<tr>
+<td><strong>精英或敌潮</strong></td>
+<td>开局时 <code>RunData</code> 生成事件表。常规初始批次中，危险 0–1 不排这类事件，危险 2–3 在第 11–12 波中抽一波，危险 4 及以上还会从第 14–15 和 17–18 波各抽一波。第三个事件强制是精英，前两个默认各有 40% 概率成为敌潮，部分角色会改这个概率。</td>
+</tr>
+<tr>
+<td><strong>终局 Boss</strong></td>
+<td>普通流程的末波是第 20 波。开局从当前区域的 Boss 列表决定本局名单，进入末波时 <code>WaveManager</code> 将名单填入 Boss 组。双 Boss 由对应效果控制。</td>
+</tr>
+</tbody></table>
+<div aria-hidden="true"><br><br></div>
+
+<h3 id="刷在哪里"><a href="#刷在哪里" class="headerlink" title="刷在哪里"></a><strong>刷在哪里</strong></h3><p><code>ZoneService</code> 提供地图边界、禁区和随机点等空间查询。<code>EntitySpawner</code> 按敌群规则选出生位置，并在处理敌群事件时取一份玩家坐标快照。</p>
+<ul>
+<li>先计算组位置</li>
+</ul>
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// zone_service.gd</span></span><br><span class="line"><span class="comment">// 图内取点</span></span><br><span class="line"><span class="keyword">func</span> get_rand_pos() -&gt; <span class="built_in">Vector2</span>:</span><br><span class="line">	_ensure_valid_cells()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> _valid_cells.size() == <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> get_map_center()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> idx = randi() % _valid_cells.size()</span><br><span class="line">	<span class="keyword">var</span> cell_origin = _valid_cells[idx]</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> pos = <span class="built_in">Vector2</span>(</span><br><span class="line">		cell_origin.x + randf() * SAMPLING_CELL_SIZE, </span><br><span class="line">		cell_origin.y + randf() * SAMPLING_CELL_SIZE</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> is_in_forbidden_zone(pos):</span><br><span class="line">		<span class="keyword">return</span> _resample_in_cell(cell_origin, <span class="number">3</span>)</span><br><span class="line">	<span class="keyword">return</span> pos</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// entity_spawner.gd</span></span><br><span class="line"><span class="keyword">func</span> get_group_pos_away_from_players(group_pos: <span class="built_in">Vector2</span>, group_data: WaveGroupData) -&gt; <span class="built_in">Vector2</span>:</span><br><span class="line">	<span class="comment">// 敌人和组的最小避让距离：300+group_data.area / 2</span></span><br><span class="line">	<span class="keyword">var</span> min_dist_from_player: <span class="built_in">int</span> = INITIAL_MIN_DIST_FROM_PLAYER + group_data.area / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> zone_size: <span class="built_in">Vector2</span> = ZoneService.get_current_zone_rect().size</span><br><span class="line">	<span class="keyword">var</span> half_zone_size: <span class="built_in">float</span> = max(zone_size.x, zone_size.y) / <span class="number">2.0</span></span><br><span class="line">	min_dist_from_player = min(min_dist_from_player, half_zone_size) <span class="keyword">as</span> <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果离最近player的距离小于避让距离，重抽样，重抽时每次将阈值降低 5，降到 25 就退出循环</span></span><br><span class="line">	<span class="keyword">while</span> distance_squared_to_closest_player(group_pos) &lt; min_dist_from_player * min_dist_from_player:</span><br><span class="line">		group_pos = get_group_pos(group_data)</span><br><span class="line">		min_dist_from_player = max(<span class="number">25</span>, min_dist_from_player - <span class="number">5</span>) <span class="keyword">as</span> <span class="built_in">int</span></span><br><span class="line">		<span class="keyword">if</span> min_dist_from_player == <span class="number">25</span>:</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> group_pos</span><br></pre></td></tr></table></figure>
+
+<p>如果重抽样一直不成功怎么办？</p>
+<div aria-hidden="true"><br><br></div>
+
+<ul>
+<li>确定组的位置后，再确定单体位置。EntitySpawner的敌人生成位置计算</li>
+</ul>
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> on_group_spawn_timing_reached(group_data: WaveGroupData) -&gt; <span class="keyword">void</span> :</span><br><span class="line"></span><br><span class="line">...<span class="comment">// 接上部分代码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> edge_spawn_center</span><br><span class="line">        <span class="comment">// 生成在地图边缘</span></span><br><span class="line">		<span class="keyword">if</span> group_data.spawn_edge_of_map_together:</span><br><span class="line">			edge_spawn_center = get_group_edge_spawn_pos(group_pos, group_data.spawn_at_player_vertically)</span><br><span class="line">			<span class="keyword">var</span> spawn_pos</span><br><span class="line">			spawn_pos = edge_spawn_center + <span class="built_in">Vector2</span>(rand_range( - <span class="number">25</span>, <span class="number">25</span>), rand_range( - <span class="number">50</span>, <span class="number">50</span>))</span><br><span class="line">			<span class="keyword">var</span> group_request: = SpawnRequest.new(unit_wave_data.type, unit_wave_data.unit_scene, spawn_pos)</span><br><span class="line">			group_request.group_count = spawn_count</span><br><span class="line">			queue_to_spawn.push_back(group_request)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 单体逐个位置生成</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> spawn_count:</span><br><span class="line">			<span class="keyword">var</span> spawn_pos</span><br><span class="line">			<span class="comment">// 主要是通过zone_service的clamp+rand计算围绕group_pos的位置</span></span><br><span class="line">			spawn_pos = get_spawn_pos_in_area(group_pos, group_data.area, group_data.spawn_dist_away_from_edges, group_data.spawn_edge_of_map, group_data.spawn_edge_of_map_together)</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 同样重抽样来保证避让距离</span></span><br><span class="line">			spawn_pos = get_spawn_pos_away_from_players(spawn_pos, group_pos, group_data, unit_wave_data)</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 生成会提交请求入队列</span></span><br><span class="line">			<span class="keyword">if</span> group_data.is_boss:</span><br><span class="line">				queue_to_spawn_bosses.push_back(SpawnRequest.new(unit_wave_data.type, unit_wave_data.unit_scene, spawn_pos))</span><br><span class="line">			<span class="keyword">elif</span> unit_wave_data.type == EntityType.ENEMY:</span><br><span class="line">				queue_to_spawn.push_back(SpawnRequest.new(unit_wave_data.type, unit_wave_data.unit_scene, spawn_pos))</span><br><span class="line">			<span class="keyword">elif</span> unit_wave_data.type == EntityType.NEUTRAL:</span><br><span class="line">				queue_to_spawn_trees.push_back(SpawnRequest.new(unit_wave_data.type, unit_wave_data.unit_scene, spawn_pos))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>EntitySpawner 波末处理</li>
+</ul>
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> clean_up_room() -&gt; <span class="keyword">void</span> :</span><br><span class="line">	_cleaning_up = <span class="literal">true</span></span><br><span class="line">	_structure_timer.stop()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 清除请求队列</span></span><br><span class="line">	queue_to_spawn.clear()</span><br><span class="line">	queue_to_spawn_bosses.clear()</span><br><span class="line">	queue_to_spawn_summons.clear()</span><br><span class="line">	queue_to_spawn_trees.clear()</span><br><span class="line">	<span class="keyword">for</span> queue <span class="keyword">in</span> queues_to_spawn_structures:</span><br><span class="line">		queue.clear()</span><br><span class="line">	<span class="keyword">for</span> queue <span class="keyword">in</span> queues_to_spawn_pets:</span><br><span class="line">		queue.clear()</span><br><span class="line"></span><br><span class="line">	_die_args_spawner.cleaning_up = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 清除实例</span></span><br><span class="line">	<span class="keyword">for</span> boss <span class="keyword">in</span> bosses:</span><br><span class="line">		boss.die(_die_args_spawner)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> enemy <span class="keyword">in</span> enemies:</span><br><span class="line">		enemy.die(_die_args_spawner)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> neutral <span class="keyword">in</span> neutrals:</span><br><span class="line">		neutral.die(_die_args_spawner)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> structure <span class="keyword">in</span> structures:</span><br><span class="line">		structure.die(_die_args_spawner)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> pet <span class="keyword">in</span> pets:</span><br><span class="line">		pet.die(_die_args_spawner)</span><br></pre></td></tr></table></figure>
+
+<div aria-hidden="true"><br><br></div>
+
+<h3 id="生成请求与对象池管理"><a href="#生成请求与对象池管理" class="headerlink" title="生成请求与对象池管理"></a>生成请求与对象池管理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">WaveManager 发出 group_spawn_timing_reached</span><br><span class="line">  → EntitySpawner.on_group_spawn_timing_reached() 计算数量、场景和坐标</span><br><span class="line">  → queue_to_spawn.push_back(SpawnRequest)</span><br><span class="line"></span><br><span class="line">EntitySpawner._physics_process() 每 3 个物理帧取请求</span><br><span class="line">  → spawn() → spawn_entity_birth()</span><br><span class="line">  → EntityBirth.start(request) 显示叉叉，开始倒计时</span><br><span class="line"></span><br><span class="line">EntityBirth.birth() 隐藏叉叉，发出 birth_timeout</span><br><span class="line">  → EntitySpawner.on_entity_birth_timeout()</span><br><span class="line">  → _spawn_entity_from_request()</span><br><span class="line">  → spawn_entity(request.scene, ...) 创建或复用敌人</span><br><span class="line">  → 叉叉节点回自己的池</span><br></pre></td></tr></table></figure>
+
+<p>entity_spawner 每隔 3 个物理帧处理一轮请求，再经预警创建实体。</p>
+<p>普通敌人的待办数组每 <strong>3 个物理帧</strong>通常只取 <strong>1 条</strong>，积压到 <strong>120 条</strong>才会每次取 <strong>2 条</strong>。树、Boss、召唤怪有各自的数组，也在这轮处理。按代码行为推断，入队的作用是把这批预警及随后的敌人启用分摊到多个物理帧。如果计算完就逐个启动预警，它们会在同一帧开始倒计时。</p>
+<div aria-hidden="true"><br><br></div>
+
+<p>main.gd 管理的对象池：<strong><code>_pool</code> 是 <code>pool_id → 空闲节点数组</code> 的字典</strong>。对敌人来说，键是 <strong><code>PackedScene</code> 资源的 <code>get_instance_id()</code></strong>。所以即使 Baby Alien 和另一种敌人的 <code>type</code> 都是 <code>ENEMY</code>，只要用的是不同的场景资源，就各用一个数组。同一个场景创建出的多只敌人会共用一池。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>取出 &#x2F; 新建</strong></td>
+<td><code>Main.get_node_from_pool()</code> 从数组尾部取出节点，<code>add_child()</code> 挂回 <code>Entities</code>。池空时返回 <code>null</code>，由 <code>EntitySpawner</code> 调 <code>scene.instance()</code> 新建，记录 <code>pool_id</code>，再调用 <code>init()</code>。</td>
+</tr>
+<tr>
+<td><strong>复用 &#x2F; 启用</strong></td>
+<td><code>EntitySpawner</code> 接回普通敌人的信号，再调 <code>respawn()</code>。沿 <code>Enemy → Unit → Entity</code> 的父类调用，会恢复显示、待机动画、刚体和本体碰撞，清除死亡与击退状态，恢复移动，重算生命等属性，重置攻击行为和目标，打开受击框 <code>Hurtbox</code> 和伤害框 <code>Hitbox</code>。最后设置新坐标、加入存活的 <code>enemies</code> 数组。</td>
+</tr>
+<tr>
+<td><strong>死亡 &#x2F; 关闭</strong></td>
+<td><code>die()</code> 标记 <code>dead</code>、关闭本体碰撞、播放死亡动画并发 <code>died</code>。<code>EntitySpawner</code> 收到信号就从 <code>enemies</code> 删掉它；<code>Unit</code> 和 <code>Enemy</code> 的死亡逻辑也会关闭移动、受击框和伤害框，清理效果行为。此时节点还在场景树里，可以继续播死亡动画。</td>
+</tr>
+<tr>
+<td><strong>动画回调 &#x2F; 入池</strong></td>
+<td><code>death</code> 动画里的<strong>方法轨道</strong>调用 <code>death_animation_finished()</code>。它应用 <code>RESET</code> 动画，断开 <code>EntitySpawner</code> 的三个信号，清理材质和强化状态，让刚体休眠。最后 <code>Main</code> 把节点压回 <code>_pool[pool_id]</code>，用 <code>remove_child()</code> 摘出场景树。节点仍留在内存里，下次可以直接挂回来。</td>
+</tr>
+</tbody></table>
+<div aria-hidden="true"><br><br></div>
+
+<h3 id="敌人行为"><a href="#敌人行为" class="headerlink" title="敌人行为"></a>敌人行为</h3><p>敌人的结构是 <code>Enemy</code> 继承 <code>Unit</code>，具体 <code>.tscn</code> 在场景里装配 <code>MovementBehavior</code> 和 <code>AttackBehavior</code>。</p>
+<p>数值配置是 <code>Stats</code> 资源，当前血量、速度等保存在 <code>Unit</code> 里的 <code>LiveStats</code> 对象，扣血和死亡判定也由 <code>Unit</code> 处理。</p>
+<div aria-hidden="true"><br><br></div>
+
+<h2 id="伤害计算"><a href="#伤害计算" class="headerlink" title="伤害计算"></a>伤害计算</h2><blockquote>
+<p>游戏描述：每把武器有冷却值，各自索敌，各自攻击，可对单可范围，可远程可近战；</p>
+<p>多把武器伤害多个敌人，而且是每帧持续发生。</p>
+</blockquote>
+<div aria-hidden="true"><br><br></div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Weapon._physics_process()</span><br><span class="line">  从范围内的候选列表选目标 → 检查冷却 → 延迟调用 shoot()</span><br><span class="line">    ├─ 远程：生成弹丸，弹丸沿发射方向移动</span><br><span class="line">    └─ 近战：执行突刺或横扫，在攻击期间打开 Hitbox</span><br><span class="line"></span><br><span class="line">敌人的 Hurtbox 检测到 Hitbox 进入</span><br><span class="line">  → Unit.hurt_area_entered_deferred()</span><br><span class="line">  → Enemy.take_damage() → Unit.take_damage()</span><br><span class="line">  → 当场更新 HP，致死时标记 _pending_die</span><br><span class="line">  → Hitbox 通知命中方，弹丸决定停止、穿透或弹跳</span><br></pre></td></tr></table></figure>
+
+<div aria-hidden="true"><br><br></div>
+
+<h3 id="武器索敌和冷却"><a href="#武器索敌和冷却" class="headerlink" title="武器索敌和冷却"></a>武器索敌和冷却</h3><p><code>WeaponService</code> 在初始化或重算武器属性时，根据攻速算出基础冷却。</p>
+<p>普通自动瞄准武器每个物理帧都会更新瞄准。它先选目标，再递减冷却，再用 <code>should_shoot()</code> 检查距离和开火条件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 攻速计算，假设冷却0.5s的攻击速度提高10%</span><br><span class="line">atk_spd = (玩家的 10 + 武器的 0) / 100.0 = 0.10</span><br><span class="line">原冷却  = 0.5 × 60 = 30 个冷却单位</span><br><span class="line">新冷却  = int(30 / (1 + 0.10)) = 27 个冷却单位</span><br><span class="line">换回秒  = 27 / 60.0 = 0.45 秒</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// weapon 物理帧</span></span><br><span class="line"><span class="keyword">func</span> _physics_process(delta: <span class="built_in">float</span>) -&gt; <span class="keyword">void</span> :</span><br><span class="line">	<span class="comment">// 手动瞄准</span></span><br><span class="line">	<span class="keyword">if</span> _manual_aim:</span><br><span class="line">		<span class="keyword">if</span> should_rotate_manual():</span><br><span class="line">			<span class="keyword">if</span> Utils.is_player_using_gamepad(player_index):</span><br><span class="line">				rotation = _parent.gamepad_attack_vector.angle()</span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				rotation = (get_global_mouse_position() - global_position).angle()</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="comment">// 是否在射击状态</span></span><br><span class="line">		<span class="keyword">if</span> _is_shooting:</span><br><span class="line">			rotation = get_direction()</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">		<span class="comment">// 选取目标并旋转</span></span><br><span class="line">			rotation = get_direction_and_calculate_target()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 冷却计时</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> _is_shooting:</span><br><span class="line">		_current_cooldown = max(_current_cooldown - <span class="number">60</span> * delta, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> _current_cooldown &lt;= <span class="number">10</span> <span class="keyword">and</span> sprite.texture == stats.custom_on_cooldown_sprite:</span><br><span class="line">		update_sprite(_original_sprite)</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 判断射击</span></span><br><span class="line">	<span class="keyword">if</span> should_shoot():</span><br><span class="line">		_is_shooting = <span class="literal">true</span></span><br><span class="line">		call_deferred(<span class="string">&quot;deferred_shoot&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<div aria-hidden="true"><br><br></div>
+
+<p>目标选择，维护一个动态的targets，遍历选择最短距离的target。每把武器自己的 <code>Range</code> 区域通过 <code>body_entered</code> 加入候选，通过 <code>body_exited</code> 或敌人的 <code>died</code> 信号移除候选。</p>
+<p>因为每把武器独立，所以可能会选中同一目标，敌人死亡会移除候选并清空当前目标。对于子弹，如果目标清空，还会按照原来的方向继续飞行。</p>
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">func</span> get_nearest_no_max(targets: <span class="built_in">Array</span>, from: <span class="built_in">Vector2</span>, min_distance: = <span class="number">0</span>) -&gt; <span class="built_in">Array</span>:</span><br><span class="line">	<span class="comment">// 一个pair值</span></span><br><span class="line">	<span class="keyword">var</span> nearest_target: = [<span class="literal">null</span>, LARGE_NUMBER]</span><br><span class="line">	<span class="keyword">var</span> dist_to_target: = <span class="number">0</span></span><br><span class="line">	</span><br><span class="line">	min_distance = min_distance * min_distance</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 遍历候选targets，选出最短距离的target</span></span><br><span class="line">	<span class="keyword">for</span> target <span class="keyword">in</span> targets:</span><br><span class="line">		dist_to_target = (get_closest_point_on_shape(target.aim_shape, from) <span class="keyword">if</span> target <span class="keyword">is</span> Unit <span class="keyword">and</span> target.aim_shape != <span class="literal">null</span> <span class="keyword">else</span> target.global_position).distance_squared_to(from)</span><br><span class="line">		<span class="keyword">if</span> dist_to_target &gt; min_distance <span class="keyword">and</span> dist_to_target &lt; nearest_target[<span class="number">1</span>]:</span><br><span class="line">			nearest_target = [target, dist_to_target]</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 最后再给结果开根号</span></span><br><span class="line">	<span class="keyword">if</span> nearest_target.size() &gt; <span class="number">0</span>:</span><br><span class="line">		nearest_target[<span class="number">1</span>] = sqrt(nearest_target[<span class="number">1</span>])</span><br><span class="line">	<span class="keyword">return</span> nearest_target</span><br><span class="line">	</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line"><span class="comment">// targets的维护：</span></span><br><span class="line"><span class="keyword">func</span> _on_Range_body_entered(body: Node) -&gt; <span class="keyword">void</span> :</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;_prevent_targeting&quot;</span> <span class="keyword">in</span> body:</span><br><span class="line">		<span class="keyword">if</span> body._prevent_targeting == <span class="literal">true</span>:</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">	_targets_in_range.push_back(body)</span><br><span class="line">	<span class="keyword">var</span> _error = body.connect(<span class="string">&quot;died&quot;</span>, <span class="keyword">self</span>, <span class="string">&quot;on_target_died&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> _on_Range_body_exited(body: Node) -&gt; <span class="keyword">void</span> :</span><br><span class="line">	_targets_in_range.erase(body)</span><br><span class="line">	<span class="keyword">if</span> _current_target.size() &gt; <span class="number">0</span> <span class="keyword">and</span> body == _current_target[<span class="number">0</span>]:</span><br><span class="line">		_current_target.clear()</span><br><span class="line">	<span class="keyword">if</span> body.is_connected(<span class="string">&quot;died&quot;</span>, <span class="keyword">self</span>, <span class="string">&quot;on_target_died&quot;</span>):</span><br><span class="line">		body.disconnect(<span class="string">&quot;died&quot;</span>, <span class="keyword">self</span>, <span class="string">&quot;on_target_died&quot;</span>)</span><br><span class="line">		</span><br><span class="line"><span class="keyword">func</span> on_target_died(target: Node, _args: Entity.DieArgs) -&gt; <span class="keyword">void</span> :</span><br><span class="line">	_targets_in_range.erase(target)</span><br><span class="line">	<span class="keyword">if</span> _current_target.size() &gt; <span class="number">0</span> <span class="keyword">and</span> target == _current_target[<span class="number">0</span>]:</span><br><span class="line">		_current_target.clear()</span><br></pre></td></tr></table></figure>
+
+<div aria-hidden="true"><br><br></div>
+
+<p>计算最短距离，考虑武器原点与target的形状 aim_shape。目标配了 <code>aim_shape</code> 才走这个分支，否则直接用目标的 <code>global_position</code>。例如武器距大怪中心 <code>160</code>，大怪碰撞圆半径 <code>70</code>，实际只离边缘 <code>90</code>。另一只小怪中心距武器 <code>110</code>，半径 <code>10</code>，边缘还隔 <code>100</code>。按中心距离会选小怪，按这个函数会选大怪。</p>
+<p><img src="/images/brotato/image-20261118095612522.png" alt="image-20261118095612522"></p>
+<p><img src="/images/brotato/image-20261118114557324.png" alt="image-20261118114557324"></p>
+<figure class="highlight gd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> get_closest_point_on_shape(collision: CollisionShape2D, from: <span class="built_in">Vector2</span>, keep_inside: <span class="built_in">bool</span> = <span class="literal">false</span>) -&gt; <span class="built_in">Vector2</span>:</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 碰撞体的transform</span></span><br><span class="line">	<span class="keyword">var</span> shape_transform: <span class="built_in">Transform2D</span> = collision.global_transform</span><br><span class="line">	<span class="comment">// 把武器位置变换到形状的局部坐标</span></span><br><span class="line">	<span class="keyword">var</span> local_from: <span class="built_in">Vector2</span> = shape_transform.affine_inverse().xform(from)</span><br><span class="line">	<span class="keyword">var</span> shape: Shape2D = collision.shape</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 形状是矩形，P落在矩形边界上</span></span><br><span class="line">	<span class="comment">// clamp(value, min, max)，使value落在最近的区间边界，或者直接在区间内</span></span><br><span class="line">	<span class="comment">// </span></span><br><span class="line">	<span class="keyword">if</span> shape <span class="keyword">is</span> RectangleShape2D:</span><br><span class="line">		<span class="keyword">var</span> extents: <span class="built_in">Vector2</span> = shape.extents</span><br><span class="line">		<span class="keyword">var</span> clamped: = <span class="built_in">Vector2</span>(clamp(local_from.x, - extents.x, extents.x), clamp(local_from.y, - extents.y, extents.y))</span><br><span class="line">		<span class="comment">// 在矩形内，直接返回原点</span></span><br><span class="line">		<span class="keyword">if</span> clamped == local_from:</span><br><span class="line">			<span class="keyword">return</span> from <span class="keyword">if</span> keep_inside <span class="keyword">else</span> collision.global_position</span><br><span class="line">		<span class="keyword">return</span> shape_transform.xform(clamped)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> center: = <span class="built_in">Vector2</span>.ZERO</span><br><span class="line">	<span class="keyword">var</span> radius: = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 胶囊：可以理解成由无数个圆沿中轴线组成，所以取最近的圆心，x已知在原点上</span></span><br><span class="line">	<span class="comment">// y则取中轴线上离武器原点最近的点，也是用clamp</span></span><br><span class="line">	<span class="comment">// 后面和形状圆一样的计算方式</span></span><br><span class="line">	<span class="comment">// PS：Godot3.6的height取两个半圆的圆心间距</span></span><br><span class="line">	<span class="keyword">if</span> shape <span class="keyword">is</span> CapsuleShape2D:</span><br><span class="line">		<span class="keyword">var</span> half_height: <span class="built_in">float</span> = shape.height / <span class="number">2.0</span></span><br><span class="line">		center.y = clamp(local_from.y, - half_height, half_height)</span><br><span class="line">		radius = shape.radius</span><br><span class="line">	<span class="keyword">elif</span> shape <span class="keyword">is</span> CircleShape2D:</span><br><span class="line">		radius = shape.radius</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> collision.global_position</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 圆心C指向武器P的向量</span></span><br><span class="line">	<span class="keyword">var</span> offset: <span class="built_in">Vector2</span> = local_from - center</span><br><span class="line">	<span class="comment">// 如果在圆内，返回圆心</span></span><br><span class="line">	<span class="keyword">if</span> offset.length_squared() &lt;= radius * radius:</span><br><span class="line">		<span class="keyword">return</span> from <span class="keyword">if</span> keep_inside <span class="keyword">else</span> shape_transform.xform(center)</span><br><span class="line">	<span class="comment">// 在圆外，从圆心朝武器走一个半径，刚好到Q</span></span><br><span class="line">	<span class="keyword">return</span> shape_transform.xform(center + offset.normalized() * radius)</span><br></pre></td></tr></table></figure>
+
+<div aria-hidden="true"><br><br></div>
+
+<h3 id="武器碰撞判定"><a href="#武器碰撞判定" class="headerlink" title="武器碰撞判定"></a>武器碰撞判定</h3><p>远程武器：按当前朝向直接生成弹丸，然后播后坐力。弹丸有自己的 <code>Hitbox</code>，飞行时碰到敌人才结算。</p>
+<p>近战武器：动画驱动开启和关闭HitBox。</p>
+<div aria-hidden="true"><br><br></div>
+
+<h3 id="敌人伤害结算"><a href="#敌人伤害结算" class="headerlink" title="敌人伤害结算"></a>敌人伤害结算</h3><p>一帧里多个 <code>Hitbox</code> 可以进入同一个敌人的 <code>Hurtbox</code>，每次进入各自安排一次延迟回调。</p>
+<p>假设敌人有 <strong>20 HP</strong>，先后处理三发各 <strong>12</strong> 点的伤害：</p>
+<table>
+<thead>
+<tr>
+<th>回调</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一发</td>
+<td>扣 12，剩 8 HP</td>
+</tr>
+<tr>
+<td>第二发</td>
+<td>计算伤害是 12，实际扣掉剩余的 8，记为击杀，设置 <code>_pending_die</code></td>
+</tr>
+<tr>
+<td>第三发</td>
+<td>发现 <code>_pending_die</code>，直接返回</td>
+</tr>
+</tbody></table>
+<div aria-hidden="true"><br><br></div>
+
+<ul>
+<li><p>同一个HurtBox如何处理同时多个伤害，多个HurtBox呢？</p>
+<p>有两处延迟。第一处把“处理这次碰撞”交给 Godot 的消息队列。第二处只在致死时把 <code>die()</code> 交给同一队列。一旦开始处理某次受击，那次扣血就在回调里当场完成。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">敌人的 Hurtbox 发出 area_entered(hitbox)</span><br><span class="line">  → Unit._on_Hurtbox_area_entered(hitbox)</span><br><span class="line">  → call_deferred(&quot;hurt_area_entered_deferred&quot;, hitbox) 放入消息队列</span><br><span class="line"></span><br><span class="line">Godot 处理这条消息</span><br><span class="line">  → Unit.hurt_area_entered_deferred(hitbox)</span><br><span class="line">  → Enemy.take_damage(...) → Unit.take_damage(...)</span><br><span class="line">  → 当场更新 HP</span><br><span class="line">  → 若致死，安排 die() 并设 _pending_die = true</span><br></pre></td></tr></table></figure>
+
+<p><code>call_deferred()</code> 每调用一次就登记一次方法调用。Godot 3.6.1 在分发物理查询结果后，会在同一个物理步内处理消息队列。已经登记的回调按入队顺序一个个执行，执行期间追加的调用也可以在这次队列处理中跑完。</p>
+<div aria-hidden="true"><br><br></div>
+
+<p>多个hurtbox也可以直接用消息队列。如果不想一次攻击把多个hurtbox都算上（即一次攻击让敌人受到N次伤害），无论近战和子弹都用<code>ignored_objects</code>。</p>
+<p>假设同一把刀扫到了怪物的头部和身体，两个回调都已入队：</p>
+<ol>
+<li>头部回调先执行。 敌人通过检查，结算伤害，然后调用 <code>hitbox.hit_something(self, ...)</code>。这里的 <code>self</code> 是整只敌人。武器同步收到 <code>hit_something</code>，马上把这只敌人加入自己的 <code>_hitbox.ignored_objects</code>。</li>
+<li>身体回调随后执行。 <code>hitbox.ignored_objects.has(self)</code> 已经为真，直接返回，连伤害和状态效果都不用再算。换成另一只敌人，<code>self</code> 不同，就可以照常受伤。</li>
+<li>攻击窗口关闭。 <code>Weapon.disable_hitbox()</code> 清空 <code>ignored_objects</code>，下次挥击又能打到这只敌人。横扫如果配置了收招也有伤害，列表会保留到收招结束，所以来回扫过同一只怪也只算一次。</li>
+</ol>
+<p>目前没有设置部位优先级。</p>
+<div aria-hidden="true"><br><br><br><br></div>
+
+<ul>
+<li><p>HitBox的伤害计算与HurtBox的伤害计算</p>
+<p><img src="/images/brotato/mermaid-diagram-17949766848641.png" alt="伤害计算调用链"></p>
+<p>武器重算属性时，先把基础伤害、近战／远程／元素等属性缩放和百分比加成写入 <code>current_stats.damage</code>，再交给 <code>Hitbox</code>。</p>
+<p>实际命中时，<code>Unit.take_damage()</code> 才判暴击、按目标当前状态算加成、处理护甲并改 HP。普通单位的护甲分支是 <code>max(1, 伤害 - 护甲)</code>，<code>Enemy</code> 还能额外加上按当前生命计算的伤害。</p>
+<div aria-hidden="true"><br><br></div>
+
+<p>用项目里的一级手枪和「小鱼」配置。假设玩家有 <strong>5 远程伤害、+30% 伤害</strong>，敌人有 <strong>40 &#x2F; 50 HP、3 点护甲</strong>，这发子弹暴击，其余伤害词条都不参与。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>源码里的计算</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>武器属性</td>
+<td>手枪基础伤害 <code>12</code>，吃 <code>100%</code> 远程伤害加成，再乘全局伤害倍率。<code>round((12 + 5) × 1.30)</code></td>
+<td><strong>22</strong></td>
+</tr>
+<tr>
+<td>暴击</td>
+<td>命中时判定暴击，手枪暴击倍率为 <code>2.0</code>。<code>round(22 × 2.0)</code></td>
+<td><strong>44</strong></td>
+</tr>
+<tr>
+<td>条件增伤</td>
+<td>「小鱼」对当前血量至少为 <code>75%</code> 的敌人加 <code>10%</code> 伤害。<code>40 / 50 = 80%</code>，所以 <code>round(44 × 1.10)</code></td>
+<td><strong>48</strong></td>
+</tr>
+<tr>
+<td>敌人护甲</td>
+<td>这条敌人受击路径直接减护甲，最低为 <code>1</code>。<code>max(1, 48 − 3)</code></td>
+<td><strong>45</strong></td>
+</tr>
+<tr>
+<td>实际扣血</td>
+<td>敌人只剩 <code>40 HP</code>。<code>min(45, 40)</code></td>
+<td><strong>40</strong></td>
+</tr>
+</tbody></table>
+<p>另外队列也会影响伤害计算，发射时，子弹已经把武器伤害和暴击参数写进自己的 <code>Hitbox</code>。目标血量是在<strong>处理这一笔命中时</strong>才读取的。假设同一个满血 <code>50 HP</code> 的敌人连续收到两发伤害为 <code>22</code> 的普通命中，第一发吃到「小鱼」加成，扣 <code>21</code>，把血量打到 <code>29</code>。第二发处理时读到 <code>29 / 50</code>，于是只扣 <code>19</code>。如果前一发已经打死敌人，后续排队的命中会被 <code>_pending_die</code> 拦住。</p>
+</li>
+</ul>
+<div aria-hidden="true"><br><br></div>
+
+<h2 id="表现"><a href="#表现" class="headerlink" title="表现"></a>表现</h2><ul>
+<li>场上会产生很多绿色材料</li>
+<li>武器出击动画是否完全和逻辑计算同频</li>
+<li>音频包括吃材料、攻击等，是否每次音效都播放了；是否每次播放的音效都一样；如何区分音效层次；是否有优先级。</li>
+</ul>
+<p>逻辑计算是否完全和表现分离？</p>
+<div aria-hidden="true"><br><br></div>
+
+<h1 id="商店"><a href="#商店" class="headerlink" title="商店"></a>商店</h1><div aria-hidden="true"><br><br></div>
+
+<h1 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h1><ul>
+<li>如何进行数据驱动？数据层所涉及的类都有哪些，关系是什么，是按照什么语义划分的。</li>
+<li>统一执行框架是如何处理这些数据的。</li>
+<li></li>
+<li>玩家持有数值组件，方便其它组件动态查询。</li>
+<li>对数值的修改我怀疑还套了一层，比如“修改工程值的时候+25%”</li>
+<li>如何进行数据配置</li>
+<li>是否用到ECS？用ECS会更好吗？</li>
+<li>如何抽象并兼容多种实体</li>
+<li></li>
+</ul>
+<h2 id="数据分层"><a href="#数据分层" class="headerlink" title="数据分层"></a>数据分层</h2><ul>
+<li>配置数据</li>
+<li>配置+动态数据&#x3D;计算结果</li>
+<li>拷贝配置+修改</li>
+</ul>
+<p><img src="/images/brotato/01-data-model-17949913749992.svg" alt="配置-动态-逻辑-实例"></p>
+<table>
+<thead>
+<tr>
+<th>类或入口</th>
+<th>直接关系与用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ItemSetData</code>、<code>UpdateData</code>、<code>DLCData</code></td>
+<td><code>ItemService.tscn</code> 引用基础内容集和更新列表。更新项连接内容集与 DLC 扩展，Service 将启用且解锁的内容放进分品质、分类型的候选池。这里的 <code>ItemSetData</code> 表示内容目录。</td>
+</tr>
+<tr>
+<td><code>ItemParentData</code> → <code>ItemData</code>、<code>WeaponData</code>、<code>DifficultyData</code></td>
+<td>基类统一 ID、品质、价格、图标与 <code>Effect[]</code>。普通道具再加持有上限、标签、外观和替换配置。<code>CharacterData</code>、<code>UpgradeData</code>、<code>ConsumableData</code> 均继承 <code>ItemData</code>。角色配置携带起始道具和武器，也经 <code>RunData.add_item</code> 应用效果。</td>
+</tr>
+<tr>
+<td><code>WeaponData</code> → <code>WeaponStats</code>、<code>SetData[]</code>、<code>PackedScene</code>、下一级 <code>WeaponData</code></td>
+<td><code>my_id</code> 标识一个具体品质的资源，<code>weapon_id</code> 标识武器家族。<code>SetData</code> 是武器套装，按装备件数挑选一组效果。<code>WeaponStats</code> 的子类是 <code>MeleeWeaponStats</code> 和 <code>RangedWeaponStats</code>。</td>
+</tr>
+<tr>
+<td><code>StatData</code>、<code>ItemAppearanceData</code>、<code>SkinData</code>、<code>SkinSetData</code></td>
+<td><code>StatData</code> 保存属性名称、图标和展示信息。道具外观、皮肤各自通过配置驱动显示。实际属性数值读 <code>Utils.get_stat</code>。</td>
+</tr>
+<tr>
+<td><code>RunData</code> → <code>PlayerRunData[]</code></td>
+<td>全局局内入口管理波次、难度、模式等。每位玩家持有自己的道具、武器、当前角色、材料、等级、套装状态及 <code>effects</code>。运行键大量使用 <code>Keys</code> 生成的整数 hash。</td>
+</tr>
+<tr>
+<td><code>PlayerRunData.effects</code>、<code>TempStats</code>、<code>LinkedStats</code></td>
+<td>前者为逐玩家的异构字典，由 <code>PlayerRunData.init_effects()</code> 初始化。临时属性和联动属性分别存放。<code>LinkedStats</code> 脚本继承 <code>TempStats</code>，独立计算“每 N 个 X，获得 Y”。</td>
+</tr>
+<tr>
+<td><code>Unit</code> → <code>Stats</code>、<code>LiveStats</code></td>
+<td><code>Stats</code> 是单位模板，<code>Unit</code> 持有 <code>max_stats</code>、<code>current_stats</code> 两份 <code>LiveStats</code>。敌人会叠加波次和难度等规则。玩家最大血量、护甲、闪避等会从局内属性更新。<code>Structure</code> 直接继承 <code>Entity</code>，有自己的攻击属性计算路径。</td>
+</tr>
+<tr>
+<td><code>EnemyData</code>、<code>ZoneData</code>、<code>WaveData</code>、<code>WaveGroupData</code>、<code>WaveUnitData</code></td>
+<td>敌人资源与区域配置用于选取敌人和首领，波次内是组、组内是单位条目。单位条目带数量、概率、类型和 <code>PackedScene</code>。生成时转换为 <code>SpawnRequest</code>。</td>
+</tr>
+<tr>
+<td><code>WeaponServiceInitStatsArgs</code>、<code>WeaponServiceSpawnProjectileArgs</code>、<code>WeaponServiceExplodeArgs</code></td>
+<td>分别携带算数值、生成弹体与爆炸所需的上下文。<code>Hitbox.HitboxArgs</code> 负责把武器数值带到碰撞盒，<code>TakeDamageArgs</code> 携带来源、护甲、可闪避、燃烧等受伤上下文。</td>
+</tr>
+</tbody></table>
+<div aria-hidden="true"><br><br></div>
+
+<h2 id="数据类以及UML图"><a href="#数据类以及UML图" class="headerlink" title="数据类以及UML图"></a>数据类以及UML图</h2><p>切换图内的标签页可浏览 19 张 UML 继承分图。空心三角指向直接父类。</p>
+<iframe src="/diagrams/brotato-uml.html" title="土豆兄弟客户端 UML 继承分图" loading="lazy" style="display:block;width:100%;height:clamp(420px,75vh,760px);border:1px solid #d9e1ec;border-radius:8px;"></iframe>
+
+<p><a href="https://huangxinhere.github.io/diagrams/brotato-uml.html">在独立页面查看全部 UML 分图</a></p>
+<div aria-hidden="true"><br><br></div>
+
+<h2 id="统一执行框架"><a href="#统一执行框架" class="headerlink" title="统一执行框架"></a>统一执行框架</h2><div aria-hidden="true"><br><br></div>
+
+<h1 id="多人联机"><a href="#多人联机" class="headerlink" title="多人联机"></a>多人联机</h1><ul>
+<li>如果是状态同步，场上单位这么多</li>
+<li>如果是帧同步，是否严格锁帧</li>
+<li>远程同乐的原理是什么，和局内联机有何不同</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangxinhere.github.io">(●ˇ∀ˇ●)</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangxinhere.github.io/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/">https://huangxinhere.github.io/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangxinhere.github.io" target="_blank">Hx's blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/head_pic_3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/11/14/AI%E5%88%B0%E5%BA%95%E5%B8%A6%E6%9D%A5%E4%BA%86%E4%BB%80%E4%B9%88%E5%8F%98%E5%8C%96/" title="AI到底带来了什么变化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">AI到底带来了什么变化</div></div><div class="info-2"><div class="info-item-1">这段时间突然被迫思考AI与职业规划的关系。求职的不顺利终于把我逼出了舒适圈，让我意识到个人的局限性以及时代的变化。 之前都是把AI当作工具，一种犯懒的手段，我需要什么，或者不想做什么，就交给AI来做。在这个阶段，我还是凭我的个人习惯做事，但这其实远远不够。 后面我才意识到，AI对人的倒逼程度远超我想象。对于个人来说，偷偷懒是完全够的，但对企业&#x2F;需求方来说，AI是提效工具，它要用来强化竞争，要用更低的成本获得更高的效率、更多的产出。进入求职市场之后，这种落差似一股强力拽着我跌得鼻青脸肿。不过更有益的思考方向是转向个人成长。不排除决定性因素其实是个人潜质，觉悟高的大佬们早就在AI兴起的时候就嗅到了风向，也可能因为他们本身就是技术狂热者，AI只是让他们如虎添翼。反正确实也该做出改变了。 首先意识到，AI提效到底能到什么程度。我之前尝试做一个demo，还想着AI给教程我来手动实践，按照自己的步骤踏实学。因为之前也看到朋友用AI做游戏，很快就做出来了，然而我想着我是程序，不能这么许愿式编程。然后一个全栈大佬很快搓出来一个在我看来很难的框架。我意识到不能再逃避现实了。我开始想，如果...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">总架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%80%E5%86%85%E6%88%98%E6%96%97"><span class="toc-number">2.</span> <span class="toc-text">局内战斗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%8C%E4%BA%BA%E7%94%9F%E6%88%90%E5%92%8C%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.1.</span> <span class="toc-text">敌人生成和行为</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%88%B7%E3%80%81%E5%88%B7%E4%BB%80%E4%B9%88%E3%80%81%E5%88%B7%E5%A4%9A%E5%B0%91"><span class="toc-number">2.1.1.</span> <span class="toc-text">什么时候刷、刷什么、刷多少</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="toc-number">2.1.2.</span> <span class="toc-text">刷在哪里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.3.</span> <span class="toc-text">生成请求与对象池管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%8C%E4%BA%BA%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.1.4.</span> <span class="toc-text">敌人行为</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A4%E5%AE%B3%E8%AE%A1%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">伤害计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A6%E5%99%A8%E7%B4%A2%E6%95%8C%E5%92%8C%E5%86%B7%E5%8D%B4"><span class="toc-number">2.2.1.</span> <span class="toc-text">武器索敌和冷却</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A6%E5%99%A8%E7%A2%B0%E6%92%9E%E5%88%A4%E5%AE%9A"><span class="toc-number">2.2.2.</span> <span class="toc-text">武器碰撞判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%8C%E4%BA%BA%E4%BC%A4%E5%AE%B3%E7%BB%93%E7%AE%97"><span class="toc-number">2.2.3.</span> <span class="toc-text">敌人伤害结算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">表现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%95%86%E5%BA%97"><span class="toc-number">3.</span> <span class="toc-text">商店</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8"><span class="toc-number">4.</span> <span class="toc-text">数据驱动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B1%82"><span class="toc-number">4.1.</span> <span class="toc-text">数据分层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E4%BB%A5%E5%8F%8AUML%E5%9B%BE"><span class="toc-number">4.2.</span> <span class="toc-text">数据类以及UML图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E6%89%A7%E8%A1%8C%E6%A1%86%E6%9E%B6"><span class="toc-number">4.3.</span> <span class="toc-text">统一执行框架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E4%BA%BA%E8%81%94%E6%9C%BA"><span class="toc-number">5.</span> <span class="toc-text">多人联机</span></a></li></ol></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item"><details><summary><span class="card-category-list-name">游戏开发</span><span class="card-category-list-count">35</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Unity</span><span class="card-category-list-count">29</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">DOTS</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;01&#x2F;04&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-DOTS-ECS&#x2F;">知识整理-Unity ECS</a></li><li><a href="&#x2F;2025&#x2F;12&#x2F;14&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-DOTS-Job%20System&#x2F;">知识整理-Job System</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">UI</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2024&#x2F;03&#x2F;13&#x2F;2024313-Unity-UI%EF%BC%882%EF%BC%89&#x2F;">Unity-UI（2）</a></li><li><a href="&#x2F;2023&#x2F;09&#x2F;01&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI&#x2F;">Unity-UI</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">入门与项目练习</span><span class="card-category-list-count">8</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;04&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5&#x2F;">Unity-术语&#x2F;概念</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;18&#x2F;Unity%E5%BC%80%E5%8F%91-%E9%80%83%E5%87%BA%E5%9C%B0%E7%90%83&#x2F;"></a></li><li><a href="&#x2F;2022&#x2F;09&#x2F;23&#x2F;Robbie&#x2F;">Robbie</a></li><li><a href="&#x2F;2022&#x2F;07&#x2F;30&#x2F;TowerDefense&#x2F;">TowerDefense</a></li><li><a href="&#x2F;2022&#x2F;06&#x2F;04&#x2F;202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2&#x2F;">Unity入门(三)——MyGame2</a></li><li><a href="&#x2F;2022&#x2F;05&#x2F;09&#x2F;202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame&#x2F;">Unity入门(三)——MyGame</a></li><li><a href="&#x2F;2022&#x2F;04&#x2F;11&#x2F;2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)&#x2F;">Unity入门(二)</a></li><li><a href="&#x2F;2021&#x2F;11&#x2F;10&#x2F;Unity%E5%85%A5%E9%97%A8&#x2F;">Unity入门</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">动画</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;02&#x2F;05&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F&#x2F;">Unity-动画系统</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">图形与 Shader</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;13&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2&#x2F;">Unity-图形</a></li><li><a href="&#x2F;2022&#x2F;07&#x2F;18&#x2F;UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E9%AB%98%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0&#x2F;">UnityShader 入门精要&#x2F;高级篇 笔记</a></li><li><a href="&#x2F;2022&#x2F;07&#x2F;08&#x2F;UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0&#x2F;">UnityShader 入门精要&#x2F;中级篇 笔记</a></li><li><a href="&#x2F;2022&#x2F;06&#x2F;28&#x2F;UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E5%88%9D%E7%BA%A7&#x2F;">UnityShader 入门精要&#x2F;基础篇＋初级篇 笔记</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">性能与运行时</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;14&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96&#x2F;">Unity-性能优化</a></li><li><a href="&#x2F;2023&#x2F;06&#x2F;17&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%BC%96%E8%AF%91%E4%B8%8E%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;">操作系统：Unity</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">构建与热更新</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;10&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0&#x2F;">Unity-热更新</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">架构与设计</span><span class="card-category-list-count">3</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2025&#x2F;12&#x2F;10&#x2F;%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84&#x2F;">技术周报-项目基础架构</a></li><li><a href="&#x2F;2023&#x2F;01&#x2F;06&#x2F;Unity%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6&#x2F;">Unity的游戏框架搭建</a></li><li><a href="&#x2F;2022&#x2F;12&#x2F;18&#x2F;Unity%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E5%AE%9E%E7%8E%B0&#x2F;">Unity的状态机实现</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">网络编程</span><span class="card-category-list-count">3</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;02&#x2F;02&#x2F;%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-Unity-Mirror%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90&#x2F;">技术周报-Unity Mirror源码解析</a></li><li><a href="&#x2F;2023&#x2F;07&#x2F;04&#x2F;%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93-Unity%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BFishnet&#x2F;"></a></li><li><a href="&#x2F;2023&#x2F;04&#x2F;26&#x2F;Unity%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%9A%E4%BF%A1&#x2F;">Unity 与服务器数据库通信</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">角色控制与物理</span><span class="card-category-list-count">3</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;01&#x2F;03&#x2F;Unity%E7%9A%84InputSystem&#x2F;">Unity的Input System</a></li><li><a href="&#x2F;2022&#x2F;11&#x2F;08&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F&#x2F;">Unity的物理系统</a></li><li><a href="&#x2F;2022&#x2F;11&#x2F;08&#x2F;%E4%BA%BA%E7%89%A9%E7%A7%BB%E5%8A%A8%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6&#x2F;">人物移动手感</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Unreal</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">多人联机</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2025&#x2F;08&#x2F;26&#x2F;%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-%E7%BD%91%E7%BB%9C%E7%A7%BB%E5%8A%A8%E8%83%BD%E5%8A%9B%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5&#x2F;">技术周报-网络移动能力的最佳实践</a></li><li><a href="&#x2F;2025&#x2F;08&#x2F;22&#x2F;UE%E5%A4%9A%E4%BA%BA%E5%B0%84%E5%87%BBC++%EF%BC%881%EF%BC%89%E4%BA%92%E8%81%94%E7%BD%91%E8%81%94%E6%9C%BA%E8%AE%BE%E7%BD%AE&#x2F;">UE与OnlineSubsystemSteam（OSS Steam）</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">数学与算法</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;01&#x2F;10&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E5%85%AD%E8%BE%B9%E5%BD%A2%E7%BD%91%E6%A0%BC&#x2F;">知识整理-六边形网格</a></li><li><a href="&#x2F;2023&#x2F;09&#x2F;06&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95&#x2F;">Unity-算法</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">游戏设计</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;11&#x2F;16&#x2F;%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3&#x2F;">《土豆兄弟》拆解</a></li><li><a href="&#x2F;2026&#x2F;11&#x2F;12&#x2F;GDC2017-RimWorld%EF%BC%9A%E5%8F%8D%E5%B8%B8%E3%80%81%E8%8D%92%E5%94%90%E5%92%8C%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%8B%E9%81%93&#x2F;">GDC2017-RimWorld：反常、荒唐和不可能的设计之道</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">移动开发</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Android</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2022&#x2F;04&#x2F;05&#x2F;Android%20Context&#x2F;">Android Context</a></li><li><a href="&#x2F;2021&#x2F;10&#x2F;19&#x2F;Android%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6&#x2F;">Android常用的消息传递机制</a></li><li><a href="&#x2F;2021&#x2F;10&#x2F;19&#x2F;%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6&#x2F;">Android 四大组件</a></li><li><a href="&#x2F;2021&#x2F;08&#x2F;15&#x2F;Android%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80&#x2F;">Android基本布局</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">计算机基础</span><span class="card-category-list-count">18</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">操作系统</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;06&#x2F;07&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9B%9B%EF%BC%9A%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86&#x2F;">操作系统四：文件管理</a></li><li><a href="&#x2F;2023&#x2F;05&#x2F;29&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%89%EF%BC%9A%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;">操作系统三：内存管理</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;27&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8C%EF%BC%9A%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86&#x2F;">操作系统（二）：进程管理</a></li><li><a href="&#x2F;2023&#x2F;02&#x2F;28&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;">操作系统</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">数据结构与算法</span><span class="card-category-list-count">5</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">刷题记录</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;06&#x2F;07&#x2F;202367-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%88%B7%E9%A2%98%E6%80%9D%E8%80%83-%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3&#x2F;">数据结构与算法-刷题思考-算法思想</a></li><li><a href="&#x2F;2023&#x2F;04&#x2F;01&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%88%B7%E9%A2%98%E6%80%9D%E8%80%83&#x2F;">数据结构与算法-刷题思考</a></li></ul></details></li></ul><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;04&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95&#x2F;">C#-数据结构和算法</a></li><li><a href="&#x2F;2023&#x2F;02&#x2F;22&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95&#x2F;">数据结构与算法</a></li><li><a href="&#x2F;2021&#x2F;08&#x2F;30&#x2F;%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&#x2F;">动态规划</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">编程语言</span><span class="card-category-list-count">7</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">C#</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;02&#x2F;20&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86&#x2F;">C#知识整理</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">C++</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;04&#x2F;26&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++%E5%9F%BA%E7%A1%80&#x2F;">C++ 基础</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;03&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++&#x2F;">C++ 数据结构</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;03&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++%20%E7%B1%BB%E8%AE%BE%E8%AE%A1%E8%80%85%E7%9A%84%E5%B7%A5%E5%85%B7&#x2F;">C++ 类设计者的工具</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;03&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++%E6%A0%87%E5%87%86%E5%BA%93&#x2F;">C++ 标准库</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Java</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2021&#x2F;12&#x2F;04&#x2F;Java%E7%BB%A7%E6%89%BF&#x2F;">Java继承</a></li><li><a href="&#x2F;2021&#x2F;07&#x2F;24&#x2F;Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;">Java线程初学（一）</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">计算机网络</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;02&#x2F;23&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;">计算机网络</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">软件设计</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;07&#x2F;30&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;">设计模式-知识整理</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">随笔</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;11&#x2F;14&#x2F;AI%E5%88%B0%E5%BA%95%E5%B8%A6%E6%9D%A5%E4%BA%86%E4%BB%80%E4%B9%88%E5%8F%98%E5%8C%96&#x2F;">AI到底带来了什么变化</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">项目作品</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2022&#x2F;04&#x2F;09&#x2F;%E4%BD%9C%E5%93%81%E9%9B%86&#x2F;">作品集</a></li></ul></details></li>
+          </ul></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 - 2026 By (●ˇ∀ˇ●)</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.0-b3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
