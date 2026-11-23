@@ -1,237 +1,212 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>分类: 游戏设计 | Hx's blog</title><meta name="author" content="(●ˇ∀ˇ●),1159390360@qq.com"><meta name="copyright" content="(●ˇ∀ˇ●)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="另一个博客传送门：https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;3598037753539256">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hx&#39;s blog">
-<meta property="og:url" content="https://huangxinhere.github.io/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/index.html">
-<meta property="og:site_name" content="Hx&#39;s blog">
-<meta property="og:description" content="另一个博客传送门：https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;3598037753539256">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://huangxinhere.github.io/img/head_pic_3.png">
-<meta property="article:author" content="(●ˇ∀ˇ●)">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://huangxinhere.github.io/img/head_pic_3.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://huangxinhere.github.io/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
 
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
+<!DOCTYPE html>
+<html lang="zh-CN" class="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>游戏设计 — Hx&#39;s blog</title>
+  <meta name="description" content="另一个博客传送门：https://juejin.cn/user/3598037753539256">
+  <meta name="theme-color" content="#fbfaf7">
   
+  <meta property="og:title" content="游戏设计 — Hx&#39;s blog">
+  <meta property="og:description" content="另一个博客传送门：https://juejin.cn/user/3598037753539256">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hx&#39;s blog">
+  <meta property="og:url" content="https://huangxinhere.github.io/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/index.html">
+  
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://huangxinhere.github.io/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/index.html">
+  
+  
+  
+  <link rel="preload" href="/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/petrona-italic.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/css/style.css?v=549f4330c3fb">
+  
+  <style>:root{--paper:#fbfaf7;--paper-low:#eae1d0;--ink:#342c24;--muted:#6c6052;--accent:#a6402c;--honey:#eccc77;--rule:#e4dfd6;--sans:"Hanken Grotesk", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;--serif:Petrona, "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;--container:960px;--prose-width:740px;--profile-width:270px;--about-gap:108px;--toc-width:180px;--article-gap:44px;--body-size:19px;--body-mobile-size:17px;--body-line-height:1.8;--body-mobile-line-height:1.85;--quote-size:21px;--quote-mobile-size:19px;--quote-line-height:1.65;--hero-title-size:clamp(72px, 7.5vw, 96px);--hero-title-mobile-size:clamp(54px, 15vw, 76px);--hero-title-small-size:clamp(48px, 15vw, 58px);--hero-aside-indent:64px;--hero-image-width:min(68vw, 92svh, 980px)}</style>
+  
+  
+  <script type="application/json" id="cosmos-settings">{"labels":{"home":"首页","about":"关于","blog":"文章","archives":"归档","categories":"分类","tags":"标签","all_writing":"所有文章","notes":"随笔","untitled":"无标题","photo":"图片 {number}","explore":"探索","main_navigation":"主导航","open_navigation":"打开导航","close_navigation":"关闭导航","skip_content":"跳至正文","search":"搜索所有文章","clear_search":"清除搜索","search_placeholder":"搜索所有文章…","searching":"正在搜索…","search_found":"找到 {count} 篇文章。","search_truncated":"显示前 {limit} 篇，请添加关键词缩小范围。","search_empty":"没有找到文章，请尝试其他关键词。","search_error":"搜索加载失败，请重试。","retry":"重试","empty":"这里还没有文章。","pagination":"分页","previous":"上一页","next":"下一页","back_blog":"返回文章列表","by":"作者","min_read":"分钟阅读","updated":"更新于","contents":"本页目录","adjacent":"相邻文章","newer":"较新的文章","older":"较早的文章","back_top":"回到顶部","copy":"复制","copy_code":"复制代码","copied":"已复制","code_copied":"代码已复制。","copy_select":"请选中复制","clipboard_error":"剪贴板不可用，请选中代码复制。","contacts":"社交平台与联系方式","email":"邮箱","demo":"示例文章","archive_year":"{year} 年的文章","archive_month":"{year} 年 {month} 月的文章","tag_title":"标签：{tag}","not_found":"页面未找到","not_found_description":"这个页面暂时不存在。","back_home":"返回首页","filter_topics":"按主题筛选文章","search_found_one":"找到 1 篇文章。"},"search":{"enabled":true,"path":"search.json","limit":30},"post":{"back_link":true,"description":true,"author":true,"date":true,"updated":false,"categories":false,"reading_time":true,"toc":true,"toc_depth":3,"toc_numbers":false,"reading_note":"","progress":false,"copy_code":true,"tags":true,"signoff":"","navigation":true,"comments":true},"listing":{"title":"","title_period":false,"categories":false,"counts":true,"excerpts":true,"excerpt_length":90,"date":true,"category":true,"reading_time":false,"aside":"","aside_note":"","signoff":""},"motion":{"enabled":true,"page_transitions":false}}</script>
+  <script defer src="/js/main.js"></script>
+  <script defer src="/js/cosmos-journal.js"></script>
+<style>
+  @font-face {
+    font-family: 'Journal Song';
+    src: local('Source Han Serif SC Regular'), local('SourceHanSerifSC-Regular'), local('Noto Serif SC'), local('NotoSerifSC-Regular');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  :root { --reading-font: 'Journal Song', 'Noto Serif SC', 'Songti SC', SimSun, serif; }
+  .index-page .entry p, .entry-meta, .article-body .prose {
+    font-family: var(--reading-font);
+    font-weight: 400;
+  }
+  .article-body .prose em { font-family: inherit; }
+  .index-page .entry p, .index-page .entry-meta {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', SimSun, serif;
+    font-weight: 700;
+  }
+  .article-body .prose blockquote { font-size: 1em; }
+  .site-header.journal-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 0;
+    min-height: 0;
+    padding: 0;
+  }
+  .journal-header .brand {
+    grid-area: 1 / 2;
+    justify-self: center;
+    align-items: center;
+    min-height: 64px;
+    text-align: center;
+  }
+  .journal-search { grid-area: 1 / 3; }
+  .journal-tabs {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: clamp(12px, 3vw, 32px);
+    border-top: 1px solid var(--rule);
+  }
+  .journal-tabs a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-top: 2px;
+    border-bottom: 2px solid transparent;
+    font-size: 14px;
+  }
+  .journal-tabs a:hover, .home-categories a:hover { color: var(--accent); }
+  .journal-tabs a[aria-current] { color: var(--accent); border-bottom-color: currentColor; }
+  .index-heading { padding: 28px 0 12px; }
+  .index-heading h1 { font-size: clamp(28px, 4vw, 36px); }
+  .index-page .index-tools { border: 0; padding: 0; }
+  .journal-columns.with-categories {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 172px;
+    gap: 44px;
+  }
+  .journal-list { min-width: 0; }
+  .home-categories { align-self: start; padding-top: 8px; }
+  .home-categories h2 { font-size: 18px; font-weight: 600; }
+  .home-categories ul { list-style: none; margin: 8px 0 0; padding: 0; }
+  .home-categories summary { display: flex; align-items: baseline; gap: 8px; min-height: 36px; padding: 7px 0; cursor: pointer; font-size: 14px; list-style: none; }
+  .home-categories summary::-webkit-details-marker { display: none; }
+  .home-categories summary::before { content: '›'; width: 10px; flex-shrink: 0; color: var(--muted); }
+  .home-categories details[open] > summary::before { content: '⌄'; }
+  .home-categories summary > span:first-of-type { flex: 1; }
+  .home-categories summary:hover { color: var(--accent); }
+  .home-categories .category-tree .category-tree { margin: 0 0 0 12px; }
+  .home-categories .category-posts { margin: 0 0 8px 18px; }
+  .home-categories .category-posts a { display: block; padding: 5px 0; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .category-count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .index-page .index-layout .entry { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 16px 0; }
+  .index-page .index-layout .entry:has(.entry-cover:not([hidden])) {
+    grid-template-columns: minmax(0, 1fr) clamp(78px, 23vw, 150px);
+  }
+  .entry-cover { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 5px; }
+  .index-page .entry h3 { font-size: clamp(19px, 2.5vw, 23px); }
+  .index-page .entry p { margin-top: 5px; }
+  .index-page .entry-meta { margin-top: 7px; }
+  .index-page .entry-arrow { display: none; }
+  .is-post { --container: 1280px; --toc-width: 230px; --article-gap: 72px; }
+  .index-page.without-listing-aside { padding-top: 28px; }
+  .search-collapsible[hidden] { display: none; }
+  .search-collapsible:not([hidden]) { margin-bottom: 24px; }
+  @media (max-width: 720px) {
+    .journal-columns.with-categories { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .home-categories { grid-row: 1; padding-top: 0; }
+    .home-categories > .category-tree { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; margin-top: 2px; }
+    .index-page .index-layout .entry { column-gap: 12px; }
+    .index-page .entry p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+  }
+</style>
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
+</head>
+<body class="is-index" data-root="/" data-blog="/" data-copy-code="true">
+  
+  <a class="skip-link" href="#main">跳至正文</a>
+  
+
+<header class="site-header shell journal-header">
+  <a class="brand" href="/" aria-label="Hx&#39;s blog — 首页"><span class="brand-title">Hx&#39;s blog</span></a>
+  <a class="icon-control journal-search" aria-controls="search" aria-expanded="false" href="/#search" aria-label="搜索所有文章"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+  
+  <nav class="journal-tabs" aria-label="主导航">
+    <a href="/" >首页</a><a href="/categories/" aria-current="page">分类</a><a href="/tags/" >标签</a>
+  </nav>
+  
+</header>
+
+
+
+  <main id="main" tabindex="-1">
+<section class="index-page shell without-listing-aside">
+  <header class="index-heading"><h1>游戏设计</h1></header>
+  <div class="journal-columns">
+    <div class="journal-list">
       
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+      <div class="index-tools">
         
+        <form class="search-form search-collapsible" role="search" id="search" hidden><label for="post-search" class="sr-only">搜索所有文章</label><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="post-search" type="search" placeholder="搜索所有文章…" autocomplete="off" name="q"><button class="clear-search" type="button" aria-label="清除搜索" hidden><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></form>
+      </div>
       
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
+      <p class="search-status" role="status" hidden></p><div class="search-results" hidden></div>
+      <div class="index-layout" data-default-list>
+        
+        <div class="entries">
+<article class="entry">
+  <div class="entry-content">
+    <h3><a class="entry-title" href="/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/" data-entry="entry-323032362f31312f31362fe3808ae59c9fe8b186e58584e5bc9fe3808be68b86e8a7a32f">《土豆兄弟》拆解</a></h3>
+    <p>最近被安利了一个游戏叫《土豆兄弟》，我说怎么像《吸血鬼幸存者》，朋友说比它还早呢，是这类肉鸽的鼻祖。虽然我只听说过“类吸血鬼”游戏，没听说过“类土豆兄弟”。 Brotato 是一款…</p>
+    <div class="entry-meta">
+      <span class="entry-topic">游戏开发</span>
+      <time datetime="2026-11-16T02:35:22.249Z">2026-11-16</time>
       
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: true,
-  islazyloadPlugin: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '分类: 游戏设计',
-  isHighlightShrink: false,
-  isToc: false,
-  pageType: 'category'
-}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hx's blog" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">30</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hx's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">游戏设计</h1></div></header><main class="layout" id="content-inner"><div id="category"><div class="article-sort-title">分类 - 游戏设计</div><div class="article-sort"><div class="article-sort-item year">2026</div><div class="article-sort-item no-article-cover"><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2026-11-16T02:35:22.249Z" title="发表于 2026-11-16 10:35:22">2026-11-16</time></div><a class="article-sort-item-title" href="/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/" title="《土豆兄弟》拆解">《土豆兄弟》拆解</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2026/11/12/GDC2017-RimWorld%EF%BC%9A%E5%8F%8D%E5%B8%B8%E3%80%81%E8%8D%92%E5%94%90%E5%92%8C%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%8B%E9%81%93/" title="GDC2017-RimWorld：反常、荒唐和不可能的设计之道"><img src="/img/rimworld-065-cover.jpg" alt="GDC2017-RimWorld：反常、荒唐和不可能的设计之道" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2026-11-11T16:00:00.000Z" title="发表于 2026-11-12 00:00:00">2026-11-12</time></div><a class="article-sort-item-title" href="/2026/11/12/GDC2017-RimWorld%EF%BC%9A%E5%8F%8D%E5%B8%B8%E3%80%81%E8%8D%92%E5%94%90%E5%92%8C%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%8B%E9%81%93/" title="GDC2017-RimWorld：反常、荒唐和不可能的设计之道">GDC2017-RimWorld：反常、荒唐和不可能的设计之道</a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/head_pic_3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">(●ˇ∀ˇ●)</div><div class="author-info-description">另一个博客传送门：https://juejin.cn/user/3598037753539256</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">30</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
-          </div>
-          <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item"><details><summary><span class="card-category-list-name">游戏开发</span><span class="card-category-list-count">35</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Unity</span><span class="card-category-list-count">29</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">DOTS</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;01&#x2F;04&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-DOTS-ECS&#x2F;">知识整理-Unity ECS</a></li><li><a href="&#x2F;2025&#x2F;12&#x2F;14&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-DOTS-Job%20System&#x2F;">知识整理-Job System</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">UI</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2024&#x2F;03&#x2F;13&#x2F;2024313-Unity-UI%EF%BC%882%EF%BC%89&#x2F;">Unity-UI（2）</a></li><li><a href="&#x2F;2023&#x2F;09&#x2F;01&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-UI&#x2F;">Unity-UI</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">入门与项目练习</span><span class="card-category-list-count">8</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;04&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B5&#x2F;">Unity-术语&#x2F;概念</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;18&#x2F;Unity%E5%BC%80%E5%8F%91-%E9%80%83%E5%87%BA%E5%9C%B0%E7%90%83&#x2F;"></a></li><li><a href="&#x2F;2022&#x2F;09&#x2F;23&#x2F;Robbie&#x2F;">Robbie</a></li><li><a href="&#x2F;2022&#x2F;07&#x2F;30&#x2F;TowerDefense&#x2F;">TowerDefense</a></li><li><a href="&#x2F;2022&#x2F;06&#x2F;04&#x2F;202264-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame2&#x2F;">Unity入门(三)——MyGame2</a></li><li><a href="&#x2F;2022&#x2F;05&#x2F;09&#x2F;202259-Unity%E5%85%A5%E9%97%A8(%E4%B8%89)%E2%80%94%E2%80%94MyGame&#x2F;">Unity入门(三)——MyGame</a></li><li><a href="&#x2F;2022&#x2F;04&#x2F;11&#x2F;2022411-Unity%E5%85%A5%E9%97%A8(%E4%BA%8C)&#x2F;">Unity入门(二)</a></li><li><a href="&#x2F;2021&#x2F;11&#x2F;10&#x2F;Unity%E5%85%A5%E9%97%A8&#x2F;">Unity入门</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">动画</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;02&#x2F;05&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F&#x2F;">Unity-动画系统</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">图形与 Shader</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;13&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%9B%BE%E5%BD%A2&#x2F;">Unity-图形</a></li><li><a href="&#x2F;2022&#x2F;07&#x2F;18&#x2F;UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E9%AB%98%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0&#x2F;">UnityShader 入门精要&#x2F;高级篇 笔记</a></li><li><a href="&#x2F;2022&#x2F;07&#x2F;08&#x2F;UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E4%B8%AD%E7%BA%A7%E7%AF%87-%E7%AC%94%E8%AE%B0&#x2F;">UnityShader 入门精要&#x2F;中级篇 笔记</a></li><li><a href="&#x2F;2022&#x2F;06&#x2F;28&#x2F;UnityShader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E5%88%9D%E7%BA%A7&#x2F;">UnityShader 入门精要&#x2F;基础篇＋初级篇 笔记</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">性能与运行时</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;14&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96&#x2F;">Unity-性能优化</a></li><li><a href="&#x2F;2023&#x2F;06&#x2F;17&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%BC%96%E8%AF%91%E4%B8%8E%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;">操作系统：Unity</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">构建与热更新</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;10&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%83%AD%E6%9B%B4%E6%96%B0&#x2F;">Unity-热更新</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">架构与设计</span><span class="card-category-list-count">3</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2025&#x2F;12&#x2F;10&#x2F;%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84&#x2F;">技术周报-项目基础架构</a></li><li><a href="&#x2F;2023&#x2F;01&#x2F;06&#x2F;Unity%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6&#x2F;">Unity的游戏框架搭建</a></li><li><a href="&#x2F;2022&#x2F;12&#x2F;18&#x2F;Unity%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E5%AE%9E%E7%8E%B0&#x2F;">Unity的状态机实现</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">网络编程</span><span class="card-category-list-count">3</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;02&#x2F;02&#x2F;%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-Unity-Mirror%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90&#x2F;">技术周报-Unity Mirror源码解析</a></li><li><a href="&#x2F;2023&#x2F;07&#x2F;04&#x2F;%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93-Unity%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BFishnet&#x2F;"></a></li><li><a href="&#x2F;2023&#x2F;04&#x2F;26&#x2F;Unity%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%9A%E4%BF%A1&#x2F;">Unity 与服务器数据库通信</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">角色控制与物理</span><span class="card-category-list-count">3</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;01&#x2F;03&#x2F;Unity%E7%9A%84InputSystem&#x2F;">Unity的Input System</a></li><li><a href="&#x2F;2022&#x2F;11&#x2F;08&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F&#x2F;">Unity的物理系统</a></li><li><a href="&#x2F;2022&#x2F;11&#x2F;08&#x2F;%E4%BA%BA%E7%89%A9%E7%A7%BB%E5%8A%A8%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6&#x2F;">人物移动手感</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Unreal</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">多人联机</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2025&#x2F;08&#x2F;26&#x2F;%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-%E7%BD%91%E7%BB%9C%E7%A7%BB%E5%8A%A8%E8%83%BD%E5%8A%9B%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5&#x2F;">技术周报-网络移动能力的最佳实践</a></li><li><a href="&#x2F;2025&#x2F;08&#x2F;22&#x2F;UE%E5%A4%9A%E4%BA%BA%E5%B0%84%E5%87%BBC++%EF%BC%881%EF%BC%89%E4%BA%92%E8%81%94%E7%BD%91%E8%81%94%E6%9C%BA%E8%AE%BE%E7%BD%AE&#x2F;">UE与OnlineSubsystemSteam（OSS Steam）</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">数学与算法</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;01&#x2F;10&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E5%85%AD%E8%BE%B9%E5%BD%A2%E7%BD%91%E6%A0%BC&#x2F;">知识整理-六边形网格</a></li><li><a href="&#x2F;2023&#x2F;09&#x2F;06&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E7%AE%97%E6%B3%95&#x2F;">Unity-算法</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">游戏设计</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;11&#x2F;16&#x2F;%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3&#x2F;">《土豆兄弟》拆解</a></li><li><a href="&#x2F;2026&#x2F;11&#x2F;12&#x2F;GDC2017-RimWorld%EF%BC%9A%E5%8F%8D%E5%B8%B8%E3%80%81%E8%8D%92%E5%94%90%E5%92%8C%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%8B%E9%81%93&#x2F;">GDC2017-RimWorld：反常、荒唐和不可能的设计之道</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">移动开发</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Android</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2022&#x2F;04&#x2F;05&#x2F;Android%20Context&#x2F;">Android Context</a></li><li><a href="&#x2F;2021&#x2F;10&#x2F;19&#x2F;Android%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6&#x2F;">Android常用的消息传递机制</a></li><li><a href="&#x2F;2021&#x2F;10&#x2F;19&#x2F;%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6&#x2F;">Android 四大组件</a></li><li><a href="&#x2F;2021&#x2F;08&#x2F;15&#x2F;Android%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80&#x2F;">Android基本布局</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">计算机基础</span><span class="card-category-list-count">18</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">操作系统</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;06&#x2F;07&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9B%9B%EF%BC%9A%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86&#x2F;">操作系统四：文件管理</a></li><li><a href="&#x2F;2023&#x2F;05&#x2F;29&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%89%EF%BC%9A%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;">操作系统三：内存管理</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;27&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8C%EF%BC%9A%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86&#x2F;">操作系统（二）：进程管理</a></li><li><a href="&#x2F;2023&#x2F;02&#x2F;28&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;">操作系统</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">数据结构与算法</span><span class="card-category-list-count">5</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">刷题记录</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;06&#x2F;07&#x2F;202367-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%88%B7%E9%A2%98%E6%80%9D%E8%80%83-%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3&#x2F;">数据结构与算法-刷题思考-算法思想</a></li><li><a href="&#x2F;2023&#x2F;04&#x2F;01&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%88%B7%E9%A2%98%E6%80%9D%E8%80%83&#x2F;">数据结构与算法-刷题思考</a></li></ul></details></li></ul><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;09&#x2F;04&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95&#x2F;">C#-数据结构和算法</a></li><li><a href="&#x2F;2023&#x2F;02&#x2F;22&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95&#x2F;">数据结构与算法</a></li><li><a href="&#x2F;2021&#x2F;08&#x2F;30&#x2F;%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&#x2F;">动态规划</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">编程语言</span><span class="card-category-list-count">7</span></summary><ul class="card-category-list child"><li class="card-category-list-item"><details><summary><span class="card-category-list-name">C#</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;02&#x2F;20&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C#%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86&#x2F;">C#知识整理</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">C++</span><span class="card-category-list-count">4</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;04&#x2F;26&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++%E5%9F%BA%E7%A1%80&#x2F;">C++ 基础</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;03&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++&#x2F;">C++ 数据结构</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;03&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++%20%E7%B1%BB%E8%AE%BE%E8%AE%A1%E8%80%85%E7%9A%84%E5%B7%A5%E5%85%B7&#x2F;">C++ 类设计者的工具</a></li><li><a href="&#x2F;2023&#x2F;03&#x2F;03&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-C++%E6%A0%87%E5%87%86%E5%BA%93&#x2F;">C++ 标准库</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">Java</span><span class="card-category-list-count">2</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2021&#x2F;12&#x2F;04&#x2F;Java%E7%BB%A7%E6%89%BF&#x2F;">Java继承</a></li><li><a href="&#x2F;2021&#x2F;07&#x2F;24&#x2F;Java%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;">Java线程初学（一）</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">计算机网络</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;02&#x2F;23&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;">计算机网络</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">软件设计</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2023&#x2F;07&#x2F;30&#x2F;%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;">设计模式-知识整理</a></li></ul></details></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">随笔</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2026&#x2F;11&#x2F;14&#x2F;AI%E5%88%B0%E5%BA%95%E5%B8%A6%E6%9D%A5%E4%BA%86%E4%BB%80%E4%B9%88%E5%8F%98%E5%8C%96&#x2F;">AI到底带来了什么变化</a></li></ul></details></li><li class="card-category-list-item"><details><summary><span class="card-category-list-name">项目作品</span><span class="card-category-list-count">1</span></summary><ul class="card-category-list child card-category-posts"><li><a href="&#x2F;2022&#x2F;04&#x2F;09&#x2F;%E4%BD%9C%E5%93%81%E9%9B%86&#x2F;">作品集</a></li></ul></details></li>
-          </ul></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/16/%E3%80%8A%E5%9C%9F%E8%B1%86%E5%85%84%E5%BC%9F%E3%80%8B%E6%8B%86%E8%A7%A3/" title="《土豆兄弟》拆解">《土豆兄弟》拆解</a><time datetime="2026-11-16T02:35:22.249Z" title="发表于 2026-11-16 10:35:22">2026-11-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/14/AI%E5%88%B0%E5%BA%95%E5%B8%A6%E6%9D%A5%E4%BA%86%E4%BB%80%E4%B9%88%E5%8F%98%E5%8C%96/" title="AI到底带来了什么变化">AI到底带来了什么变化</a><time datetime="2026-11-14T03:08:21.350Z" title="发表于 2026-11-14 11:08:21">2026-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/12/GDC2017-RimWorld%EF%BC%9A%E5%8F%8D%E5%B8%B8%E3%80%81%E8%8D%92%E5%94%90%E5%92%8C%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%8B%E9%81%93/" title="GDC2017-RimWorld：反常、荒唐和不可能的设计之道"><img src="/img/rimworld-065-cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GDC2017-RimWorld：反常、荒唐和不可能的设计之道"/></a><div class="content"><a class="title" href="/2026/11/12/GDC2017-RimWorld%EF%BC%9A%E5%8F%8D%E5%B8%B8%E3%80%81%E8%8D%92%E5%94%90%E5%92%8C%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%8B%E9%81%93/" title="GDC2017-RimWorld：反常、荒唐和不可能的设计之道">GDC2017-RimWorld：反常、荒唐和不可能的设计之道</a><time datetime="2026-11-11T16:00:00.000Z" title="发表于 2026-11-12 00:00:00">2026-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" title="Unity-动画系统"><img src="/img/e82f983fly1hdarthbg8rj20u00gvjvd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity-动画系统"/></a><div class="content"><a class="title" href="/2026/02/05/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86-Unity-%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" title="Unity-动画系统">Unity-动画系统</a><time datetime="2026-02-04T16:00:00.000Z" title="发表于 2026-02-05 00:00:00">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/02/%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-Unity-Mirror%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" title="技术周报-Unity Mirror源码解析"><img src="https://cdn.jsdelivr.net/gh/huangxinhere/hexo_img/img/20251212225701_1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="技术周报-Unity Mirror源码解析"/></a><div class="content"><a class="title" href="/2026/02/02/%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5-Unity-Mirror%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" title="技术周报-Unity Mirror源码解析">技术周报-Unity Mirror源码解析</a><time datetime="2026-02-01T16:00:00.000Z" title="发表于 2026-02-02 00:00:00">2026-02-02</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" style="font-size: 1.23em; color: #999ea6">刷题记录</a> <a href="/tags/C/" style="font-size: 1.1em; color: #999">C#</a> <a href="/tags/RimWorld/" style="font-size: 1.1em; color: #999">RimWorld</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%91%A8%E6%8A%A5/" style="font-size: 1.37em; color: #99a4b2">技术周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">学习笔记</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/" style="font-size: 1.23em; color: #999ea6">项目实践</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">游戏设计</a> <a href="/tags/GDC/" style="font-size: 1.1em; color: #999">GDC</a></div></div><div class="card-widget card-archives">
-    <div class="item-headline">
-      <i class="fas fa-archive"></i>
-      <span>归档</span>
-      <a class="card-more-btn" href="/archives/"
-            title="查看更多">
-            <i class="fas fa-angle-right"></i>
-          </a>
+      
     </div>
+  </div>
+  <img class="entry-cover" src="/images/brotato/mermaid-diagram-17948216023621.png" alt="" width="150" height="100" loading="lazy" decoding="async" onerror="this.hidden = true">
+</article>
+
+<article class="entry">
+  <div class="entry-content">
+    <h3><a class="entry-title" href="/2026/11/12/GDC2017-RimWorld%EF%BC%9A%E5%8F%8D%E5%B8%B8%E3%80%81%E8%8D%92%E5%94%90%E5%92%8C%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%8B%E9%81%93/" data-entry="entry-323032362f31312f31322f474443323031372d52696d576f726c64efbc9ae58f8de5b8b8e38081e88d92e59490e5928ce4b88de58fafe883bde79a84e8aebee8aea1e4b98be981932f">GDC2017-RimWorld：反常、荒唐和不可能的设计之道</a></h3>
+    <p>Tynan Sylvester 在 GDC 2017 的 RimWorld 设计演讲笔记。</p>
+    <div class="entry-meta">
+      <span class="entry-topic">游戏开发</span>
+      <time datetime="2026-11-11T16:00:00.000Z">2026-11-12</time>
+      
+      
+    </div>
+  </div>
+  <img class="entry-cover" src="/img/rimworld-065-cover.jpg" alt="" width="150" height="100" loading="lazy" decoding="async" onerror="this.hidden = true">
+</article>
+</div>
+      </div>
+      
+      
+    </div>
+    
+  </div>
+</section>
+
+</main>
   
-    <ul class="card-archive-list">
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/11/">
-            <span class="card-archive-list-date">
-              十一月 2026
-            </span>
-            <span class="card-archive-list-count">3</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/02/">
-            <span class="card-archive-list-date">
-              二月 2026
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/01/">
-            <span class="card-archive-list-date">
-              一月 2026
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/12/">
-            <span class="card-archive-list-date">
-              十二月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/08/">
-            <span class="card-archive-list-date">
-              八月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2024/03/">
-            <span class="card-archive-list-date">
-              三月 2024
-            </span>
-            <span class="card-archive-list-count">1</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2023/09/">
-            <span class="card-archive-list-date">
-              九月 2023
-            </span>
-            <span class="card-archive-list-count">7</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2023/07/">
-            <span class="card-archive-list-date">
-              七月 2023
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-    </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">59</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-11-19T09:19:02.673Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 - 2026 By (●ˇ∀ˇ●)</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.0-b3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<footer class="site-footer shell" id="site-footer">
+  <span class="footer-copyright">© 2026 (●ˇ∀ˇ●)</span>
+  
+  
+  <button class="back-top" type="button" aria-label="回到顶部"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V4M5 11l7-7 7 7"/></svg></button>
+</footer>
+
+  
+  
+</body>
+</html>
